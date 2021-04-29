@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		集合 | 
+	 
+	雄风静谧
+	</title>
+	
+	<!-- keywords,description -->
+	
+		<meta name="keywords" content="渣硕, 深度学习, 视频理解" />
+	 
+		<meta name="description" content="个人记事本" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">雄风静谧</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00-环境
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+										00-MySQL安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/01-Hadoop%E5%AE%89%E8%A3%85.html">
+										01-Hadoop安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/02-Hadoop%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81.html">
+										02-Hadoop编译源码
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/03-Zookeeper%E5%AE%89%E8%A3%85.html">
+										03-Zookeeper安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/00-%E7%8E%AF%E5%A2%83/04-Hive.html">
+										04-Hive
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/05-Flume%E5%AE%89%E8%A3%85.html">
+										05-Flume安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/00-%E7%8E%AF%E5%A2%83/06-HBase%E5%AE%89%E8%A3%85.html">
+										06-HBase安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-Ubuntu16.04%20%E5%AE%89%E8%A3%85opencv%EF%BC%88C++%E7%89%88%E6%9C%AC%EF%BC%89.html">
+										99-Ubuntu16.04 安装opencv（C++版本）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-%E5%AE%89%E8%A3%85ffmpeg.html">
+										99-安装ffmpeg
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8401-%E5%A4%A7%E7%BA%B2.html">
+										数据结构01-大纲
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8402-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8A).html">
+										数据结构02-复杂度分析(上)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8403-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8B).html">
+										数据结构03-复杂度分析(下)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8404-%E6%95%B0%E7%BB%84.html">
+										数据结构04-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8405-%E9%93%BE%E8%A1%A8.html">
+										数据结构05-链表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8406-%E6%A0%88.html">
+										数据结构06-栈
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8407-%E9%98%9F%E5%88%97.html">
+										数据结构07-队列
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8408-%E9%80%92%E5%BD%92.html">
+										数据结构08-递归
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8409-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%86%92%E6%B3%A1&%E6%8F%92%E5%85%A5&%E9%80%89%E6%8B%A9.html">
+										数据结构09-排序之冒泡&插入&选择
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8410-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%BD%92%E5%B9%B6&%E5%BF%AB%E6%8E%92.html">
+										数据结构10-排序之归并&快排
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8411-%E6%8E%92%E5%BA%8F%E4%B9%8B%E7%BA%BF%E6%80%A7%E6%8E%92%E5%BA%8F(%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F).html">
+										数据结构11-排序之线性排序(桶排序、计数排序、基数排序)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8412-%E6%8E%92%E5%BA%8F%E4%B9%8B%E4%BC%98%E5%8C%96.html">
+										数据结构12-排序之优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8413-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">
+										数据结构13-二分查找
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8414-%E8%B7%B3%E8%A1%A8.html">
+										数据结构14-跳表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/23/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8415-%E6%95%A3%E5%88%97%E8%A1%A8.html">
+										数据结构15-散列表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8416-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8.html">
+										数据结构16-哈希算法的应用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8417-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80.html">
+										数据结构17-二叉树基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8418-%E7%BA%A2%E9%BB%91%E6%A0%91.html">
+										数据结构18-红黑树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8419-%E9%80%92%E5%BD%92%E6%A0%91.html">
+										数据结构19-递归树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420-%E5%A0%86%E5%92%8C%E5%A0%86%E6%8E%92%E5%BA%8F.html">
+										数据结构20-堆和堆排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8421-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA.html">
+										数据结构21-图的表示
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+										数据结构22-深度和广度优先搜索
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8423-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D.html">
+										数据结构23-字符串匹配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
+										数据结构24-Trie树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8425-AC%E8%87%AA%E5%8A%A8%E6%9C%BA.html">
+										数据结构25-AC自动机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8426-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">
+										数据结构26-贪心算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8427-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html">
+										数据结构27-分治算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
+										数据结构28-回溯算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8429-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA.html">
+										数据结构29-动态规划理论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+										数据结构30-动态规划入门案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8431-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98.html">
+										数据结构31-动态规划实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(2).html">
+										数据结构32-拓扑排序 - 副本 (2)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-Java
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java00--%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92.html">
+										Java00--时间计划
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java00-IDEA%E9%85%8D%E7%BD%AE.html">
+										Java00-IDEA配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java01-%E6%A6%82%E8%BF%B0.html">
+										Java01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java02-%E5%85%B3%E9%94%AE%E5%AD%97&%E6%A0%87%E8%AF%86%E7%AC%A6.html">
+										Java02-关键字&标识符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java03-%E8%BF%90%E7%AE%97%E7%AC%A6.html">
+										Java03-运算符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java04-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										Java04-流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java05-%E6%95%B0%E7%BB%84.html">
+										Java05-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A101%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html">
+										Java06-面向对象01三大特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A102%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%8E%A5%E5%8F%A3.html">
+										Java06-面向对象02抽象类接口
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java07-%E5%BC%82%E5%B8%B8.html">
+										Java07-异常
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java08-%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">
+										Java08-多线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java09-%E5%B8%B8%E7%94%A8%E7%B1%BB.html">
+										Java09-常用类
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java10-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E4%B8%8E%E6%B3%A8%E8%A7%A3.html">
+										Java10-枚举类与注解
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2020/06/03/02-Java/Java11-%E9%9B%86%E5%90%88.html">
+										Java11-集合
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
+										Java12-泛型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java13-IO%E6%B5%81.html">
+										Java13-IO流
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java14-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.html">
+										Java14-网络编程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java15-%E5%8F%8D%E5%B0%84.html">
+										Java15-反射
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java16-Java8%20%E6%96%B0%E7%89%B9%E6%80%A7.html">
+										Java16-Java8 新特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL00-%E5%AE%89%E8%A3%85.html">
+										MySQL00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+										MySQL01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+										MySQL02-DQL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+										MySQL03-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+										MySQL04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+										MySQL05-TCL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										MySQL06-视图&存储过程&流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										04-JDBC
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+										JDBC-01 概览&连接数据库方式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+										JDBC-02 CRUD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+										JDBC-03 数据库事务&DAO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+										JDBC-04 数据库连接池&DBUtils
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05-Hadoop
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+										Hadoop01-概述、运行模式&源码编译
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+										Hadoop02-HDFS概述、shell&客户端操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+										Hadoop03-HDFS读写流程&NN和2NN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+										Hadoop04-HDFS-DataNode
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop05-HDFS2.X%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E9%AB%98%E5%8F%AF%E7%94%A8(HA).html">
+										Hadoop05-HDFS2.X新特性和高可用(HA)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+										Hadoop06-MapReduce概述&序列化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
+										Hadoop07-MapReduce框架原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop08-Hadoop%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9.html">
+										Hadoop08-Hadoop数据压缩
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
+										Hadoop09-Yarn资源调度
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+										Hadoop10-生产调优手册
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+										Hadoop11-源码解析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06-Zookeeper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+										Zookeeper00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+										Zookeeper01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
+										Zookeeper02-内部原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper03-Shell%E6%93%8D%E4%BD%9C.html">
+										Zookeeper03-Shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+										Zookeeper04-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										07-Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive01-%E6%A6%82%E8%BF%B0.html">
+										Hive01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+										Hive02-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Hive03-数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+										Hive04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive05-DML.html">
+										Hive05-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+										Hive06-查询
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+										Hive07-函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
+										Hive08-压缩和存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+										Hive09-企业级调优
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive10-%E5%AE%9E%E6%88%98.html">
+										Hive10-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										08-Flume
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume00-%E5%AE%89%E8%A3%85.html">
+										flume00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+										flume01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+										flume02-案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume03-%E5%8E%9F%E7%90%86.html">
+										flume03-原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										flume04-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										09-Kafka
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
+										Kafka00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+										Kafka01-概述&shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+										Kafka02-架构原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+										Kafka03-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+										Kafka04-监控
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
+										Kafka05-Flume对接Kafka
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										Kafka06-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										10-HBase
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+										HBase00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+										HBase01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+										HBase02-HBase-shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+										HBase03-HBase进阶
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+										HBase04-HBase-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+										HBase05-HBase-MR
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+										HBase06-与Hive集成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+										HBase07-HBase优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+										HBase08-扩展
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	Java11-集合
+</h1>
+<div class="article-meta">
+	
+	<span>NiuMT</span>
+	<span>2020-06-03 20:58:30</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Java/">Java</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<p>数组在内存存储方面的特点：</p>
+<ul>
+<li>数组初始化以后，长度就确定了。</li>
+<li>数组声明的类型，就决定了进行元素初始化时的类型</li>
+</ul>
+<p>数组在存储数据方面的弊端：</p>
+<ul>
+<li>数组初始化以后，长度就不可变了，不便于扩展</li>
+<li>数组中提供的属性和方法少，不便于进行添加、删除、插入等操作， 且效率不高。同时无法直接获取存储元素的个数</li>
+<li>数组存储的数据是有序的、可以重复的。 存储数据的特点单一</li>
+</ul>
+<p>Java 集合类可以用于存储数量不等的多个对象 ，还可用于保存具有映射关系的关联数组。</p>
+<h2 id="Collection-接口方法"><a href="#Collection-接口方法" class="headerlink" title="Collection 接口方法"></a>Collection 接口方法</h2><p>Collection 接口：单列数据， 定义了存取一组对象的方法的集合</p>
+<ul>
+<li>List 元素有序、可重复的集合；“动态”数组</li>
+<li>Set 元素无序、不可重复的集合</li>
+</ul>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201021230438466.png" alt="image-20201021230438466"></p>
+<ul>
+<li>Collection 接口是 List 、 Set 和 Queue 接口的父接口，该接口里定义的方法既可用于操作 Set 集合，也可用于操作 List 和 Queue 集合 。</li>
+<li>JDK 不提供此接口的任何直接实现，而是提供更具体的子接口 (如: Set 和 List)实现 。</li>
+<li>在 Java5 之前， Java 集合会丢失容器中所有对象的数据类型，把所有对象都当成 Object 类型处理； 从 JDK 5.0 增加了泛型以后， Java 集合可以记住容器中对象的数据类型。</li>
+</ul>
+<p>接口方法：</p>
+<ol>
+<li>添加：add(Object obj)；addAll(Collection coll)</li>
+<li>获取有效元素的个数：int size()</li>
+<li>清空集合：void clear()</li>
+<li>是否是空集合：boolean isEmpty()</li>
+<li>是否包含某个元素：boolean contains(Object obj); boolean containsAll(Collection c); 调用的obj.equals()方法，==需要重写equals()方法==</li>
+<li>删除：boolean remove(Object obj) 只会删除找到的第一个元素；boolean removeAll(Collection coll) 取当前集合的差集；调用的obj.equals()方法，==需要重写equals()方法==</li>
+<li>取两个结合的交集：boolean retainAll(Collection c), 把交集的结果存在当前集合中，不影响 c</li>
+<li>集合是否相等：boolean equals(Object obj)</li>
+<li>转成对象数组：Object[] toArray()</li>
+<li>获取集合对象的哈希值：hashCode()</li>
+<li>遍历：iterator() 返回迭代器对象，用于集合遍历</li>
+</ol>
+<h2 id="Iterator-迭代器接口"><a href="#Iterator-迭代器接口" class="headerlink" title="Iterator 迭代器接口"></a>Iterator 迭代器接口</h2><p>Iterator 对象称为迭代器 (设计模式的一种)，主要用于遍历 Collection 集合中的元素。</p>
+<p>GOF 给迭代器模式的定义为：提供一种方法访问一个容器 (container) 对象中各个元素，而又不需暴露该对象的内部细节。 迭代器模式，就是为容器而生。</p>
+<p>Collection 接口继承了 java.lang.Iterable 接口，该接口有一个 iterator() 方法，那么所有实现了 Collection 接口的集合类都有一个 iterator() 方法，用以返回一个实现了Iterator 接口的对象 。</p>
+<p>Iterator 仅用于遍历集合 Iterator 本身并不提供承装对象的能力。如果需要 创建Iterator 对象，则必须有一个被迭代的集合。</p>
+<p>集合对象==每次调用== iterator() 方法都得到一个全新的迭代器对象”Iterator iterator = coll.iterator();”，默认游标都在集合的第一个元素之前 。</p>
+<p>在调用<br>it.next() 方法之前必须要调用 it.hasNext() 进行检测。若不调用，且下一条记录无效，直接调用 it.next() 会抛出 NoSuchElementException 异常。</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201022104231525.png" alt="image-20201022104231525"></p>
+<p>注意：</p>
+<ul>
+<li>Iterator 可以删除集合的元素，但是是遍历过程中通过迭代器对象的 remove 方法，不是集合对象的 remove 方法 。</li>
+<li>如果还未调用 next() 或在上一次调用 next 方法之后已经调用了 remove 方法，再调用 remove (调用来两次remove非法)都会报 IllegalStateException</li>
+</ul>
+<h2 id="使用-foreach-循环遍历集合元素"><a href="#使用-foreach-循环遍历集合元素" class="headerlink" title="使用 foreach 循环遍历集合元素"></a>使用 foreach 循环遍历集合元素</h2><p>Java 5.0 提供了 foreach 循环迭代 访问 Collection 和数组。遍历操作不需获取 Collection 或数组的长度，无需使用索引访问元素。==遍历集合的底层调用 Iterator 完成操作==。foreach 还可以用来遍历数组。</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201022105215546.png" alt="image-20201022105215546"></p>
+<h2 id="Collection-子接口一：-List"><a href="#Collection-子接口一：-List" class="headerlink" title="Collection 子接口一： List"></a>Collection 子接口一： List</h2><p>鉴于 Java 中数组用来存储数据 的局限性，我们通常使用 List 替代数组。List 集合类中==元素有序、且可重复==，集合中的每个元素都有其对应的顺序索引。List 容器中的元素都对应一个整数型的序号记载其在容器中的位置，可以根据序号存取容器中的元素。JDK API 中 List 接口的实现类常用的有： ArrayList 、 LinkedList 和 Vector 。</p>
+<p><strong>ArrayList 、 LinkedList 和 Vector的异同：</strong></p>
+<ul>
+<li><p>同：三个类都实现了List接口，存储数据特点相同：元素有序、且可重复</p>
+</li>
+<li><p>不同：</p>
+<p>ArrayList：作为List接口的主要实现类，效率高，线程不安全；底层使用Object[]存储</p>
+<p>LinkedList：对于频繁的插入。删除操作，此类效率比ArrayList高；底层使用双向链表</p>
+<p>Vector：作为List接口的古老实现类，效率低，线程安全；底层使用Object[]存储</p>
+</li>
+</ul>
+<p>List 除了从 Collection 集合继承的方法外， List 集合里添加了一些根据索引来操作集合元素的 方法 ：</p>
+<ul>
+<li>void add( int index, Object ele) 在 index 位置插入 ele 元素</li>
+<li>boolean addAll (int index, Collection eles) 从 index 位置开始将 eles 中的所有元素添加进来</li>
+<li>Object get( int index): 获取指定 index 位置的元素</li>
+<li>int indexOf (Object obj) 返回 obj 在集合中首次出现的位置</li>
+<li>int lastIndexOf (Object obj) 返回 obj 在当前集合中末次出现的位置</li>
+<li>Object remove( int index): 移除指定 index 位置的元素，并返回此元素</li>
+<li>Object set( int index, Object ele) 设置指定 index 位置的元素为 ele</li>
+<li>List subList (int fromIndex , int toIndex) 返回从 fromIndex 到 toIndex位置的子集合</li>
+</ul>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>ArrayList 的 JDK1.8 之前与之后的实现区别？</p>
+<ul>
+<li>JDK1.7 ArrayList 像饿汉式，直接创建一个初始容量为 10 的数组；容量不够时，扩容为原来容量的1.5倍，同时复制数组。</li>
+<li>JDK1.8 ArrayList 像懒汉式，一开始创建一个长度为 0 的数组，当添加第一个元素时再创建一个始容量为 10 的 数组，扩容和JDK7一致。</li>
+<li>建议：开发中使用带参构造器：ArrayList list = new ArrayList(int initCapacity);</li>
+</ul>
+<p>本质上， ArrayList 是对象引用的 一个“变长”数组。</p>
+<p>Arrays.asList (…) 方法返回的 List 集合 既不是 ArrayList 实例，也不是<br>Vector 实例。Arrays.asList (…) 返回值是一个固定长度的 List 集合。</p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p>新增方法：</p>
+<ul>
+<li>void addFirst (Object obj)</li>
+<li>void addLast (Object obj)</li>
+<li>Object getFirst()</li>
+<li>Object getLast()</li>
+<li>Object removeFirst()</li>
+<li>Object removeLast()</li>
+</ul>
+<p>LinkedList 双向链表内部没有声明数组，而是定义了 Node 类型的 first 和 last<br>用于记录首末元素。同时，定义内部类 Node ，作为 LinkedList 中保存数据的基本结构。 Node 除了保存数据，还定义了两个变量：</p>
+<ul>
+<li>prev 变量记录前一个元素的位置</li>
+<li>next 变量记录下一个元素的 位置</li>
+</ul>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201022112301081.png" alt="image-20201022112301081"></p>
+<p>LinkedList内部声明了Node类型的 first 和 last 属性，默认null。</p>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p>新增方法：</p>
+<ul>
+<li>void addElement (Object obj)</li>
+<li>void insertElementAt (Object obj,int index)</li>
+<li>void setElementAt (Object obj,int index)</li>
+<li>void removeElement (Object obj)</li>
+<li>void removeAllElements()</li>
+</ul>
+<p>面试题：请问<br>ArrayList/LinkedList/Vector 的 异同 谈谈你的理解？ ArrayList 底层是什么？扩容机制？ Vector 和 ArrayList 的最大区别？</p>
+<blockquote>
+<p>ArrayList 和 LinkedList 的异同：二者都线程不安全，相对线程安全的Vector ，执行效率高。此外，ArrayList 是实现了基于动态数组的数据结构， LinkedList 基于链表的数据结构。对于随机访问 get 和 set ArrayList 绝对优于 LinkedList ，因为 LinkedList 要移动指针。对于新增和删除 操作 add (特指插入) 和 remove，LinkedList 比较占优势，因为 ArrayList 要移动数据。</p>
+<p>ArrayList 和 Vector 的区别：Vector和 ArrayList 几乎是完全相同的，唯一的区别在于 Vector 是同步类 ( synchronized)，属于强同步类。因此开销就比 ArrayList 要大，访问要慢。正常情况下 大多数的 Java 程序员使用ArrayList 而不是 Vector, 因为同步完全可以由程序员自己来控制。 Vector 每次扩容请求其大小的 2 倍空间，而 ArrayList 是 1.5 倍。 Vector 还有一个子类 Stack 。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testListRemove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    list.add(<span class="number">1</span>);</span><br><span class="line">    list.add(<span class="number">2</span>);</span><br><span class="line">    list.add(<span class="number">3</span>);</span><br><span class="line">	updateList(list);</span><br><span class="line">	System.out.println(list);<span class="comment">// 1 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">updateList</span><span class="params">(List list)</span></span></span><br><span class="line"><span class="function">	list.<span class="title">remove</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Collection-子接口二：-Set"><a href="#Collection-子接口二：-Set" class="headerlink" title="Collection 子接口二： Set"></a>Collection 子接口二： Set</h2><p>Set 接口是 Collection 的子接口， set 接口没有提供额外的方法；Set 集合不允许包含相同的元素，如果试把两个相同的元素加入同一个Set 集合中，则添加操作失败。Set 判断两个对象是否相同不是使用 == 运算符，而是根据 equals() 方法。</p>
+<p><strong>无序性：</strong>不等于随机性。存储的数据在底层数组中并非按照数组索引的顺序添加，而是根据数据的哈希值决定</p>
+<p><strong>不可重复性：</strong>Set 判断两个对象是否相同是根据 equals() 方法，相同的元素只能添加一个。</p>
+<p><strong>添加元素的过程：</strong></p>
+<blockquote>
+<p>我们向HashSet中添加元素a，首先调用元素a所在类的hashCode()方法，计算元素a的哈希值，此哈希值接着通过某种算法计算出在HashSet底层数组中的存放位置（即为：索引位置），判断数组此位置上是否已经有元素：</p>
+<ul>
+<li><p>如果此位置上没有其他元素，则元素a添加成功。 —-&gt;情况1</p>
+</li>
+<li><p>如果此位置上有其他元素b(或以链表形式存在的多个元素），则比较元素a与元素b的hash值：</p>
+<p>如果hash值不相同，则元素a添加成功。—-&gt;情况2 </p>
+<p>如果hash值相同，进而需要调用元素a所在类的equals()方法：</p>
+<p>​    equals()返回true,元素a添加失败，</p>
+<p>​    equals()返回false,则元素a添加成功。—-&gt;情况3</p>
+</li>
+</ul>
+<p>对于添加成功的情况2和情况3而言：元素a 与已经存在指定索引位置上数据以链表的方式存储。</p>
+<p>jdk 7: 元素a放到数组中，指向原来的元素。</p>
+<p>jdk 8: 原来的元素在数组中，指向元素a</p>
+<p>总结：七上八下</p>
+<p>HashSet底层：数组+链表的结构。</p>
+</blockquote>
+<ul>
+<li>HashSet：作为Set接口的主要实现类；线程不安全的；可以存储null值</li>
+<li>LinkedHashSet：继承HashSet；遍历内部数据时，可以按照添加的顺序遍历</li>
+<li>TreeSet：可以按照添加对象的指定属性排序</li>
+</ul>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>底层也是数组，初始容量为 16，当如果使用率超过 0.75（16*0.75=12），就会扩大容量为原来的 2 倍。</p>
+<p>要求：想set中添加的数据，其所在类 一定要重写hashcode()和equals()；</p>
+<ul>
+<li><p>重写hashCode() 方法的基本原则</p>
+<ol>
+<li>在程序运行时，同一个对象多次调用 hashCode() 方法应该返回相同的 值。</li>
+<li>当两个对象的 equals() 方法比较返回 true 时，这两个对象的 hashCode()方法的返回值也应相等。</li>
+<li>对象中用作 equals() 方法比较的 Field ，都应该用来计算 hashCode 值。</li>
+</ol>
+</li>
+<li><p>重写<br>equals() 方法的基本原则</p>
+<ol>
+<li>当一个类有自己特有的“逻辑相等”概念 ，当改写 equals() 的时候 ，总是要改写 hashCode ()，根据一个类的 equals 方法（改写后），两个截然不同的实例有可能在逻辑上是相等的，但是， 根据 Object.hashCode() 方法它们仅仅是两个对象。</li>
+<li>因此 ，违反了 “相等的对象必须具有相等的散列码”。</li>
+<li>结论 ：复写 equals 方法的时候一般都需要同时复写 hashCode 方法 。 通常参与计算 hashCode 的对象的属性也应该参与到 equals() 中进行计算。</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>以Eclipse/IDEA 为 例 ，在自定义类中可以调用工具自动 重写 equals 和 hashCode 。问题：为什么 用 E clipse/IDEA 复写 hashCode 方法，有 31 这个数字？</p>
+<ul>
+<li>选择系数的时候要选择尽量大的系数。因为如果计算出来的 hash 地址越大，所谓的“冲突”就越少，查找起来效率也会提高。（减少冲突）</li>
+<li>并且 31 只占用 5bits, 相乘造成数据溢出的概率较小。</li>
+<li>31 可以 由 i*31== (i&lt;&lt;5) 1 来表示 现在很多虚拟机里面都有做相关 优化 。 （提高算法效率）</li>
+<li>31 是一个素数，素数作用就是如果我用一个数字来乘以这个素数，那么最终出来的结果只能被素数本身和被乘数还有 1 来整除 减少冲突</li>
+</ul>
+</blockquote>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><p>LinkedHashSet 是 HashSet 的子类。</p>
+<p>LinkedHashSet 根据元素的 hashCode 值来决定元素的存储位置，但它同时使用双向链表维护元素的次序，这使得元素看起来是以插入顺序保存的。</p>
+<p>==LinkedHashSet 插入性能略低于 HashSet==，但在迭代访问 Set 里的全部元素时有很好的性能。</p>
+<p>LinkedHashSet 不允许集合元素重复。</p>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><ol>
+<li>向TreeSet中添加的数据，要求是==相同的类型==；</li>
+<li>两种排序方式：自然排序(compareTo)和定制排序(Comparator)<ul>
+<li>自然排序：比较两个对象是否相同的标准为：compareTo()返回0。不再是equal()</li>
+<li>定制排序：将比较方法放到TreeSet的带参构造器中。比较两个对象是否相同的标准为：Compara()返回0。不再是equal()</li>
+</ul>
+</li>
+<li>如果试图把一个对象添加到 TreeSet 时，则该对象的类必须实现 Comparable接口。</li>
+<li>TreeSet 是 SortedSet 接口的实现类， TreeSet 可以确保集合元素处于排序状态。、</li>
+<li>TreeSet 底层使用 红黑树 结构存储数据</li>
+</ol>
+<p>新增的方法如下： 了解</p>
+<ul>
+<li>Comparator comparator()</li>
+<li>Object first()</li>
+<li>Object last()</li>
+<li>Object lower(Object e)</li>
+<li>Object higher(Object e)</li>
+<li>SortedSet subSet (fromElement , toElement)</li>
+<li>SortedSet headSet (toElement)</li>
+<li>SortedSet tailSet (fromElement)</li>
+</ul>
+<p>TreeSet 两种排序方法： 自然排序 和 定制排序 。默认情况下， TreeSet 采用自然排序。</p>
+<p><strong>练习：在List 内去除重复数字值，要求尽量简单</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//练习：在List内去除重复数字值，要求尽量简单</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List <span class="title">duplicateList</span><span class="params">(List list)</span> </span>&#123;</span><br><span class="line">    HashSet set = <span class="keyword">new</span> HashSet();</span><br><span class="line">    set.addAll(list);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ArrayList(set);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">1</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">2</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">2</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">4</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">4</span>));</span><br><span class="line">    List list2 = duplicateList(list);</span><br><span class="line">    <span class="keyword">for</span> (Object integer : list2) &#123;</span><br><span class="line">        System.out.println(integer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>面试题</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">    HashSet set = <span class="keyword">new</span> HashSet();</span><br><span class="line">    <span class="comment">// 其中Person 类中重写了 hashCode() 和 equal() 方法</span></span><br><span class="line">    Person p1 = <span class="keyword">new</span> Person(<span class="number">1001</span>,<span class="string">"AA"</span>);</span><br><span class="line">    Person p2 = <span class="keyword">new</span> Person(<span class="number">1002</span>,<span class="string">"BB"</span>);</span><br><span class="line"></span><br><span class="line">    set.add(p1);</span><br><span class="line">    set.add(p2);</span><br><span class="line">    System.out.println(set);<span class="comment">//2个数据</span></span><br><span class="line"></span><br><span class="line">    p1.name = <span class="string">"CC"</span>;</span><br><span class="line">    set.remove(p1);<span class="comment">// 删除失败，hashcode不一致</span></span><br><span class="line">    System.out.println(set);</span><br><span class="line">    set.add(<span class="keyword">new</span> Person(<span class="number">1001</span>,<span class="string">"CC"</span>));<span class="comment">// 3个数据</span></span><br><span class="line">    System.out.println(set);</span><br><span class="line">    set.add(<span class="keyword">new</span> Person(<span class="number">1001</span>,<span class="string">"AA"</span>));<span class="comment">// 4个数据</span></span><br><span class="line">    System.out.println(set);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Map-接口"><a href="#Map-接口" class="headerlink" title="Map 接口"></a>Map 接口</h2><p>Map 接口： 双列数据，保存具有映射关系“ key-value对”的集合</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201021230536054.png" alt="image-20201021230536054" style="zoom: 50%;" /></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|----Map：双列数据</span><br><span class="line">    |----HashMap：作为Map的主要实现类；线程不安全，效率高；存储<span class="keyword">null</span>的key或value</span><br><span class="line">	    |----LinkedHashMap：保证在遍历map元素时，可以按照添加的顺序实现遍历。对于频繁的遍历操作，此类执行效率高于HashMap</span><br><span class="line">    |----TreeMap：保证按照添加的key-value对进行排序，实现遍历。此时考虑key的自然排序或者定制排序。底层使用红黑树。</span><br><span class="line">    |----Hashtable：作为古老的实现类；线程安全，效率低；不能存储<span class="keyword">null</span>的key或value</span><br><span class="line">    	|----Properties：常用来处理配置文件。key-value都是String类型。</span><br></pre></td></tr></table></figure>
+<p>Map 中的 key 和 value 都可以是任何引用类型的数据；Map 中的 key 用 Set 来存放， 不允许重复 ，即同一个 Map 对象所对应的类，须重写 hashCode 和 equals 方法；常用 String 类作为 Map 的“键”。</p>
+<ul>
+<li>key无序且不可重复，使用Set存储；key所在类要重写equals()和hashcode() / compareTo方法</li>
+<li>value是无序可重复的，使用Collection 存储；value类需要重写equals()</li>
+<li>entry无序且不可重复，使用set存储。</li>
+</ul>
+<p>1.添加 、 删除、修改操作</p>
+<ul>
+<li>Object put(Object key,Object value)：将指定 key-value 添加到 (或修改) 当前 map 对象中</li>
+<li>void putAll(Map m): 将 m 中的所有 key-value 对存放到当前 map 中</li>
+<li>Object remove(Object key)：移除指定 key 的 key-value 对，并返回 value</li>
+<li>void clear()：==清空当前 map 中的所有数据，size=0；与map = null不同==。</li>
+</ul>
+<p>2.元素 查询的操作：</p>
+<ul>
+<li>Object get(Object key)：获取指定 key 对应的 value</li>
+<li>boolean containsKey(Object key)：是否包含指定的 key</li>
+<li>boolean containsValue(Object value)：是否包含指定的 value</li>
+<li>int size()：返回 map 中 key-value 对的个数</li>
+<li>boolean isEmpty()：判断当前 map 是否为空</li>
+<li>boolean equals(Object obj)：判断当前 map 和参数对象 obj 是否相等</li>
+</ul>
+<p>3.元视图操作的方法：</p>
+<ul>
+<li><p>Set keySet()：返回所有 key 构成的 Set 集合</p>
+</li>
+<li><p>Collection values()：返回所有 value 构成的 Collection 集合</p>
+</li>
+<li><p>Set entrySet()：返回所有 key-value 对构成的 Set 集合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Set entrySet = map.entrySet();</span><br><span class="line">Iterator iterator1 = entrySet.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator1.hasNext())&#123;</span><br><span class="line">	Object obj = iterator1.next();</span><br><span class="line">	<span class="comment">//entrySet集合中的元素都是entry</span></span><br><span class="line">	Map.Entry entry = (Map.Entry) obj;</span><br><span class="line">	System.out.println(entry.getKey() + <span class="string">"----&gt;"</span> + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>允许使用 null 键和 null 值，与 HashSet 一样，不保证映射的顺序。</p>
+<p><strong>底层实现原理：</strong></p>
+<p>JDK 7及以前版本： HashMap 是数组 + 链表结构，即为链地址法</p>
+<p>JDK 8版本发布以后： HashMap 是数组 + 链表 + 红黑树实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">JDK <span class="number">7</span>:</span><br><span class="line"></span><br><span class="line">HashMap map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="comment">/*在实例化以后，底层创建了长度是16的一维数组Entry[] table。*/</span></span><br><span class="line">...可能已经执行过多次put...</span><br><span class="line">map.put(key1,value1):</span><br><span class="line"><span class="comment">/*首先，调用key1所在类的hashCode()计算key1哈希值，此哈希值经过某种算法计算以后，得到在Entry数组中的存放位置。</span></span><br><span class="line"><span class="comment">1. 如果此位置上的数据为空，此时的key1-value1添加成功。 ----情况1</span></span><br><span class="line"><span class="comment">2. 如果此位置上的数据不为空，(意味着此位置上存在一个或多个数据(以链表形式存在)),比较key1和已经存在的一个或多个数据的哈希值：</span></span><br><span class="line"><span class="comment">	2.1 如果key1的哈希值与已经存在的数据的哈希值都不相同，此时key1-value1添加成功。----情况2</span></span><br><span class="line"><span class="comment">	2.2 如果key1的哈希值和已经存在的某一个数据(key2-value2)的哈希值相同，继续比较：调用key1所在类的equals(key2)方法，比较：</span></span><br><span class="line"><span class="comment">		2.2.1 如果equals()返回false:此时key1-value1添加成功。----情况3</span></span><br><span class="line"><span class="comment">		2.2.2 如果equals()返回true:使用value1替换value2。----情况4</span></span><br><span class="line"><span class="comment">补充：关于情况2和情况3：此时key1-value1和原来的数据以链表的方式存储。</span></span><br><span class="line"><span class="comment">在不断的添加过程中，会涉及到扩容问题，当超出临界值(且要存放的位置非空)时，扩容。默认的扩容方式：扩容为原来容量的2倍，并将原有的数据复制过来。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">JDK <span class="number">8</span> 相较于jdk7在底层实现方面的不同：</span><br><span class="line">    </span><br><span class="line"><span class="number">1</span>. <span class="keyword">new</span> HashMap():底层没有创建一个长度为<span class="number">16</span>的数组</span><br><span class="line"><span class="number">2</span>. jdk <span class="number">8</span>底层的数组是：Node[],而非Entry[]</span><br><span class="line"><span class="number">3</span>. 首次调用put()方法时，底层创建长度为<span class="number">16</span>的数组</span><br><span class="line"><span class="number">4</span>. jdk7底层结构只有：数组+链表。jdk8中底层结构：数组+链表+红黑树。</span><br><span class="line">	<span class="number">4.1</span> 形成链表时，七上八下（jdk7:新的元素指向旧的元素。jdk8：旧的元素指向新的元素）</span><br><span class="line">	<span class="number">4.2</span> 当数组的某一个索引位置上的元素以链表形式存在的数据个数 &gt; <span class="number">8</span> 且当前数组的长度 &gt; <span class="number">64</span>时，此时此索引位置上的所数据改为使用红黑树存储。</span><br></pre></td></tr></table></figure>
+<p><strong>HashMap的put()</strong></p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/caption/HashMap的put(" alt="HashMap的put()">.png)</p>
+<p><strong>HashMap源码中的重要常量：</strong></p>
+<ul>
+<li>DEFAULT_INITIAL_CAPACITY :<br>HashMap 的默认容量， 16</li>
+<li>MAXIMUM_CAPACITY： HashMap 的最大支持容量， 2^30</li>
+<li>DEFAULT_LOAD_FACTOR： HashMap 的默认加载因子，0.75</li>
+<li>TREEIFY_THRESHOLD<br>Bucket：Bucket 中链表长度大于该默认值，转化为红黑树；8</li>
+<li>UNTREEIFY_THRESHOLD：<br>Bucket 中红黑树存储的 Node 小于该默认值，转化为链表</li>
+<li>MIN_TREEIFY_CAPACITY：<br>桶中的 Node 被树化时最小的 hash 表容量。（当桶中 Node 的数量大到需要变红黑树时，若 hash 表容量小于 MIN_TREEIFY_CAPACITY 时，此时应执行<br>resize 扩容操作这个 MIN_TREEIFY_CAPACITY 的值至少是 TREEIFY_THRESHOLD 的 4<br>倍。）64</li>
+<li>table： 存储元素的数组，总是 2 的 n 次幂</li>
+<li>entrySet：<br>存储具体元素的集</li>
+<li>size：<br>HashMap 中存储的键值对的数量</li>
+<li>modCount：<br>HashMap 扩容和结构改变的次数。</li>
+<li>threshold： 扩容的临界值， =容量*填充因子，12</li>
+<li>loadFactor<br>填充因子</li>
+</ul>
+<blockquote>
+<p> 关于映射关系的key 是否可以修改? answer ：不要修改</p>
+<p> 映射关系存储到HashMap 中会存储 key 的 hash 值，这样就不用在每次查找时重新计算每一个 Entry 或 Node (TreeNode ）的 hash 值了，因此如果已经 put 到 Map 中的映射关系，再修改 key 的属性，而这个属性又参与 hashcode 值的计算，那么会导致匹配不上。</p>
+</blockquote>
+<p><strong>面试题：负载因子值的大小，对 HashMap 有什么影响</strong></p>
+<blockquote>
+<ul>
+<li>负载 因子的大小决定了 HashMap 的数据密度。</li>
+<li>负载因子越大密度越大，发生碰撞的几率越高，数组中的链表越容易长，造成 查询或插入时的比较次数增多，性能会下降。</li>
+<li>负载因子越小，就越容易触发扩容，数据密度也越小，意味着发生碰撞的几率越小，数组中的链表也就越短，查询和插入时比较的次数也越小，性能会更高。但是会浪费一定的内容空间。而且经常扩容也会影响性能，建议初始化预设大一点的空间。</li>
+<li>按照其他语言的参考及研究经验，会考虑将负载因子设置为 0.7~0.75 ，此时平均检索长度接近于常数。</li>
+</ul>
+</blockquote>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p>LinkedHashMap 是 HashMap 的子类；</p>
+<p>在 HashMap 存储结构的基础上，使用了一对双向链表来记录添加元素的顺序；</p>
+<p>与 LinkedHashSet 类似 LinkedHashMap 可以维护 Map 的迭代顺序：迭代顺序与 Key-Value 对的插入顺序一致。</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201022223239758.png" alt="image-20201022223239758" style="zoom:60%;" /></p>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p>TreeMap 存储 Key-Value 对时， 需要根据 key-value 对进行排序，所以key必须是同一个类创建的对象。<br>TreeMap 可以保证所有的 Key-Value 对处于有序状态 。</p>
+<p>TreeSet 底层使用红黑树结构存储数据</p>
+<p>TreeMap 的 Key 的排序：</p>
+<ul>
+<li>自然排序：TreeMap 的所有的 Key 必须实现 Comparable 接口，而且所有的 Key 应该是同一个类的对象，否则将会抛出 ClasssCastException</li>
+<li>定制排序 ：创建 TreeMap 时，传入一个 Comparator 对象，该对象负责对TreeMap 中的所有 key 进行排序。此时不需要 Map 的 Key 实现<br>Comparable 接口</li>
+</ul>
+<p>TreeMap 判断两个 key 相等的标准 ：两个 key 通过 compareTo() 方法或者 compare() 方法返回 0 。</p>
+<h3 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h3><p>Hashtable 实现原理和 HashMap 相同，功能相同。底层都使用哈希表结构，查询速度快，很多情况下可以互用 。</p>
+<p>与 HashMap 不同， Hashtable 不允许使用 null 作为 key 和 value</p>
+<p>与 HashMap 一样， Hashtable 也不能保证其中 Key-Value 对的顺序</p>
+<p>Hashtable 判断两个key 相等、两个value 相等的标准与HashMap 一致。</p>
+<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><p>Properties 类是 Hashtable 的子类，该对象用于处理属性文件</p>
+<p>由于属性文件里的 key 、 value 都是字符串类型，所以 Properties 里的 key和value 都是字符串类型</p>
+<p>存取数据时，建议使用 setProperty (String key,String value) 方法和getProperty (String key) 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">pros. load(<span class="keyword">new</span> FileInputStream(FileInputStream(<span class="string">"jdbc.properties"</span>));</span><br><span class="line">String user = pros.getProperty(<span class="string">"user"</span>);</span><br><span class="line">System.out.println(user);</span><br></pre></td></tr></table></figure>
+<h2 id="Collections-工具类"><a href="#Collections-工具类" class="headerlink" title="Collections 工具类"></a>Collections 工具类</h2><p>Collections 是一个操作 Set 、 List 和 Map 等集合的工具类；操作数组的工具类：Arrays</p>
+<p>Collections 中提供了一系列静态的方法对集合元素进行排序、查询和修改等操作，还提供了对集合对象设置不可变、对集合对象实现同步控制等方法</p>
+<h3 id="排序操作：（均为-static-方法）"><a href="#排序操作：（均为-static-方法）" class="headerlink" title="排序操作：（均为 static 方法）"></a>排序操作：（均为 static 方法）</h3><ul>
+<li>reverse(List)：反转 List 中元素的顺序</li>
+<li>shuffle(List)：对 List 集合元素进行随机排序</li>
+<li>sort(List)：根据元素的自然顺序对指定 List 集合元素按升序排序</li>
+<li>sort(List，Comparator)：根据指定的 Comparator 产生的顺序对 List 集合元素进行排序</li>
+<li>swap(List，int， int)：将指定 list 集合中的 i 处元素和 j 处元素进行交换</li>
+</ul>
+<h3 id="查找、替换"><a href="#查找、替换" class="headerlink" title="查找、替换"></a>查找、替换</h3><ul>
+<li><p>Object max(Collection)：根据元素的自然顺序，返回给定集合中的最大元素</p>
+</li>
+<li><p>Object max(Collection，Comparator)：根据 Comparator 指定的顺序，返回给定集合中的最大元素</p>
+</li>
+<li><p>Object min(Collection)</p>
+</li>
+<li><p>Object min(Collection，Comparator)</p>
+</li>
+<li><p>int frequency(Collection，Object)：返回指定集合中指定元素的出现次数</p>
+</li>
+<li><p>void copy(List dest,List src)：将src中的内容复制到dest中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.add(<span class="number">123</span>);</span><br><span class="line">list.add(<span class="number">43</span>);</span><br><span class="line">list.add(<span class="number">765</span>);</span><br><span class="line">list.add(-<span class="number">97</span>);</span><br><span class="line">list.add(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//报异常：IndexOutOfBoundsException("Source does not fit in dest")</span></span><br><span class="line"><span class="comment">//List dest = new ArrayList();</span></span><br><span class="line"><span class="comment">//Collections.copy(dest,list);</span></span><br><span class="line"><span class="comment">//正确的：</span></span><br><span class="line">List dest = Arrays.asList(<span class="keyword">new</span> Object[list.size()]);</span><br><span class="line">System.out.println(dest.size());<span class="comment">//list.size();</span></span><br><span class="line">Collections.copy(dest,list);</span><br><span class="line"></span><br><span class="line">System.out.println(dest);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>boolean replaceAll(List list，Object oldVal，Object newVal)：使用新值替换 List 对象的所有旧值</p>
+</li>
+<li><p>Collections 类中提供了多个 synchronizedXxx() 方法，该方法可使将指定集合包装成线程同步的集合，从而可以解决多线程并发访问集合时的线程安全问题</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/caption/image-20201023140838698.png" alt="image-20201023140838698"></p>
+</li>
+</ul>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Java12-泛型
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2020/06/03/02-Java/Java14-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.html">
+                Java14-网络编程
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">NiuMT</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
