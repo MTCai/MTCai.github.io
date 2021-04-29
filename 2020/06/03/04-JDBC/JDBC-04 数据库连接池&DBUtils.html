@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		数据库连接池&amp;DBUtils | 
+	 
+	雄风静谧
+	</title>
+	
+	<!-- keywords,description -->
+	
+		<meta name="keywords" content="渣硕, 深度学习, 视频理解" />
+	 
+		<meta name="description" content="个人记事本" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">雄风静谧</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00-环境
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+										00-MySQL安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/01-Hadoop%E5%AE%89%E8%A3%85.html">
+										01-Hadoop安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/02-Hadoop%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81.html">
+										02-Hadoop编译源码
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/03-Zookeeper%E5%AE%89%E8%A3%85.html">
+										03-Zookeeper安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/00-%E7%8E%AF%E5%A2%83/04-Hive.html">
+										04-Hive
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/05-Flume%E5%AE%89%E8%A3%85.html">
+										05-Flume安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/00-%E7%8E%AF%E5%A2%83/06-HBase%E5%AE%89%E8%A3%85.html">
+										06-HBase安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-Ubuntu16.04%20%E5%AE%89%E8%A3%85opencv%EF%BC%88C++%E7%89%88%E6%9C%AC%EF%BC%89.html">
+										99-Ubuntu16.04 安装opencv（C++版本）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-%E5%AE%89%E8%A3%85ffmpeg.html">
+										99-安装ffmpeg
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8401-%E5%A4%A7%E7%BA%B2.html">
+										数据结构01-大纲
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8402-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8A).html">
+										数据结构02-复杂度分析(上)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8403-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8B).html">
+										数据结构03-复杂度分析(下)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8404-%E6%95%B0%E7%BB%84.html">
+										数据结构04-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8405-%E9%93%BE%E8%A1%A8.html">
+										数据结构05-链表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8406-%E6%A0%88.html">
+										数据结构06-栈
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8407-%E9%98%9F%E5%88%97.html">
+										数据结构07-队列
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8408-%E9%80%92%E5%BD%92.html">
+										数据结构08-递归
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8409-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%86%92%E6%B3%A1&%E6%8F%92%E5%85%A5&%E9%80%89%E6%8B%A9.html">
+										数据结构09-排序之冒泡&插入&选择
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8410-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%BD%92%E5%B9%B6&%E5%BF%AB%E6%8E%92.html">
+										数据结构10-排序之归并&快排
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8411-%E6%8E%92%E5%BA%8F%E4%B9%8B%E7%BA%BF%E6%80%A7%E6%8E%92%E5%BA%8F(%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F).html">
+										数据结构11-排序之线性排序(桶排序、计数排序、基数排序)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8412-%E6%8E%92%E5%BA%8F%E4%B9%8B%E4%BC%98%E5%8C%96.html">
+										数据结构12-排序之优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8413-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">
+										数据结构13-二分查找
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8414-%E8%B7%B3%E8%A1%A8.html">
+										数据结构14-跳表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/23/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8415-%E6%95%A3%E5%88%97%E8%A1%A8.html">
+										数据结构15-散列表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8416-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8.html">
+										数据结构16-哈希算法的应用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8417-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80.html">
+										数据结构17-二叉树基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8418-%E7%BA%A2%E9%BB%91%E6%A0%91.html">
+										数据结构18-红黑树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8419-%E9%80%92%E5%BD%92%E6%A0%91.html">
+										数据结构19-递归树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420-%E5%A0%86%E5%92%8C%E5%A0%86%E6%8E%92%E5%BA%8F.html">
+										数据结构20-堆和堆排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8421-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA.html">
+										数据结构21-图的表示
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+										数据结构22-深度和广度优先搜索
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8423-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D.html">
+										数据结构23-字符串匹配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
+										数据结构24-Trie树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8425-AC%E8%87%AA%E5%8A%A8%E6%9C%BA.html">
+										数据结构25-AC自动机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8426-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">
+										数据结构26-贪心算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8427-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html">
+										数据结构27-分治算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
+										数据结构28-回溯算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8429-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA.html">
+										数据结构29-动态规划理论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+										数据结构30-动态规划入门案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8431-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98.html">
+										数据结构31-动态规划实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(2).html">
+										数据结构32-拓扑排序 - 副本 (2)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-Java
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/00-%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92.html">
+										00-时间计划
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/IDEA%E9%85%8D%E7%BD%AE.html">
+										IDEA配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java01-%E6%A6%82%E8%BF%B0.html">
+										Java01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL00-%E5%AE%89%E8%A3%85.html">
+										MySQL00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+										MySQL01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+										MySQL02-DQL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+										MySQL03-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+										MySQL04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+										MySQL05-TCL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										MySQL06-视图&存储过程&流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										04-JDBC
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+										JDBC-01 概览&连接数据库方式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+										JDBC-02 CRUD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+										JDBC-03 数据库事务&DAO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+										JDBC-04 数据库连接池&DBUtils
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05-Hadoop
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+										Hadoop01-概述、运行模式&源码编译
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+										Hadoop02-HDFS概述、shell&客户端操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+										Hadoop03-HDFS读写流程&NN和2NN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+										Hadoop04-HDFS-DataNode
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop05-HDFS2.X%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E9%AB%98%E5%8F%AF%E7%94%A8(HA).html">
+										Hadoop05-HDFS2.X新特性和高可用(HA)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+										Hadoop06-MapReduce概述&序列化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
+										Hadoop07-MapReduce框架原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop08-Hadoop%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9.html">
+										Hadoop08-Hadoop数据压缩
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
+										Hadoop09-Yarn资源调度
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+										Hadoop10-生产调优手册
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+										Hadoop11-源码解析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06-Zookeeper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+										Zookeeper00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+										Zookeeper01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
+										Zookeeper02-内部原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper03-Shell%E6%93%8D%E4%BD%9C.html">
+										Zookeeper03-Shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+										Zookeeper04-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										07-Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive01-%E6%A6%82%E8%BF%B0.html">
+										Hive01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+										Hive02-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Hive03-数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+										Hive04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive05-DML.html">
+										Hive05-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+										Hive06-查询
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+										Hive07-函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
+										Hive08-压缩和存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+										Hive09-企业级调优
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive10-%E5%AE%9E%E6%88%98.html">
+										Hive10-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										08-Flume
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume00-%E5%AE%89%E8%A3%85.html">
+										flume00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+										flume01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+										flume02-案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume03-%E5%8E%9F%E7%90%86.html">
+										flume03-原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										flume04-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										09-Kafka
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
+										Kafka00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+										Kafka01-概述&shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+										Kafka02-架构原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+										Kafka03-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+										Kafka04-监控
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
+										Kafka05-Flume对接Kafka
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										Kafka06-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										10-HBase
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+										HBase00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+										HBase01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+										HBase02-HBase-shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+										HBase03-HBase进阶
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+										HBase04-HBase-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+										HBase05-HBase-MR
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+										HBase06-与Hive集成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+										HBase07-HBase优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+										HBase08-扩展
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	JDBC-04 数据库连接池&DBUtils
+</h1>
+<div class="article-meta">
+	
+	<span>NiuMT</span>
+	<span>2020-06-03 20:58:30</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Java/">Java</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h2 id="第8章：数据库连接池"><a href="#第8章：数据库连接池" class="headerlink" title="第8章：数据库连接池"></a>第8章：数据库连接池</h2><h3 id="8-1-JDBC数据库连接池的必要性"><a href="#8-1-JDBC数据库连接池的必要性" class="headerlink" title="8.1 JDBC数据库连接池的必要性"></a>8.1 JDBC数据库连接池的必要性</h3><ul>
+<li><p>在使用开发基于数据库的web程序时，传统的模式基本是按以下步骤：　　</p>
+<ul>
+<li><strong>在主程序（如servlet、beans）中建立数据库连接</strong></li>
+<li><strong>进行sql操作</strong></li>
+<li><strong>断开数据库连接</strong></li>
+</ul>
+</li>
+<li><p>这种模式开发，存在的问题:</p>
+<ul>
+<li>普通的JDBC数据库连接使用 DriverManager 来获取，每次向数据库建立连接的时候都要将 Connection 加载到内存中，再验证用户名和密码(得花费0.05s～1s的时间)。需要数据库连接的时候，就向数据库要求一个，执行完成后再断开连接。这样的方式将会消耗大量的资源和时间。<strong>数据库的连接资源并没有得到很好的重复利用。</strong>若同时有几百人甚至几千人在线，频繁的进行数据库连接操作将占用很多的系统资源，严重的甚至会造成服务器的崩溃。</li>
+<li><strong>对于每一次数据库连接，使用完后都得断开。</strong>否则，如果程序出现异常而未能关闭，将会导致数据库系统中的内存泄漏，最终将导致重启数据库。（回忆：何为Java的内存泄漏？）</li>
+<li><strong>这种开发不能控制被创建的连接对象数</strong>，系统资源会被毫无顾及的分配出去，如连接过多，也可能导致内存泄漏，服务器崩溃。 </li>
+</ul>
+</li>
+</ul>
+<h3 id="8-2-数据库连接池技术"><a href="#8-2-数据库连接池技术" class="headerlink" title="8.2 数据库连接池技术"></a>8.2 数据库连接池技术</h3><ul>
+<li>为解决传统开发中的数据库连接问题，可以采用数据库连接池技术。</li>
+<li><p><strong>数据库连接池的基本思想</strong>：就是为数据库连接建立一个“缓冲池”。预先在缓冲池中放入一定数量的连接，当需要建立数据库连接时，只需从“缓冲池”中取出一个，使用完毕之后再放回去。</p>
+</li>
+<li><p><strong>数据库连接池</strong>负责分配、管理和释放数据库连接，它<strong>允许应用程序重复使用一个现有的数据库连接，而不是重新建立一个</strong>。</p>
+</li>
+<li>数据库连接池在初始化时将创建一定数量的数据库连接放到连接池中，这些数据库连接的数量是由<strong>最小数据库连接数来设定</strong>的。无论这些数据库连接是否被使用，连接池都将一直保证至少拥有这么多的连接数量。连接池的<strong>最大数据库连接数量</strong>限定了这个连接池能占有的最大连接数，当应用程序向连接池请求的连接数超过最大连接数量时，这些请求将被加入到等待队列中。</li>
+</ul>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/1555593464033.png" alt="1555593464033"></p>
+<ul>
+<li><strong>工作原理：</strong></li>
+</ul>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/1555593598606.png" alt="1555593598606"></p>
+<ul>
+<li><p><strong>数据库连接池技术的优点</strong></p>
+<p><strong>1. 资源重用</strong></p>
+<p>由于数据库连接得以重用，避免了频繁创建，释放连接引起的大量性能开销。在减少系统消耗的基础上，另一方面也增加了系统运行环境的平稳性。</p>
+<p><strong>2. 更快的系统反应速度</strong></p>
+<p>数据库连接池在初始化过程中，往往已经创建了若干数据库连接置于连接池中备用。此时连接的初始化工作均已完成。对于业务请求处理而言，直接利用现有可用连接，避免了数据库连接初始化和释放过程的时间开销，从而减少了系统的响应时间</p>
+<p><strong>3. 新的资源分配手段</strong></p>
+<p>对于多应用共享同一数据库的系统而言，可在应用层通过数据库连接池的配置，实现某一应用最大可用数据库连接数的限制，避免某一应用独占所有的数据库资源</p>
+<p><strong>4. 统一的连接管理，避免数据库连接泄漏</strong></p>
+<p>在较为完善的数据库连接池实现中，可根据预先的占用超时设定，强制回收被占用连接，从而避免了常规数据库连接操作中可能出现的资源泄露</p>
+</li>
+</ul>
+<h3 id="8-3-多种开源的数据库连接池"><a href="#8-3-多种开源的数据库连接池" class="headerlink" title="8.3 多种开源的数据库连接池"></a>8.3 多种开源的数据库连接池</h3><ul>
+<li>JDBC 的数据库连接池使用 javax.sql.DataSource 来表示，DataSource 只是一个接口，该接口通常由服务器(Weblogic, WebSphere, Tomcat)提供实现，也有一些开源组织提供实现：<ul>
+<li><strong>DBCP</strong> 是Apache提供的数据库连接池。tomcat 服务器自带dbcp数据库连接池。<strong>速度相对c3p0较快</strong>，但因自身存在BUG，Hibernate3已不再提供支持。</li>
+<li><strong>C3P0</strong> 是一个开源组织提供的一个数据库连接池，<strong>速度相对较慢，稳定性还可以。</strong>hibernate官方推荐使用</li>
+<li><strong>Proxool</strong> 是sourceforge下的一个开源项目数据库连接池，有监控连接池状态的功能，<strong>稳定性较c3p0差一点</strong></li>
+<li><strong>BoneCP</strong> 是一个开源组织提供的数据库连接池，速度快</li>
+<li><strong>Druid</strong> 是阿里提供的数据库连接池，据说是集DBCP 、C3P0 、Proxool 优点于一身的数据库连接池，但是速度不确定是否有BoneCP快</li>
+</ul>
+</li>
+<li>DataSource 通常被称为数据源，它包含连接池和连接池管理两个部分，习惯上也经常把 DataSource 称为连接池</li>
+<li><strong>DataSource用来取代DriverManager来获取Connection，获取速度快，同时可以大幅度提高数据库访问速度。</strong></li>
+<li>特别注意：<ul>
+<li>数据源和数据库连接不同，数据源无需创建多个，它是产生数据库连接的工厂，因此<strong>整个应用只需要一个数据源即可。</strong></li>
+<li>当数据库访问结束后，程序还是像以前一样关闭数据库连接：conn.close(); 但conn.close()并没有关闭数据库的物理连接，它仅仅把数据库连接释放，归还给了数据库连接池。</li>
+</ul>
+</li>
+</ul>
+<h4 id="8-3-1-C3P0数据库连接池"><a href="#8-3-1-C3P0数据库连接池" class="headerlink" title="8.3.1 C3P0数据库连接池"></a>8.3.1 C3P0数据库连接池</h4><ul>
+<li>获取连接方式一</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用C3P0数据库连接池的方式，获取数据库的连接：不推荐</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection1</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	ComboPooledDataSource cpds = <span class="keyword">new</span> ComboPooledDataSource();</span><br><span class="line">	cpds.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>); </span><br><span class="line">	cpds.setJdbcUrl(<span class="string">"jdbc:mysql://localhost:3306/test"</span>);</span><br><span class="line">	cpds.setUser(<span class="string">"root"</span>);</span><br><span class="line">	cpds.setPassword(<span class="string">"abc123"</span>);</span><br><span class="line">	cpds.setInitiaPoolAize(<span class="number">10</span>);<span class="comment">// 设置初始时数据库连接池中的连接数</span></span><br><span class="line"><span class="comment">//	cpds.setMaxPoolSize(100);</span></span><br><span class="line">	</span><br><span class="line">	Connection conn = cpds.getConnection();</span><br><span class="line">	<span class="keyword">return</span> conn;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 销毁c3p0数据库连接池</span></span><br><span class="line">    <span class="comment">// DataSources.destory(cpds);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取连接方式二</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用C3P0数据库连接池的配置文件方式，获取数据库的连接：推荐</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> DataSource cpds = <span class="keyword">new</span> ComboPooledDataSource(<span class="string">"helloc3p0"</span>);</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection2</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>&#123;</span><br><span class="line">	Connection conn = cpds.getConnection();</span><br><span class="line">	<span class="keyword">return</span> conn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，src下的配置文件为：【c3p0-config.xml】</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c3p0-config</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">named-config</span> <span class="attr">name</span>=<span class="string">"helloc3p0"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 获取连接的4个基本信息 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"user"</span>&gt;</span>root<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span>abc123<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbcUrl"</span>&gt;</span>jdbc:mysql:///test<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClass"</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">&lt;!-- 涉及到数据库连接池的管理的相关属性的设置 --&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 若数据库中连接数不足时, 一次向数据库服务器申请多少个连接 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"acquireIncrement"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 初始化数据库连接池时连接的数量 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialPoolSize"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 数据库连接池中的最小的数据库连接数 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minPoolSize"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 数据库连接池中的最大的数据库连接数 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxPoolSize"</span>&gt;</span>10<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- C3P0 数据库连接池可以维护的 Statement 的个数 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxStatements"</span>&gt;</span>20<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 每个连接同时可以使用的 Statement 对象的个数 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxStatementsPerConnection"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">named-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">c3p0-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="8-3-2-DBCP数据库连接池"><a href="#8-3-2-DBCP数据库连接池" class="headerlink" title="8.3.2 DBCP数据库连接池"></a>8.3.2 DBCP数据库连接池</h4><ul>
+<li>DBCP 是 Apache 软件基金组织下的开源连接池实现，该连接池依赖该组织下的另一个开源系统：Common-pool。如需使用该连接池实现，应在系统中增加如下两个 jar 文件：<ul>
+<li>Commons-dbcp.jar：连接池的实现</li>
+<li>Commons-pool.jar：连接池实现的依赖库</li>
+</ul>
+</li>
+<li><strong>Tomcat 的连接池正是采用该连接池来实现的。</strong>该数据库连接池既可以与应用服务器整合使用，也可由应用程序独立使用。</li>
+<li>数据源和数据库连接不同，数据源无需创建多个，它是产生数据库连接的工厂，因此整个应用只需要一个数据源即可。</li>
+<li>当数据库访问结束后，程序还是像以前一样关闭数据库连接：conn.close(); 但上面的代码并没有关闭数据库的物理连接，它仅仅把数据库连接释放，归还给了数据库连接池。</li>
+<li>配置属性说明</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initialSize</td>
+<td>0</td>
+<td>连接池启动时创建的初始化连接数量</td>
+</tr>
+<tr>
+<td>maxActive</td>
+<td>8</td>
+<td>连接池中可同时连接的最大的连接数</td>
+</tr>
+<tr>
+<td>maxIdle</td>
+<td>8</td>
+<td>连接池中最大的空闲的连接数，超过的空闲连接将被释放，如果设置为负数表示不限制</td>
+</tr>
+<tr>
+<td>minIdle</td>
+<td>0</td>
+<td>连接池中最小的空闲的连接数，低于这个数量会被创建新的连接。该参数越接近maxIdle，性能越好，因为连接的创建和销毁，都是需要消耗资源的；但是不能太大。</td>
+</tr>
+<tr>
+<td>maxWait</td>
+<td>无限制</td>
+<td>最大等待时间，当没有可用连接时，连接池等待连接释放的最大时间，超过该时间限制会抛出异常，如果设置-1表示无限等待</td>
+</tr>
+<tr>
+<td>poolPreparedStatements</td>
+<td>false</td>
+<td>开启池的Statement是否prepared</td>
+</tr>
+<tr>
+<td>maxOpenPreparedStatements</td>
+<td>无限制</td>
+<td>开启池的prepared 后的同时最大连接数</td>
+</tr>
+<tr>
+<td>minEvictableIdleTimeMillis</td>
+<td></td>
+<td>连接池中连接，在时间段内一直空闲， 被逐出连接池的时间</td>
+</tr>
+<tr>
+<td>removeAbandonedTimeout</td>
+<td>300</td>
+<td>超过时间限制，回收没有用(废弃)的连接</td>
+</tr>
+<tr>
+<td>removeAbandoned</td>
+<td>false</td>
+<td>超过removeAbandonedTimeout时间后，是否进 行没用连接（废弃）的回收</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>获取连接方式一：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection3</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	BasicDataSource source = <span class="keyword">new</span> BasicDataSource();</span><br><span class="line">		</span><br><span class="line">	source.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">	source.setUrl(<span class="string">"jdbc:mysql:///test"</span>);</span><br><span class="line">	source.setUsername(<span class="string">"root"</span>);</span><br><span class="line">	source.setPassword(<span class="string">"abc123"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	source.setInitialSize(<span class="number">10</span>);</span><br><span class="line">		</span><br><span class="line">	Connection conn = source.getConnection();</span><br><span class="line">	<span class="keyword">return</span> conn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取连接方式二：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用dbcp数据库连接池的配置文件方式，获取数据库的连接：推荐</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> DataSource source = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">		</span><br><span class="line">		InputStream is = DBCPTest.class.getClassLoader().getResourceAsStream("dbcp.properties");</span><br><span class="line">			</span><br><span class="line">		pros.load(is);</span><br><span class="line">		<span class="comment">//根据提供的BasicDataSourceFactory创建对应的DataSource对象</span></span><br><span class="line">		source = BasicDataSourceFactory.createDataSource(pros);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection4</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		</span><br><span class="line">	Connection conn = source.getConnection();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> conn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，src下的配置文件为：【dbcp.properties】</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">driverClassName</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true&amp;useServerPrepStmts=false</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">abc123</span></span><br><span class="line"></span><br><span class="line"><span class="attr">initialSize</span>=<span class="string">10</span></span><br><span class="line"><span class="comment">#...</span></span><br></pre></td></tr></table></figure>
+<h4 id="8-3-3-Druid（德鲁伊）数据库连接池"><a href="#8-3-3-Druid（德鲁伊）数据库连接池" class="headerlink" title="8.3.3 Druid（德鲁伊）数据库连接池"></a>8.3.3 Druid（德鲁伊）数据库连接池</h4><p>Druid是阿里巴巴开源平台上一个数据库连接池实现，它结合了C3P0、DBCP、Proxool等DB池的优点，同时加入了日志监控，可以很好的监控DB池连接和SQL的执行情况，可以说是针对监控而生的DB连接池，<strong>可以说是目前最好的连接池之一。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.druid;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSourceFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDruid</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 可以放到静态代码块</span></span><br><span class="line">		Properties pro = <span class="keyword">new</span> Properties();		 </span><br><span class="line">		pro.load(TestDruid.class.getClassLoader().getResourceAsStream("druid.properties"));</span><br><span class="line">		DataSource ds = DruidDataSourceFactory.createDataSource(pro);</span><br><span class="line">        </span><br><span class="line">		Connection conn = ds.getConnection();</span><br><span class="line">		System.out.println(conn);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，src下的配置文件为：【druid.properties】</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">url=jdbc:mysql:<span class="comment">//localhost:3306/test?rewriteBatchedStatements=true</span></span><br><span class="line">username=root</span><br><span class="line">password=<span class="number">123456</span></span><br><span class="line">driverClassName=com.mysql.jdbc.Driver</span><br><span class="line"></span><br><span class="line">initialSize=<span class="number">10</span></span><br><span class="line">maxActive=<span class="number">20</span></span><br><span class="line">maxWait=<span class="number">1000</span></span><br><span class="line">filters=wall</span><br></pre></td></tr></table></figure>
+<ul>
+<li>详细配置参数：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>配置</strong></th>
+<th><strong>缺省</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td></td>
+<td>配置这个属性的意义在于，如果存在多个数据源，监控的时候可以通过名字来区分开来。   如果没有配置，将会生成一个名字，格式是：”DataSource-” +   System.identityHashCode(this)</td>
+</tr>
+<tr>
+<td>url</td>
+<td></td>
+<td>连接数据库的url，不同数据库不一样。例如：mysql :   jdbc:mysql://10.20.153.104:3306/druid2      oracle :   jdbc:oracle:thin:@10.20.149.85:1521:ocnauto</td>
+</tr>
+<tr>
+<td>username</td>
+<td></td>
+<td>连接数据库的用户名</td>
+</tr>
+<tr>
+<td>password</td>
+<td></td>
+<td>连接数据库的密码。如果你不希望密码直接写在配置文件中，可以使用ConfigFilter。详细看这里：<a href="https://github.com/alibaba/druid/wiki/%E4%BD%BF%E7%94%A8ConfigFilter" target="_blank" rel="noopener">https://github.com/alibaba/druid/wiki/%E4%BD%BF%E7%94%A8ConfigFilter</a></td>
+</tr>
+<tr>
+<td>driverClassName</td>
+<td></td>
+<td>根据url自动识别   这一项可配可不配，如果不配置druid会根据url自动识别dbType，然后选择相应的driverClassName(建议配置下)</td>
+</tr>
+<tr>
+<td>initialSize</td>
+<td>0</td>
+<td>初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时</td>
+</tr>
+<tr>
+<td>maxActive</td>
+<td>8</td>
+<td>最大连接池数量</td>
+</tr>
+<tr>
+<td>maxIdle</td>
+<td>8</td>
+<td>已经不再使用，配置了也没效果</td>
+</tr>
+<tr>
+<td>minIdle</td>
+<td></td>
+<td>最小连接池数量</td>
+</tr>
+<tr>
+<td>maxWait</td>
+<td></td>
+<td>获取连接时最大等待时间，单位毫秒。配置了maxWait之后，缺省启用公平锁，并发效率会有所下降，如果需要可以通过配置useUnfairLock属性为true使用非公平锁。</td>
+</tr>
+<tr>
+<td>poolPreparedStatements</td>
+<td>false</td>
+<td>是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。</td>
+</tr>
+<tr>
+<td>maxOpenPreparedStatements</td>
+<td>-1</td>
+<td>要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100</td>
+</tr>
+<tr>
+<td>validationQuery</td>
+<td></td>
+<td>用来检测连接是否有效的sql，要求是一个查询语句。如果validationQuery为null，testOnBorrow、testOnReturn、testWhileIdle都不会其作用。</td>
+</tr>
+<tr>
+<td>testOnBorrow</td>
+<td>true</td>
+<td>申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。</td>
+</tr>
+<tr>
+<td>testOnReturn</td>
+<td>false</td>
+<td>归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能</td>
+</tr>
+<tr>
+<td>testWhileIdle</td>
+<td>false</td>
+<td>建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。</td>
+</tr>
+<tr>
+<td>timeBetweenEvictionRunsMillis</td>
+<td></td>
+<td>有两个含义： 1)Destroy线程会检测连接的间隔时间2)testWhileIdle的判断依据，详细看testWhileIdle属性的说明</td>
+</tr>
+<tr>
+<td>numTestsPerEvictionRun</td>
+<td></td>
+<td>不再使用，一个DruidDataSource只支持一个EvictionRun</td>
+</tr>
+<tr>
+<td>minEvictableIdleTimeMillis</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>connectionInitSqls</td>
+<td></td>
+<td>物理连接初始化的时候执行的sql</td>
+</tr>
+<tr>
+<td>exceptionSorter</td>
+<td></td>
+<td>根据dbType自动识别   当数据库抛出一些不可恢复的异常时，抛弃连接</td>
+</tr>
+<tr>
+<td>filters</td>
+<td></td>
+<td>属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：   监控统计用的filter:stat日志用的filter:log4j防御sql注入的filter:wall</td>
+</tr>
+<tr>
+<td>proxyFilters</td>
+<td></td>
+<td>类型是List，如果同时配置了filters和proxyFilters，是组合关系，并非替换关系</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="第9章：Apache-DBUtils实现CRUD操作"><a href="#第9章：Apache-DBUtils实现CRUD操作" class="headerlink" title="第9章：Apache-DBUtils实现CRUD操作"></a>第9章：Apache-DBUtils实现CRUD操作</h2><h3 id="9-1-Apache-DBUtils简介"><a href="#9-1-Apache-DBUtils简介" class="headerlink" title="9.1 Apache-DBUtils简介"></a>9.1 Apache-DBUtils简介</h3><ul>
+<li><p>commons-dbutils 是 Apache 组织提供的一个开源 JDBC工具类库，它是对JDBC的简单封装，学习成本极低，并且使用dbutils能极大简化jdbc编码的工作量，同时也不会影响程序的性能。</p>
+</li>
+<li><p>API介绍：</p>
+<ul>
+<li>org.apache.commons.dbutils.QueryRunner</li>
+<li>org.apache.commons.dbutils.ResultSetHandler</li>
+<li>工具类：org.apache.commons.dbutils.DbUtils   </li>
+</ul>
+</li>
+<li>API包说明：</li>
+</ul>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/1555595163263.png" alt="1555595163263"></p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/1555595198644.png" alt="1555595198644" style="zoom:80%;" /></p>
+<h3 id="9-2-主要API的使用"><a href="#9-2-主要API的使用" class="headerlink" title="9.2 主要API的使用"></a>9.2 主要API的使用</h3><h4 id="9-2-1-DbUtils"><a href="#9-2-1-DbUtils" class="headerlink" title="9.2.1 DbUtils"></a>9.2.1 DbUtils</h4><ul>
+<li>DbUtils ：提供如关闭连接、装载JDBC驱动程序等常规工作的工具类，里面的所有方法都是静态的。主要方法如下：<ul>
+<li><strong>public static void close(…) throws java.sql.SQLException</strong>：　DbUtils类提供了三个重载的关闭方法。这些方法检查所提供的参数是不是NULL，如果不是的话，它们就关闭Connection、Statement和ResultSet。</li>
+<li>public static void closeQuietly(…): 这一类方法不仅能在Connection、Statement和ResultSet为NULL情况下避免关闭，还能隐藏一些在程序中抛出的SQLEeception。</li>
+<li>public static void commitAndClose(Connection conn)throws SQLException： 用来提交连接的事务，然后关闭连接</li>
+<li>public static void commitAndCloseQuietly(Connection conn)： 用来提交连接，然后关闭连接，并且在关闭连接时不抛出SQL异常。 </li>
+<li>public static void rollback(Connection conn)throws SQLException：允许conn为null，因为方法内部做了判断</li>
+<li>public static void rollbackAndClose(Connection conn)throws SQLException</li>
+<li>rollbackAndCloseQuietly(Connection)</li>
+<li>public static boolean loadDriver(java.lang.String driverClassName)：这一方装载并注册JDBC驱动程序，如果成功就返回true。使用该方法，你不需要捕捉这个异常ClassNotFoundException。</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-2-2-QueryRunner类"><a href="#9-2-2-QueryRunner类" class="headerlink" title="9.2.2 QueryRunner类"></a>9.2.2 QueryRunner类</h4><ul>
+<li><p><strong>该类简单化了SQL查询，它与ResultSetHandler组合在一起使用可以完成大部分的数据库操作，能够大大减少编码量。</strong></p>
+</li>
+<li><p>QueryRunner类提供了两个构造器：</p>
+<ul>
+<li>默认的构造器</li>
+<li>需要一个 javax.sql.DataSource 来作参数的构造器</li>
+</ul>
+</li>
+<li><p>QueryRunner类的主要方法：</p>
+<ul>
+<li><strong>更新</strong><ul>
+<li>public int update(Connection conn, String sql, Object… params) throws SQLException:用来执行一个更新（插入、更新或删除）操作。</li>
+<li>……</li>
+</ul>
+</li>
+<li><strong>插入</strong><ul>
+<li>public <T> T insert(Connection conn,String sql,ResultSetHandler<T> rsh, Object… params) throws SQLException：只支持INSERT语句，其中 rsh - The handler used to create the result object from the ResultSet of auto-generated keys.  返回值: An object generated by the handler.即自动生成的键值</li>
+<li>….</li>
+</ul>
+</li>
+<li><strong>批处理</strong><ul>
+<li>public int[] batch(Connection conn,String sql,Object[][] params)throws SQLException： INSERT, UPDATE, or DELETE语句</li>
+<li>public <T> T insertBatch(Connection conn,String sql,ResultSetHandler<T> rsh,Object[][] params)throws SQLException：只支持INSERT语句</li>
+<li>…..</li>
+</ul>
+</li>
+<li><strong>查询</strong><ul>
+<li>public Object query(Connection conn, String sql, ResultSetHandler rsh,Object… params) throws SQLException：执行一个查询操作，在这个查询中，对象数组中的每个元素值被用来作为查询语句的置换参数。该方法会自行处理 PreparedStatement 和 ResultSet 的创建和关闭。</li>
+<li>…… </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>测试</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试添加</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testInsert</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();<span class="comment">//Druid连接方式</span></span><br><span class="line">	String sql = <span class="string">"insert into customers(name,email,birth)values(?,?,?)"</span>;</span><br><span class="line">	<span class="keyword">int</span> count = runner.update(conn, sql, <span class="string">"何成飞"</span>, <span class="string">"he@qq.com"</span>, <span class="string">"1992-09-08"</span>);</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"添加了"</span> + count + <span class="string">"条记录"</span>);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用Druid数据库连接池技术</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> DataSource source1;</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">			InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(<span class="string">"druid.properties"</span>);</span><br><span class="line">			pros.load(is);</span><br><span class="line">			source1 = DruidDataSourceFactory.createDataSource(pros);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection3</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>&#123;</span><br><span class="line">		Connection conn = source1.getConnection();</span><br><span class="line">		<span class="keyword">return</span> conn;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试删除</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelete</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">	String sql = <span class="string">"delete from customers where id &lt; ?"</span>;</span><br><span class="line">	<span class="keyword">int</span> count = runner.update(conn, sql,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"删除了"</span> + count + <span class="string">"条记录"</span>);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="9-2-3-ResultSetHandler接口及实现类"><a href="#9-2-3-ResultSetHandler接口及实现类" class="headerlink" title="9.2.3 ResultSetHandler接口及实现类"></a>9.2.3 ResultSetHandler接口及实现类</h4><ul>
+<li><p>该接口用于处理 java.sql.ResultSet，将数据按要求转换为另一种形式。</p>
+</li>
+<li><p>ResultSetHandler 接口提供了一个单独的方法：Object handle (java.sql.ResultSet .rs)。</p>
+</li>
+<li><p>接口的主要实现类：</p>
+<ul>
+<li>ArrayHandler：把结果集中的第一行数据转成对象数组。</li>
+<li>ArrayListHandler：把结果集中的每一行数据都转成一个数组，再存放到List中。</li>
+<li><strong>BeanHandler：</strong>将结果集中的第一行数据封装到一个对应的JavaBean实例中。</li>
+<li><strong>BeanListHandler：</strong>将结果集中的每一行数据都封装到一个对应的JavaBean实例中，存放到List里。</li>
+<li>ColumnListHandler：将结果集中某一列的数据存放到List中。</li>
+<li>KeyedHandler(name)：将结果集中的每一行数据都封装到一个Map里，再把这些map再存到一个map里，其key为指定的key。</li>
+<li><strong>MapHandler：</strong>将结果集中的第一行数据封装到一个Map里，key是列名，value就是对应的值。</li>
+<li><strong>MapListHandler：</strong>将结果集中的每一行数据都封装到一个Map里，然后再存放到List</li>
+<li><strong>ScalarHandler：</strong>查询单个值对象</li>
+</ul>
+</li>
+<li><p>测试</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 测试查询:查询一条记录</span></span><br><span class="line"><span class="comment"> * 使用ResultSetHandler的实现类：BeanHandler</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryInstance</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line"></span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">		</span><br><span class="line">	String sql = <span class="string">"select id,name,email,birth from customers where id = ?"</span>;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	BeanHandler&lt;Customer&gt; handler = <span class="keyword">new</span> BeanHandler&lt;&gt;(Customer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">	Customer customer = runner.query(conn, sql, handler, <span class="number">23</span>);</span><br><span class="line">	System.out.println(customer);	</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 测试查询:查询多条记录构成的集合</span></span><br><span class="line"><span class="comment"> * 使用ResultSetHandler的实现类：BeanListHandler</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryList</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line"></span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">		</span><br><span class="line">	String sql = <span class="string">"select id,name,email,birth from customers where id &lt; ?"</span>;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	BeanListHandler&lt;Customer&gt; handler = <span class="keyword">new</span> BeanListHandler&lt;&gt;(Customer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">	List&lt;Customer&gt; list = runner.query(conn, sql, handler, <span class="number">23</span>);</span><br><span class="line">	list.forEach(System.out::println);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 自定义ResultSetHandler的实现类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryInstance1</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line"></span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">		</span><br><span class="line">	String sql = <span class="string">"select id,name,email,birth from customers where id = ?"</span>;</span><br><span class="line">		</span><br><span class="line">	ResultSetHandler&lt;Customer&gt; handler = <span class="keyword">new</span> ResultSetHandler&lt;Customer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Customer <span class="title">handle</span><span class="params">(ResultSet rs)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"handle"</span>);</span><br><span class="line"><span class="comment">//			return new Customer(1,"Tom","tom@126.com",new Date(123323432L));</span></span><br><span class="line">				</span><br><span class="line">			<span class="keyword">if</span>(rs.next())&#123;</span><br><span class="line">				<span class="keyword">int</span> id = rs.getInt(<span class="string">"id"</span>);</span><br><span class="line">				String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">				String email = rs.getString(<span class="string">"email"</span>);</span><br><span class="line">				Date birth = rs.getDate(<span class="string">"birth"</span>);</span><br><span class="line">					</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> Customer(id, name, email, birth);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">		</span><br><span class="line">	Customer customer = runner.query(conn, sql, handler, <span class="number">23</span>);</span><br><span class="line">		</span><br><span class="line">	System.out.println(customer);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 如何查询类似于最大的，最小的，平均的，总和，个数相关的数据，</span></span><br><span class="line"><span class="comment"> * 使用ScalarHandler</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryValue</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line"></span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">		</span><br><span class="line">	<span class="comment">//测试一：</span></span><br><span class="line"><span class="comment">//	String sql = "select count(*) from customers where id &lt; ?";</span></span><br><span class="line"><span class="comment">//	ScalarHandler handler = new ScalarHandler();</span></span><br><span class="line"><span class="comment">//	long count = (long) runner.query(conn, sql, handler, 20);</span></span><br><span class="line"><span class="comment">//	System.out.println(count);</span></span><br><span class="line">		</span><br><span class="line">	<span class="comment">//测试二：</span></span><br><span class="line">	String sql = <span class="string">"select max(birth) from customers"</span>;</span><br><span class="line">	ScalarHandler handler = <span class="keyword">new</span> ScalarHandler();</span><br><span class="line">	Date birth = (Date) runner.query(conn, sql, handler);</span><br><span class="line">	System.out.println(birth);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="JDBC总结"><a href="#JDBC总结" class="headerlink" title="JDBC总结"></a>JDBC总结</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">总结</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUpdateWithTx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	Connection conn = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//1.获取连接的操作（</span></span><br><span class="line">		<span class="comment">//① 手写的连接：JDBCUtils.getConnection();</span></span><br><span class="line">		<span class="comment">//② 使用数据库连接池：C3P0;DBCP;Druid</span></span><br><span class="line">		<span class="comment">//2.对数据表进行一系列CRUD操作</span></span><br><span class="line">		<span class="comment">//① 使用PreparedStatement实现通用的增删改、查询操作（version 1.0 \ version 2.0)</span></span><br><span class="line"><span class="comment">//version2.0的增删改public void update(Connection conn,String sql,Object ... args)&#123;&#125;</span></span><br><span class="line"><span class="comment">//version2.0的查询 public &lt;T&gt; T getInstance(Connection conn,Class&lt;T&gt; clazz,String sql,Object ... args)&#123;&#125;</span></span><br><span class="line">		<span class="comment">//② 使用dbutils提供的jar包中提供的QueryRunner类</span></span><br><span class="line">			</span><br><span class="line">		<span class="comment">//提交数据</span></span><br><span class="line">		conn.commit();</span><br><span class="line">	</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//回滚数据</span></span><br><span class="line">			conn.rollback();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e1) &#123;</span><br><span class="line">			e1.printStackTrace();</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">		<span class="comment">//3.关闭连接等操作</span></span><br><span class="line">		<span class="comment">//① JDBCUtils.closeResource();</span></span><br><span class="line">		<span class="comment">//② 使用dbutils提供的jar包中提供的DbUtils类提供了关闭的相关操作	</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  JDBC-03 数据库事务&DAO
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+                Hadoop01-概述、运行模式&源码编译
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">NiuMT</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

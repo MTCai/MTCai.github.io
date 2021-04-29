@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		概述&amp;安装与源码编译 | 
+	 
+	雄风静谧
+	</title>
+	
+	<!-- keywords,description -->
+	
+		<meta name="keywords" content="渣硕, 深度学习, 视频理解" />
+	 
+		<meta name="description" content="个人记事本" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">雄风静谧</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00-环境
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+										00-MySQL安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/01-Hadoop%E5%AE%89%E8%A3%85.html">
+										01-Hadoop安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/02-Hadoop%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81.html">
+										02-Hadoop编译源码
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/03-Zookeeper%E5%AE%89%E8%A3%85.html">
+										03-Zookeeper安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/00-%E7%8E%AF%E5%A2%83/04-Hive.html">
+										04-Hive
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/05-Flume%E5%AE%89%E8%A3%85.html">
+										05-Flume安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/00-%E7%8E%AF%E5%A2%83/06-HBase%E5%AE%89%E8%A3%85.html">
+										06-HBase安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-Ubuntu16.04%20%E5%AE%89%E8%A3%85opencv%EF%BC%88C++%E7%89%88%E6%9C%AC%EF%BC%89.html">
+										99-Ubuntu16.04 安装opencv（C++版本）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-%E5%AE%89%E8%A3%85ffmpeg.html">
+										99-安装ffmpeg
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8401-%E5%A4%A7%E7%BA%B2.html">
+										数据结构01-大纲
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8402-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8A).html">
+										数据结构02-复杂度分析(上)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8403-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8B).html">
+										数据结构03-复杂度分析(下)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8404-%E6%95%B0%E7%BB%84.html">
+										数据结构04-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8405-%E9%93%BE%E8%A1%A8.html">
+										数据结构05-链表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8406-%E6%A0%88.html">
+										数据结构06-栈
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8407-%E9%98%9F%E5%88%97.html">
+										数据结构07-队列
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8408-%E9%80%92%E5%BD%92.html">
+										数据结构08-递归
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8409-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%86%92%E6%B3%A1&%E6%8F%92%E5%85%A5&%E9%80%89%E6%8B%A9.html">
+										数据结构09-排序之冒泡&插入&选择
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8410-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%BD%92%E5%B9%B6&%E5%BF%AB%E6%8E%92.html">
+										数据结构10-排序之归并&快排
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8411-%E6%8E%92%E5%BA%8F%E4%B9%8B%E7%BA%BF%E6%80%A7%E6%8E%92%E5%BA%8F(%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F).html">
+										数据结构11-排序之线性排序(桶排序、计数排序、基数排序)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8412-%E6%8E%92%E5%BA%8F%E4%B9%8B%E4%BC%98%E5%8C%96.html">
+										数据结构12-排序之优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8413-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">
+										数据结构13-二分查找
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8414-%E8%B7%B3%E8%A1%A8.html">
+										数据结构14-跳表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/23/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8415-%E6%95%A3%E5%88%97%E8%A1%A8.html">
+										数据结构15-散列表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8416-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8.html">
+										数据结构16-哈希算法的应用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8417-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80.html">
+										数据结构17-二叉树基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8418-%E7%BA%A2%E9%BB%91%E6%A0%91.html">
+										数据结构18-红黑树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8419-%E9%80%92%E5%BD%92%E6%A0%91.html">
+										数据结构19-递归树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420-%E5%A0%86%E5%92%8C%E5%A0%86%E6%8E%92%E5%BA%8F.html">
+										数据结构20-堆和堆排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8421-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA.html">
+										数据结构21-图的表示
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+										数据结构22-深度和广度优先搜索
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8423-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D.html">
+										数据结构23-字符串匹配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
+										数据结构24-Trie树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8425-AC%E8%87%AA%E5%8A%A8%E6%9C%BA.html">
+										数据结构25-AC自动机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8426-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">
+										数据结构26-贪心算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8427-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html">
+										数据结构27-分治算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
+										数据结构28-回溯算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8429-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA.html">
+										数据结构29-动态规划理论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+										数据结构30-动态规划入门案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8431-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98.html">
+										数据结构31-动态规划实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(2).html">
+										数据结构32-拓扑排序 - 副本 (2)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-Java
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/00-%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92.html">
+										00-时间计划
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/IDEA%E9%85%8D%E7%BD%AE.html">
+										IDEA配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java01-%E6%A6%82%E8%BF%B0.html">
+										Java01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL00-%E5%AE%89%E8%A3%85.html">
+										MySQL00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+										MySQL01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+										MySQL02-DQL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+										MySQL03-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+										MySQL04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+										MySQL05-TCL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										MySQL06-视图&存储过程&流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										04-JDBC
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+										JDBC-01 概览&连接数据库方式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+										JDBC-02 CRUD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+										JDBC-03 数据库事务&DAO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+										JDBC-04 数据库连接池&DBUtils
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05-Hadoop
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+										Hadoop01-概述、运行模式&源码编译
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+										Hadoop02-HDFS概述、shell&客户端操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+										Hadoop03-HDFS读写流程&NN和2NN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+										Hadoop04-HDFS-DataNode
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop05-HDFS2.X%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E9%AB%98%E5%8F%AF%E7%94%A8(HA).html">
+										Hadoop05-HDFS2.X新特性和高可用(HA)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+										Hadoop06-MapReduce概述&序列化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
+										Hadoop07-MapReduce框架原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop08-Hadoop%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9.html">
+										Hadoop08-Hadoop数据压缩
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
+										Hadoop09-Yarn资源调度
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+										Hadoop10-生产调优手册
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+										Hadoop11-源码解析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06-Zookeeper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+										Zookeeper00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+										Zookeeper01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
+										Zookeeper02-内部原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper03-Shell%E6%93%8D%E4%BD%9C.html">
+										Zookeeper03-Shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+										Zookeeper04-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										07-Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive01-%E6%A6%82%E8%BF%B0.html">
+										Hive01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+										Hive02-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Hive03-数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+										Hive04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive05-DML.html">
+										Hive05-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+										Hive06-查询
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+										Hive07-函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
+										Hive08-压缩和存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+										Hive09-企业级调优
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive10-%E5%AE%9E%E6%88%98.html">
+										Hive10-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										08-Flume
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume00-%E5%AE%89%E8%A3%85.html">
+										flume00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+										flume01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+										flume02-案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume03-%E5%8E%9F%E7%90%86.html">
+										flume03-原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										flume04-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										09-Kafka
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
+										Kafka00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+										Kafka01-概述&shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+										Kafka02-架构原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+										Kafka03-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+										Kafka04-监控
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
+										Kafka05-Flume对接Kafka
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										Kafka06-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										10-HBase
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+										HBase00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+										HBase01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+										HBase02-HBase-shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+										HBase03-HBase进阶
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+										HBase04-HBase-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+										HBase05-HBase-MR
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+										HBase06-与Hive集成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+										HBase07-HBase优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+										HBase08-扩展
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	Hadoop01-概述、运行模式&源码编译
+</h1>
+<div class="article-meta">
+	
+	<span>NiuMT</span>
+	<span>2020-06-03 20:58:30</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Hadoop/">Hadoop</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h2 id="大数据概述"><a href="#大数据概述" class="headerlink" title="大数据概述"></a>大数据概述</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210411205143646.png" alt=""></p>
+<p>Hadoop三大发行版本：Apache、Cloudera、Hortonworks。</p>
+<ul>
+<li><p>Apache版本最原始（最基础）的版本，对于入门学习最好。</p>
+<blockquote>
+<p>官网地址：<a href="http://hadoop.apache.org/releases.html" target="_blank" rel="noopener">http://hadoop.apache.org/releases.html</a></p>
+<p>下载地址：<a href="https://archive.apache.org/dist/hadoop/common/" target="_blank" rel="noopener">https://archive.apache.org/dist/hadoop/common/</a></p>
+</blockquote>
+</li>
+<li><p>Cloudera在大型互联网企业中用的较多。</p>
+<blockquote>
+<p>官网地址：<a href="https://www.cloudera.com/downloads/cdh/5-10-0.html" target="_blank" rel="noopener">https://www.cloudera.com/downloads/cdh/5-10-0.html</a></p>
+<p>下载地址：<a href="http://archive-primary.cloudera.com/cdh5/cdh/5/" target="_blank" rel="noopener">http://archive-primary.cloudera.com/cdh5/cdh/5/</a></p>
+<p>CDH是Cloudera的Hadoop发行版，完全开源，比Apache Hadoop在兼容性，安全性，稳定性上有所增强</p>
+</blockquote>
+</li>
+<li><p>Hortonworks文档较好。</p>
+<blockquote>
+<p>官网地址：<a href="https://hortonworks.com/products/data-center/hdp/" target="_blank" rel="noopener">https://hortonworks.com/products/data-center/hdp/</a></p>
+<p>下载地址：<a href="https://hortonworks.com/downloads/#data-platform" target="_blank" rel="noopener">https://hortonworks.com/downloads/#data-platform</a></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Hadoop组成"><a href="#Hadoop组成" class="headerlink" title="Hadoop组成"></a>Hadoop组成</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210411205743195.png" alt="image-20210411205743195"></p>
+<h3 id="HDFS（Hadoop-Distributed-File-System）的架构概述"><a href="#HDFS（Hadoop-Distributed-File-System）的架构概述" class="headerlink" title="HDFS（Hadoop Distributed File System）的架构概述"></a>HDFS（Hadoop Distributed File System）的架构概述</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201106122310407.png" alt="image-20201106122310407"></p>
+<h3 id="YARN-Yet-Another-Resource-Negotiator-架构概述"><a href="#YARN-Yet-Another-Resource-Negotiator-架构概述" class="headerlink" title="YARN (Yet Another Resource Negotiator) 架构概述"></a>YARN (Yet Another Resource Negotiator) 架构概述</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210411210045029.png" alt="image-20210411210045029"></p>
+<p>RM 作用：</p>
+<ol>
+<li>处理客户端请求</li>
+<li>监控 NodeManager</li>
+<li>启动或监控 ApplicationMaster</li>
+<li>资源的分配与调度</li>
+</ol>
+<p>NodeManger 作用：</p>
+<ol>
+<li>管理单个节点的资源</li>
+<li>处理来自RM的命令</li>
+<li>处理来自AM的命令</li>
+</ol>
+<p>ApplicationMaster 作用：</p>
+<ol>
+<li>负责数据的切分</li>
+<li>为应用程序申请资源，并分配给内部的任务</li>
+<li>任务的监控与容错</li>
+</ol>
+<p>Container 作用：</p>
+<ol>
+<li>Container 是Yarn中资源的抽象，它封装了某个节点上的多维度资源，如内存，cpu，磁盘，网络等</li>
+</ol>
+<h3 id="MapReduce架构概述"><a href="#MapReduce架构概述" class="headerlink" title="MapReduce架构概述"></a>MapReduce架构概述</h3><p>MapReduce将计算过程分为两个阶段：Map和Reduce</p>
+<p>1）Map阶段并行处理输入数据</p>
+<p>2）Reduce阶段对Map结果进行汇总</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201106122440940.png" alt="image-20201106122440940"></p>
+<h3 id="HDFS、YARN、MapReduce-三者关系"><a href="#HDFS、YARN、MapReduce-三者关系" class="headerlink" title="HDFS、YARN、MapReduce 三者关系"></a>HDFS、YARN、MapReduce 三者关系</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210411211306208.png" alt="image-20210411211306208"></p>
+<h2 id="大数据技术生态体系"><a href="#大数据技术生态体系" class="headerlink" title="大数据技术生态体系"></a>大数据技术生态体系</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210411211226417.png" alt="image-20210411211226417"></p>
+<p>图中涉及的技术名词解释如下：</p>
+<ol>
+<li>Sqoop：Sqoop是一款开源的工具，主要用于在<strong>Hadoop、Hive与传统的数据库(MySql)间进行数据的传递</strong>，可以将一个关系型数据库（例如 ：MySQL，Oracle 等）中的数据导进到Hadoop的HDFS中，也可以将HDFS的数据导进到关系型数据库中。</li>
+<li>Flume：Flume是Cloudera提供的一个<strong>高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统</strong>，Flume支持在日志系统中定制各类数据发送方，用于收集数据；同时，Flume提供对数据进行简单处理，并写到各种数据接受方（可定制）的能力。</li>
+<li>Kafka：Kafka是一种<strong>高吞吐量的分布式发布订阅消息系统</strong>，有如下特性：<ul>
+<li>通过O(1)的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。</li>
+<li>高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。</li>
+<li>支持通过Kafka服务器和消费机集群来分区消息。</li>
+<li>支持Hadoop并行数据加载。</li>
+</ul>
+</li>
+<li>Storm：Storm用于“连续计算”，对数据流做连续查询，在计算时就将结果以流的形式输出给用户。</li>
+<li>Spark：Spark是当前最流行的开源大数据<strong>内存计算框架</strong>。可以基于Hadoop上存储的大数据进行计算。</li>
+<li>Flink：Flink 是当前最流行的开源大数据内存计算框架。用于实时计算的场景较多</li>
+<li>Oozie：Oozie是一个管理Hdoop作业（job）的工作流程调度管理系统。</li>
+<li>Hbase：HBase是一个<strong>分布式的、面向列的开源数据库</strong>。HBase不同于一般的关系数据库，它是一个适合于<strong>非结构化数据存储</strong>的数据库。</li>
+<li>Hive：Hive是基于Hadoop的一个数据仓库工具，可以<strong>将结构化的数据文件映射为一张数据库表</strong>，并提供简单的SQL查询功能，可以将SQL语句转换为MapReduce任务进行运行。 其优点是学习成本低，可以通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析。</li>
+<li>R语言：R是用于统计分析、绘图的语言和操作环境。R是属于GNU系统的一个自由、免费、源代码开放的软件，它是一个用于统计计算和统计制图的优秀工具。</li>
+<li>Mahout：Apache Mahout是个可扩展的机器学习和数据挖掘库。</li>
+<li>ZooKeeper：Zookeeper是Google的Chubby一个开源的实现。它是一个针对大型分布式系统的<strong>可靠协调系统</strong>，提供的功能包括：<strong>配置维护、名字服务、 分布式同步、组服务</strong>等。ZooKeeper的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。</li>
+</ol>
+<h2 id="推荐系统框架图"><a href="#推荐系统框架图" class="headerlink" title="推荐系统框架图"></a>推荐系统框架图</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201106122814784.png" alt="image-20201106122814784"></p>
+<h2 id="Hadoop目录结构"><a href="#Hadoop目录结构" class="headerlink" title="Hadoop目录结构"></a>Hadoop目录结构</h2><blockquote>
+<p>drwxr-xr-x. 2 atguigu atguigu 4096 5月 22 2017 <strong>bin</strong></p>
+<p>drwxr-xr-x. 3 atguigu atguigu 4096 5月 22 2017 <strong>etc</strong></p>
+<p>drwxr-xr-x. 2 atguigu atguigu 4096 5月 22 2017 include</p>
+<p>drwxr-xr-x. 3 atguigu atguigu 4096 5月 22 2017 <strong>lib</strong></p>
+<p>drwxr-xr-x. 2 atguigu atguigu 4096 5月 22 2017 libexec</p>
+<p>-rw-r—r—. 1 atguigu atguigu 15429 5月 22 2017 LICENSE.txt</p>
+<p>-rw-r—r—. 1 atguigu atguigu  101 5月 22 2017 NOTICE.txt</p>
+<p>-rw-r—r—. 1 atguigu atguigu 1366 5月 22 2017 README.txt</p>
+<p>drwxr-xr-x. 2 atguigu atguigu 4096 5月 22 2017 <strong>sbin</strong></p>
+<p>drwxr-xr-x. 4 atguigu atguigu 4096 5月 22 2017 <strong>share</strong></p>
+</blockquote>
+<ol>
+<li>bin目录：存放对Hadoop相关服务（HDFS,YARN,MapRed）进行操作的脚本</li>
+<li>etc目录：Hadoop的配置文件目录，存放Hadoop的配置文件</li>
+<li>lib目录：存放Hadoop的本地库（对数据进行压缩解压缩功能）</li>
+<li>sbin目录：存放启动或停止Hadoop相关服务的脚本</li>
+<li>share目录：存放Hadoop的依赖jar包、文档、和官方案例</li>
+</ol>
+<h2 id="伪分布式运行模式"><a href="#伪分布式运行模式" class="headerlink" title="伪分布式运行模式"></a>伪分布式运行模式</h2><h3 id="启动HDFS并运行MapReduce程序"><a href="#启动HDFS并运行MapReduce程序" class="headerlink" title="启动HDFS并运行MapReduce程序"></a>启动HDFS并运行MapReduce程序</h3><p><strong>1 执行步骤</strong></p>
+<p>（a）配置：hadoop-env.sh</p>
+<p>Linux系统中获取JDK的安装路径：</p>
+<blockquote>
+<p>[atguigu@ hadoop101 ~]# echo $JAVA_HOME<br>/opt/module/jdk1.8.0_144</p>
+</blockquote>
+<p>修改JAVA_HOME 路径：</p>
+<blockquote>
+<p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
+</blockquote>
+<p>（b）配置：core-site.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定HDFS中NameNode的地址  --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop1:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录  --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（c）配置：hdfs-site.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  指定HDFS副本的数量 --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>2 启动集群</strong></p>
+<p>（a）格式化<strong>NameNode</strong>（第一次启动时格式化，以后就不要总格式化）</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hdfs namenode -format</p>
+</blockquote>
+<p>（b）启动NameNode</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/hadoop-daemon.sh start namenode</p>
+</blockquote>
+<p>（c）启动DataNode</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/hadoop-daemon.sh start datanode</p>
+</blockquote>
+<p><strong>3 查看集群</strong></p>
+<p>a）查看是否启动成功</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ jps</p>
+<p>13586 NameNode</p>
+<p>13668 DataNode</p>
+<p>13786 Jps</p>
+<p>注意：jps是JDK中的命令，不是Linux命令。不安装JDK不能使用jps</p>
+</blockquote>
+<p>（b）web端查看HDFS文件系统</p>
+<blockquote>
+<p><a href="http://hadoop1:50070/dfshealth.html#tab-overview" target="_blank" rel="noopener">http://hadoop1:50070/dfshealth.html#tab-overview</a></p>
+<p>注意：如果不能查看，看如下帖子处理：<a href="http://www.cnblogs.com/zlslch/p/6604189.html" target="_blank" rel="noopener">http://www.cnblogs.com/zlslch/p/6604189.html</a></p>
+</blockquote>
+<p>（c）查看产生的Log日志</p>
+<blockquote>
+<p>说明：在企业中遇到Bug时，经常根据日志提示信息去分析问题、解决Bug。</p>
+<p>当前目录：/opt/module/hadoop-2.7.2/logs</p>
+<p>[atguigu@hadoop101 logs]$ ls</p>
+<p>hadoop-atguigu-datanode-hadoop.atguigu.com.log</p>
+<p>hadoop-atguigu-datanode-hadoop.atguigu.com.out</p>
+<p>hadoop-atguigu-namenode-hadoop.atguigu.com.log</p>
+<p>hadoop-atguigu-namenode-hadoop.atguigu.com.out</p>
+<p>SecurityAuth-root.audit</p>
+<p>[atguigu@hadoop101 logs]# cat hadoop-atguigu-datanode-hadoop101.log</p>
+</blockquote>
+<p>（d）思考：为什么不能一直格式化<strong>NameNode</strong>，格式化NameNode，要注意什么？</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ cd data/tmp/dfs/name/current/</p>
+<p>[atguigu@hadoop1 current]$ cat VERSION clusterID=CID-f0330a58-36fa-4a2a-a65f-2688269b5837**</p>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ cd data/tmp/dfs/data/current/clusterID=CID-f0330a58-36fa-4a2a-a65f-2688269b5837</p>
+<p>注意：格式化NameNode，会产生新的集群id,导致NameNode和DataNode的集群id不一致，集群找不到已往数据。所以，格式NameNode时，一定要先删除data数据和log日志，然后再格式化NameNode。</p>
+</blockquote>
+<p><strong>4 操作集群</strong></p>
+<p>​       （a）在HDFS文件系统上<strong>创建</strong>一个input文件夹</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hdfs dfs <strong>-mkdir</strong> -p /user/atguigu/input</p>
+</blockquote>
+<p>​       （b）将测试文件内容<strong>上传</strong>到文件系统上</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$bin/hdfs dfs <strong>-put</strong> wcinput/wc.input   /user/atguigu/input/</p>
+</blockquote>
+<p>​       （c）<strong>查看</strong>上传的文件是否正确</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hdfs dfs <strong>-ls</strong> /user/atguigu/input/</p>
+<p>[atguigu@hadoop101 hadoop-2.7.2]$ bin/hdfs dfs <strong>-cat</strong> /user/atguigu/ input/wc.input</p>
+</blockquote>
+<p>​       （d）运行MapReduce程序</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/atguigu/input/ /user/atguigu/output</p>
+</blockquote>
+<p>​        （e）查看输出结果</p>
+<blockquote>
+<p>命令行查看：</p>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hdfs dfs <strong>-cat</strong> /user/atguigu/output/*</p>
+<p>浏览器查看，如图</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201108201439482.png" alt="image-20201108201439482"></p>
+</blockquote>
+<p>​       （f）将测试文件内容<strong>下载</strong>到本地</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ hdfs dfs <strong>-get</strong> /user/atguigu/output/part-r-00000 ./wcoutput/</p>
+</blockquote>
+<p>（g）<strong>删除</strong>输出结果</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ hdfs dfs <strong>-rm -r</strong> /user/atguigu/output</p>
+</blockquote>
+<h3 id="启动YARN并运行MapReduce程序"><a href="#启动YARN并运行MapReduce程序" class="headerlink" title="启动YARN并运行MapReduce程序"></a>启动YARN并运行MapReduce程序</h3><p><strong>1 配置集群</strong></p>
+<p>（a）配置yarn-env.sh</p>
+<blockquote>
+<p>配置一下JAVA_HOME</p>
+<p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
+</blockquote>
+<p>（b）配置yarn-site.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Reducer获取数据的方式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 指定YARN的ResourceManager的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（c）配置：mapred-env.sh</p>
+<blockquote>
+<p>配置一下JAVA_HOME</p>
+<p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
+</blockquote>
+<p>（d）配置： (对mapred-site.xml.template重新命名为) mapred-site.xml</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop]$ mv mapred-site.xml.template mapred-site.xml</p>
+<p>[atguigu@hadoop1 hadoop]$ vi mapred-site.xml</p>
+</blockquote>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定MR运行在YARN上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>2 启动集群</strong></p>
+<p>（a）启动前必须保证NameNode和DataNode已经启动</p>
+<p>（b）启动ResourceManager</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/yarn-daemon.sh start resourcemanager</p>
+</blockquote>
+<p>（c）启动NodeManager</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/yarn-daemon.sh start nodemanager</p>
+</blockquote>
+<p><strong>3 集群操作</strong></p>
+<p>（a）YARN的浏览器页面查看，如图所示</p>
+<blockquote>
+<p><a href="http://hadoop101:8088/cluster" target="_blank" rel="noopener">http://hadoop101:8088/cluster</a></p>
+</blockquote>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201109135824423.png" alt="image-20201109135824423"></p>
+<p>（b）删除文件系统上的output文件</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hdfs dfs -rm -R /user/atguigu/output</p>
+</blockquote>
+<p>（c）执行MapReduce程序</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/atguigu/input /user/atguigu/output</p>
+</blockquote>
+<p>（d）查看运行结果，如图2-36所示</p>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hdfs dfs -cat /user/atguigu/output/*</p>
+</blockquote>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201109135936329.png" alt="image-20201109135936329"></p>
+<h3 id="配置历史服务器"><a href="#配置历史服务器" class="headerlink" title="配置历史服务器"></a>配置历史服务器</h3><p>为了查看程序的历史运行情况，需要配置一下历史服务器。具体配置步骤如下：</p>
+<ol>
+<li>配置mapred-site.xml</li>
+</ol>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop]$ vi mapred-site.xml</p>
+</blockquote>
+<p>在该文件里面增加如下配置。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 历史服务器端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop1:10020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 历史服务器web端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.webapp.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop1:19888<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>启动历史服务器</li>
+</ol>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/mr-jobhistory-daemon.sh start historyserver</p>
+</blockquote>
+<ol>
+<li>查看历史服务器是否启动</li>
+</ol>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ jps</p>
+</blockquote>
+<ol>
+<li>查看JobHistory</li>
+</ol>
+<blockquote>
+<p><a href="http://hadoop1:19888/jobhistory" target="_blank" rel="noopener">http://hadoop1:19888/jobhistory</a></p>
+</blockquote>
+<h3 id="配置日志的聚集"><a href="#配置日志的聚集" class="headerlink" title="配置日志的聚集"></a>配置日志的聚集</h3><p>日志聚集概念：应用运行完成以后，将程序运行日志信息上传到HDFS系统上。</p>
+<p>日志聚集功能好处：可以方便的查看到程序运行详情，方便开发调试。</p>
+<p>注意：开启日志聚集功能，需要重新启动NodeManager 、ResourceManager和HistoryManager。</p>
+<p>开启日志聚集功能具体步骤如下：</p>
+<ol>
+<li>配置yarn-site.xml</li>
+</ol>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop]$ vi yarn-site.xml</p>
+</blockquote>
+<p>在该文件里面增加如下配置。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 日志聚集功能使能 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation-enable<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 设置日志聚集服务器地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log.server.url<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>http://hadoop102:19888/jobhistory/logs<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 日志保留时间设置7天 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation.retain-seconds<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>604800<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>关闭NodeManager 、ResourceManager和HistoryManager</li>
+</ol>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/yarn-daemon.sh stop resourcemanager</p>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/yarn-daemon.sh stop nodemanager</p>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/mr-jobhistory-daemon.sh stop historyserver</p>
+</blockquote>
+<ol>
+<li>启动NodeManager 、ResourceManager和HistoryManager</li>
+</ol>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/yarn-daemon.sh start resourcemanager</p>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/yarn-daemon.sh start nodemanager</p>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ sbin/mr-jobhistory-daemon.sh start historyserver</p>
+</blockquote>
+<ol>
+<li>删除HDFS上已经存在的输出文件</li>
+</ol>
+<blockquote>
+<p>[atguigu@hadoop1 hadoop-2.7.2]$ bin/hdfs dfs -rm -R /user/atguigu/output</p>
+</blockquote>
+<ol>
+<li>执行WordCount程序</li>
+</ol>
+<blockquote>
+<p>[atguigu@hadoop11 hadoop-2.7.2]$ hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/atguigu/input /user/atguigu/output</p>
+</blockquote>
+<ol>
+<li>查看日志，如图所示</li>
+</ol>
+<blockquote>
+<p><a href="http://hadoop1:19888/jobhistory" target="_blank" rel="noopener">http://hadoop1:19888/jobhistory</a></p>
+</blockquote>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201109140419990.png" alt="image-20201109140419990"></p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201109140427331.png" alt="image-20201109140427331"></p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201109140432916.png" alt="image-20201109140432916"></p>
+<h3 id="配置文件说明"><a href="#配置文件说明" class="headerlink" title="配置文件说明"></a>配置文件说明</h3><p>Hadoop配置文件分两类：默认配置文件和自定义配置文件，只有用户想修改某一默认配置值时，才需要修改自定义配置文件，更改相应属性值。</p>
+<p>（1）默认配置文件：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>要获取的默认文件</th>
+<th>文件存放在Hadoop的jar包中的位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[core-default.xml]</td>
+<td>hadoop-common-2.7.2.jar/  core-default.xml</td>
+</tr>
+<tr>
+<td>[hdfs-default.xml]</td>
+<td>hadoop-hdfs-2.7.2.jar/  hdfs-default.xml</td>
+</tr>
+<tr>
+<td>[yarn-default.xml]</td>
+<td>hadoop-yarn-common-2.7.2.jar/  yarn-default.xml</td>
+</tr>
+<tr>
+<td>[mapred-default.xml]</td>
+<td>hadoop-mapreduce-client-core-2.7.2.jar/  mapred-default.xml</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>（2）自定义配置文件：</p>
+<p>​    <strong>core-site.xml、hdfs-site.xml、yarn-site.xml、mapred-site.xml</strong>四个配置文件存放在$HADOOP_HOME/etc/hadoop这个路径上，用户可以根据项目需求重新进行修改配置</p>
+<h2 id="完全分布式运行模式"><a href="#完全分布式运行模式" class="headerlink" title="完全分布式运行模式"></a>完全分布式运行模式</h2><h3 id="rsync-远程同步工具"><a href="#rsync-远程同步工具" class="headerlink" title="rsync 远程同步工具"></a>rsync 远程同步工具</h3><p>rsync主要用于备份和镜像。具有速度快、避免复制相同内容和支持符号链接的优点。</p>
+<p>rsync和scp区别：用rsync做文件的复制要比scp的速度快，rsync只对差异文件做更新。scp是把所有文件都复制过去。</p>
+<p>（1）基本语法</p>
+<blockquote>
+<p>rsync   -rvl    \$pdir/​\$fname        ​\$user@hadoop\$host:\$pdir/​\$fname</p>
+<p>命令  选项参数  要拷贝的文件路径/名称  目的用户@主机:目的路径/名称</p>
+</blockquote>
+<p>​     选项参数说明</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">递归</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">显示复制过程</td>
+</tr>
+<tr>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">拷贝符号连接</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="xsync集群分发脚本"><a href="#xsync集群分发脚本" class="headerlink" title="xsync集群分发脚本"></a>xsync集群分发脚本</h3><p>（1）需求：循环复制文件到所有节点的相同目录下</p>
+<p>（2）需求分析：</p>
+<ul>
+<li>rsync命令原始拷贝：</li>
+</ul>
+<blockquote>
+<p>rsync -rvl   /opt/module        root@hadoop103:/opt/</p>
+</blockquote>
+<ul>
+<li>期望脚本：</li>
+</ul>
+<blockquote>
+<p>xsync  要同步的文件名称</p>
+</blockquote>
+<ul>
+<li>说明：在/home/atguigu/bin这个目录下存放的脚本，atguigu用户可以在系统任何地方直接执行。</li>
+</ul>
+<p>（3）脚本实现</p>
+<ul>
+<li><ol>
+<li>在/home/atguigu目录下创建bin目录，并在bin目录下xsync创建文件，文件内容如下：</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>[atguigu@hadoop102 ~]$ mkdir bin</p>
+<p>[atguigu@hadoop102 ~]$ cd bin/</p>
+<p>[atguigu@hadoop102 bin]$ touch xsync</p>
+<p>[atguigu@hadoop102 bin]$ vi xsync</p>
+</blockquote>
+<p>​        在该文件中编写如下代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1 获取输入参数个数，如果没有参数，直接退出</span></span><br><span class="line">pcount=<span class="variable">$#</span></span><br><span class="line"><span class="keyword">if</span>((pcount==0)); <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> no args;</span><br><span class="line"><span class="built_in">exit</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#2 获取文件名称</span></span><br><span class="line">p1=<span class="variable">$1</span></span><br><span class="line">fname=`basename <span class="variable">$p1</span>`</span><br><span class="line"><span class="built_in">echo</span> fname=<span class="variable">$fname</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#3 获取上级目录到绝对路径</span></span><br><span class="line">pdir=`<span class="built_in">cd</span> -P $(dirname <span class="variable">$p1</span>); <span class="built_in">pwd</span>`</span><br><span class="line"><span class="built_in">echo</span> pdir=<span class="variable">$pdir</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#4 获取当前用户名称</span></span><br><span class="line">user=`whoami`</span><br><span class="line"></span><br><span class="line"><span class="comment">#5 循环</span></span><br><span class="line"><span class="keyword">for</span>((host=103; host&lt;105; host++)); <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> ------------------- hadoop<span class="variable">$host</span> --------------</span><br><span class="line">	rsync -rvl <span class="variable">$pdir</span>/<span class="variable">$fname</span> <span class="variable">$user</span>@hadoop<span class="variable">$host</span>:<span class="variable">$pdir</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><ol>
+<li>修改脚本 xsync 具有执行权限</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>[atguigu@hadoop2 bin]$ chmod 777 xsync</p>
+</blockquote>
+<ul>
+<li><ol>
+<li>调用脚本形式：xsync 文件名称</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>[atguigu@hadoop2 bin]$ xsync /home/atguigu/bin</p>
+<p>注意：如果将xsync放到/home/atguigu/bin目录下仍然不能实现全局使用，可以将xsync移动到/usr/local/bin目录下。</p>
+</blockquote>
+<h3 id="集群配置"><a href="#集群配置" class="headerlink" title="集群配置"></a>集群配置</h3><p>➢ ➢ </p>
+<h4 id="集群部署规划"><a href="#集群部署规划" class="headerlink" title="集群部署规划"></a>集群部署规划</h4><blockquote>
+<p>hadoop102   —-&gt;hadoop1</p>
+<p>hadoop103   —-&gt;hadoop2</p>
+<p>hadoop104   —-&gt;hadoop3</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>hadoop102</th>
+<th>hadoop103</th>
+<th>hadoop104</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HDFS</td>
+<td><strong>NameNode</strong><br>DataNode</td>
+<td><br>DataNode</td>
+<td><strong>SecondaryNameNode</strong><br>DataNode</td>
+</tr>
+<tr>
+<td>YARN</td>
+<td><br>NodeManager</td>
+<td><strong>ResourceManager</strong><br>NodeManager</td>
+<td><br>NodeManager</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>NameNode和SecondaryNameNode使用相同大小的内存，故一般不放在同一个服务器上</p>
+<p>ResourceManager也比较耗内存，故不和NameNode、SecondaryNameNode放在同一个服务器</p>
+</blockquote>
+<h4 id="配置集群"><a href="#配置集群" class="headerlink" title="配置集群"></a>配置集群</h4><p>（1）核心配置文件</p>
+<p>配置core-site.xml</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop]$ vi core-site.xml</p>
+</blockquote>
+<p>在该文件中编写如下配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定HDFS中NameNode的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop102:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Hadoop3.x 配置 HDFS 网页登录使用的静态用户为 atguigu --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.http.staticuser.user<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>atguigu<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（2）HDFS配置文件</p>
+<p>配置hadoop-env.sh</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop]$ vi hadoop-env.sh</p>
+<p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
+</blockquote>
+<p>配置hdfs-site.xml</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop]$ vi hdfs-site.xml</p>
+</blockquote>
+<p>在该文件中编写如下配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- nn web 端访问地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   &lt;name&gt;dfs.namenode.http-address&lt;/&lt;/name&gt;</span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop102:50070<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop辅助名称节点主机配置 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 2 nn web 端访问地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.http-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop104:50090<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（3）YARN配置文件</p>
+<p>配置yarn-env.sh</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop]$ vi yarn-env.sh</p>
+<p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
+</blockquote>
+<p>配置yarn-site.xml</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop]$ vi yarn-site.xml</p>
+</blockquote>
+<p>在该文件中增加如下配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Reducer获取数据的方式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定YARN的ResourceManager的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop103<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 日志聚集功能使能 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation-enable<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 设置日志聚集服务器地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log.server.url<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>http://hadoop102:19888/jobhistory/logs<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 日志保留时间设置7天 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation.retain-seconds<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>604800<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 环境变量的继承 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.env-whitelist<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,</span><br><span class="line">        HADOOP_YARN_HOME, HADOOP_MAPRED_HOME <span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（4）MapReduce配置文件</p>
+<p>配置mapred-env.sh</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop]$ vi mapred-env.sh</p>
+<p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
+</blockquote>
+<p>配置mapred-site.xml</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop]$ cp mapred-site.xml.template mapred-site.xml</p>
+<p>[atguigu@hadoop102 hadoop]$ vi mapred-site.xml</p>
+</blockquote>
+<p>在该文件中增加如下配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定MR运行在Yarn上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 历史服务器端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop102:10020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 历史服务器 web 端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.webapp.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>19888<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="在集群上分发配置好的Hadoop配置文件"><a href="#在集群上分发配置好的Hadoop配置文件" class="headerlink" title="在集群上分发配置好的Hadoop配置文件"></a>在集群上分发配置好的Hadoop配置文件</h4><blockquote>
+<p>[atguigu@hadoop102 hadoop]$ xsync /opt/module/hadoop-2.7.2/</p>
+</blockquote>
+<h4 id="查看文件分发情况"><a href="#查看文件分发情况" class="headerlink" title="查看文件分发情况"></a>查看文件分发情况</h4><blockquote>
+<p>[atguigu@hadoop103 hadoop]$ cat /opt/module/hadoop-2.7.2/etc/hadoop/core-site.xml</p>
+</blockquote>
+<h3 id="集群单点启动"><a href="#集群单点启动" class="headerlink" title="集群单点启动"></a>集群单点启动</h3><p>（1）如果集群是第一次启动，需要<strong>格式化NameNode</strong>，==启动前要关闭所有服务==</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop-2.7.2]$ hadoop namenode -format</p>
+</blockquote>
+<p>（2）在hadoop102上启动NameNode</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop-2.7.2]$ hadoop-daemon.sh start namenode</p>
+<p>[atguigu@hadoop102 hadoop-2.7.2]$ jps</p>
+<blockquote>
+<p>3461 NameNode</p>
+</blockquote>
+</blockquote>
+<p>（3）在hadoop102、hadoop103以及hadoop104上分别启动DataNode</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop-2.7.2]$ hadoop-daemon.sh start datanode</p>
+<p>[atguigu@hadoop102 hadoop-2.7.2]$ jps</p>
+<blockquote>
+<p>3461 NameNode</p>
+<p>3608 Jps</p>
+<p>3561 DataNode</p>
+</blockquote>
+<p>[atguigu@hadoop103 hadoop-2.7.2]$ hadoop-daemon.sh start datanode</p>
+<p>[atguigu@hadoop103 hadoop-2.7.2]$ jps</p>
+<blockquote>
+<p>3190 DataNode</p>
+<p>3279 Jps</p>
+</blockquote>
+<p>[atguigu@hadoop104 hadoop-2.7.2]$ hadoop-daemon.sh start datanode</p>
+<p>[atguigu@hadoop104 hadoop-2.7.2]$ jps</p>
+<blockquote>
+<p>3237 Jps</p>
+<p>3163 DataNode</p>
+</blockquote>
+</blockquote>
+<p>（4）思考：每次都一个一个节点启动，如果节点数增加到1000个怎么办？</p>
+<p>​        早上来了开始一个一个节点启动，到晚上下班刚好完成，下班？</p>
+<h3 id="SSH无密登录配置"><a href="#SSH无密登录配置" class="headerlink" title="SSH无密登录配置"></a>SSH无密登录配置</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210411214354771.png" alt="image-20210411214354771" style="zoom:80%;" /></p>
+<h4 id="生成公钥和私钥"><a href="#生成公钥和私钥" class="headerlink" title="生成公钥和私钥"></a>生成公钥和私钥</h4><blockquote>
+<p>[atguigu@hadoop102 .ssh]$ ssh-keygen -t rsa</p>
+</blockquote>
+<p>然后敲（三个回车），就会生成两个文件id_rsa（私钥）、id_rsa.pub（公钥）</p>
+<h4 id="将公钥拷贝到要免密登录的目标机器上"><a href="#将公钥拷贝到要免密登录的目标机器上" class="headerlink" title="将公钥拷贝到要免密登录的目标机器上"></a>将公钥拷贝到要免密登录的目标机器上</h4><blockquote>
+<p>[atguigu@hadoop102 .ssh]$ ssh-copy-id hadoop102</p>
+<p>[atguigu@hadoop102 .ssh]$ ssh-copy-id hadoop103</p>
+<p>[atguigu@hadoop102 .ssh]$ ssh-copy-id hadoop104</p>
+</blockquote>
+<p>注意：</p>
+<p>还需要在hadoop102上采用 root 账号，配置一下无密登录到hadoop102、hadoop103、hadoop104；</p>
+<p>还需要在hadoop103上采用 atguigu 账号配置一下无密登录到hadoop102、hadoop103、hadoop104服务器上。</p>
+<p>还需要在hadoop104上采用 atguigu 账号配置一下无密登录到hadoop102、hadoop103、hadoop104服务器上。</p>
+<h4 id="ssh文件夹下（-ssh）的文件功能解释"><a href="#ssh文件夹下（-ssh）的文件功能解释" class="headerlink" title=".ssh文件夹下（~/.ssh）的文件功能解释"></a>.ssh文件夹下（~/.ssh）的文件功能解释</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>known_hosts</th>
+<th>记录ssh访问过计算机的公钥(public  key)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id_rsa</td>
+<td>生成的私钥</td>
+</tr>
+<tr>
+<td>id_rsa.pub</td>
+<td>生成的公钥</td>
+</tr>
+<tr>
+<td>authorized_keys</td>
+<td>存放授权过得无密登录服务器公钥</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="群起集群"><a href="#群起集群" class="headerlink" title="群起集群"></a>群起集群</h3><h4 id="配置slaves-workers"><a href="#配置slaves-workers" class="headerlink" title="配置slaves/workers"></a>配置slaves/workers</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hadoop2.x修改 /opt/module/hadoop-2.7.2/etc/hadoop/slaves</span><br><span class="line">hadoop3.x修改 /opt/module/hadoop-3.1.3/etc/hadoop/workers</span><br><span class="line">[atguigu@hadoop102 hadoop]$ vi slaves</span><br><span class="line"></span><br><span class="line">在该文件中增加如下内容：注意：该文件中添加的内容结尾不允许有空格，文件中不允许有空行。</span><br><span class="line">hadoop102</span><br><span class="line">hadoop103</span><br><span class="line">hadoop104</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>同步所有节点配置文件:</p>
+<p>[atguigu@hadoop102 hadoop]$ xsync slaves</p>
+</blockquote>
+<h4 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h4><ol>
+<li><p>如果集群是第一次启动，需要格式化NameNode（注意格式化之前，一定要先停止上次启动的所有namenode和datanode进程，然后再删除data和log数据）</p>
+<p>注意：格式化 NameNode 会产生新的集群 id，导致 NameNode 和 DataNode的集群 id不一致，集群找不到已往数据。 如果集群在运行过程中报错，需要重新格式化 NameNode的话， 一定要 先停止 namenode和 datanode进程， 并且要 删除 所有机器的 data和 logs目录，然后再进行格式化。</p>
+</li>
+<li><p>启动HDFS</p>
+<blockquote>
+<p>[atguigu@hadoop102 hadoop-2.7.2]$ sbin/start-dfs.sh</p>
+<p>[atguigu@hadoop102 hadoop-2.7.2]$ jps</p>
+<blockquote>
+<p>4166 NameNode</p>
+<p>4482 Jps</p>
+<p>4263 DataNode</p>
+</blockquote>
+<p>[atguigu@hadoop103 hadoop-2.7.2]$ jps</p>
+<blockquote>
+<p>3218 DataNode</p>
+<p>3288 Jps</p>
+</blockquote>
+<p>[atguigu@hadoop104 hadoop-2.7.2]$ jps</p>
+<blockquote>
+<p>3221 DataNode</p>
+<p>3283 SecondaryNameNode</p>
+<p>3364 Jps</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>启动YARN</p>
+<blockquote>
+<p>[atguigu@hadoop103 hadoop-2.7.2]$ sbin/start-yarn.sh</p>
+</blockquote>
+<p>注意：NameNode和ResourceManger如果不是同一台机器，不能在NameNode上启动 YARN，应该在ResouceManager所在的机器上启动YARN。</p>
+</li>
+<li><p>Web端查看SecondaryNameNode</p>
+</li>
+</ol>
+<p>浏览器中输入：<a href="http://hadoop104:50090/status.html" target="_blank" rel="noopener">http://hadoop104:50090/status.html</a></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">start</span><br><span class="line">hadoop_home=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/hadoop-daemon.sh start namenode</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/hadoop-daemon.sh start datanode</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh start resourcemanager</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh start nodemanager</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh start historyserver</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/mr-jobhistory-daemon.sh start historyserver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stop</span><br><span class="line">hadoop_home=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/hadoop-daemon.sh stop namenode</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/hadoop-daemon.sh stop datanode</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh stop resourcemanager</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh stop nodemanager</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh stop historyserver</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/mr-jobhistory-daemon.sh stop historyserver</span><br><span class="line"></span><br><span class="line">hdfs --daemon start/stop namenode/datanode/secondarynamenode</span><br><span class="line">yarn --daemon start/stop resourcemanager/nodemanager</span><br><span class="line">bin/mapred --daemon start/stop historyserver</span><br><span class="line"><span class="comment">#各个模块分开启动/停止（配置ssh是前提）</span></span><br><span class="line"><span class="comment">#整体启动/停止HDFS</span></span><br><span class="line">start-dfs.sh   /  stop-dfs.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#整体启动/停止YARN</span></span><br><span class="line">start-yarn.sh  /  stop-yarn.sh</span><br></pre></td></tr></table></figure>
+<h3 id="集群时间同步"><a href="#集群时间同步" class="headerlink" title="集群时间同步"></a>集群时间同步</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201110203736001.png" alt="image-20201110203736001"></p>
+<h4 id="时间服务器配置（必须root用户"><a href="#时间服务器配置（必须root用户" class="headerlink" title="时间服务器配置（必须root用户)"></a>时间服务器配置（必须root用户)</h4><ol>
+<li><p>检查 ntp 是否安装</p>
+<blockquote>
+<p>[<strong>root</strong>@hadoop102 桌面]# rpm -qa|grep ntp</p>
+<blockquote>
+<p>ntp-4.2.6p5-10.el6.centos.x86_64</p>
+<p>fontpackages-filesystem-1.41-1.1.el6.noarch</p>
+<p>ntpdate-4.2.6p5-10.el6.centos.x86_64</p>
+</blockquote>
+<p>查看 <strong>所有节点</strong> ntpd服务 状态 和 开机自启动 状态</p>
+<blockquote>
+<p>sudo systemctl status ntpd</p>
+<p>sudo systemctl start ntpd</p>
+<p>sudo systemctl is-enabled ntpd</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>修改ntp配置文件</p>
+<blockquote>
+<p>[<strong>root</strong>@hadoop102 桌面]# vi /etc/ntp.conf</p>
+<blockquote>
+<p>修改内容如下</p>
+<p>a）修改1（授权192.168.1.0-192.168.1.255网段上的所有机器可以从这台机器上查询和同步时间）</p>
+<p><strong>#restrict</strong> 192.168.1.0 mask 255.255.255.0 nomodify notrap 为</p>
+<p><strong>restrict</strong> 192.168.1.0 mask 255.255.255.0 nomodify notrap</p>
+<p>b）修改2（集群在局域网中，不使用其他互联网上的时间）</p>
+<p>server 0.centos.pool.ntp.org iburst</p>
+<p>server 1.centos.pool.ntp.org iburst</p>
+<p>server 2.centos.pool.ntp.org iburst</p>
+<p>server 3.centos.pool.ntp.org iburst为</p>
+<p><strong>#</strong>server 0.centos.pool.ntp.org iburst</p>
+<p><strong>#</strong>server 1.centos.pool.ntp.org iburst</p>
+<p><strong>#</strong>server 2.centos.pool.ntp.org iburst</p>
+<p><strong>#</strong>server 3.centos.pool.ntp.org iburst</p>
+<p>c）添加3（当该节点丢失网络连接，依然可以采用本地时间作为时间服务器为集群中的其他节点提供时间同步）</p>
+<p>server 127.127.1.0</p>
+<p>fudge 127.127.1.0 stratum 10</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>修改/etc/sysconfig/ntpd 文件</p>
+<blockquote>
+<p><strong>root</strong>@hadoop102 桌面]# vim /etc/sysconfig/ntpd</p>
+<blockquote>
+<p>增加内容如下（让硬件时间与系统时间一起同步）</p>
+<p>SYNC_HWCLOCK=yes</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>重新启动ntpd服务</p>
+<blockquote>
+<p>[<strong>root</strong>@hadoop102 桌面]# service ntpd start</p>
+</blockquote>
+</li>
+<li><p>设置ntpd服务开机启动</p>
+<blockquote>
+<p>[<strong>root</strong>@hadoop102 桌面]# chkconfig ntpd on</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="其他机器配置（必须root用户）"><a href="#其他机器配置（必须root用户）" class="headerlink" title="其他机器配置（必须root用户）"></a>其他机器配置（必须root用户）</h4><ol>
+<li>在其他机器配置10分钟与时间服务器同步一次<blockquote>
+<p>[<strong>root</strong>@hadoop103桌面]# crontab -e</p>
+<blockquote>
+<p>编写定时任务如下：</p>
+<p><em>/10 </em> <em> </em> * /usr/sbin/ntpdate hadoop102</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p><strong>关闭 所有节点</strong>上 ntp服务和自启动</p>
+<blockquote>
+<p>sudo systemctl stop ntpd</p>
+<p>sudo systemctl disable ntpd</p>
+</blockquote>
+</li>
+<li><p>修改任意机器时间</p>
+<blockquote>
+<p>[<strong>root</strong>@hadoop103桌面]# date -s “2017-9-11 11:11:11”</p>
+</blockquote>
+</li>
+<li><p>十分钟后查看机器是否与时间服务器同步</p>
+<blockquote>
+<p>[<strong>root</strong>@hadoop103桌面]# date</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Hadoop编译源码（面试重点）"><a href="#Hadoop编译源码（面试重点）" class="headerlink" title="Hadoop编译源码（面试重点）"></a>Hadoop编译源码（面试重点）</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><blockquote>
+<p>（1）系统联网，或者有yum源</p>
+<p>（2）hadoop-2.7.2-src.tar.gz</p>
+<blockquote>
+<p>进入hadoop-2.7.2-src文件夹，查看BUILDING.txt</p>
+<p>cd hadoop-2.7.2-src</p>
+<p>more BUILDING.txt</p>
+<p>可以看到编译所需的库或者工具</p>
+</blockquote>
+<p>（3）jdk-8u144-linux-x64.tar.gz</p>
+<p>（4）apache-ant-1.9.9-bin.tar.gz（build工具，打包用的）</p>
+<p>（5）apache-maven-3.0.5-bin.tar.gz</p>
+<p>（6）protobuf-2.5.0.tar.gz（序列化的框架）</p>
+<p>（7）apache-tomcat-6.0.44.tar.gz</p>
+</blockquote>
+<h3 id="配置jdk"><a href="#配置jdk" class="headerlink" title="配置jdk"></a>配置jdk</h3><p>验证命令：java -version</p>
+<h3 id="配置Maven"><a href="#配置Maven" class="headerlink" title="配置Maven"></a>配置Maven</h3><blockquote>
+<p>[root@hadoop101 apache-maven-3.0.5]# vi conf/settings.xml</p>
+<blockquote>
+<mirrors>
+
+  <!-- mirror
+
+   | Specifies a repository mirror site to use instead of a given repository. The repository that
+
+   | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used
+
+   | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.
+
+   |
+
+<mirror>
+
+​    <id>mirrorId</id>
+
+​    <mirrorOf>repositoryId</mirrorOf>
+
+​    <name>Human Readable Name for this Mirror.</name>
+
+​    <url>http://my.repository.com/repo/path</url>
+
+   </mirror>
+
+   -->
+
+   ==<mirror>==
+
+​        ==<id>nexus-aliyun</id>==
+
+​        ==<mirrorOf>central</mirrorOf>==
+
+​       ==<name>Nexus aliyun</name>==
+
+​        ==<url>[http://maven.aliyun.com/nexus/content/groups/public](http://maven.aliyun.com/nexus/content/groups/public)</url>==
+
+​    ==</mirror>==
+
+</mirrors>
+
+</blockquote>
+<p>[root@hadoop101 apache-maven-3.0.5]# vi /etc/profile</p>
+<blockquote>
+<h1 id="MAVEN-HOME"><a href="#MAVEN-HOME" class="headerlink" title="MAVEN_HOME"></a>MAVEN_HOME</h1><p>export MAVEN_HOME=/opt/module/apache-maven-3.0.5</p>
+<p>export PATH=\$PATH:\$MAVEN_HOME/bin</p>
+</blockquote>
+<p>[root@hadoop101 software]#source /etc/profile</p>
+</blockquote>
+<p>验证命令：mvn -version</p>
+<h3 id="配置ant"><a href="#配置ant" class="headerlink" title="配置ant"></a>配置ant</h3><blockquote>
+<p>[root@hadoop101 apache-ant-1.9.9]# vi /etc/profile</p>
+<blockquote>
+<h1 id="ANT-HOME"><a href="#ANT-HOME" class="headerlink" title="ANT_HOME"></a>ANT_HOME</h1><p>export ANT_HOME=/opt/module/apache-ant-1.9.9</p>
+<p>export PATH=\$PATH:\$ANT_HOME/bin</p>
+</blockquote>
+<p>[root@hadoop101 software]#source /etc/profile</p>
+</blockquote>
+<p>验证命令：ant -version</p>
+<h3 id="安装-g-、make、cmake等库"><a href="#安装-g-、make、cmake等库" class="headerlink" title="安装 g++、make、cmake等库"></a>安装 g++、make、cmake等库</h3><blockquote>
+<p>[root@hadoop101 apache-ant-1.9.9]# yum install glibc-headers</p>
+<p>[root@hadoop101 apache-ant-1.9.9]# yum -y install svn ncurses-devel gcc*</p>
+<p>[root@hadoop101 apache-ant-1.9.9]# yum install make</p>
+<p>[root@hadoop101 apache-ant-1.9.9]# yum install cmake</p>
+<p>[root@hadoop101 apache-ant-1.9.9]# yum -y install lzo-devel zlib-devel autoconf automake libtool cmake openssl-devel</p>
+</blockquote>
+<h3 id="安装protobuf"><a href="#安装protobuf" class="headerlink" title="安装protobuf"></a>安装protobuf</h3><blockquote>
+<p>[root@hadoop101 protobuf-2.5.0]#./configure </p>
+<p>[root@hadoop101 protobuf-2.5.0]# make </p>
+<p>[root@hadoop101 protobuf-2.5.0]# make check </p>
+<p>[root@hadoop101 protobuf-2.5.0]# make install </p>
+<p>[root@hadoop101 protobuf-2.5.0]# ldconfig </p>
+<p>[root@hadoop101 hadoop-dist]# vi /etc/profile</p>
+<blockquote>
+<h1 id="LD-LIBRARY-PATH"><a href="#LD-LIBRARY-PATH" class="headerlink" title="LD_LIBRARY_PATH"></a>LD_LIBRARY_PATH</h1><p>export LD_LIBRARY_PATH=/opt/module/protobuf-2.5.0</p>
+<p>export PATH=\$PATH:\$LD_LIBRARY_PATH</p>
+</blockquote>
+<p>[root@hadoop101 software]#source /etc/profile</p>
+</blockquote>
+<p>验证命令：protoc —version</p>
+<h3 id="安装findbugs"><a href="#安装findbugs" class="headerlink" title="安装findbugs"></a>安装findbugs</h3><blockquote>
+<p>解压：tar -zxvf findbugs-3.0.1.tar.gz -C /opt/moudles/</p>
+<p>配置环境变量:</p>
+<blockquote>
+<p>在 /etc/profile 文件末尾添加：</p>
+<p>export FINDBUGS_HOME=/opt/findbugs-3.0.1</p>
+<p>export PATH=\$PATH:\$FINDBUGS_HOME/bin</p>
+<p>保存退出，并使更改生效。</p>
+</blockquote>
+</blockquote>
+<p>验证命令：findbugs -version</p>
+<h3 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h3><blockquote>
+<p>1.进入到源码目录</p>
+<p>[root@hadoop101 hadoop-2.7.2-src]# pwd</p>
+<blockquote>
+<p>/opt/hadoop-2.7.2-src</p>
+</blockquote>
+<p>2.通过maven执行编译命令</p>
+<p>[root@hadoop101 hadoop-2.7.2-src]#mvn package -Pdist,native -DskipTests -Dtar</p>
+</blockquote>
+<p>编译过程中会下载 apache-tomcat-6.0.44.tar.gz，速度非常慢，把提前下载好的文件放到如下目录：</p>
+<blockquote>
+<p>注：编译前这两个目录并不存在，编译过程中及时中断，然后复制文件</p>
+<p>hadoop-2.7.2-src/hadoop-common-project/hadoop-kms/downloads/</p>
+<p>hadoop-2.7.2-src/hadoop-hdfs-project/hadoop-hdfs-httpfs/downloads</p>
+</blockquote>
+<p>等待时间30分钟左右，最终成功是全部SUCCESS，如图</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/Screenshot from 2020-11-11 16-27-05.png" alt="Screenshot from 2020-11-11 16-27-05"><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/Screenshot from 2020-11-11 16-26-33.png" alt="Screenshot from 2020-11-11 16-26-33"></p>
+<p>成功的64位hadoop包在/opt/hadoop-2.7.2-src/hadoop-dist/target下</p>
+<h3 id="编译源码过程中常见的问题及解决方案"><a href="#编译源码过程中常见的问题及解决方案" class="headerlink" title="编译源码过程中常见的问题及解决方案"></a>编译源码过程中常见的问题及解决方案</h3><p>（1）MAVEN install时候JVM内存溢出</p>
+<p>处理方式：在环境配置文件和maven的执行文件均可调整MAVEN_OPT的heap大小。（详情查阅MAVEN 编译 JVM调优问题，如：<a href="http://outofmemory.cn/code-snippet/12652/maven-outofmemoryerror-method）" target="_blank" rel="noopener">http://outofmemory.cn/code-snippet/12652/maven-outofmemoryerror-method）</a></p>
+<p>（2）编译期间maven报错。可能网络阻塞问题导致依赖库下载不完整导致，多次执行命令（一次通过比较难）：</p>
+<p>[root@hadoop101 hadoop-2.7.2-src]#mvn package -Pdist,native -DskipTests -Dtar</p>
+<p>（3）报ant、protobuf等错误，插件下载未完整或者插件版本问题，最开始链接有较多特殊情况，同时推荐2.7.0版本的问题汇总帖子 <a href="http://www.tuicool.com/articles/IBn63qf" target="_blank" rel="noopener">http://www.tuicool.com/articles/IBn63qf</a></p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  JDBC-04 数据库连接池&DBUtils
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+                Hadoop02-HDFS概述、shell&客户端操作
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">NiuMT</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

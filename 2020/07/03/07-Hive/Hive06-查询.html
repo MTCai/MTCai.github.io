@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Hive-查询 | 
+	 
+	雄风静谧
+	</title>
+	
+	<!-- keywords,description -->
+	
+		<meta name="keywords" content="渣硕, 深度学习, 视频理解" />
+	 
+		<meta name="description" content="个人记事本" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">雄风静谧</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00-环境
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+										00-MySQL安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/01-Hadoop%E5%AE%89%E8%A3%85.html">
+										01-Hadoop安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/02-Hadoop%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81.html">
+										02-Hadoop编译源码
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/03-Zookeeper%E5%AE%89%E8%A3%85.html">
+										03-Zookeeper安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/00-%E7%8E%AF%E5%A2%83/04-Hive.html">
+										04-Hive
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/05-Flume%E5%AE%89%E8%A3%85.html">
+										05-Flume安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/00-%E7%8E%AF%E5%A2%83/06-HBase%E5%AE%89%E8%A3%85.html">
+										06-HBase安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-Ubuntu16.04%20%E5%AE%89%E8%A3%85opencv%EF%BC%88C++%E7%89%88%E6%9C%AC%EF%BC%89.html">
+										99-Ubuntu16.04 安装opencv（C++版本）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-%E5%AE%89%E8%A3%85ffmpeg.html">
+										99-安装ffmpeg
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8401-%E5%A4%A7%E7%BA%B2.html">
+										数据结构01-大纲
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8402-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8A).html">
+										数据结构02-复杂度分析(上)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8403-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8B).html">
+										数据结构03-复杂度分析(下)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8404-%E6%95%B0%E7%BB%84.html">
+										数据结构04-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8405-%E9%93%BE%E8%A1%A8.html">
+										数据结构05-链表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8406-%E6%A0%88.html">
+										数据结构06-栈
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8407-%E9%98%9F%E5%88%97.html">
+										数据结构07-队列
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8408-%E9%80%92%E5%BD%92.html">
+										数据结构08-递归
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8409-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%86%92%E6%B3%A1&%E6%8F%92%E5%85%A5&%E9%80%89%E6%8B%A9.html">
+										数据结构09-排序之冒泡&插入&选择
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8410-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%BD%92%E5%B9%B6&%E5%BF%AB%E6%8E%92.html">
+										数据结构10-排序之归并&快排
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8411-%E6%8E%92%E5%BA%8F%E4%B9%8B%E7%BA%BF%E6%80%A7%E6%8E%92%E5%BA%8F(%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F).html">
+										数据结构11-排序之线性排序(桶排序、计数排序、基数排序)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8412-%E6%8E%92%E5%BA%8F%E4%B9%8B%E4%BC%98%E5%8C%96.html">
+										数据结构12-排序之优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8413-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">
+										数据结构13-二分查找
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8414-%E8%B7%B3%E8%A1%A8.html">
+										数据结构14-跳表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/23/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8415-%E6%95%A3%E5%88%97%E8%A1%A8.html">
+										数据结构15-散列表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8416-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8.html">
+										数据结构16-哈希算法的应用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8417-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80.html">
+										数据结构17-二叉树基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8418-%E7%BA%A2%E9%BB%91%E6%A0%91.html">
+										数据结构18-红黑树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8419-%E9%80%92%E5%BD%92%E6%A0%91.html">
+										数据结构19-递归树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420-%E5%A0%86%E5%92%8C%E5%A0%86%E6%8E%92%E5%BA%8F.html">
+										数据结构20-堆和堆排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8421-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA.html">
+										数据结构21-图的表示
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+										数据结构22-深度和广度优先搜索
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8423-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D.html">
+										数据结构23-字符串匹配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
+										数据结构24-Trie树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8425-AC%E8%87%AA%E5%8A%A8%E6%9C%BA.html">
+										数据结构25-AC自动机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8426-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">
+										数据结构26-贪心算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8427-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html">
+										数据结构27-分治算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
+										数据结构28-回溯算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8429-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA.html">
+										数据结构29-动态规划理论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+										数据结构30-动态规划入门案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8431-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98.html">
+										数据结构31-动态规划实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(2).html">
+										数据结构32-拓扑排序 - 副本 (2)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-Java
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/00-%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92.html">
+										00-时间计划
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/IDEA%E9%85%8D%E7%BD%AE.html">
+										IDEA配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java01-%E6%A6%82%E8%BF%B0.html">
+										Java01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL00-%E5%AE%89%E8%A3%85.html">
+										MySQL00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+										MySQL01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+										MySQL02-DQL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+										MySQL03-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+										MySQL04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+										MySQL05-TCL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										MySQL06-视图&存储过程&流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										04-JDBC
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+										JDBC-01 概览&连接数据库方式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+										JDBC-02 CRUD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+										JDBC-03 数据库事务&DAO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+										JDBC-04 数据库连接池&DBUtils
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05-Hadoop
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+										Hadoop01-概述、运行模式&源码编译
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+										Hadoop02-HDFS概述、shell&客户端操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+										Hadoop03-HDFS读写流程&NN和2NN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+										Hadoop04-HDFS-DataNode
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop05-HDFS2.X%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E9%AB%98%E5%8F%AF%E7%94%A8(HA).html">
+										Hadoop05-HDFS2.X新特性和高可用(HA)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+										Hadoop06-MapReduce概述&序列化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
+										Hadoop07-MapReduce框架原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop08-Hadoop%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9.html">
+										Hadoop08-Hadoop数据压缩
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
+										Hadoop09-Yarn资源调度
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+										Hadoop10-生产调优手册
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+										Hadoop11-源码解析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06-Zookeeper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+										Zookeeper00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+										Zookeeper01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
+										Zookeeper02-内部原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper03-Shell%E6%93%8D%E4%BD%9C.html">
+										Zookeeper03-Shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+										Zookeeper04-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										07-Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive01-%E6%A6%82%E8%BF%B0.html">
+										Hive01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+										Hive02-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Hive03-数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+										Hive04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive05-DML.html">
+										Hive05-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+										Hive06-查询
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+										Hive07-函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
+										Hive08-压缩和存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+										Hive09-企业级调优
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive10-%E5%AE%9E%E6%88%98.html">
+										Hive10-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										08-Flume
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume00-%E5%AE%89%E8%A3%85.html">
+										flume00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+										flume01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+										flume02-案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume03-%E5%8E%9F%E7%90%86.html">
+										flume03-原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										flume04-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										09-Kafka
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
+										Kafka00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+										Kafka01-概述&shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+										Kafka02-架构原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+										Kafka03-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+										Kafka04-监控
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
+										Kafka05-Flume对接Kafka
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										Kafka06-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										10-HBase
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+										HBase00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+										HBase01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+										HBase02-HBase-shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+										HBase03-HBase进阶
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+										HBase04-HBase-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+										HBase05-HBase-MR
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+										HBase06-与Hive集成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+										HBase07-HBase优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+										HBase08-扩展
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	Hive06-查询
+</h1>
+<div class="article-meta">
+	
+	<span>NiuMT</span>
+	<span>2020-07-03 20:58:30</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Hive/">Hive</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<p>相关指南：<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">ALL</span> | <span class="keyword">DISTINCT</span>] select_expr, select_expr, ...</span><br><span class="line"><span class="keyword">FROM</span> table_reference</span><br><span class="line">[<span class="keyword">WHERE</span> where_condition]</span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span> col_list]</span><br><span class="line">[<span class="keyword">ORDER</span> <span class="keyword">BY</span> col_list]</span><br><span class="line">[CLUSTER <span class="keyword">BY</span> col_list</span><br><span class="line">| [<span class="keyword">DISTRIBUTE</span> <span class="keyword">BY</span> col_list] [<span class="keyword">SORT</span> <span class="keyword">BY</span> col_list]</span><br><span class="line">]</span><br><span class="line">[<span class="keyword">LIMIT</span> <span class="built_in">number</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h2><ul>
+<li>SQL 语言大小写不敏感。</li>
+<li>SQL 可以写在一行或者多行</li>
+<li>关键字不能被缩写也不能分行</li>
+<li>各子句一般要分行写</li>
+<li>使用缩进提高语句的可读性</li>
+<li>列别名：便于计算、紧跟列名，也可以在列名和别名之间加入关键字‘AS’</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hive (default)&gt; select * from emp;</span><br><span class="line">hive (default)&gt; select empno, ename from emp;</span><br><span class="line">hive (default)&gt; select ename AS name, deptno dn from emp;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 求总行数（count）、求工资的最大值（max）、求工资的最小值（min）</span></span><br><span class="line"><span class="comment">-- 求工资的总和（sum）、求工资的平均值（avg）</span></span><br><span class="line">hive (default)&gt; select count(*) cnt from emp;</span><br><span class="line">hive (default)&gt; select max(sal) max_sal from emp;</span><br><span class="line">hive (default)&gt; select min(sal) min_sal from emp;</span><br><span class="line">hive (default)&gt; select sum(sal) sum_sal from emp;</span><br><span class="line">hive (default)&gt; select avg(sal) avg_sal from emp;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 典型的查询会返回多行数据。LIMIT 子句用于限制返回的行数</span></span><br><span class="line">hive (default)&gt; select * from emp limit 5;</span><br></pre></td></tr></table></figure>
+<h2 id="where语句-amp-Like"><a href="#where语句-amp-Like" class="headerlink" title="where语句&amp;Like"></a>where语句&amp;Like</h2><ul>
+<li>使用WHERE 子句，将不满足条件的行过滤掉</li>
+<li>WHERE 子句紧随FROM 子句</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">hive (default)&gt; select * from emp where sal =5000;</span><br><span class="line">hive (default)&gt; select * from emp where sal between 500 and 1000; -- between and 的区间不能反</span><br><span class="line">hive (default)&gt; select * from emp where comm is null;</span><br><span class="line">hive (default)&gt; select * from emp where sal IN (1500, 5000);</span><br><span class="line">hive (default)&gt; select * from emp where sal&gt;1000 and deptno=30;</span><br><span class="line">hive (default)&gt; select * from emp where sal&gt;1000 or deptno=30;</span><br><span class="line">hive (default)&gt; select * from emp where deptno not IN(30, 20);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Like 和RLike</span></span><br><span class="line">使用LIKE 运算选择类似的值</span><br><span class="line">选择条件可以包含字符或数字:</span><br><span class="line">	% 代表零个或多个字符(任意个字符)</span><br><span class="line">	_ 代表一个字符</span><br><span class="line">RLIKE 子句是Hive 中这个功能的一个扩展，其可以通过Java 的正则表达式这个更强大的语言来指定匹配条件</span><br><span class="line">hive (default)&gt; select * from emp where sal LIKE '2%'; # 查找以2 开头薪水的员工信息</span><br><span class="line">hive (default)&gt; select * from emp where sal LIKE '_2%'; # 查找第二个数值为2 的薪水的员工信息</span><br><span class="line">hive (default)&gt; select * from emp where sal RLIKE '[2]'; # 查找薪水中含有2 的员工信息</span><br></pre></td></tr></table></figure>
+<h2 id="分组（Group-By-amp-Having）"><a href="#分组（Group-By-amp-Having）" class="headerlink" title="分组（Group By &amp; Having）"></a>分组（Group By &amp; Having）</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Group By</span></span><br><span class="line">GROUP BY 语句通常会和聚合函数一起使用，按照一个或者多个列队结果进行分组，然后对每个组执行聚合操作。</span><br><span class="line">hive (default)&gt; select t.deptno, avg(t.sal) avg_sal </span><br><span class="line">from emp t </span><br><span class="line">group by t.deptno; <span class="comment"># 计算emp 表每个部门的平均工资</span></span><br><span class="line"></span><br><span class="line">hive (default)&gt; select t.deptno, t.job, max(t.sal) max_sal </span><br><span class="line">from emp t </span><br><span class="line">group byt.deptno, t.job; <span class="comment"># 计算emp 每个部门中每个岗位的最高薪水</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- Having 语句</span></span><br><span class="line">having 与 where 不同点:</span><br><span class="line"> 1. where 针对表中的列发挥作用，查询数据；having 针对查询结果中的列发挥作用，筛选数据。</span><br><span class="line"> 2. where 后面不能写聚合函数，而having 后面可以使用聚合函数。</span><br><span class="line"> 3. having 只用于 group by 分组统计语句。</span><br><span class="line"></span><br><span class="line">hive (default)&gt; select deptno, avg(sal) </span><br><span class="line">from emp </span><br><span class="line">group by deptno; <span class="comment"># 求每个部门的平均工资</span></span><br><span class="line"></span><br><span class="line">hive (default)&gt; select deptno, avg(sal) avg_sal </span><br><span class="line">from emp </span><br><span class="line">group by deptno </span><br><span class="line">having avg_sal &gt; 2000; # 求每个部门的平均薪水大于2000 的部门</span><br></pre></td></tr></table></figure>
+<h2 id="join语句"><a href="#join语句" class="headerlink" title="join语句"></a>join语句</h2><p>Hive 支持通常的SQL JOIN 语句，但是只支持等值连接，不支持非等值连接。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 等值Join</span></span><br><span class="line">hive (default)&gt; select e.empno, e.ename, d.deptno, d.dname </span><br><span class="line">from emp e </span><br><span class="line">join dept d</span><br><span class="line">on e.deptno = d.deptno;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 内连接, 只有进行连接的两个表中都存在与连接条件相匹配的数据才会被保留下来。</span></span><br><span class="line">hive (default)&gt; select e.empno, e.ename, d.deptno </span><br><span class="line">from emp e </span><br><span class="line">join dept d </span><br><span class="line">on e.deptno = d.deptno;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 左外连接, JOIN 操作符左边表中符合WHERE 子句的所有记录将会被返回。</span></span><br><span class="line">hive (default)&gt; select e.empno, e.ename, d.deptno </span><br><span class="line">from emp e </span><br><span class="line">left join dept d </span><br><span class="line">on e.deptno = d.deptno;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 右外连接, JOIN 操作符右边表中符合WHERE 子句的所有记录将会被返回。</span></span><br><span class="line">hive (default)&gt; select e.empno, e.ename, d.deptno </span><br><span class="line">from emp e </span><br><span class="line">right join dept d </span><br><span class="line">on e.deptno = d.deptno;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 满外连接, 将会返回所有表中符合WHERE 语句条件的所有记录。如果任一表的指定字段没有符合条件的值的话，那么就使用NULL 值替代。</span></span><br><span class="line">hive (default)&gt; select e.empno, e.ename, d.deptno </span><br><span class="line">from emp e </span><br><span class="line">full join dept d </span><br><span class="line">on e.deptno = d.deptno;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 多表连接</span></span><br><span class="line">注意：连接 n 个表，至少需要 n-1 个连接条件。例如：连接三个表，至少需要两个连接条件。</span><br><span class="line">hive (default)&gt;SELECT e.ename, d.deptno, l.loc_name</span><br><span class="line">FROM emp e</span><br><span class="line">JOIN dept d</span><br><span class="line">ON d.deptno = e.deptno</span><br><span class="line">JOIN location l</span><br><span class="line">ON d.loc = l.loc;</span><br><span class="line">大多数情况下，Hive 会对每对JOIN 连接对象启动一个MapReduce 任务。本例中会首 先启动一个MapReduce job 对表e 和表d 进行连接操作，然后会再启动一个MapReduce job 将第一个MapReduce job 的输出和表l进行连接操作。</span><br><span class="line">注意：为什么不是表d 和表l 先进行连接操作呢？这是因为Hive 总是按照从左到右的顺序执行的。</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 笛卡尔积</span></span><br><span class="line">笛卡尔集会在下面条件下产生</span><br><span class="line"> 1. 省略连接条件</span><br><span class="line"> 2. 连接条件无效</span><br><span class="line"> 3. 所有表中的所有行互相连接</span><br><span class="line">hive (default)&gt; select empno, dname from emp, dept;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 连接谓词中不支持or</span></span><br><span class="line">hive (default)&gt; select e.empno, e.ename, d.deptno</span><br><span class="line">&gt; from emp e</span><br><span class="line">&gt; join dept d</span><br><span class="line">&gt; on e.deptno=d.deptno or e.ename=d.dname;</span><br><span class="line">FAILED: SemanticException [Error 10019]: Line 10:3 OR not</span><br><span class="line">supported in JOIN currently 'dname'</span><br></pre></td></tr></table></figure>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="全局排序（Order-By）"><a href="#全局排序（Order-By）" class="headerlink" title="全局排序（Order By）"></a>全局排序（Order By）</h3><p>Order By：全局排序，一个Reducer, 无论set几个reducer，order by都使用一个reducer</p>
+<p>ASC（ascend）: 升序（默认）</p>
+<p>DESC（descend）: 降序</p>
+<p>ORDER BY 子句在 SELECT 语句的结尾</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hive (default)&gt; select * from emp order by sal; # 查询员工信息按工资升序排列</span><br><span class="line">hive (default)&gt; select * from emp order by sal desc; # 查询员工信息按工资降序排列</span><br><span class="line">hive (default)&gt; select ename, sal*2 twosal from emp order by twosal;</span><br><span class="line">hive (default)&gt; select ename, deptno, sal from emp order by deptno, sal; # 按照部门和工资升序排序</span><br></pre></td></tr></table></figure>
+<h3 id="每个MapReduce-内部排序（Sort-By）"><a href="#每个MapReduce-内部排序（Sort-By）" class="headerlink" title="每个MapReduce 内部排序（Sort By）"></a>每个MapReduce 内部排序（Sort By）</h3><p>Sort By：每个Reducer 内部进行排序，对全局结果集来说不是排序。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 设置reduce 个数</span></span><br><span class="line">hive (default)&gt; set mapreduce.job.reduces=3;</span><br><span class="line"><span class="comment">-- 查看设置reduce 个数</span></span><br><span class="line">hive (default)&gt; set mapreduce.job.reduces;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 根据部门编号降序查看员工信息</span></span><br><span class="line">hive (default)&gt; select * from emp sort by empno desc;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 将查询结果导入到文件中（按照部门编号降序排序）</span></span><br><span class="line">hive (default)&gt; insert overwrite </span><br><span class="line">local directory '/opt/module/datas/sortby-result'</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">sort</span> <span class="keyword">by</span> deptno <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="分区排序（Distribute-By）"><a href="#分区排序（Distribute-By）" class="headerlink" title="分区排序（Distribute By）"></a>分区排序（Distribute By）</h3><p>Distribute By：类似MR 中partition，进行分区，结合sort by 使用。</p>
+<p>注意，Hive 要求 DISTRIBUTE BY 语句要写在 SORT BY 语句之前。</p>
+<p>对于distribute by 进行测试，一定要分配多reduce 进行处理，否则无法看到distribute by的效果。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 先按照部门编号分区，再按照员工编号降序排序。</span></span><br><span class="line">hive (default)&gt; set mapreduce.job.reduces=3;</span><br><span class="line">hive (default)&gt; insert overwrite </span><br><span class="line">local directory '/opt/module/datas/distribute-result' </span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> emp <span class="keyword">distribute</span> <span class="keyword">by</span> deptno <span class="keyword">sort</span> <span class="keyword">by</span> empno <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Cluster-By"><a href="#Cluster-By" class="headerlink" title="Cluster By"></a>Cluster By</h3><p>当distribute by 和sorts by 字段相同时，可以使用cluster by 方式</p>
+<p>cluster by 除了具有distribute by 的功能外还兼具sort by 的功能。但是排序只能是升序排序，不能指定排序规则为ASC 或者DESC。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 两种写法等价</span></span><br><span class="line">hive (default)&gt; select * from emp cluster by deptno;</span><br><span class="line">hive (default)&gt; select * from emp distribute by deptno sort by deptno;</span><br><span class="line"><span class="comment">-- 注意：按照部门编号分区，不一定就是固定死的数值，可以是20 号和30 号部门分到一个分区里面去。</span></span><br></pre></td></tr></table></figure>
+<h2 id="分桶及抽样查询"><a href="#分桶及抽样查询" class="headerlink" title="分桶及抽样查询"></a>分桶及抽样查询</h2><p>分区针对的是数据的存储路径；分桶针对的是数据文件。</p>
+<p>分区提供一个隔离数据和优化查询的便利方式。不过，并非所有的数据集都可形成合理<br>的分区，特别是之前所提到过的要确定合适的划分大小这个疑虑。</p>
+<p>分桶是将数据集分解成更容易管理的若干部分的另一个技术。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 设置属性</span></span><br><span class="line">hive (default)&gt; set hive.enforce.bucketing=true;</span><br><span class="line">hive (default)&gt; set mapreduce.job.reduces=-1;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建分桶表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> stu_buck(<span class="keyword">id</span> <span class="built_in">int</span>, <span class="keyword">name</span> <span class="keyword">string</span>)</span><br><span class="line">clustered <span class="keyword">by</span>(<span class="keyword">id</span>) <span class="keyword">into</span> <span class="number">4</span> buckets</span><br><span class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看表结构</span></span><br><span class="line">hive (default)&gt; desc formatted stu_buck;</span><br><span class="line">Num Buckets: 4</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建分桶表时，数据通过子查询的方式导入</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">table</span> stu_buck</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span> <span class="keyword">from</span> stu;</span><br></pre></td></tr></table></figure>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201230215058504.png" alt="image-20201230215058504"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询分桶的数据</span></span><br><span class="line">hive (default)&gt; select * from stu_buck;</span><br><span class="line">OK</span><br><span class="line">stu_buck.id stu_buck.name</span><br><span class="line">1004 ss4</span><br><span class="line">1008 ss8</span><br><span class="line">1012 ss12</span><br><span class="line">1016 ss16</span><br><span class="line">1001 ss1</span><br><span class="line">1005 ss5</span><br><span class="line">1009 ss9</span><br><span class="line">1013 ss13</span><br><span class="line">1002 ss2</span><br><span class="line">1006 ss6</span><br><span class="line">1010 ss10</span><br><span class="line">1014 ss14</span><br><span class="line">1003 ss3</span><br><span class="line">1007 ss7</span><br><span class="line">1011 ss11</span><br><span class="line">1015 ss15</span><br></pre></td></tr></table></figure>
+<p><strong>分桶抽样查询</strong></p>
+<p>对于非常大的数据集，有时用户需要使用的是一个具有代表性的查询结果而不是全部结果。Hive 可以通过对表进行抽样来满足这个需求.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询表stu_buck 中的数据</span></span><br><span class="line">hive (default)&gt; select * from stu_buck tablesample(bucket 1 out of 4 on id);</span><br><span class="line"><span class="comment">-- 注：tablesample 是抽样语句，语法：TABLESAMPLE(BUCKET x OUT OF y) 。</span></span><br><span class="line"><span class="comment">-- y 必须是 table 总 bucket 数的倍数或者因子。hive 根据 y 的大小，决定抽样的比例。</span></span><br><span class="line"><span class="comment">-- 例如，table 总共分了4 份，当y=2 时，抽取(4/2=)2 个bucket 的数据，当y=8 时，抽取(4/8=)1/2个bucket 的数据.</span></span><br><span class="line"><span class="comment">-- 如果抽取 1/2 个桶，则返回相应桶的1/2的数据，也不会抽取第二个桶。</span></span><br><span class="line"><span class="comment">-- x 表示从哪个bucket 开始抽取，如果需要取多个分区，以后的分区号为当前分区号加上y。</span></span><br><span class="line"><span class="comment">-- 例如，table 总bucket 数为4，tablesample(bucket 1 out of 2)，表示总共抽取（4/2=）2 个bucket 的数据，抽取第1(x)个和第3(x+y)个bucket 的数据。</span></span><br><span class="line"><span class="comment">-- 注意：x 的值必须小于等于y 的值.</span></span><br></pre></td></tr></table></figure>
+<h2 id="其他查询函数"><a href="#其他查询函数" class="headerlink" title="其他查询函数"></a>其他查询函数</h2><h3 id="空字段赋值"><a href="#空字段赋值" class="headerlink" title="空字段赋值"></a>空字段赋值</h3><p>NVL：给值为NULL 的数据赋值，它的格式是NVL( string1, replace_with)。它的功能是如果string1 为NULL，则NVL 函数返回replace_with 的值，否则返回string1 的值，如果两个参数都为NULL ，则返回NULL。</p>
+<p>select nvl(comm,-1) from emp;</p>
+<h3 id="时间类"><a href="#时间类" class="headerlink" title="时间类"></a>时间类</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- date_format:格式化时间</span></span><br><span class="line">hive (default)&gt; select date_format('2019-06-29','yyyy-MM-dd');</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">2019-06-29</span><br><span class="line">只能是"-"，"/"不能识别，但可以使用函数替换"/"，</span><br><span class="line">regexp_replace('2019/07/03', '/', '-'); // 2019-07-03</span><br><span class="line"></span><br><span class="line"><span class="comment">-- date_add:时间跟天数相加</span></span><br><span class="line">hive (default)&gt; select date_add('2019-06-29',5);</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">2019-07-04</span><br><span class="line"></span><br><span class="line">hive (default)&gt; select date_add('2019-06-29',-5);</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">2019-06-24</span><br><span class="line"></span><br><span class="line"><span class="comment">-- date_sub:时间跟天数相减</span></span><br><span class="line">hive (default)&gt; select date_sub('2019-06-29',5);</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">2019-06-24</span><br><span class="line"></span><br><span class="line">hive (default)&gt; select date_sub('2019-06-29 12:12:12',5);</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">2019-06-24</span><br><span class="line"></span><br><span class="line">hive (default)&gt; select date_sub('2019-06-29',-5);</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">2019-07-04</span><br><span class="line"></span><br><span class="line"><span class="comment">-- datediff:两个时间相减</span></span><br><span class="line">hive (default)&gt; select datediff('2019-06-29','2019-06-24');</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">5</span><br><span class="line"></span><br><span class="line">hive (default)&gt; select datediff('2019-06-24','2019-06-29');</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">-5</span><br><span class="line"></span><br><span class="line">hive (default)&gt; select datediff('2019-06-24 12:12:12','2019-06-29');</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">-5</span><br><span class="line"></span><br><span class="line">hive (default)&gt; select datediff('2019-06-24 12:12:12','2019-06-29 13:13:13');</span><br><span class="line">OK</span><br><span class="line">_c0</span><br><span class="line">-5</span><br></pre></td></tr></table></figure>
+<h3 id="CASE-WHEN"><a href="#CASE-WHEN" class="headerlink" title="CASE WHEN"></a>CASE WHEN</h3><p>数据准备：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>dept_id</th>
+<th>sex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>悟空</td>
+<td>A</td>
+<td>男</td>
+</tr>
+<tr>
+<td>大海</td>
+<td>A</td>
+<td>男</td>
+</tr>
+<tr>
+<td>宋宋</td>
+<td>B</td>
+<td>男</td>
+</tr>
+<tr>
+<td>凤姐</td>
+<td>A</td>
+<td>女</td>
+</tr>
+<tr>
+<td>婷姐</td>
+<td>B</td>
+<td>女</td>
+</tr>
+<tr>
+<td>婷婷</td>
+<td>B</td>
+<td>女</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 需求：求出不同部门男女各多少人，结果如下</span></span><br><span class="line">A 2 1</span><br><span class="line">B 1 2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建hive 表并导入数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> emp_sex(</span><br><span class="line"><span class="keyword">name</span> <span class="keyword">string</span>,</span><br><span class="line">dept_id <span class="keyword">string</span>,</span><br><span class="line">sex <span class="keyword">string</span>)</span><br><span class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">"\t"</span>;</span><br><span class="line"><span class="keyword">load</span> <span class="keyword">data</span> <span class="keyword">local</span> inpath <span class="string">'/opt/module/data/emp_sex.txt'</span> <span class="keyword">into</span> <span class="keyword">table</span> emp_sex;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按需求查询数据</span></span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">dept_id,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> sex <span class="keyword">when</span> <span class="string">'男'</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) male_count,</span><br><span class="line"><span class="keyword">sum</span>(<span class="keyword">case</span> sex <span class="keyword">when</span> <span class="string">'女'</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) female_count</span><br><span class="line"><span class="keyword">from</span> emp_sex</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> dept_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- case when 可以替换为</span></span><br><span class="line">sum(if(sex='男',1,0)) male_count,</span><br><span class="line">sum(if(sex='女',1,0)) famale_count</span><br></pre></td></tr></table></figure>
+<h3 id="行转列"><a href="#行转列" class="headerlink" title="行转列"></a>行转列</h3><p>CONCAT(string A/col, string B/col…)：返回输入字符串连接后的结果，支持任意个输入<br>字符串;</p>
+<p>CONCAT_WS(separator, str1, str2,…)：它是一个特殊形式的 CONCAT()。第一个参数是剩余参数间的分隔符。分隔符可以是与剩余参数一样的字符串。如果分隔符是 NULL，<br>返回值也将为 NULL。这个函数会跳过分隔符参数后的任何 NULL 和空字符串。分隔符将被加到被连接的字符串之间;</p>
+<p>COLLECT_SET(col)：函数只接受基本数据类型，它的主要作用是将某字段的值进行<strong>去重汇总</strong>，产生array 类型字段。</p>
+<p>数据准备：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>constellation</th>
+<th>blood_type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>孙悟空</td>
+<td>白羊座</td>
+<td>A</td>
+</tr>
+<tr>
+<td>大海</td>
+<td>射手座</td>
+<td>A</td>
+</tr>
+<tr>
+<td>宋宋</td>
+<td>白羊座</td>
+<td>B</td>
+</tr>
+<tr>
+<td>猪八戒</td>
+<td>白羊座</td>
+<td>A</td>
+</tr>
+<tr>
+<td>凤姐</td>
+<td>射手座</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 需求：把星座和血型一样的人归类到一起。预期结果如下</span></span><br><span class="line">射手座,A 大海|凤姐</span><br><span class="line">白羊座,A 孙悟空|猪八戒</span><br><span class="line">白羊座,B 宋宋</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建hive 表并导入数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> person_info(</span><br><span class="line"><span class="keyword">name</span> <span class="keyword">string</span>,</span><br><span class="line">constellation <span class="keyword">string</span>,</span><br><span class="line">blood_type <span class="keyword">string</span>)</span><br><span class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">"\t"</span>;</span><br><span class="line"><span class="keyword">load</span> <span class="keyword">data</span> <span class="keyword">local</span> inpath <span class="string">"/opt/module/data/person_info.txt"</span> <span class="keyword">into</span> <span class="keyword">table</span> person_info;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按需求查询数据</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">t1.base,</span><br><span class="line"><span class="keyword">concat_ws</span>(<span class="string">'|'</span>, collect_set(t1.name)) <span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    (<span class="keyword">select</span></span><br><span class="line">    <span class="keyword">name</span>,</span><br><span class="line">    <span class="keyword">concat</span>(constellation, <span class="string">","</span>, blood_type) base</span><br><span class="line">    <span class="keyword">from</span></span><br><span class="line">    person_info) t1</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span></span><br><span class="line">	t1.base;</span><br></pre></td></tr></table></figure>
+<h3 id="列转行"><a href="#列转行" class="headerlink" title="列转行"></a>列转行</h3><p>EXPLODE(col)：将hive 一列中复杂的array 或者map 结构拆分成多行。</p>
+<p>LATERAL VIEW：用法：LATERAL VIEW udtf(expression) tableAlias(表名) AS columnAlias(udtf的列别名)。解释：用于和split, explode 等UDTF 一起使用，它能够将一列数据拆成多行数据，在此<br>基础上可以对拆分后的数据进行聚合</p>
+<p>数据准备：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>movie</th>
+<th>category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>《疑犯追踪》</td>
+<td>悬疑,动作,科幻,剧情</td>
+</tr>
+<tr>
+<td>《Lie to me》</td>
+<td>悬疑,警匪,动作,心理,剧情</td>
+</tr>
+<tr>
+<td>《战狼2》</td>
+<td>战争,动作,灾难</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 将电影分类中的数组数据展开。预期结果如下：</span></span><br><span class="line">《疑犯追踪》 悬疑</span><br><span class="line">《疑犯追踪》 动作</span><br><span class="line">《疑犯追踪》 科幻</span><br><span class="line">《疑犯追踪》 剧情</span><br><span class="line">《Lie to me》 悬疑</span><br><span class="line">《Lie to me》 警匪</span><br><span class="line">《Lie to me》 动作</span><br><span class="line">《Lie to me》 心理</span><br><span class="line">《Lie to me》 剧情</span><br><span class="line">《战狼2》 战争</span><br><span class="line">《战狼2》 动作</span><br><span class="line">《战狼2》 灾难</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建hive 表并导入数据</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> movie_info(</span><br><span class="line">    movie <span class="keyword">string</span>,</span><br><span class="line">    <span class="keyword">category</span> <span class="built_in">array</span>&lt;<span class="keyword">string</span>&gt;)</span><br><span class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">"\t"</span></span><br><span class="line">collection items <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">","</span>;</span><br><span class="line"><span class="keyword">load</span> <span class="keyword">data</span> <span class="keyword">local</span> inpath <span class="string">"/opt/module/datas/movie.txt"</span> <span class="keyword">into</span> <span class="keyword">table</span> movie_info;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 按需求查询数据</span></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    movie,</span><br><span class="line">    category_name</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	movie_info <span class="keyword">lateral</span> <span class="keyword">view</span> <span class="keyword">explode</span>(<span class="keyword">category</span>) table_tmp <span class="keyword">as</span> category_name;</span><br></pre></td></tr></table></figure>
+<h3 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h3><p>OVER()：指定分析函数工作的数据窗口大小(理解为当前行可以看到的视野)，这个数据窗口大小可能会随着行的变化而变化；</p>
+<ul>
+<li>CURRENT ROW：当前行；</li>
+<li>n PRECEDING：往前n 行数据；</li>
+<li>n FOLLOWING：往后n 行数据；</li>
+<li>UNBOUNDED：起点</li>
+<li>UNBOUNDED PRECEDING 表示从前面的起点</li>
+<li>UNBOUNDED FOLLOWING 表示到后面的终点；</li>
+<li>LAG(col,n)：往前第n 行数据；</li>
+<li>LEAD(col,n)：往后第n 行数据</li>
+<li>NTILE(n)：把有序分区中的行分发到指定数据的组中，各个组有编号，编号从1 开始，<br>对于每一行，NTILE 返回此行所属的组的编号。注意：n 必须为int 类型。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">name，orderdate，cost</span><br><span class="line">jack,2017-01-01,10</span><br><span class="line">tony,2017-01-02,15</span><br><span class="line">jack,2017-02-03,23</span><br><span class="line">tony,2017-01-04,29</span><br><span class="line">jack,2017-01-05,46</span><br><span class="line">jack,2017-04-06,42</span><br><span class="line">tony,2017-01-07,50</span><br><span class="line">jack,2017-01-08,55</span><br><span class="line">mart,2017-04-08,62</span><br><span class="line">mart,2017-04-09,68</span><br><span class="line">neil,2017-05-10,12</span><br><span class="line">mart,2017-04-11,75</span><br><span class="line">neil,2017-06-12,80</span><br><span class="line">mart,2017-04-13,94</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询在2017 年4 月份购买过的顾客及总人数</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,<span class="keyword">count</span>(*) <span class="keyword">over</span> ()</span><br><span class="line"><span class="keyword">from</span> business</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">substring</span>(orderdate,<span class="number">1</span>,<span class="number">7</span>) = <span class="string">'2017-04'</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">name</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询顾客的购买明细及月购买总额</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,orderdate,<span class="keyword">cost</span>,<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">month</span>(orderdate)) </span><br><span class="line"><span class="keyword">from</span> business;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 上述的场景,要将cost 按照日期进行累加</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,orderdate,<span class="keyword">cost</span>,</span><br><span class="line">	<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>() <span class="keyword">as</span> sample1,<span class="comment">-- 所有行相加</span></span><br><span class="line">	<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span>) <span class="keyword">as</span> sample2,<span class="comment">-- 按name 分组，组内数据相加</span></span><br><span class="line">	<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>(<span class="keyword">distribute</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">sort</span> <span class="keyword">by</span> orderdate) <span class="keyword">as</span> sample33，</span><br><span class="line">	<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> orderdate) <span class="keyword">as</span> sample3, <span class="comment">-- 按name 分组，组内数据累加</span></span><br><span class="line">	<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> orderdate </span><br><span class="line">                   <span class="keyword">rows</span> <span class="keyword">between</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">PRECEDING</span> <span class="keyword">and</span> <span class="keyword">current</span> <span class="keyword">row</span> ) <span class="keyword">as</span> sample4 ,<span class="comment">-- 和sample3 一样,由起点到当前行的聚合</span></span><br><span class="line">	<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> orderdate </span><br><span class="line">                   <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">1</span> <span class="keyword">PRECEDING</span> <span class="keyword">and</span> <span class="keyword">current</span> <span class="keyword">row</span>) <span class="keyword">as</span> sample5, <span class="comment">-- 当前行和前面一行做聚合</span></span><br><span class="line">	<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> orderdate </span><br><span class="line">                   <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">1</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="number">1</span> <span class="keyword">FOLLOWING</span> ) <span class="keyword">as</span> sample6,<span class="comment">-- 当前行和前边一行及后面一行</span></span><br><span class="line">	<span class="keyword">sum</span>(<span class="keyword">cost</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> orderdate </span><br><span class="line">                   <span class="keyword">rows</span> <span class="keyword">between</span> <span class="keyword">current</span> <span class="keyword">row</span> <span class="keyword">and</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">FOLLOWING</span> ) <span class="keyword">as</span> sample7 <span class="comment">-- 当前行及后面所有行</span></span><br><span class="line"><span class="keyword">from</span> business;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看顾客上次的购买时间</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,orderdate,<span class="keyword">cost</span>,</span><br><span class="line">lag(orderdate,<span class="number">1</span>,<span class="string">'1900-01-01'</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> orderdate ) <span class="keyword">as</span> time1, </span><br><span class="line">lag(orderdate,<span class="number">2</span>) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> orderdate) <span class="keyword">as</span> time2</span><br><span class="line"><span class="keyword">from</span> business;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询前20%时间的订单信息</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> (</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">name</span>,orderdate,<span class="keyword">cost</span>, ntile(<span class="number">5</span>) <span class="keyword">over</span>(<span class="keyword">order</span> <span class="keyword">by</span> orderdate) sorted </span><br><span class="line">	<span class="keyword">from</span> business</span><br><span class="line">) t</span><br><span class="line"><span class="keyword">where</span> sorted = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Rank"><a href="#Rank" class="headerlink" title="Rank"></a>Rank</h3><ul>
+<li>RANK() 排序相同时会重复，总数不会变</li>
+<li>DENSE_RANK() 排序相同时会重复，总数会减少</li>
+<li>ROW_NUMBER() 会根据顺序计算</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,</span><br><span class="line">    subject,</span><br><span class="line">    score,</span><br><span class="line">    <span class="keyword">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> subject <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) rp,</span><br><span class="line">    <span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> subject <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) drp,</span><br><span class="line">    row_number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> subject <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span>) rmp</span><br><span class="line"><span class="keyword">from</span> score;</span><br><span class="line"></span><br><span class="line">name subject score rp drp rmp</span><br><span class="line">孙悟空 数学 95 1 1 1</span><br><span class="line">宋宋   数学 86 2 2 2</span><br><span class="line">婷婷   数学 85 3 3 3</span><br><span class="line">大海   数学 56 4 4 4</span><br><span class="line"></span><br><span class="line">宋宋   英语 84 1 1 1</span><br><span class="line">大海   英语 84 1 1 2</span><br><span class="line">婷婷   英语 78 3 2 3</span><br><span class="line">孙悟空 英语 68 4 3 4</span><br><span class="line"></span><br><span class="line">大海   语文 94 1 1 1</span><br><span class="line">孙悟空 语文 87 2 2 2</span><br><span class="line">婷婷   语文 65 3 3 3</span><br><span class="line">宋宋   语文 64 4 4 4</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Hive07-函数
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+                Hive09-企业级调优
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">NiuMT</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

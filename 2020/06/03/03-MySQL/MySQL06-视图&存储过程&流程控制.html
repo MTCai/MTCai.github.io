@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		视图&amp;存储过程&amp;流程控制 | 
+	 
+	雄风静谧
+	</title>
+	
+	<!-- keywords,description -->
+	
+		<meta name="keywords" content="渣硕, 深度学习, 视频理解" />
+	 
+		<meta name="description" content="个人记事本" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">雄风静谧</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00-环境
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+										00-MySQL安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/01-Hadoop%E5%AE%89%E8%A3%85.html">
+										01-Hadoop安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/02-Hadoop%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81.html">
+										02-Hadoop编译源码
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/03-Zookeeper%E5%AE%89%E8%A3%85.html">
+										03-Zookeeper安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/00-%E7%8E%AF%E5%A2%83/04-Hive.html">
+										04-Hive
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/05-Flume%E5%AE%89%E8%A3%85.html">
+										05-Flume安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/00-%E7%8E%AF%E5%A2%83/06-HBase%E5%AE%89%E8%A3%85.html">
+										06-HBase安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-Ubuntu16.04%20%E5%AE%89%E8%A3%85opencv%EF%BC%88C++%E7%89%88%E6%9C%AC%EF%BC%89.html">
+										99-Ubuntu16.04 安装opencv（C++版本）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-%E5%AE%89%E8%A3%85ffmpeg.html">
+										99-安装ffmpeg
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8401-%E5%A4%A7%E7%BA%B2.html">
+										数据结构01-大纲
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8402-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8A).html">
+										数据结构02-复杂度分析(上)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8403-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8B).html">
+										数据结构03-复杂度分析(下)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8404-%E6%95%B0%E7%BB%84.html">
+										数据结构04-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8405-%E9%93%BE%E8%A1%A8.html">
+										数据结构05-链表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8406-%E6%A0%88.html">
+										数据结构06-栈
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8407-%E9%98%9F%E5%88%97.html">
+										数据结构07-队列
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8408-%E9%80%92%E5%BD%92.html">
+										数据结构08-递归
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8409-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%86%92%E6%B3%A1&%E6%8F%92%E5%85%A5&%E9%80%89%E6%8B%A9.html">
+										数据结构09-排序之冒泡&插入&选择
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8410-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%BD%92%E5%B9%B6&%E5%BF%AB%E6%8E%92.html">
+										数据结构10-排序之归并&快排
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8411-%E6%8E%92%E5%BA%8F%E4%B9%8B%E7%BA%BF%E6%80%A7%E6%8E%92%E5%BA%8F(%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F).html">
+										数据结构11-排序之线性排序(桶排序、计数排序、基数排序)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8412-%E6%8E%92%E5%BA%8F%E4%B9%8B%E4%BC%98%E5%8C%96.html">
+										数据结构12-排序之优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8413-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">
+										数据结构13-二分查找
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8414-%E8%B7%B3%E8%A1%A8.html">
+										数据结构14-跳表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/23/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8415-%E6%95%A3%E5%88%97%E8%A1%A8.html">
+										数据结构15-散列表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8416-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8.html">
+										数据结构16-哈希算法的应用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8417-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80.html">
+										数据结构17-二叉树基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8418-%E7%BA%A2%E9%BB%91%E6%A0%91.html">
+										数据结构18-红黑树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8419-%E9%80%92%E5%BD%92%E6%A0%91.html">
+										数据结构19-递归树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420-%E5%A0%86%E5%92%8C%E5%A0%86%E6%8E%92%E5%BA%8F.html">
+										数据结构20-堆和堆排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8421-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA.html">
+										数据结构21-图的表示
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+										数据结构22-深度和广度优先搜索
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8423-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D.html">
+										数据结构23-字符串匹配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
+										数据结构24-Trie树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8425-AC%E8%87%AA%E5%8A%A8%E6%9C%BA.html">
+										数据结构25-AC自动机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8426-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">
+										数据结构26-贪心算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8427-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html">
+										数据结构27-分治算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
+										数据结构28-回溯算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8429-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA.html">
+										数据结构29-动态规划理论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+										数据结构30-动态规划入门案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8431-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98.html">
+										数据结构31-动态规划实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(2).html">
+										数据结构32-拓扑排序 - 副本 (2)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-Java
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/00-%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92.html">
+										00-时间计划
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/IDEA%E9%85%8D%E7%BD%AE.html">
+										IDEA配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java01-%E6%A6%82%E8%BF%B0.html">
+										Java01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL00-%E5%AE%89%E8%A3%85.html">
+										MySQL00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+										MySQL01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+										MySQL02-DQL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+										MySQL03-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+										MySQL04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+										MySQL05-TCL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										MySQL06-视图&存储过程&流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										04-JDBC
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+										JDBC-01 概览&连接数据库方式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+										JDBC-02 CRUD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+										JDBC-03 数据库事务&DAO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+										JDBC-04 数据库连接池&DBUtils
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05-Hadoop
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+										Hadoop01-概述、运行模式&源码编译
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+										Hadoop02-HDFS概述、shell&客户端操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+										Hadoop03-HDFS读写流程&NN和2NN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+										Hadoop04-HDFS-DataNode
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop05-HDFS2.X%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E9%AB%98%E5%8F%AF%E7%94%A8(HA).html">
+										Hadoop05-HDFS2.X新特性和高可用(HA)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+										Hadoop06-MapReduce概述&序列化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
+										Hadoop07-MapReduce框架原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop08-Hadoop%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9.html">
+										Hadoop08-Hadoop数据压缩
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
+										Hadoop09-Yarn资源调度
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+										Hadoop10-生产调优手册
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+										Hadoop11-源码解析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06-Zookeeper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+										Zookeeper00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+										Zookeeper01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
+										Zookeeper02-内部原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper03-Shell%E6%93%8D%E4%BD%9C.html">
+										Zookeeper03-Shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+										Zookeeper04-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										07-Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive01-%E6%A6%82%E8%BF%B0.html">
+										Hive01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+										Hive02-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Hive03-数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+										Hive04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive05-DML.html">
+										Hive05-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+										Hive06-查询
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+										Hive07-函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
+										Hive08-压缩和存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+										Hive09-企业级调优
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive10-%E5%AE%9E%E6%88%98.html">
+										Hive10-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										08-Flume
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume00-%E5%AE%89%E8%A3%85.html">
+										flume00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+										flume01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+										flume02-案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume03-%E5%8E%9F%E7%90%86.html">
+										flume03-原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										flume04-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										09-Kafka
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
+										Kafka00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+										Kafka01-概述&shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+										Kafka02-架构原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+										Kafka03-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+										Kafka04-监控
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
+										Kafka05-Flume对接Kafka
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										Kafka06-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										10-HBase
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+										HBase00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+										HBase01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+										HBase02-HBase-shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+										HBase03-HBase进阶
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+										HBase04-HBase-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+										HBase05-HBase-MR
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+										HBase06-与Hive集成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+										HBase07-HBase优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+										HBase08-扩展
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	MySQL06-视图&存储过程&流程控制
+</h1>
+<div class="article-meta">
+	
+	<span>NiuMT</span>
+	<span>2020-06-03 20:58:30</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/MySQL/">MySQL</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p>视图：MySQL从5.0.1版本开始提供视图功能。一种虚拟存在的表，行和列的数据来自定义视图的查询中使用的表，并且是在使用视图时动态生成的，只保存了sql逻辑，不保存查询结果。</p>
+<p>《sql础教程第2版》用一句话非常凝练的概括了视图与表的区别—“==是否保存了实际的数据==”。所以视图并不是数据库真实存储的数据表，它可以看作是一个窗口，通过这个窗口我们可以看到数据库表中真实存在的数据。所以我们要区别视图和数据表的本质，即视图是基于真实表的一张虚拟的表，其数据来源均建立在真实表的基础上。</p>
+<p>那既然已经有数据表了，为什么还需要视图呢？主要有以下几点原因：</p>
+<ol>
+<li>通过定义视图可以将频繁使用的SELECT语句保存以提高效率。</li>
+<li>通过定义视图可以使用户看到的数据更加清晰。</li>
+<li>通过定义视图可以不对外公开数据表全部字段，增强数据的保密性。</li>
+<li>通过定义视图可以降低数据的冗余。</li>
+</ol>
+<p>需要注意的是视图名在数据库中需要是唯一的，<strong>不能与其他视图和表重名</strong>。视图不仅可以基于真实表，我们也可以在视图的基础上继续创建视图。</p>
+<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*语法：</span><br><span class="line">create view 视图名</span><br><span class="line">as</span><br><span class="line">查询语句;</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">USE myemployees;</span><br><span class="line"></span><br><span class="line">#查询姓名中包含a字符的员工名、部门名和工种信息</span><br><span class="line">#①创建</span><br><span class="line">CREATE VIEW myv1</span><br><span class="line">AS</span><br><span class="line">SELECT last_name,department_name,job_title</span><br><span class="line">FROM employees e</span><br><span class="line">JOIN departments d ON e.department_id  &#x3D; d.department_id</span><br><span class="line">JOIN jobs j ON j.job_id  &#x3D; e.job_id;</span><br><span class="line"></span><br><span class="line">#②使用</span><br><span class="line">SELECT * FROM myv1 WHERE last_name LIKE &#39;%a%&#39;;</span><br><span class="line"></span><br><span class="line">#查询各部门的平均工资级别</span><br><span class="line">#①创建视图查看每个部门的平均工资</span><br><span class="line">CREATE VIEW myv2</span><br><span class="line">AS</span><br><span class="line">SELECT AVG(salary) ag,department_id</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY department_id;</span><br><span class="line">#②使用</span><br><span class="line">SELECT myv2.&#96;ag&#96;,g.grade_level</span><br><span class="line">FROM myv2</span><br><span class="line">JOIN job_grades g</span><br><span class="line">ON myv2.&#96;ag&#96; BETWEEN g.&#96;lowest_sal&#96; AND g.&#96;highest_sal&#96;;</span><br><span class="line"></span><br><span class="line">#查询平均工资最低的部门信息</span><br><span class="line">SELECT * FROM myv2 ORDER BY ag LIMIT 1;</span><br><span class="line"></span><br><span class="line">#查询平均工资最低的部门名和工资</span><br><span class="line">CREATE VIEW myv3</span><br><span class="line">AS</span><br><span class="line">SELECT * FROM myv2 ORDER BY ag LIMIT 1;</span><br><span class="line"></span><br><span class="line">SELECT d.*,m.ag</span><br><span class="line">FROM myv3 m</span><br><span class="line">JOIN departments d</span><br><span class="line">ON m.&#96;department_id&#96;&#x3D;d.&#96;department_id&#96;;</span><br></pre></td></tr></table></figure>
+<h3 id="视图修改、删除、查看"><a href="#视图修改、删除、查看" class="headerlink" title="视图修改、删除、查看"></a>视图修改、删除、查看</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#方式一：</span><br><span class="line">&#x2F;*</span><br><span class="line">create or replace view  视图名</span><br><span class="line">as</span><br><span class="line">查询语句;</span><br><span class="line">*&#x2F;</span><br><span class="line">SELECT * FROM myv3 </span><br><span class="line"></span><br><span class="line">CREATE OR REPLACE VIEW myv3</span><br><span class="line">AS</span><br><span class="line">SELECT AVG(salary),job_id</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY job_id;</span><br><span class="line"></span><br><span class="line">#方式二：</span><br><span class="line">&#x2F;*</span><br><span class="line">语法：</span><br><span class="line">alter view 视图名</span><br><span class="line">as </span><br><span class="line">查询语句;</span><br><span class="line">*&#x2F;</span><br><span class="line">ALTER VIEW myv3</span><br><span class="line">AS</span><br><span class="line">SELECT * FROM employees;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 删除视图</span><br><span class="line">&#x2F;*</span><br><span class="line">语法：drop view 视图名,视图名,...;</span><br><span class="line">*&#x2F;</span><br><span class="line">DROP VIEW emp_v1,emp_v2,myv3;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 查看视图</span><br><span class="line">DESC myv3;</span><br><span class="line">SHOW CREATE VIEW myv3;</span><br></pre></td></tr></table></figure>
+<h3 id="视图的更新"><a href="#视图的更新" class="headerlink" title="视图的更新"></a>视图的更新</h3><p>因为视图是一个虚拟表，所以对视图的操作就是对底层基础表的操作，所以在修改时只有满足底层基本表的定义才能成功修改。</p>
+<p>对于一个视图来说，如果包含以下结构的任意一种都是不可以被更新的：</p>
+<ul>
+<li>聚合函数 SUM()、MIN()、MAX()、COUNT() 等。</li>
+<li>DISTINCT 关键字。</li>
+<li>GROUP BY 子句。</li>
+<li>HAVING 子句。</li>
+<li>UNION 或 UNION ALL 运算符。</li>
+<li>FROM 子句中包含多个表。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE VIEW myv1</span><br><span class="line">AS</span><br><span class="line">SELECT last_name,email</span><br><span class="line">FROM employees;</span><br><span class="line"></span><br><span class="line">#插入、会影响原始表</span><br><span class="line">INSERT INTO myv1 VALUES(&#39;张飞&#39;,&#39;zf@qq.com&#39;);</span><br><span class="line"></span><br><span class="line">#修改、会影响原始表</span><br><span class="line">UPDATE myv1 SET last_name &#x3D; &#39;张无忌&#39; WHERE last_name&#x3D;&#39;张飞&#39;;</span><br><span class="line"></span><br><span class="line">#删除、会影响原始表</span><br><span class="line">DELETE FROM myv1 WHERE last_name &#x3D; &#39;张无忌&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">视图的可更新性和视图中查询的定义有关系，以下类型的视图是不能更新的。</span><br><span class="line">• 包含以下关键字的sql语句：分组函数、distinct、group by、having、union或者union all</span><br><span class="line">• 常量视图</span><br><span class="line">• Select中包含子查询</span><br><span class="line">• join</span><br><span class="line">• from一个不能更新的视图</span><br><span class="line">• where子句的子查询引用了from子句中的表</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>​         创建语法的关键字    是否实际占用物理空间        使用</p>
+<p>视图    create view            只是保存了sql逻辑             增删改查，只是一般不能增删改</p>
+<p>表      create table                   保存了数据                   增删改查</p>
+</blockquote>
+<h2 id="变量、存储过程和函数"><a href="#变量、存储过程和函数" class="headerlink" title="变量、存储过程和函数"></a>变量、存储过程和函数</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>系统变量：全局变量、会话变量</p>
+<p>自定义变量：用户变量、局部变量</p>
+<p><strong>系统变量：</strong>说明：变量由系统定义，不是用户定义，属于服务器层面；注意：全局变量需要添加global关键字，会话变量需要添加session关键字，如果不写，==默认会话级别==；全局变量作用域：针对于所有会话（连接）有效，但不能跨重启；会话变量作用域：针对于当前会话（连接）有效。</p>
+<blockquote>
+<p>1、查看所有系统变量<br>show global|【session】variables;</p>
+<p>2、查看满足条件的部分系统变量<br>show global|【session】 variables like ‘%char%’;</p>
+<p>3、查看指定的系统变量的值<br>select @@global|【session】系统变量名;</p>
+<p>4、为某个系统变量赋值；方式一：<br>set global|【session】系统变量名=值；方式二：<br>set @@global|【session】系统变量名=值;</p>
+</blockquote>
+<p><strong>自定义变量：</strong>说明：变量由用户自定义，而不是系统提供的；使用步骤：<br>1、声明<br>2、赋值<br>3、使用（查看、比较、运算等）；</p>
+<p>用户变量：用户变量作用域：针对于当前会话（连接）有效，作用域同于会话变量。</p>
+<blockquote>
+<p>赋值操作符：=或 :=</p>
+<p>①声明并初始化: SET @变量名=值;<br>SET @变量名:=值;<br>SELECT @变量名:=值;</p>
+<p>②赋值（更新变量的值）</p>
+<ul>
+<li><p>方式一：SET @变量名=值;</p>
+<pre><code>SET @变量名:=值;
+</code></pre><p> SELECT @变量名:=值;</p>
+</li>
+<li><p>方式二：SELECT 字段 INTO @变量名</p>
+<pre><code>FROM 表;
+</code></pre></li>
+</ul>
+<p>③使用（查看变量的值）：SELECT @变量名;</p>
+</blockquote>
+<p>局部变量：作用域：仅仅在定义它的begin end块中有效，应用==在 begin end中的第一句话==</p>
+<blockquote>
+<p>①声明：<br>DECLARE 变量名 类型； DECLARE 变量名 类型 【DEFAULT 值】;</p>
+<p>②赋值（更新变量的值）</p>
+<ul>
+<li>方式一：SET 局部变量名=值;<pre><code>SET 局部变量名:=值;
+  SELECT 局部变量名:=值;
+</code></pre></li>
+<li>方式二：SELECT 字段 INTO 具备变量名<br> FROM 表;</li>
+</ul>
+<p>③使用（查看变量的值）<br>SELECT 局部变量名;</p>
+</blockquote>
+<p><strong>用户变量和局部变量的对比：</strong></p>
+<p>​                     作用域                                        定义位置                              语法</p>
+<p>用户变量    当前会话                                 会话的任何地方              加@符号，不用指定类型</p>
+<p>局部变量    定义它的BEGIN END中     BEGIN END的第一句话    一般不用加@,需要指定类型</p>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p>存储过程和函数：类似于java中的方法</p>
+<p>含义：一组预先编译好的SQL语句的集合，理解成批处理语句</p>
+<ol>
+<li>提高代码的重用性</li>
+<li>简化操作</li>
+<li>减少了编译次数并且减少了和数据库服务器的连接次数，提高了效率</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#创建语法</span><br><span class="line">CREATE PROCEDURE 存储过程名(参数列表)</span><br><span class="line">BEGIN</span><br><span class="line">	存储过程体（一组合法的SQL语句）</span><br><span class="line">END</span><br><span class="line">&#x2F;*参数列表包含三部分</span><br><span class="line">参数模式  参数名  参数类型</span><br><span class="line">参数模式：</span><br><span class="line">in：该参数可以作为输入，也就是该参数需要调用方传入值</span><br><span class="line">out：该参数可以作为输出，也就是该参数可以作为返回值</span><br><span class="line">inout：该参数既可以作为输入又可以作为输出，也就是该参数既需要传入值，又可以返回值</span><br><span class="line">举例：</span><br><span class="line">in stuname varchar(20)</span><br><span class="line"></span><br><span class="line">如果存储过程体仅仅只有一句话，begin end可以省略</span><br><span class="line">存储过程体中的每条sql语句的结尾要求必须加分号。</span><br><span class="line">存储过程的结尾可以使用 delimiter 重新设置</span><br><span class="line">语法：</span><br><span class="line">delimiter 结束标记</span><br><span class="line">案例：</span><br><span class="line">delimiter $</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#调用语法</span><br><span class="line">CALL 存储过程名(实参列表);</span><br><span class="line">#案例 创建存储过程实现，用户是否登录成功</span><br><span class="line">CREATE PROCEDURE myp4(IN username VARCHAR(20),IN PASSWORD VARCHAR(20))</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE result INT DEFAULT 0;#声明并初始化</span><br><span class="line">	SELECT COUNT(*) INTO result#赋值</span><br><span class="line">	FROM admin</span><br><span class="line">	WHERE admin.username &#x3D; username</span><br><span class="line">	AND admin.password &#x3D; PASSWORD;</span><br><span class="line">	SELECT IF(result&gt;0,&#39;成功&#39;,&#39;失败&#39;);#使用</span><br><span class="line">END $</span><br><span class="line">#调用</span><br><span class="line">CALL myp3(&#39;张飞&#39;,&#39;8888&#39;)$</span><br><span class="line">#案例 根据输入的女神名，返回对应的男神名和魅力值</span><br><span class="line">CREATE PROCEDURE myp7(IN beautyName VARCHAR(20),OUT boyName VARCHAR(20),OUT usercp INT) </span><br><span class="line">BEGIN</span><br><span class="line">	SELECT boys.boyname, boys.usercp INTO boyname,usercp</span><br><span class="line">	FROM boys </span><br><span class="line">	RIGHT JOIN</span><br><span class="line">	beauty b ON b.boyfriend_id &#x3D; boys.id</span><br><span class="line">	WHERE b.name&#x3D;beautyName ;</span><br><span class="line">END $</span><br><span class="line">#调用</span><br><span class="line">CALL myp7(&#39;小昭&#39;,@name,@cp)$</span><br><span class="line">SELECT @name,@cp$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#存储过程的删除，不能修改存储过程</span><br><span class="line">#语法：drop procedure 存储过程名，一次只能删除一个</span><br><span class="line">DROP PROCEDURE p1;</span><br><span class="line">DROP PROCEDURE p2,p3;#×</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#存储过程的查看</span><br><span class="line">DESC myp2;×</span><br><span class="line">SHOW CREATE PROCEDURE  myp2;</span><br></pre></td></tr></table></figure>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>含义：一组预先编译好的SQL语句的集合，理解成批处理语句</p>
+<ol>
+<li>提高代码的重用性</li>
+<li>简化操作</li>
+<li>减少了编译次数并且减少了和数据库服务器的连接次数，提高了效率</li>
+</ol>
+<p>区别：</p>
+<ul>
+<li>存储过程：可以有0个返回，也可以有多个返回，适合做批量插入、批量更新</li>
+<li>函数：有且仅有1 个返回，适合做处理数据后返回一个结果</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#创建语法</span><br><span class="line">CREATE FUNCTION 函数名(参数列表) RETURNS 返回类型</span><br><span class="line">BEGIN</span><br><span class="line">	函数体</span><br><span class="line">END</span><br><span class="line">&#x2F;*注意：</span><br><span class="line">1.参数列表 包含两部分：</span><br><span class="line">参数名 参数类型</span><br><span class="line">2.函数体：肯定会有return语句，如果没有会报错</span><br><span class="line">如果return语句没有放在函数体的最后也不报错，但不建议</span><br><span class="line">return 值;</span><br><span class="line">3.函数体中仅有一句话，则可以省略begin end</span><br><span class="line">4.使用 delimiter语句设置结束标记*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#调用语法</span><br><span class="line">SELECT 函数名(参数列表)</span><br><span class="line">#案例：返回公司的员工个数</span><br><span class="line">CREATE FUNCTION myf1() RETURNS INT</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE c INT DEFAULT 0;#定义局部变量</span><br><span class="line">	SELECT COUNT(*) INTO c#赋值</span><br><span class="line">	FROM employees;</span><br><span class="line">	RETURN c;</span><br><span class="line">END $</span><br><span class="line">SELECT myf1()$</span><br><span class="line">#案例 根据部门名，返回该部门的平均工资</span><br><span class="line">CREATE FUNCTION myf3(deptName VARCHAR(20)) RETURNS DOUBLE</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE sal DOUBLE ;</span><br><span class="line">	SELECT AVG(salary) INTO sal</span><br><span class="line">	FROM employees e</span><br><span class="line">	JOIN departments d ON e.department_id &#x3D; d.department_id</span><br><span class="line">	WHERE d.department_name&#x3D;deptName;</span><br><span class="line">	RETURN sal;</span><br><span class="line">END $</span><br><span class="line">SELECT myf3(&#39;IT&#39;)$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#查看和删除</span><br><span class="line">SHOW CREATE FUNCTION myf3;</span><br><span class="line">DROP FUNCTION myf3;</span><br></pre></td></tr></table></figure>
+<h2 id="流程控制结构"><a href="#流程控制结构" class="headerlink" title="流程控制结构"></a>流程控制结构</h2><h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><p><strong>if函数</strong></p>
+<p>语法：if(条件,值1，值2)</p>
+<p>功能：实现双分支，应用任何地方。</p>
+<p><strong>if结构</strong></p>
+<p>语法：</p>
+<blockquote>
+<p>if 条件1 then 语句1;</p>
+<p>elseif 条件2 then 语句2;</p>
+<p>….</p>
+<p>else 语句n;</p>
+<p>end if;</p>
+<p>功能：类似于多重if</p>
+</blockquote>
+<p>只能应用在begin end 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#案例 创建函数，实现传入成绩，如果成绩&gt;90,返回A，如果成绩&gt;80,返回B，如果成绩&gt;60,返回C，否则返回D</span><br><span class="line">CREATE FUNCTION test_if(score FLOAT) RETURNS CHAR</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE ch CHAR DEFAULT &#39;A&#39;;</span><br><span class="line">	IF score&gt;90 THEN SET ch&#x3D;&#39;A&#39;;</span><br><span class="line">	ELSEIF score&gt;80 THEN SET ch&#x3D;&#39;B&#39;;</span><br><span class="line">	ELSEIF score&gt;60 THEN SET ch&#x3D;&#39;C&#39;;</span><br><span class="line">	ELSE SET ch&#x3D;&#39;D&#39;;</span><br><span class="line">	END IF;</span><br><span class="line">	RETURN ch;</span><br><span class="line">END $</span><br><span class="line">SELECT test_if(87)$</span><br><span class="line"></span><br><span class="line">#案例 创建存储过程，如果工资&lt;2000,则删除，如果5000&gt;工资&gt;2000,则涨工资1000，否则涨工资500</span><br><span class="line">CREATE PROCEDURE test_if_pro(IN sal DOUBLE)</span><br><span class="line">BEGIN</span><br><span class="line">	IF sal&lt;2000 THEN DELETE FROM employees WHERE employees.salary&#x3D;sal;</span><br><span class="line">	ELSEIF sal&gt;&#x3D;2000 AND sal&lt;5000 THEN UPDATE employees SET salary&#x3D;salary+1000 WHERE employees.&#96;salary&#96;&#x3D;sal;</span><br><span class="line">	ELSE UPDATE employees SET salary&#x3D;salary+500 WHERE employees.&#96;salary&#96;&#x3D;sal;</span><br><span class="line">	END IF;</span><br><span class="line">END $</span><br><span class="line">CALL test_if_pro(2100)$</span><br></pre></td></tr></table></figure>
+<p><strong>case结构</strong></p>
+<p>语法：</p>
+<ul>
+<li><p>情况1：类似于switch</p>
+<blockquote>
+<p>case 变量 | 表达式 | 字段</p>
+<p>when 值1 then 语句1;</p>
+<p>when 值2 then 语句2;</p>
+<p>…</p>
+<p>else 语句n或要返回的值n;</p>
+<p>end </p>
+</blockquote>
+</li>
+<li><p>情况2：</p>
+<blockquote>
+<p>case </p>
+<p>when 条件1 then 语句1;</p>
+<p>when 条件2 then 语句2;</p>
+<p>…</p>
+<p>else 语句n或要返回的值n;</p>
+<p>end </p>
+</blockquote>
+</li>
+</ul>
+<p>作为独立的语句只能在begin end 中或外面；作为表达式，嵌套在其他语句中使用，可以用在任何地方。</p>
+<p>else可以省略，若else省略，并when的所有条件都不满足，则返回null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#案例 创建函数，实现传入成绩，如果成绩&gt;90,返回A，如果成绩&gt;80,返回B，如果成绩&gt;60,返回C，否则返回D</span><br><span class="line">CREATE FUNCTION test_case(score FLOAT) RETURNS CHAR</span><br><span class="line">BEGIN </span><br><span class="line">	DECLARE ch CHAR DEFAULT &#39;A&#39;;</span><br><span class="line">	CASE </span><br><span class="line">	WHEN score&gt;90 THEN SET ch&#x3D;&#39;A&#39;;</span><br><span class="line">	WHEN score&gt;80 THEN SET ch&#x3D;&#39;B&#39;;</span><br><span class="line">	WHEN score&gt;60 THEN SET ch&#x3D;&#39;C&#39;;</span><br><span class="line">	ELSE SET ch&#x3D;&#39;D&#39;;</span><br><span class="line">	END CASE;</span><br><span class="line">	RETURN ch;</span><br><span class="line">END $</span><br><span class="line">SELECT test_case(56)$</span><br></pre></td></tr></table></figure>
+<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>分类：while、loop、repeat</p>
+<p>循环控制：iterate类似于 continue，继续，结束本次循环，继续下一次；leave 类似于  break，跳出，结束当前所在的循环。</p>
+<p><strong>while</strong></p>
+<p>语法：</p>
+<blockquote>
+<p>【标签:】while 循环条件 do</p>
+<p>​    循环体;</p>
+<p>end while【 标签】;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#案例：批量插入，根据次数插入到admin表中多条记录</span><br><span class="line">DROP PROCEDURE pro_while1$</span><br><span class="line">CREATE PROCEDURE pro_while1(IN insertCount INT)</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 1;</span><br><span class="line">	WHILE i&lt;&#x3D;insertCount DO</span><br><span class="line">		INSERT INTO admin(username,&#96;password&#96;) VALUES(CONCAT(&#39;Rose&#39;,i),&#39;666&#39;);</span><br><span class="line">		SET i&#x3D;i+1;</span><br><span class="line">	END WHILE;</span><br><span class="line">END $</span><br><span class="line">CALL pro_while1(100)$</span><br><span class="line"></span><br><span class="line">#添加leave语句</span><br><span class="line">#案例 批量插入，根据次数插入到admin表中多条记录，如果次数&gt;20则停止</span><br><span class="line">TRUNCATE TABLE admin$</span><br><span class="line">DROP PROCEDURE test_while1$</span><br><span class="line">CREATE PROCEDURE test_while1(IN insertCount INT)</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 1;</span><br><span class="line">	a:WHILE i&lt;&#x3D;insertCount DO</span><br><span class="line">		INSERT INTO admin(username,&#96;password&#96;) VALUES(CONCAT(&#39;xiaohua&#39;,i),&#39;0000&#39;);</span><br><span class="line">		IF i&gt;&#x3D;20 THEN LEAVE a;</span><br><span class="line">		END IF;</span><br><span class="line">		SET i&#x3D;i+1;</span><br><span class="line">	END WHILE a;</span><br><span class="line">END $</span><br><span class="line">CALL test_while1(100)$</span><br></pre></td></tr></table></figure>
+<p><strong>loop</strong></p>
+<p>语法：</p>
+<blockquote>
+<p>【标签:】loop</p>
+<p>​    循环体;</p>
+<p>end loop 【标签】;</p>
+<p>可以用来模拟简单的死循环</p>
+</blockquote>
+<p><strong>repeat</strong></p>
+<p>语法：使用 leave 跳出循环。</p>
+<blockquote>
+<p>【标签：】repeat</p>
+<p>​    循环体;</p>
+<p>until 结束循环的条件</p>
+<p>end repeat 【标签】;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*已知表stringcontent</span><br><span class="line">其中字段：</span><br><span class="line">id 自增长</span><br><span class="line">content varchar(20)</span><br><span class="line"></span><br><span class="line">向该表插入指定个数的，随机的字符串</span><br><span class="line">*&#x2F;</span><br><span class="line">DROP TABLE IF EXISTS stringcontent;</span><br><span class="line">CREATE TABLE stringcontent(</span><br><span class="line">	id INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">	content VARCHAR(20)</span><br><span class="line">);</span><br><span class="line">DELIMITER $</span><br><span class="line">CREATE PROCEDURE test_randstr_insert(IN insertCount INT)</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 1;</span><br><span class="line">	DECLARE str VARCHAR(26) DEFAULT &#39;abcdefghijklmnopqrstuvwxyz&#39;;</span><br><span class="line">	DECLARE startIndex INT;#代表初始索引</span><br><span class="line">	DECLARE len INT;#代表截取的字符长度</span><br><span class="line">	WHILE i&lt;&#x3D;insertcount DO</span><br><span class="line">		SET startIndex&#x3D;FLOOR(RAND()*26+1);#代表初始索引，随机范围1-26</span><br><span class="line">		SET len&#x3D;FLOOR(RAND()*(20-startIndex+1)+1);#代表截取长度，随机范围1-（20-startIndex+1）</span><br><span class="line">		INSERT INTO stringcontent(content) VALUES(SUBSTR(str,startIndex,len));</span><br><span class="line">		SET i&#x3D;i+1;</span><br><span class="line">	END WHILE;</span><br><span class="line">END $</span><br><span class="line"></span><br><span class="line">CALL test_randstr_insert(10)$</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  MySQL04-DDL
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+                MySQL05-TCL
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">NiuMT</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
