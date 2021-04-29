@@ -1398,11 +1398,11 @@
 <li><p>当WAL文件的数量超过<strong>hbase.regionserver.max.logs</strong>，region会按照时间顺序依次进行刷写，直到WAL文件数量减小到<strong>hbase.regionserver.max.log</strong>以下（该属性名已经废弃，现无需手动设置，最大值为32）</p>
 </li>
 </ul>
-<h2 id="StoreFile-Compaction"><a href="#StoreFile-Compaction" class="headerlink" title="StoreFile Compaction"></a>StoreFile Compaction</h2><p>由于Hbase依赖HDFS存储，HDFS只支持追加写。所以，当新增一个单元格的时候，HBase在HDFS上新增一条数据。当修改一个单元格的时候，HBase在HDFS又新增一条数据，只是版本号比之前那个大（或者自定义）。当删除一个单元格的时候，HBase还是新增一条数据！只是这条数据没有value，类型为DELETE，也称为墓碑标记（Tombstone）</p>
-<p>HBase每间隔一段时间都会进行一次合并（Compaction），合并的对象为HFile文件。合并分为两种 minor compaction和major compaction。</p>
-<p>在HBase进行major compaction的时候，它会把多个HFile合并成1个HFile，在这个过程中，一旦检测到有被打上墓碑标记的记录，在合并的过程中就忽略这条记录。这样在新产生的HFile中，就没有这条记录了，自然也就相当于被真正地删除了。</p>
+<h2 id="StoreFile-Compaction"><a href="#StoreFile-Compaction" class="headerlink" title="StoreFile Compaction"></a>StoreFile Compaction</h2><p>由于Hbase依赖HDFS存储，HDFS只支持追加写。所以，当新增一个单元格的时候，HBase在HDFS上新增一条数据。当修改一个单元格的时候，HBase在HDFS又新增一条数据，只是版本号比之前那个大（或者自定义）。当删除一个单元格的时候，HBase还是新增一条数据！只是这条数据没有value，类型为DELETE，也称为墓碑标记（Tombstone）。</p>
 <p>由于memstore每次刷写都会生成一个新的HFile，且同一个字段的不同版本（timestamp）和不同类型（Put/Delete）有可能会分布在不同的HFile中，因此查询时需要遍历所有的HFile。为了减少HFile的个数，以及清理掉过期和删除的数据，会进行StoreFile Compaction。</p>
-<p>Compaction分为两种，分别是Minor Compaction和Major Compaction。Minor Compaction会将临近的若干个较小的HFile合并成一个较大的HFile，但<strong>不会</strong>清理过期和删除的数据。Major Compaction会将一个Store下的所有的HFile合并成一个大HFile，并且<strong>会</strong>清理掉过期和删除的数据。</p>
+<p>HBase每间隔一段时间都会进行一次合并（Compaction），合并的对象为HFile文件。合并分为两种 minor compaction和major compaction。</p>
+<p>Minor Compaction会将临近的若干个较小的HFile合并成一个较大的HFile，但<strong>不会</strong>清理过期和删除的数据。</p>
+<p>Major Compaction会将一个Store下的所有的HFile合并成一个大HFile，并且<strong>会</strong>清理掉过期和删除的数据。在HBase进行major compaction的时候，它会把多个HFile合并成1个HFile，在这个过程中，一旦检测到有被打上墓碑标记的记录，在合并的过程中就忽略这条记录。这样在新产生的HFile中，就没有这条记录了，自然也就相当于被真正地删除了。</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210419230351088.png" alt="image-20210419230351088"></p>
 <h2 id="Region-Split"><a href="#Region-Split" class="headerlink" title="Region Split"></a>Region Split</h2><p>默认情况下，每个Table起初只有一个Region，随着数据的不断写入，Region会自动进行拆分。刚拆分时，两个子Region都位于当前的Region Server，但处于负载均衡的考虑，HMaster有可能会将某个Region转移给其他的Region Server。</p>
 <p>Region Split时机：</p>
