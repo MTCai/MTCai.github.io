@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1349,20 +1349,88 @@
 <li>1.git下载      git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg   # 网速太慢</li>
 <li>2.官网下载   <a href="http://www.ffmpeg.org/download.html" target="_blank" rel="noopener">http://www.ffmpeg.org/download.html</a>   # 我使用的这个</li>
 </ul>
-<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install yasm           <span class="comment"># 必选</span></span><br><span class="line">sudo apt-get install xorg-dev       <span class="comment"># 可选</span></span><br><span class="line">sudo apt-get install libsdl1<span class="number">.2</span>-dev  <span class="comment"># 可选</span></span><br></pre></td></tr></table></figure>
-<h2 id="开始编译安装"><a href="#开始编译安装" class="headerlink" title="开始编译安装"></a>开始编译安装</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./configure --enable-shared --extra-cflags=<span class="string">"-fPIC"</span></span><br><span class="line">sudo make</span><br><span class="line">sudo make install </span><br><span class="line"><span class="comment"># 编译完成，查看/usr/local/lib和/usr/local/include是否生成ffmpeg的库</span></span><br></pre></td></tr></table></figure>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -version  # 输出正常即可</span><br></pre></td></tr></table></figure>
-<p>测试用例1：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">新建test.c，写入以下代码：</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/avstring.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/eval.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/mathematics.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/pixdesc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/imgutils.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/dict.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/parseutils.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/samplefmt.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/avassert.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavformat/avformat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavdevice/avdevice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libswscale/swscale.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/opt.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavcodec/avfft.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libswresample/swresample.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"this is  a test program for ffmpeg\n"</span>);</span><br><span class="line">	av_register_all();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><pre><code class="lang-python">sudo apt-get install yasm           # 必选
+sudo apt-get install xorg-dev       # 可选
+sudo apt-get install libsdl1.2-dev  # 可选
+</code></pre>
+<h2 id="开始编译安装"><a href="#开始编译安装" class="headerlink" title="开始编译安装"></a>开始编译安装</h2><pre><code class="lang-python">./configure --enable-shared --extra-cflags=&quot;-fPIC&quot;
+sudo make
+sudo make install 
+# 编译完成，查看/usr/local/lib和/usr/local/include是否生成ffmpeg的库
+</code></pre>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code>ffmpeg -version  # 输出正常即可
+</code></pre><p>测试用例1：</p>
+<pre><code class="lang-c">新建test.c，写入以下代码：
+
+#include &lt;stdio.h&gt;
+#include &lt;libavutil/avstring.h&gt;
+#include &lt;libavutil/eval.h&gt;
+#include &lt;libavutil/mathematics.h&gt;
+#include &lt;libavutil/pixdesc.h&gt;
+#include &lt;libavutil/imgutils.h&gt;
+#include &lt;libavutil/dict.h&gt;
+#include &lt;libavutil/parseutils.h&gt;
+#include &lt;libavutil/samplefmt.h&gt;
+#include &lt;libavutil/avassert.h&gt;
+#include &lt;libavutil/time.h&gt;
+#include &lt;libavformat/avformat.h&gt;
+#include &lt;libavdevice/avdevice.h&gt;
+#include &lt;libswscale/swscale.h&gt;
+#include &lt;libavutil/opt.h&gt;
+#include &lt;libavcodec/avfft.h&gt;
+#include &lt;libswresample/swresample.h&gt;
+
+int main(int argc, char* argv[])
+{
+    printf(&quot;this is  a test program for ffmpeg\n&quot;);
+    av_register_all();
+    return 0;
+}
+</code></pre>
 <p>在终端输入以下指令：<br>gcc test.c -o test -I /usr/local/include -L /usr/local/lib -lavutil -lavformat -lavcodec -lavutil -lswresample -lm -lrt -lpthread -lz<br>./test</p>
 <p>测试用例2</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">test1.c</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/avstring.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/eval.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/mathematics.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/pixdesc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/imgutils.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/dict.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/parseutils.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/samplefmt.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/avassert.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavformat/avformat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavdevice/avdevice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libswscale/swscale.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavutil/opt.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libavcodec/avfft.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;libswresample/swresample.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"this is  a test program for ffmpeg\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%s"</span>, avcodec_configuration());</span><br><span class="line">	getchar();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-c">test1.c
+
+#include &lt;stdio.h&gt;
+#include &lt;libavutil/avstring.h&gt;
+#include &lt;libavutil/eval.h&gt;
+#include &lt;libavutil/mathematics.h&gt;
+#include &lt;libavutil/pixdesc.h&gt;
+#include &lt;libavutil/imgutils.h&gt;
+#include &lt;libavutil/dict.h&gt;
+#include &lt;libavutil/parseutils.h&gt;
+#include &lt;libavutil/samplefmt.h&gt;
+#include &lt;libavutil/avassert.h&gt;
+#include &lt;libavutil/time.h&gt;
+#include &lt;libavformat/avformat.h&gt;
+#include &lt;libavdevice/avdevice.h&gt;
+#include &lt;libswscale/swscale.h&gt;
+#include &lt;libavutil/opt.h&gt;
+#include &lt;libavcodec/avfft.h&gt;
+#include &lt;libswresample/swresample.h&gt;
+
+int main(int argc, char* argv[])
+{
+    printf(&quot;this is  a test program for ffmpeg\n&quot;);
+    printf(&quot;%s&quot;, avcodec_configuration());
+    getchar();
+    return 0;
+}
+</code></pre>
 <p>在终端输入以下指令：<br>gcc test1.c -o test -I /usr/local/include -L /usr/local/lib -lavutil -lavformat -lavcodec -lavutil -lswresample -lm -lrt -lpthread -lz<br>./test</p>
 <h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ul>
 <li>1.ffmpeg: error while loading shared libraries: libavdevice.so.58: cannot open shared object file: No such file or directory<br>因为我们使用源码编译，没有添加环境变量</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;ld.so.conf</span><br><span class="line">添加： &#x2F;usr&#x2F;local&#x2F;lib </span><br><span class="line">退出vim</span><br><span class="line">sudo ldconfig        # 更改生效</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo vim &#x2F;etc&#x2F;profile</span><br><span class="line">添加： export PATH&#x3D;&quot;&#x2F;usr&#x2F;local&#x2F;bin:$PATH&quot;</span><br><span class="line">source &#x2F;etc&#x2F;profile  # 更改生效</span><br></pre></td></tr></table></figure>
-<p>再在终端输入ffmpeg -version 就会有信息输出了</p>
+<pre><code>sudo vim /etc/ld.so.conf
+添加： /usr/local/lib 
+退出vim
+sudo ldconfig        # 更改生效
+
+
+sudo vim /etc/profile
+添加： export PATH=&quot;/usr/local/bin:$PATH&quot;
+source /etc/profile  # 更改生效
+</code></pre><p>再在终端输入ffmpeg -version 就会有信息输出了</p>
 
 </div>
 

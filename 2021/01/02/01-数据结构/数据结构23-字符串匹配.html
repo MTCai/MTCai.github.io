@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1386,13 +1386,85 @@
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>假设字符串的字符集不是很大，每个字符长度是 1 字节，我们用大小为 256 的数组，来记录每个字符在模式串中最后出现的位置。数组的下标对应字符的 ASCII 码值，数组中存储这个字符在模式串中出现的位置。</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210308142155943.png" alt="image-20210308142155943"></p>
 <p>掌握了坏字符规则之后，先把 BM 算法代码的大框架写好，先不考虑好后缀规则，仅用坏字符规则，并且不考虑 si-xi 计算得到的移动位数可能会出现负数的情况。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">bm</span><span class="params">(<span class="keyword">char</span>[] a, <span class="keyword">int</span> n, <span class="keyword">char</span>[] b, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span>[] bc = <span class="keyword">new</span> <span class="keyword">int</span>[SIZE]; <span class="comment">// 记录模式串中每个字符最后出现的位置</span></span><br><span class="line">  generateBC(b, m, bc); <span class="comment">// 构建坏字符哈希表</span></span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">// i 表示主串与模式串对齐的第一个字符</span></span><br><span class="line">  <span class="keyword">while</span> (i &lt;= n - m) &#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">for</span> (j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j) &#123; <span class="comment">// 模式串从后往前匹配</span></span><br><span class="line">      <span class="keyword">if</span> (a[i+j] != b[j]) <span class="keyword">break</span>; <span class="comment">// 坏字符对应模式串中的下标是 j</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> i; <span class="comment">// 匹配成功，返回主串与模式串第一个匹配的字符的位置</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 这里等同于将模式串往后滑动 j-bc[(int)a[i+j]] 位</span></span><br><span class="line">    i = i + (j - bc[(<span class="keyword">int</span>)a[i+j]]); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public int bm(char[] a, int n, char[] b, int m) {
+  int[] bc = new int[SIZE]; // 记录模式串中每个字符最后出现的位置
+  generateBC(b, m, bc); // 构建坏字符哈希表
+  int i = 0; // i 表示主串与模式串对齐的第一个字符
+  while (i &lt;= n - m) {
+    int j;
+    for (j = m - 1; j &gt;= 0; --j) { // 模式串从后往前匹配
+      if (a[i+j] != b[j]) break; // 坏字符对应模式串中的下标是 j
+    }
+    if (j &lt; 0) {
+      return i; // 匹配成功，返回主串与模式串第一个匹配的字符的位置
+    }
+    // 这里等同于将模式串往后滑动 j-bc[(int)a[i+j]] 位
+    i = i + (j - bc[(int)a[i+j]]); 
+  }
+  return -1;
+}
+</code></pre>
 <p>因为好后缀也是模式串本身的后缀子串，所以，我们可以在模式串和主串正式匹配之前，通过预处理模式串，预先计算好模式串的每个后缀子串，对应的另一个可匹配子串的位置。</p>
 <p>因为后缀子串的最后一个字符的位置是固定的，下标为 m-1，只需要记录长度就可以了。通过长度，可以确定一个唯一的后缀子串。</p>
 <p>现在，要<strong>引入最关键的变量 suffix 数组</strong>。suffix 数组的下标 k，表示后缀子串的长度，下标对应的数组值存储的是，在模式串中跟好后缀{u}相匹配的子串{u*}的起始下标值。如，在模式串中和后一个b匹配的下标是2。如果模式串中有多个（大于 1 个）子串跟后缀子串{u}匹配，存储模式串中最靠后的那个子串的起始位置，也就是下标最大的那个子串的起始位置，避免模式串往后滑动得过头了。</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210308144856447.png" alt="image-20210308144856447"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b 表示模式串，m 表示长度，suffix，prefix 数组事先申请好了</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">generateGS</span><span class="params">(<span class="keyword">char</span>[] b, <span class="keyword">int</span> m, <span class="keyword">int</span>[] suffix, <span class="keyword">boolean</span>[] prefix)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123; <span class="comment">// 初始化</span></span><br><span class="line">    suffix[i] = -<span class="number">1</span>;</span><br><span class="line">    prefix[i] = <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m - <span class="number">1</span>; ++i) &#123; <span class="comment">// b[0, i]</span></span><br><span class="line">    <span class="keyword">int</span> j = i;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>; <span class="comment">// 公共后缀子串长度</span></span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; b[j] == b[m-<span class="number">1</span>-k]) &#123; <span class="comment">// 与 b[0, m-1] 求公共后缀子串</span></span><br><span class="line">      --j;</span><br><span class="line">      ++k;</span><br><span class="line">      suffix[k] = j+<span class="number">1</span>; <span class="comment">//j+1 表示公共后缀子串在 b[0, i] 中的起始下标</span></span><br><span class="line">    &#125;</span><br><span class="line">    i</span><br><span class="line">    <span class="keyword">if</span> (j == -<span class="number">1</span>) prefix[k] = <span class="keyword">true</span>; <span class="comment">// 如果公共后缀子串也是模式串的前缀子串</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a,b 表示主串和模式串；n，m 表示主串和模式串的长度。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">bm</span><span class="params">(<span class="keyword">char</span>[] a, <span class="keyword">int</span> n, <span class="keyword">char</span>[] b, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span>[] bc = <span class="keyword">new</span> <span class="keyword">int</span>[SIZE]; <span class="comment">// 记录模式串中每个字符最后出现的位置</span></span><br><span class="line">  generateBC(b, m, bc); <span class="comment">// 构建坏字符哈希表</span></span><br><span class="line">  <span class="keyword">int</span>[] suffix = <span class="keyword">new</span> <span class="keyword">int</span>[m];</span><br><span class="line">  <span class="keyword">boolean</span>[] prefix = <span class="keyword">new</span> <span class="keyword">boolean</span>[m];</span><br><span class="line">  generateGS(b, m, suffix, prefix);</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">// j 表示主串与模式串匹配的第一个字符</span></span><br><span class="line">  <span class="keyword">while</span> (i &lt;= n - m) &#123;</span><br><span class="line">    <span class="keyword">int</span> j;</span><br><span class="line">    <span class="keyword">for</span> (j = m - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j) &#123; <span class="comment">// 模式串从后往前匹配</span></span><br><span class="line">      <span class="keyword">if</span> (a[i+j] != b[j]) <span class="keyword">break</span>; <span class="comment">// 坏字符对应模式串中的下标是 j</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> i; <span class="comment">// 匹配成功，返回主串与模式串第一个匹配的字符的位置</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> x = j - bc[(<span class="keyword">int</span>)a[i+j]];</span><br><span class="line">    <span class="keyword">int</span> y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (j &lt; m-<span class="number">1</span>) &#123; <span class="comment">// 如果有好后缀的话</span></span><br><span class="line">      y = moveByGS(j, m, suffix, prefix);</span><br><span class="line">    &#125;</span><br><span class="line">    i = i + Math.max(x, y);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// j 表示坏字符对应的模式串中的字符下标 ; m 表示模式串长度</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">moveByGS</span><span class="params">(<span class="keyword">int</span> j, <span class="keyword">int</span> m, <span class="keyword">int</span>[] suffix, <span class="keyword">boolean</span>[] prefix)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> k = m - <span class="number">1</span> - j; <span class="comment">// 好后缀长度</span></span><br><span class="line">  <span class="keyword">if</span> (suffix[k] != -<span class="number">1</span>) <span class="keyword">return</span> j - suffix[k] +<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> r = j+<span class="number">2</span>; r &lt;= m-<span class="number">1</span>; ++r) &#123;</span><br><span class="line">    <span class="keyword">if</span> (prefix[m-r] == <span class="keyword">true</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// b 表示模式串，m 表示长度，suffix，prefix 数组事先申请好了
+private void generateGS(char[] b, int m, int[] suffix, boolean[] prefix) {
+  for (int i = 0; i &lt; m; ++i) { // 初始化
+    suffix[i] = -1;
+    prefix[i] = false;
+  }
+  for (int i = 0; i &lt; m - 1; ++i) { // b[0, i]
+    int j = i;
+    int k = 0; // 公共后缀子串长度
+    while (j &gt;= 0 &amp;&amp; b[j] == b[m-1-k]) { // 与 b[0, m-1] 求公共后缀子串
+      --j;
+      ++k;
+      suffix[k] = j+1; //j+1 表示公共后缀子串在 b[0, i] 中的起始下标
+    }
+    i
+    if (j == -1) prefix[k] = true; // 如果公共后缀子串也是模式串的前缀子串
+  }
+}
+</code></pre>
+<pre><code class="lang-java">// a,b 表示主串和模式串；n，m 表示主串和模式串的长度。
+public int bm(char[] a, int n, char[] b, int m) {
+  int[] bc = new int[SIZE]; // 记录模式串中每个字符最后出现的位置
+  generateBC(b, m, bc); // 构建坏字符哈希表
+  int[] suffix = new int[m];
+  boolean[] prefix = new boolean[m];
+  generateGS(b, m, suffix, prefix);
+  int i = 0; // j 表示主串与模式串匹配的第一个字符
+  while (i &lt;= n - m) {
+    int j;
+    for (j = m - 1; j &gt;= 0; --j) { // 模式串从后往前匹配
+      if (a[i+j] != b[j]) break; // 坏字符对应模式串中的下标是 j
+    }
+    if (j &lt; 0) {
+      return i; // 匹配成功，返回主串与模式串第一个匹配的字符的位置
+    }
+    int x = j - bc[(int)a[i+j]];
+    int y = 0;
+    if (j &lt; m-1) { // 如果有好后缀的话
+      y = moveByGS(j, m, suffix, prefix);
+    }
+    i = i + Math.max(x, y);
+  }
+  return -1;
+}
+
+// j 表示坏字符对应的模式串中的字符下标 ; m 表示模式串长度
+private int moveByGS(int j, int m, int[] suffix, boolean[] prefix) {
+  int k = m - 1 - j; // 好后缀长度
+  if (suffix[k] != -1) return j - suffix[k] +1;
+  for (int r = j+2; r &lt;= m-1; ++r) {
+    if (prefix[m-r] == true) {
+      return r;
+    }
+  }
+  return m;
+}
+</code></pre>
 <h3 id="性能分析及优化"><a href="#性能分析及优化" class="headerlink" title="性能分析及优化"></a>性能分析及优化</h3><p>整个算法用到了额外的 3 个数组，其中 bc 数组的大小跟字符集大小有关，suffix 数组和 prefix 数组的大小跟模式串长度 m 有关。</p>
 <p>如果我们处理字符集很大的字符串匹配问题，bc 数组对内存的消耗就会比较多。因为好后缀和坏字符规则是独立的，如果我们运行的环境对内存要求苛刻，可以只使用好后缀规则，不使用坏字符规则，这样就可以避免 bc 数组过多的内存消耗。不过，单纯使用好后缀规则的 BM 算法效率就会下降一些了。</p>
 <p>BM 算法的时间复杂度分析起来是非常复杂，这篇论文“<a href="http://dl.acm.org/citation.cfm?id=1382431.1382552" target="_blank" rel="noopener">A new proof of the linearity of the Boyer-Moore string searching algorithm</a>”证明了在最坏情况下，BM 算法的比较次数上限是 5n。这篇论文“<a href="http://dl.acm.org/citation.cfm?id=127830" target="_blank" rel="noopener">Tight bounds on the complexity of the Boyer-Moore string matching algorithm</a>”证明了在最坏情况下，BM 算法的比较次数上限是 3n。</p>
@@ -1407,16 +1479,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+              <a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  数据结构22-深度和广度优先搜索
+                  数据结构28-回溯算法
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
-                数据结构24-Trie树
+              <a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+                数据结构30-动态规划入门案例
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

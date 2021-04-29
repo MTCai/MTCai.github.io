@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1334,12 +1334,57 @@
 </div>
 
 <div id="article-content">
-	<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; create database if not exists db_hive; </span><br><span class="line"><span class="comment">-- 默认存储路径是/user/hive/warehouse/*.db。</span></span><br><span class="line"></span><br><span class="line">hive&gt; create database db_hive2 location '/db_hive2.db';</span><br><span class="line">hive&gt; create database db_hive2 location '/hive/db';</span><br><span class="line"><span class="comment">-- 指定数据库在HDFS 上存放的位置</span></span><br><span class="line"><span class="comment">-- 路径和数据库名可以不一致</span></span><br></pre></td></tr></table></figure>
-<h2 id="查询数据库"><a href="#查询数据库" class="headerlink" title="查询数据库"></a>查询数据库</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 显示数据库</span></span><br><span class="line">hive&gt; show databases; </span><br><span class="line"><span class="comment">-- 过滤显示查询的数据库</span></span><br><span class="line">hive&gt; show databases like 'db_hive*'; </span><br><span class="line"><span class="comment">-- 显示数据库信息</span></span><br><span class="line">hive&gt; desc database db_hive;  </span><br><span class="line">OK</span><br><span class="line">db_hive</span><br><span class="line">hdfs://hadoop102:9000/user/hive/warehouse/db_hive.db</span><br><span class="line">atguiguUSER</span><br><span class="line"><span class="comment">-- 显示数据库详细信息</span></span><br><span class="line">hive&gt; desc database extended db_hive; </span><br><span class="line">OK</span><br><span class="line">db_hive</span><br><span class="line">hdfs://hadoop102:9000/user/hive/warehouse/db_hive.db</span><br><span class="line">atguiguUSER</span><br></pre></td></tr></table></figure>
+	<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><pre><code class="lang-sql">hive&gt; create database if not exists db_hive; 
+-- 默认存储路径是/user/hive/warehouse/*.db。
+
+hive&gt; create database db_hive2 location &#39;/db_hive2.db&#39;;
+hive&gt; create database db_hive2 location &#39;/hive/db&#39;;
+-- 指定数据库在HDFS 上存放的位置
+-- 路径和数据库名可以不一致
+</code></pre>
+<h2 id="查询数据库"><a href="#查询数据库" class="headerlink" title="查询数据库"></a>查询数据库</h2><pre><code class="lang-sql">-- 显示数据库
+hive&gt; show databases; 
+-- 过滤显示查询的数据库
+hive&gt; show databases like &#39;db_hive*&#39;; 
+-- 显示数据库信息
+hive&gt; desc database db_hive;  
+OK
+db_hive
+hdfs://hadoop102:9000/user/hive/warehouse/db_hive.db
+atguiguUSER
+-- 显示数据库详细信息
+hive&gt; desc database extended db_hive; 
+OK
+db_hive
+hdfs://hadoop102:9000/user/hive/warehouse/db_hive.db
+atguiguUSER
+</code></pre>
 <h2 id="修改数据库"><a href="#修改数据库" class="headerlink" title="修改数据库"></a>修改数据库</h2><p>用户可以使用ALTER DATABASE 命令为某个数据库的DBPROPERTIES 设置键-值对属性值，来描述这个数据库的属性信息。数据库的其他元数据信息都是不可更改的，包括数据库名和数据库所在的目录位置。只能修改自定义的属性，其他属性不能修改。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; alter database hive set dbproperties('createtime'='20170830');</span><br><span class="line"></span><br><span class="line">hive&gt; desc database extended db_hive;</span><br><span class="line">db_name <span class="keyword">comment</span> location owner_name owner_type <span class="keyword">parameters</span></span><br><span class="line">db_hive</span><br><span class="line">hdfs://hadoop102:<span class="number">8020</span>/<span class="keyword">user</span>/hive/warehouse/db_hive.db</span><br><span class="line">atguigu <span class="keyword">USER</span> &#123;createtime=<span class="number">20170830</span>&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 删除空数据库</span></span><br><span class="line">hive&gt; drop database db_hive2; </span><br><span class="line"><span class="comment">-- 如果删除的数据库不存在，最好采用if exists 判断数据库是否存在</span></span><br><span class="line">hive&gt; drop database if exists db_hive2;</span><br><span class="line"><span class="comment">-- 如果数据库不为空，可以采用cascade 命令，强制删除</span></span><br><span class="line">hive&gt; drop database db_hive cascade;</span><br></pre></td></tr></table></figure>
-<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">EXTERNAL</span>] <span class="keyword">TABLE</span> [<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] table_name</span><br><span class="line">[(col_name data_type [<span class="keyword">COMMENT</span> col_comment], ...)]</span><br><span class="line">[<span class="keyword">COMMENT</span> table_comment]</span><br><span class="line">[PARTITIONED <span class="keyword">BY</span> (col_name data_type [<span class="keyword">COMMENT</span> col_comment], ...)]</span><br><span class="line">[CLUSTERED <span class="keyword">BY</span> (col_name, col_name, ...)</span><br><span class="line">[SORTED <span class="keyword">BY</span> (col_name [<span class="keyword">ASC</span>|<span class="keyword">DESC</span>], ...)] <span class="keyword">INTO</span> num_buckets BUCKETS]</span><br><span class="line">[<span class="keyword">ROW</span> <span class="keyword">FORMAT</span> row_format]</span><br><span class="line">[<span class="keyword">STORED</span> <span class="keyword">AS</span> file_format]</span><br><span class="line">[LOCATION hdfs_path]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">hive&gt; alter database hive set dbproperties(&#39;createtime&#39;=&#39;20170830&#39;);
+
+hive&gt; desc database extended db_hive;
+db_name comment location owner_name owner_type parameters
+db_hive
+hdfs://hadoop102:8020/user/hive/warehouse/db_hive.db
+atguigu USER {createtime=20170830}
+</code></pre>
+<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><pre><code class="lang-sql">-- 删除空数据库
+hive&gt; drop database db_hive2; 
+-- 如果删除的数据库不存在，最好采用if exists 判断数据库是否存在
+hive&gt; drop database if exists db_hive2;
+-- 如果数据库不为空，可以采用cascade 命令，强制删除
+hive&gt; drop database db_hive cascade;
+</code></pre>
+<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><pre><code class="lang-sql">CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name
+[(col_name data_type [COMMENT col_comment], ...)]
+[COMMENT table_comment]
+[PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]
+[CLUSTERED BY (col_name, col_name, ...)
+[SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]
+[ROW FORMAT row_format]
+[STORED AS file_format]
+[LOCATION hdfs_path]
+</code></pre>
 <ul>
 <li><p>CREATE TABLE 创建一个指定名字的表。<font color = #3333ff face="宋体">如果相同名字的表已经存在，则抛出异常</font>；用户可以用 IF NOT EXISTS 选项来忽略这个异常。</p>
 </li>
@@ -1356,7 +1401,10 @@
 <li><p>ROW FORMAT</p>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DELIMITED [FIELDS TERMINATED BY char] [COLLECTION ITEMS TERMINATED BY char]</span><br><span class="line">[MAP KEYS TERMINATED BY char] [LINES TERMINATED BY char]</span><br><span class="line">| SERDE serde_name [<span class="keyword">WITH</span> SERDEPROPERTIES (property_name=property_value, property_name=property_value, ...)]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">DELIMITED [FIELDS TERMINATED BY char] [COLLECTION ITEMS TERMINATED BY char]
+[MAP KEYS TERMINATED BY char] [LINES TERMINATED BY char]
+| SERDE serde_name [WITH SERDEPROPERTIES (property_name=property_value, property_name=property_value, ...)]
+</code></pre>
 <p>  用户在建表的时候可以自定义SerDe 或者使用自带的SerDe。如果没有指定ROW FORMAT 或者ROW FORMAT DELIMITED，将会使用自带的SerDe。在建表的时候，用户还需要为表指定列，用户在指定表的列的同时也会指定自定义的SerDe，Hive 通过SerDe确定表的具体的列的数据。</p>
 <p>  SerDe 是Serialize/Deserilize 的简称，目的是用于序列化和反序列化。</p>
 <ul>
@@ -1370,32 +1418,164 @@
 </li>
 </ul>
 <h3 id="管理表-内部表"><a href="#管理表-内部表" class="headerlink" title="管理表(内部表)"></a>管理表(内部表)</h3><p>默认创建的表都是所谓的管理表，有时也被称为<strong>内部表</strong>。因为这种表，Hive 会（或多或少地）控制着数据的生命周期。Hive 默认情况下会将这些表的数据存储在由配置项hive.metastore.warehouse.dir (如，/user/hive/warehouse)所定义的目录的子目录下。<strong>当我们删除一个管理表时，Hive 也会删除这个表中数据。管理表不适合和其他工具共享数据。</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 普通创建表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> student2(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">int</span>, <span class="keyword">name</span> <span class="keyword">string</span>)</span><br><span class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span></span><br><span class="line"><span class="keyword">stored</span> <span class="keyword">as</span> textfile</span><br><span class="line">location <span class="string">'/user/hive/warehouse/student2'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 根据查询结果创建表（查询的结果会添加到新创建的表中）</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> student3 <span class="keyword">as</span> <span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span> <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 根据已经存在的表结构创建表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> student4 <span class="keyword">like</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询表的类型</span></span><br><span class="line">hive (default)&gt; desc formatted student2;</span><br><span class="line">Table Type: MANAGED_TABLE</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">-- 普通创建表
+create table if not exists student2(
+id int, name string)
+row format delimited fields terminated by &#39;\t&#39;
+stored as textfile
+location &#39;/user/hive/warehouse/student2&#39;;
+
+-- 根据查询结果创建表（查询的结果会添加到新创建的表中）
+create table if not exists student3 as select id, name from student;
+
+-- 根据已经存在的表结构创建表
+create table if not exists student4 like student;
+
+-- 查询表的类型
+hive (default)&gt; desc formatted student2;
+Table Type: MANAGED_TABLE
+</code></pre>
 <h3 id="外部表-元数据-表"><a href="#外部表-元数据-表" class="headerlink" title="外部表 (元数据+表)"></a>外部表 (元数据+表)</h3><p>因为表是外部表，所以Hive 并非认为其完全拥有这份数据。删除该表并不会删除掉这份数据，不过描述表的元数据信息会被删除掉。删除后再建立相同的表（即恢复元数据），不导入数据，依然能查到原来的数据。</p>
 <p>每天将收集到的网站日志定期流入HDFS 文本文件。在外部表（原始日志表）的基础上做大量的统计分析，用到的中间表、结果表使用内部表存储，数据通过SELECT+INSERT 进入内部表。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">external</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> default.dept(</span><br><span class="line">deptno <span class="built_in">int</span>,</span><br><span class="line">dname <span class="keyword">string</span>,</span><br><span class="line">loc <span class="built_in">int</span> )</span><br><span class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">load</span> <span class="keyword">data</span> <span class="keyword">local</span> inpath <span class="string">'/opt/module/data/dept.txt'</span> <span class="keyword">into</span> <span class="keyword">table</span> default.dept;</span><br><span class="line"></span><br><span class="line">hive (default)&gt; desc formatted dept;</span><br><span class="line">Table Type: EXTERNAL_TABLE</span><br></pre></td></tr></table></figure>
-<h3 id="管理表与外部表的互相转换"><a href="#管理表与外部表的互相转换" class="headerlink" title="管理表与外部表的互相转换"></a>管理表与外部表的互相转换</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改内部表student2 为外部表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student2 <span class="keyword">set</span> tblproperties(<span class="string">'EXTERNAL'</span>=<span class="string">'TRUE'</span>); <span class="comment"># 必须大写</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修改外部表student2 为内部表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student2 <span class="keyword">set</span> tblproperties(<span class="string">'EXTERNAL'</span>=<span class="string">'FALSE'</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">create external table if not exists default.dept(
+deptno int,
+dname string,
+loc int )
+row format delimited fields terminated by &#39;\t&#39;;
+
+load data local inpath &#39;/opt/module/data/dept.txt&#39; into table default.dept;
+
+hive (default)&gt; desc formatted dept;
+Table Type: EXTERNAL_TABLE
+</code></pre>
+<h3 id="管理表与外部表的互相转换"><a href="#管理表与外部表的互相转换" class="headerlink" title="管理表与外部表的互相转换"></a>管理表与外部表的互相转换</h3><pre><code class="lang-sql">-- 修改内部表student2 为外部表
+alter table student2 set tblproperties(&#39;EXTERNAL&#39;=&#39;TRUE&#39;); # 必须大写
+
+-- 修改外部表student2 为内部表
+alter table student2 set tblproperties(&#39;EXTERNAL&#39;=&#39;FALSE&#39;);
+</code></pre>
 <h2 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h2><p>分区表实际上就是对应一个HDFS 文件系统上的独立的文件夹，该文件夹下是该分区所有的数据文件。Hive 中的分区就是分目录，把一个大的数据集根据业务需要分割成小的数据集。在查询时通过WHERE 子句中的表达式选择查询所需要的指定的分区，这样的查询效率会提高很多。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 需要根据日期对日志进行管理</span></span><br><span class="line">/user/hive/warehouse/log_partition/20170702/20170702.log</span><br><span class="line">/user/hive/warehouse/log_partition/20170703/20170703.log</span><br><span class="line">/user/hive/warehouse/log_partition/20170704/20170704.log</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建分区表</span></span><br><span class="line">hive (default)&gt; create table dept_partition(</span><br><span class="line">deptno int, dname string, loc string )</span><br><span class="line">partitioned by (month string)</span><br><span class="line">row format delimited fields terminated by '\t';</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 加载数据到分区表中</span></span><br><span class="line">hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into table default.dept_partition partition(month='201709');</span><br><span class="line">hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into table default.dept_partition partition(month='201708');</span><br><span class="line">hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into table default.dept_partition partition(month='201707’);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">-- 需要根据日期对日志进行管理
+/user/hive/warehouse/log_partition/20170702/20170702.log
+/user/hive/warehouse/log_partition/20170703/20170703.log
+/user/hive/warehouse/log_partition/20170704/20170704.log
+
+-- 创建分区表
+hive (default)&gt; create table dept_partition(
+deptno int, dname string, loc string )
+partitioned by (month string)
+row format delimited fields terminated by &#39;\t&#39;;
+
+-- 加载数据到分区表中
+hive (default)&gt; load data local inpath &#39;/opt/module/datas/dept.txt&#39; into table default.dept_partition partition(month=&#39;201709&#39;);
+hive (default)&gt; load data local inpath &#39;/opt/module/datas/dept.txt&#39; into table default.dept_partition partition(month=&#39;201708&#39;);
+hive (default)&gt; load data local inpath &#39;/opt/module/datas/dept.txt&#39; into table default.dept_partition partition(month=&#39;201707’);
+</code></pre>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201230190323394.png" alt="image-20201230190323394"></p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201230190331608.png" alt="image-20201230190331608"></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询分区表中数据</span></span><br><span class="line">hive (default)&gt; select * from dept_partition where month='201709';</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 多分区联合查询</span></span><br><span class="line">hive (default)&gt; select * from dept_partition  where month='201709'</span><br><span class="line">union</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dept_partition <span class="keyword">where</span> <span class="keyword">month</span>=<span class="string">'201708'</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dept_partition <span class="keyword">where</span> <span class="keyword">month</span>=<span class="string">'201707'</span>;</span><br><span class="line"></span><br><span class="line">_u3.deptno _u3.dname _u3.loc _u3.month</span><br><span class="line">10 ACCOUNTING NEW YORK 201707</span><br><span class="line">10 ACCOUNTING NEW YORK 201708</span><br><span class="line">10 ACCOUNTING NEW YORK 201709</span><br><span class="line">20 RESEARCH DALLAS 201707</span><br><span class="line">20 RESEARCH DALLAS 201708</span><br><span class="line">20 RESEARCH DALLAS 201709</span><br><span class="line">30 SALES CHICAGO 201707</span><br><span class="line">30 SALES CHICAGO 201708</span><br><span class="line">30 SALES CHICAGO 201709</span><br><span class="line">40 OPERATIONS BOSTON 201707</span><br><span class="line">40 OPERATIONS BOSTON 201708</span><br><span class="line">40 OPERATIONS BOSTON 201709</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 增加分区</span></span><br><span class="line">hive (default)&gt; alter table dept_partition add partition(month='201706') ;</span><br><span class="line">hive (default)&gt; alter table dept_partition add partition(month='201705') partition(month='201704');</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除分区</span></span><br><span class="line">hive (default)&gt; alter table dept_partition drop partition (month='201704');</span><br><span class="line">hive (default)&gt; alter table dept_partition drop partition (month='201705'), partition (month='201706');</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看分区表有多少分区</span></span><br><span class="line">hive&gt; show partitions dept_partition;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看分区表结构</span></span><br><span class="line">hive&gt; desc formatted dept_partition;</span><br><span class="line"><span class="comment">-- # Partition Information</span></span><br><span class="line"><span class="comment">-- # col_name data_type comment</span></span><br><span class="line">month string</span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建二级分区表</span></span><br><span class="line">hive (default)&gt; create table dept_partition2(</span><br><span class="line">deptno int, dname string, loc string )</span><br><span class="line">partitioned by (month string, day string)</span><br><span class="line">row format delimited fields terminated by '\t';</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 加载数据到二级分区表中</span></span><br><span class="line">hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into table default.dept_partition2 partition(month='201709', day='13');</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询分区数据</span></span><br><span class="line">hive (default)&gt; select * from dept_partition2 where month='201709' and day='13';</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">-- 查询分区表中数据
+hive (default)&gt; select * from dept_partition where month=&#39;201709&#39;;
+
+-- 多分区联合查询
+hive (default)&gt; select * from dept_partition  where month=&#39;201709&#39;
+union
+select * from dept_partition where month=&#39;201708&#39;
+union
+select * from dept_partition where month=&#39;201707&#39;;
+
+_u3.deptno _u3.dname _u3.loc _u3.month
+10 ACCOUNTING NEW YORK 201707
+10 ACCOUNTING NEW YORK 201708
+10 ACCOUNTING NEW YORK 201709
+20 RESEARCH DALLAS 201707
+20 RESEARCH DALLAS 201708
+20 RESEARCH DALLAS 201709
+30 SALES CHICAGO 201707
+30 SALES CHICAGO 201708
+30 SALES CHICAGO 201709
+40 OPERATIONS BOSTON 201707
+40 OPERATIONS BOSTON 201708
+40 OPERATIONS BOSTON 201709
+
+-- 增加分区
+hive (default)&gt; alter table dept_partition add partition(month=&#39;201706&#39;) ;
+hive (default)&gt; alter table dept_partition add partition(month=&#39;201705&#39;) partition(month=&#39;201704&#39;);
+
+-- 删除分区
+hive (default)&gt; alter table dept_partition drop partition (month=&#39;201704&#39;);
+hive (default)&gt; alter table dept_partition drop partition (month=&#39;201705&#39;), partition (month=&#39;201706&#39;);
+
+-- 查看分区表有多少分区
+hive&gt; show partitions dept_partition;
+
+-- 查看分区表结构
+hive&gt; desc formatted dept_partition;
+-- # Partition Information
+-- # col_name data_type comment
+month string
+</code></pre>
+<pre><code class="lang-sql">-- 创建二级分区表
+hive (default)&gt; create table dept_partition2(
+deptno int, dname string, loc string )
+partitioned by (month string, day string)
+row format delimited fields terminated by &#39;\t&#39;;
+
+-- 加载数据到二级分区表中
+hive (default)&gt; load data local inpath &#39;/opt/module/datas/dept.txt&#39; into table default.dept_partition2 partition(month=&#39;201709&#39;, day=&#39;13&#39;);
+
+-- 查询分区数据
+hive (default)&gt; select * from dept_partition2 where month=&#39;201709&#39; and day=&#39;13&#39;;
+</code></pre>
 <font color = #3333ff face="宋体">把数据直接上传到分区目录上，让分区表和数据产生关联的三种方式：</font>
 
 <ol>
 <li>上传数据后修复</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 上传数据</span></span><br><span class="line">hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201709/day=12;</span><br><span class="line">hive (default)&gt; dfs -put /opt/module/datas/dept.txt /user/hive/warehouse/dept_partition2/month=201709/day=12;</span><br><span class="line">   </span><br><span class="line"> <span class="comment">-- 查询数据（查询不到刚上传的数据）</span></span><br><span class="line">hive (default)&gt; select * from dept_partition2 where month='201709' and day='12';</span><br><span class="line">   </span><br><span class="line"><span class="comment">-- 执行修复命令</span></span><br><span class="line">hive&gt; msck repair table dept_partition2;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">-- 上传数据
+hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201709/day=12;
+hive (default)&gt; dfs -put /opt/module/datas/dept.txt /user/hive/warehouse/dept_partition2/month=201709/day=12;
+
+ -- 查询数据（查询不到刚上传的数据）
+hive (default)&gt; select * from dept_partition2 where month=&#39;201709&#39; and day=&#39;12&#39;;
+
+-- 执行修复命令
+hive&gt; msck repair table dept_partition2;
+</code></pre>
 <ol>
 <li>上传数据后添加分区</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 上传数据</span></span><br><span class="line">hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201709/day=11;</span><br><span class="line">hive (default)&gt; dfs -put /opt/module/datas/dept.txt /user/hive/warehouse/dept_partition2/month=201709/day=11;</span><br><span class="line">   </span><br><span class="line"><span class="comment">-- 执行添加分区</span></span><br><span class="line">hive (default)&gt; alter table dept_partition2 add partition(month='201709', day='11');</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">-- 上传数据
+hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201709/day=11;
+hive (default)&gt; dfs -put /opt/module/datas/dept.txt /user/hive/warehouse/dept_partition2/month=201709/day=11;
+
+-- 执行添加分区
+hive (default)&gt; alter table dept_partition2 add partition(month=&#39;201709&#39;, day=&#39;11&#39;);
+</code></pre>
 <ol>
 <li>创建文件夹后load 数据到分区</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建目录</span></span><br><span class="line">hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201709/day=10;</span><br><span class="line">   </span><br><span class="line"><span class="comment">-- 上传数据</span></span><br><span class="line">hive (default)&gt; load data local inpath '/opt/module/datas/dept.txt' into table dept_partition2 partition(month='201709',day='10');</span><br></pre></td></tr></table></figure>
-<h2 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 重命名</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">RENAME</span> <span class="keyword">TO</span> new_table_name</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 增加/修改/替换列信息</span></span><br><span class="line"><span class="comment">-- 更新列，可以更改列名和列的数据类型，即使不修改类型也要写上</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">CHANGE</span> [<span class="keyword">COLUMN</span>] col_old_name col_new_name column_type [<span class="keyword">COMMENT</span> col_comment] [<span class="keyword">FIRST</span>|<span class="keyword">AFTER</span> column_name]</span><br><span class="line"><span class="comment">-- 增加和替换列</span></span><br><span class="line"><span class="comment">-- ADD 是代表新增一字段，字段位置在所有列后面(partition 列前)，REPLACE 则是表示替换表中所有字段</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name <span class="keyword">ADD</span>|<span class="keyword">REPLACE</span> <span class="keyword">COLUMNS</span> (col_name data_type [<span class="keyword">COMMENT</span> col_comment], ...)</span><br><span class="line"><span class="comment">-- alter table xixi replace colums(id int, name string).</span></span><br><span class="line"><span class="comment">-- 把所有字段替换为两个字段，相当于至保留前两个字段，修改了元数据，但没有修改HDFS上的文件。如果多加列，数据会显示为null。HDFS上文件没有添加相应字段的数据</span></span><br><span class="line"></span><br><span class="line">hive (<span class="keyword">default</span>)&gt; <span class="keyword">alter</span> <span class="keyword">table</span> dept_partition <span class="keyword">add</span> <span class="keyword">columns</span>(deptdesc <span class="keyword">string</span>); <span class="comment"># 添加列</span></span><br><span class="line">hive (default)&gt; alter table dept_partition change column deptdesc desc int; # 更新列</span><br><span class="line">hive (default)&gt; alter table dept_partition replace columns(deptno string, dname string, loc string); # 替换列</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">-- 创建目录
+hive (default)&gt; dfs -mkdir -p /user/hive/warehouse/dept_partition2/month=201709/day=10;
+
+-- 上传数据
+hive (default)&gt; load data local inpath &#39;/opt/module/datas/dept.txt&#39; into table dept_partition2 partition(month=&#39;201709&#39;,day=&#39;10&#39;);
+</code></pre>
+<h2 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h2><pre><code class="lang-sql">-- 重命名
+ALTER TABLE table_name RENAME TO new_table_name
+
+-- 增加/修改/替换列信息
+-- 更新列，可以更改列名和列的数据类型，即使不修改类型也要写上
+ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]
+-- 增加和替换列
+-- ADD 是代表新增一字段，字段位置在所有列后面(partition 列前)，REPLACE 则是表示替换表中所有字段
+ALTER TABLE table_name ADD|REPLACE COLUMNS (col_name data_type [COMMENT col_comment], ...)
+-- alter table xixi replace colums(id int, name string).
+-- 把所有字段替换为两个字段，相当于至保留前两个字段，修改了元数据，但没有修改HDFS上的文件。如果多加列，数据会显示为null。HDFS上文件没有添加相应字段的数据
+
+hive (default)&gt; alter table dept_partition add columns(deptdesc string); # 添加列
+hive (default)&gt; alter table dept_partition change column deptdesc desc int; # 更新列
+hive (default)&gt; alter table dept_partition replace columns(deptno string, dname string, loc string); # 替换列
+</code></pre>
 <h2 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h2><p>hive (default)&gt; drop table dept_partition;</p>
 
 </div>
@@ -1404,16 +1584,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+              <a href="/2020/07/03/07-Hive/Hive05-DML.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Hive03-数据类型
+                  Hive05-DML
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
-                Hive07-函数
+              <a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+                Hive06-查询
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

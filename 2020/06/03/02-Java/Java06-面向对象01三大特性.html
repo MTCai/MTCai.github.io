@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1395,7 +1395,11 @@
 <h2 id="类中方法"><a href="#类中方法" class="headerlink" title="类中方法"></a>类中方法</h2><blockquote>
 <p>Java 里的方法不能独立存在，所有的方法必须定义在类里。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名 (参数类型 形参<span class="number">1</span>, 参数类型 形参<span class="number">2</span>,...)&#123;</span><br><span class="line">    方法体程序代码</span><br><span class="line">	<span class="keyword">return</span> 返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">修饰符 返回值类型 方法名 (参数类型 形参1, 参数类型 形参2,...){
+    方法体程序代码
+    return 返回值
+}
+</code></pre>
 <ul>
 <li>没有具体返回值的情况，返回值类型用关键字 void 表示 ，那么方法体中可以不必使用 return 语句。如果使用，”return;”仅用来结束方法。</li>
 <li>定义方法时，方法的结果应该返回给调用者，交由调用者处理 。</li>
@@ -1415,8 +1419,40 @@
 <li>形参是基本数据类型：将实参基本数据类型变量的“数据值”传递给形参</li>
 <li>形参是引用数据类型：将实参引用数据类型变量的“地址值”传递给形参(包括数据类型)</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">Value</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">15</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestArray</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		TestArray testArray = <span class="keyword">new</span> TestArray();</span><br><span class="line">		testArray.first();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">first</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i =<span class="number">5</span>;</span><br><span class="line">		Value v = <span class="keyword">new</span> Value();</span><br><span class="line">		v.i = <span class="number">25</span>;</span><br><span class="line">		second(v, i);</span><br><span class="line">		System.out.println(v.i);  <span class="comment">// 20</span></span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">second</span><span class="params">(Value v , <span class="keyword">int</span> i )</span></span>&#123;</span><br><span class="line">		i = <span class="number">0</span>;</span><br><span class="line">		v.i=<span class="number">20</span>; <span class="comment">// 局部变量指向的内存中类的属性被修改</span></span><br><span class="line">		Value val = <span class="keyword">new</span> Value();</span><br><span class="line">		v=val;  <span class="comment">// 局部变量指向了新的内存</span></span><br><span class="line">        <span class="comment">// ==存的是地址值，改的也是地址值==</span></span><br><span class="line">		System.out.println(v.i+<span class="string">" "</span>+i);  <span class="comment">// 15  0</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr1 = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">char</span>[] arr2 = <span class="keyword">new</span> <span class="keyword">char</span>[]&#123;<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>&#125;;</span><br><span class="line">System.out.println(arr1);<span class="comment">// [I@1b6d3586</span></span><br><span class="line">System.out.println(arr2);<span class="comment">// 123  </span></span><br><span class="line"><span class="comment">// println()重载</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">class  Value{
+    int i=15;
+}
+
+public class TestArray {
+    public static void main(String[] args) {
+        TestArray testArray = new TestArray();
+        testArray.first();
+    }
+
+    public void first(){
+        int i =5;
+        Value v = new Value();
+        v.i = 25;
+        second(v, i);
+        System.out.println(v.i);  // 20
+    }
+
+    public void second(Value v , int i ){
+        i = 0;
+        v.i=20; // 局部变量指向的内存中类的属性被修改
+        Value val = new Value();
+        v=val;  // 局部变量指向了新的内存
+        // ==存的是地址值，改的也是地址值==
+        System.out.println(v.i+&quot; &quot;+i);  // 15  0
+    }
+}
+</code></pre>
+<pre><code class="lang-java">int[] arr1 = new int[]{1,2,3};
+char[] arr2 = new char[]{&#39;1&#39;,&#39;2&#39;,&#39;3&#39;};
+System.out.println(arr1);// [I@1b6d3586
+System.out.println(arr2);// 123  
+// println()重载
+</code></pre>
 <h2 id="三大特性一：封装"><a href="#三大特性一：封装" class="headerlink" title="三大特性一：封装"></a>三大特性一：封装</h2><p>把该隐藏的隐藏起来，该暴露的暴露出来 。 这就是封装性的设计思想。    </p>
 <p>“高内聚，低耦合”：类的内部数据操作细节自己完成，不允许外部干涉；仅对外暴露少量的方法。</p>
 <p>封装性的体现：</p>
@@ -1503,7 +1539,17 @@
 <li>它在构造器内部使用，表示该构造器正在初始化的对象。</li>
 <li>方法和构造器中形参和属性重名，需使用this区分，不重名则无要求。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age=<span class="number">99</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="comment">//形参和属性重名，需使用this区分，不重名则无要求。</span></span><br><span class="line">        <span class="comment">//形参=形参， 赋值失败</span></span><br><span class="line">		age = age;</span><br><span class="line">        <span class="comment">//可以赋值</span></span><br><span class="line">        <span class="keyword">this</span>.age=age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">class Person{
+    private int age=99;
+    public void setAge(int age){
+        //形参和属性重名，需使用this区分，不重名则无要求。
+        //形参=形参， 赋值失败
+        age = age;
+        //可以赋值
+        this.age=age;
+    }
+}
+</code></pre>
 <ul>
 <li>this 可以作为一个 类中构造器相互调用的特殊格式</li>
 </ul>
@@ -1515,7 +1561,25 @@
 <p> “this 形参列表 必须声明在类的构造器的==首行==！</p>
 <p> 在类的一个构造器中，最多只能声明一个 “形参列表”</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"新对象实例化"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>();</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>(name);</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">class Person{
+    private int age;
+    private String name;
+
+    public Person(){
+        System.out.println(&quot;新对象实例化&quot;);
+    }
+
+    public Person(String name){
+        this();
+        this.name = name;
+    }
+
+    public Person(String name, int age){
+        this(name);
+        this.age = age;
+    }
+}
+</code></pre>
 <ul>
 <li>`使用 this 访问属性和方法时，如果在本类中未找到，会从父类中查找</li>
 </ul>
@@ -1592,12 +1656,128 @@
 </ol>
 <h2 id="instanceof-、Casting-操作符"><a href="#instanceof-、Casting-操作符" class="headerlink" title="instanceof 、Casting 操作符"></a>instanceof 、Casting 操作符</h2><h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>有了对象的多态性后，内存中实际上是加载了子类特有的属性和方法，但是由于变量声明为父类，导致编译时只能调用父类中声明的属性和方法，子类特有的属性和方法不能调用。</p>
 <p>如何才能调用子类特有的属性和方法？答：使用强制类型转换！但可能会出现异常。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Persion p = <span class="keyword">new</span> Man();</span><br><span class="line">Man m = (Man)p; <span class="comment">// 可以调用Man特有的属性和方法</span></span><br><span class="line">Woman m = (Woman)p; <span class="comment">// 出现异常ClassCastException</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a  <span class="keyword">instanceof</span> A : 判断对象a是否为类A的实例：如果是，返回<span class="keyword">true</span>，否则，返回<span class="keyword">false</span>。</span><br><span class="line"><span class="comment">// 为了避免在向下转型时出现ClassCastException异常，所以需要先判断类型</span></span><br><span class="line"><span class="comment">// 编译通过，运行不过</span></span><br><span class="line">Person p = <span class="keyword">new</span> Woman();</span><br><span class="line">Man m = (Man)p;</span><br><span class="line"></span><br><span class="line">Person p = <span class="keyword">new</span> Person();</span><br><span class="line">Man m = (Man)p;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译通过，运行通过</span></span><br><span class="line">Object obj = <span class="keyword">new</span> Woman();</span><br><span class="line">Person p = (Person)obj;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译不通过</span></span><br><span class="line">Man m = <span class="keyword">new</span> Woman();</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> count = <span class="number">10</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="keyword">this</span>.count);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> count = <span class="number">20</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="keyword">this</span>.count);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FieldMethodTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Sub s = <span class="keyword">new</span> Sub();</span><br><span class="line">		System.out.println(s.count);<span class="comment">//20</span></span><br><span class="line">		s.display();<span class="comment">//20</span></span><br><span class="line">		Base b = s;<span class="comment">//多态</span></span><br><span class="line">         <span class="comment">// == 对于引用数据类型，比较的是两个引用数据类型的地址是否相等</span></span><br><span class="line">		System.out.println(b == s);<span class="comment">// true</span></span><br><span class="line">		System.out.println(b.count);<span class="comment">// 10</span></span><br><span class="line">		b.display();<span class="comment">//20</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">Persion p = new Man();
+Man m = (Man)p; // 可以调用Man特有的属性和方法
+Woman m = (Woman)p; // 出现异常ClassCastException
+</code></pre>
+<pre><code class="lang-java">a  instanceof A : 判断对象a是否为类A的实例：如果是，返回true，否则，返回false。
+// 为了避免在向下转型时出现ClassCastException异常，所以需要先判断类型
+// 编译通过，运行不过
+Person p = new Woman();
+Man m = (Man)p;
+
+Person p = new Person();
+Man m = (Man)p;
+
+// 编译通过，运行通过
+Object obj = new Woman();
+Person p = (Person)obj;
+
+// 编译不通过
+Man m = new Woman();
+</code></pre>
+<pre><code class="lang-java">class Base {
+    int count = 10;
+    public void display() {
+        System.out.println(this.count);
+    }
+}
+
+class Sub extends Base {
+    int count = 20;
+    public void display() {
+        System.out.println(this.count);
+    }
+}
+
+public class FieldMethodTest {
+    public static void main(String[] args){
+        Sub s = new Sub();
+        System.out.println(s.count);//20
+        s.display();//20
+        Base b = s;//多态
+         // == 对于引用数据类型，比较的是两个引用数据类型的地址是否相等
+        System.out.println(b == s);// true
+        System.out.println(b.count);// 10
+        b.display();//20
+    }
+}
+</code></pre>
 <p><strong>面试题：多态是编译时行为还是运行时行为？</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="comment">//面试题：多态是编译时行为还是运行时行为？</span></span><br><span class="line"><span class="comment">//证明如下：</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span>  </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"animal eat food"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span>  <span class="keyword">extends</span> <span class="title">Animal</span>  </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"cat eat fish"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>  <span class="keyword">extends</span> <span class="title">Animal</span>  </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Dog eat bone"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sheep</span>  <span class="keyword">extends</span> <span class="title">Animal</span>  </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Sheep eat grass"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterviewTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Animal  <span class="title">getInstance</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">switch</span> (key) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Cat ();</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Dog ();</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> Sheep ();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> key = <span class="keyword">new</span> Random().nextInt(<span class="number">3</span>);</span><br><span class="line">		System.out.println(key);</span><br><span class="line">		Animal  animal = getInstance(key);</span><br><span class="line">		animal.eat(); </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考查多态的笔试题目：</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterviewTest1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Base base = <span class="keyword">new</span> Sub();</span><br><span class="line">		base.add(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// sub_1, 多态</span></span><br><span class="line"></span><br><span class="line">		Sub s = (Sub)base;</span><br><span class="line">		s.add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);<span class="comment">// sub_2</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span>... arr)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"base"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"sub_1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"sub_2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">import java.util.Random;
+
+//面试题：多态是编译时行为还是运行时行为？
+//证明如下：
+class Animal  {
+    protected void eat() {
+        System.out.println(&quot;animal eat food&quot;);
+    }
+}
+
+class Cat  extends Animal  {
+    protected void eat() {
+        System.out.println(&quot;cat eat fish&quot;);
+    }
+}
+
+class Dog  extends Animal  {
+    public void eat() {
+        System.out.println(&quot;Dog eat bone&quot;);
+    }
+}
+
+class Sheep  extends Animal  {
+    public void eat() {
+        System.out.println(&quot;Sheep eat grass&quot;);
+    }
+}
+
+public class InterviewTest {
+    public static Animal  getInstance(int key) {
+        switch (key) {
+        case 0:
+            return new Cat ();
+        case 1:
+            return new Dog ();
+        default:
+            return new Sheep ();
+        }
+    }
+    public static void main(String[] args) {
+        int key = new Random().nextInt(3);
+        System.out.println(key);
+        Animal  animal = getInstance(key);
+        animal.eat(); 
+    }
+}
+</code></pre>
+<pre><code class="lang-java">//考查多态的笔试题目：
+public class InterviewTest1 {
+
+    public static void main(String[] args) {
+        Base base = new Sub();
+        base.add(1, 2, 3); // sub_1, 多态
+
+        Sub s = (Sub)base;
+        s.add(1,2,3);// sub_2
+    }
+}
+
+class Base {
+    public void add(int a, int... arr) {
+        System.out.println(&quot;base&quot;);
+    }
+}
+
+class Sub extends Base {
+    public void add(int a, int[] arr) {
+        System.out.println(&quot;sub_1&quot;);
+    }
+    public void add(int a, int b, int c) {
+        System.out.println(&quot;sub_2&quot;);
+    }
+}
+</code></pre>
 <h2 id="Object-类"><a href="#Object-类" class="headerlink" title="Object 类"></a>Object 类</h2><ul>
 <li>Object 类是所有 Java 类的根父类</li>
 <li>如果在类的声明中未使用 extends 关键字指明其父类，则默认父类为 java.lang.Object 类</li>
@@ -1616,7 +1796,10 @@
 <li><p>是一个方法，而非运算符。只适用于引用数据类型</p>
 </li>
 <li><p>默认equals()：object类中的equals()的定义：和  ==  一致、</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span>&#125;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public boolean equals(Object obj)}{
+    return (this == obj);
+}
+</code></pre>
 </li>
 <li><p>特例 ：当用 equals() 方法进行比较时对类 File 、 String 、 Date 及包装类Wrapper Class 来说是比较类型及内容而不考虑引用的是否是同一个对象</p>
 </li>
@@ -1643,7 +1826,10 @@
 <li><p>输出一个对象的引用时，实际上是调用当前对象的toString()。”System.out.println(ClassA);”</p>
 </li>
 <li><p>Object类中的toString()方法：返回类名和它的引用地址</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getClass().getName() + <span class="string">"@"</span> + Integer.toHexString(hashCode());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public String toString() {
+    return getClass().getName() + &quot;@&quot; + Integer.toHexString(hashCode());
+}
+</code></pre>
 </li>
 <li><p>String、Data、File、包装类等都重写了Object类中的toString()方法，使得在调用toString方法时，返回“实体内容”信息。进行 String 与其它类型数据的连接操作时，自动调用 toString() 方法</p>
 </li>
@@ -1709,7 +1895,10 @@
 <li><p>包装类转化为基本数据类型：调用xxxValue()方法</p>
 </li>
 <li><p>JDK1.5 之后，支持自动装箱，自动拆箱。但类型必须匹配。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num = <span class="number">10</span>;</span><br><span class="line">Integer num1 = num;</span><br><span class="line"><span class="keyword">int</span> num2  num1;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">int num = 10;
+Integer num1 = num;
+int num2  num1;
+</code></pre>
 </li>
 </ul>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201012142326963.png" alt="image-20201012142326963"></p>
@@ -1717,8 +1906,32 @@
 <li>基本数据类型和包装类转换到String类型：均可以调用String重载的valueOfxxx();</li>
 </ul>
 <p><strong>面试题：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Object o1 = <span class="keyword">true</span> ? <span class="keyword">new</span> Integer(<span class="number">1</span>) : <span class="keyword">new</span> Double(<span class="number">2.0</span>);</span><br><span class="line">System.out.println(o1);<span class="comment">// 1.0   ：前后要求类型一致</span></span><br><span class="line"></span><br><span class="line">Object o2;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">true</span>)</span><br><span class="line">	o2 = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	o2 = <span class="keyword">new</span> Double(<span class="number">2.0</span>);</span><br><span class="line">System.out.println(o2);<span class="comment">//1</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Integer i = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">    Integer j = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">    System.out.println(i == j);<span class="comment">// false  比较地址值</span></span><br><span class="line">    </span><br><span class="line">    Integer m = <span class="number">1</span>;</span><br><span class="line">    Integer n = <span class="number">2</span>;</span><br><span class="line">    System.out.println(m == n);<span class="comment">// true  </span></span><br><span class="line">    <span class="comment">// Integer内部类IntegerCache中定义了Integer[]，保存了-128 -- +127</span></span><br><span class="line">    <span class="comment">// 如果使用自动装箱的方法，给Integer赋值的访问在-128 -- +127范围内时，可以直接使用数组中的元素，不需要new， 即地址值一样</span></span><br><span class="line">    </span><br><span class="line">    Integer x = <span class="number">128</span>;</span><br><span class="line">    Integer y = <span class="number">128</span>;</span><br><span class="line">    System.out.prinltn(x == y);<span class="comment">// false new的对象，地址值不一样</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">Object o1 = true ? new Integer(1) : new Double(2.0);
+System.out.println(o1);// 1.0   ：前后要求类型一致
+
+Object o2;
+if (true)
+    o2 = new Integer(1);
+else
+    o2 = new Double(2.0);
+System.out.println(o2);//1
+</code></pre>
+<pre><code class="lang-java">public void method() {
+    Integer i = new Integer(1);
+    Integer j = new Integer(1);
+    System.out.println(i == j);// false  比较地址值
+
+    Integer m = 1;
+    Integer n = 2;
+    System.out.println(m == n);// true  
+    // Integer内部类IntegerCache中定义了Integer[]，保存了-128 -- +127
+    // 如果使用自动装箱的方法，给Integer赋值的访问在-128 -- +127范围内时，可以直接使用数组中的元素，不需要new， 即地址值一样
+
+    Integer x = 128;
+    Integer y = 128;
+    System.out.prinltn(x == y);// false new的对象，地址值不一样
+}
+</code></pre>
 
 </div>
 
@@ -1726,16 +1939,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/02-Java/Java05-%E6%95%B0%E7%BB%84.html">
+              <a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A102%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%8E%A5%E5%8F%A3.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Java05-数组
+                  Java06-面向对象02抽象类接口
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A102%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%8E%A5%E5%8F%A3.html">
-                Java06-面向对象02抽象类接口
+              <a href="/2020/06/03/02-Java/Java07-%E5%BC%82%E5%B8%B8.html">
+                Java07-异常
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

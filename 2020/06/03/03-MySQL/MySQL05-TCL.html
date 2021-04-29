@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1382,7 +1382,37 @@
 <li>设置当前mySQL 连接的隔离级别:<br>set transaction isolation level read committed;</li>
 <li>设置数据库系统的全局的隔离级别:<br>set globaltransaction isolation level read committed;</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#开启事务</span><br><span class="line">SET autocommit&#x3D;0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">#编写一组事务的语句</span><br><span class="line">UPDATE account SET balance &#x3D; 1000 WHERE username&#x3D;&#39;张无忌&#39;;</span><br><span class="line">UPDATE account SET balance &#x3D; 1000 WHERE username&#x3D;&#39;赵敏&#39;;</span><br><span class="line"></span><br><span class="line">#结束事务</span><br><span class="line">ROLLBACK;</span><br><span class="line">#commit;</span><br><span class="line"></span><br><span class="line">SELECT * FROM account;</span><br><span class="line"></span><br><span class="line">#2.演示事务对于delete和truncate的处理的区别</span><br><span class="line">SET autocommit&#x3D;0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line"></span><br><span class="line">DELETE FROM account;</span><br><span class="line">ROLLBACK;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#3.演示savepoint 的使用</span><br><span class="line">SET autocommit&#x3D;0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">DELETE FROM account WHERE id&#x3D;25;</span><br><span class="line">SAVEPOINT a;#设置保存点</span><br><span class="line">DELETE FROM account WHERE id&#x3D;28;</span><br><span class="line">ROLLBACK TO a;#回滚到保存点</span><br><span class="line"></span><br><span class="line">SELECT * FROM account;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">#开启事务
+SET autocommit=0;
+START TRANSACTION;
+#编写一组事务的语句
+UPDATE account SET balance = 1000 WHERE username=&#39;张无忌&#39;;
+UPDATE account SET balance = 1000 WHERE username=&#39;赵敏&#39;;
+
+#结束事务
+ROLLBACK;
+#commit;
+
+SELECT * FROM account;
+
+#2.演示事务对于delete和truncate的处理的区别
+SET autocommit=0;
+START TRANSACTION;
+
+DELETE FROM account;
+ROLLBACK;
+
+
+#3.演示savepoint 的使用
+SET autocommit=0;
+START TRANSACTION;
+DELETE FROM account WHERE id=25;
+SAVEPOINT a;#设置保存点
+DELETE FROM account WHERE id=28;
+ROLLBACK TO a;#回滚到保存点
+
+SELECT * FROM account;
+</code></pre>
 
 </div>
 
@@ -1390,16 +1420,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+              <a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  MySQL02-DQL
+                  MySQL04-DDL
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
-                MySQL04-DDL
+              <a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+                JDBC-01 概览&连接数据库方式
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

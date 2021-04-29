@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1339,7 +1339,20 @@
 <li><p>一个数据块在DataNode上以文件形式存储在磁盘上，包括两个文件，一个是数据本身，一个是元数据包括数据块的长度，块数据的校验和，以及时间戳。</p>
 </li>
 <li><p>DataNode启动后向NameNode注册，通过后，周期性（1小时）的向NameNode上报所有的块信息。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- DN 向 NN 汇报当前解读信息的时间间隔，默认6 小时 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.blockreport.intervalMsec<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>21600000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Determines block reporting interval in milliseconds.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- DN 扫描自己节点块信息列表的时间，默认6 小时 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.datanode.directoryscan.interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>21600s<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>Interval in seconds for Datanode to scan data directories and reconcile the difference between blocks in memory and on the disk.</span><br><span class="line">        Support multiple time unit suffix(case insensitive), as described in dfs.heartbeat.interval.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- DN 向 NN 汇报当前解读信息的时间间隔，默认6 小时 --&gt;
+&lt;property&gt;
+    &lt;name&gt;dfs.blockreport.intervalMsec&lt;/name&gt;
+    &lt;value&gt;21600000&lt;/value&gt;
+    &lt;description&gt;Determines block reporting interval in milliseconds.&lt;/description&gt;
+&lt;/property&gt;
+&lt;!-- DN 扫描自己节点块信息列表的时间，默认6 小时 --&gt;
+&lt;property&gt;
+    &lt;name&gt;dfs.datanode.directoryscan.interval&lt;/name&gt;
+    &lt;value&gt;21600s&lt;/value&gt;
+    &lt;description&gt;Interval in seconds for Datanode to scan data directories and reconcile the difference between blocks in memory and on the disk.
+        Support multiple time unit suffix(case insensitive), as described in dfs.heartbeat.interval.&lt;/description&gt;
+&lt;/property&gt;
+</code></pre>
 </li>
 <li><p>心跳是每3秒一次，心跳返回结果带有NameNode给该DataNode的命令如复制块数据到另一台机器，或删除某个数据块。如果超过10分钟没有收到某个DataNode的心跳，则认为该节点不可用。</p>
 </li>
@@ -1356,72 +1369,134 @@
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201119213224446.png" alt="image-20201119213224446"></p>
 <h2 id="掉线时限参数设置"><a href="#掉线时限参数设置" class="headerlink" title="掉线时限参数设置"></a>掉线时限参数设置</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201119213254595.png" alt="image-20201119213254595"></p>
 <p>需要注意的是hdfs-site.xml 配置文件中的heartbeat.recheck.interval的单位为==毫秒==，dfs.heartbeat.interval的单位为==秒==。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.heartbeat.recheck-interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>300000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.heartbeat.interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;dfs.namenode.heartbeat.recheck-interval&lt;/name&gt;
+    &lt;value&gt;300000&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+    &lt;name&gt;dfs.heartbeat.interval&lt;/name&gt;
+    &lt;value&gt;3&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <h2 id="服役新数据节点"><a href="#服役新数据节点" class="headerlink" title="服役新数据节点"></a>服役新数据节点</h2><ol>
 <li><p>直接启动DataNode，即可关联到集群</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop105 hadoop-2.7.2]$ sbin/hadoop-daemon.sh start datanode</span><br><span class="line">[atguigu@hadoop105 hadoop-2.7.2]$ sbin/yarn-daemon.sh start nodemanager</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop105 hadoop-2.7.2]$ sbin/hadoop-daemon.sh start datanode
+[atguigu@hadoop105 hadoop-2.7.2]$ sbin/yarn-daemon.sh start nodemanager
+</code></pre>
 </li>
 <li><p>如果数据不均衡，可以用命令实现集群的再平衡</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 sbin]$ ./start-balancer.sh</span><br><span class="line">starting balancer, logging to /opt/module/hadoop-2.7.2/logs/hadoop-atguigu-balancer-hadoop102.out</span><br><span class="line">Time Stamp               Iteration<span class="comment">#  Bytes Already Moved  Bytes Left To Move  Bytes Being Moved</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 sbin]$ ./start-balancer.sh
+starting balancer, logging to /opt/module/hadoop-2.7.2/logs/hadoop-atguigu-balancer-hadoop102.out
+Time Stamp               Iteration#  Bytes Already Moved  Bytes Left To Move  Bytes Being Moved
+</code></pre>
 </li>
 </ol>
 <h2 id="退役旧数据节点"><a href="#退役旧数据节点" class="headerlink" title="退役旧数据节点"></a>退役旧数据节点</h2><h3 id="添加白名单"><a href="#添加白名单" class="headerlink" title="添加白名单"></a>添加白名单</h3><p>添加到白名单的主机节点，都允许访问NameNode，不在白名单的主机节点，都会被退出。</p>
 <p>配置白名单的具体步骤如下：</p>
 <ol>
 <li><p>在NameNode的/opt/module/hadoop-2.7.2/etc/hadoop目录下创建dfs.hosts文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop]$ <span class="built_in">pwd</span></span><br><span class="line">/opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line">[atguigu@hadoop102 hadoop]$ touch dfs.hosts</span><br><span class="line">[atguigu@hadoop102 hadoop]$ vi dfs.hosts</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加如下主机名称（不添加hadoop105）</span></span><br><span class="line">hadoop102</span><br><span class="line">hadoop103</span><br><span class="line">hadoop104</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop]$ pwd
+/opt/module/hadoop-2.7.2/etc/hadoop
+[atguigu@hadoop102 hadoop]$ touch dfs.hosts
+[atguigu@hadoop102 hadoop]$ vi dfs.hosts
+
+# 添加如下主机名称（不添加hadoop105）
+hadoop102
+hadoop103
+hadoop104
+</code></pre>
 </li>
 <li><p>在NameNode的hdfs-site.xml配置文件中增加dfs.hosts属性</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.hosts<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/etc/hadoop/dfs.hosts<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;dfs.hosts&lt;/name&gt;
+    &lt;value&gt;/opt/module/hadoop-2.7.2/etc/hadoop/dfs.hosts&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 </li>
 <li><p>配置文件分发</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop]$ xsync hdfs-site.xml</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop]$ xsync hdfs-site.xml
+</code></pre>
 </li>
 <li><p>刷新NameNode</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ hdfs dfsadmin -refreshNodes</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ hdfs dfsadmin -refreshNodes
+</code></pre>
 </li>
 <li><p>更新ResourceManager节点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ yarn rmadmin -refreshNodes</span><br><span class="line">17/06/24 14:17:11 INFO client.RMProxy: Connecting to ResourceManager at hadoop103/192.168.1.103:8033</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ yarn rmadmin -refreshNodes
+17/06/24 14:17:11 INFO client.RMProxy: Connecting to ResourceManager at hadoop103/192.168.1.103:8033
+</code></pre>
 </li>
 <li><p>如果数据不均衡，可以用命令实现集群的再平衡</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 sbin]$ ./start-balancer.sh</span><br><span class="line">starting balancer, logging to /opt/module/hadoop-2.7.2/logs/hadoop-atguigu-balancer-hadoop102.out</span><br><span class="line">Time Stamp               Iteration<span class="comment">#  Bytes Already Moved  Bytes Left To Move  Bytes Being Moved</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 sbin]$ ./start-balancer.sh
+starting balancer, logging to /opt/module/hadoop-2.7.2/logs/hadoop-atguigu-balancer-hadoop102.out
+Time Stamp               Iteration#  Bytes Already Moved  Bytes Left To Move  Bytes Being Moved
+</code></pre>
 </li>
 </ol>
 <h3 id="黑名单退役"><a href="#黑名单退役" class="headerlink" title="黑名单退役"></a>黑名单退役</h3><p>在黑名单上面的主机都会被强制退出。</p>
 <ol>
 <li><p>在NameNode的/opt/module/hadoop-2.7.2/etc/hadoop目录下创建dfs.hosts.exclude文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop]$ <span class="built_in">pwd</span></span><br><span class="line">/opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line">[atguigu@hadoop102 hadoop]$ touch dfs.hosts.exclude</span><br><span class="line">[atguigu@hadoop102 hadoop]$ vi dfs.hosts.exclude</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加如下主机名称（要退役的节点）</span></span><br><span class="line">hadoop105</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop]$ pwd
+/opt/module/hadoop-2.7.2/etc/hadoop
+[atguigu@hadoop102 hadoop]$ touch dfs.hosts.exclude
+[atguigu@hadoop102 hadoop]$ vi dfs.hosts.exclude
+
+# 添加如下主机名称（要退役的节点）
+hadoop105
+</code></pre>
 </li>
 <li><p>在NameNode的hdfs-site.xml配置文件中增加dfs.hosts.exclude属性</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.hosts.exclude<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/etc/hadoop/dfs.hosts.exclude<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;dfs.hosts.exclude&lt;/name&gt;
+    &lt;value&gt;/opt/module/hadoop-2.7.2/etc/hadoop/dfs.hosts.exclude&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 </li>
 <li><p>刷新NameNode、刷新ResourceManager</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ hdfs dfsadmin -refreshNodes</span><br><span class="line">Refresh nodes successful</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ yarn rmadmin -refreshNodes</span><br><span class="line">17/06/24 14:55:56 INFO client.RMProxy: Connecting to ResourceManager at hadoop103/192.168.1.103:8033</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ hdfs dfsadmin -refreshNodes
+Refresh nodes successful
+
+[atguigu@hadoop102 hadoop-2.7.2]$ yarn rmadmin -refreshNodes
+17/06/24 14:55:56 INFO client.RMProxy: Connecting to ResourceManager at hadoop103/192.168.1.103:8033
+</code></pre>
 </li>
 <li><p>检查Web浏览器，退役节点的状态为decommission in progress（退役中），说明数据节点正在复制块到其他节点，如图所示</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201121111633534.png" alt="image-20201121111633534" style="zoom:150%;" /></p>
 </li>
 <li><p>等待退役节点状态为decommissioned（所有块已经复制完成），停止该节点及节点资源管理器。<strong>注意：如果副本数是3，服役的节点小于等于3，是不能退役成功的，需要修改副本数后才能退役，</strong>如图所示</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201121111656168.png" alt="image-20201121111656168" style="zoom:150%;" /></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop105 hadoop-2.7.2]$ sbin/hadoop-daemon.sh stop datanode</span><br><span class="line">stopping datanode</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop105 hadoop-2.7.2]$ sbin/yarn-daemon.sh stop nodemanager</span><br><span class="line">stopping nodemanager</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop105 hadoop-2.7.2]$ sbin/hadoop-daemon.sh stop datanode
+stopping datanode
+
+[atguigu@hadoop105 hadoop-2.7.2]$ sbin/yarn-daemon.sh stop nodemanager
+stopping nodemanager
+</code></pre>
 </li>
 <li><p>如果数据不均衡，可以用命令实现集群的再平衡</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ sbin/start-balancer.sh </span><br><span class="line">starting balancer, logging to /opt/module/hadoop-2.7.2/logs/hadoop-atguigu-balancer-hadoop102.out</span><br><span class="line">Time Stamp               Iteration<span class="comment">#  Bytes Already Moved  Bytes Left To Move  Bytes Being Moved</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ sbin/start-balancer.sh 
+starting balancer, logging to /opt/module/hadoop-2.7.2/logs/hadoop-atguigu-balancer-hadoop102.out
+Time Stamp               Iteration#  Bytes Already Moved  Bytes Left To Move  Bytes Being Moved
+</code></pre>
 </li>
 </ol>
 <p><strong>注意：不允许白名单和黑名单中同时出现同一个主机名称。</strong></p>
 <h2 id="Datanode多目录配置"><a href="#Datanode多目录配置" class="headerlink" title="Datanode多目录配置"></a>Datanode多目录配置</h2><p>DataNode也可以配置成多个目录，<strong>每个目录存储的数据不一样</strong>。即：数据不是副本</p>
 <p>hdfs-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.datanode.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>file:///$&#123;hadoop.tmp.dir&#125;/dfs/data1,file:///$&#123;hadoop.tmp.dir&#125;/dfs/data2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+    &lt;value&gt;file:///${hadoop.tmp.dir}/dfs/data1,file:///${hadoop.tmp.dir}/dfs/data2&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+
 </div>
 
 
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+              <a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Hadoop03-HDFS读写流程&NN和2NN
+                  MySQL06-视图&存储过程&流程控制
               </a>
             
         </div>

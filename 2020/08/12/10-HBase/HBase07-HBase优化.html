@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1345,16 +1345,33 @@
 <h2 id="预分区"><a href="#预分区" class="headerlink" title="预分区"></a>预分区</h2><p>每一个region维护着startRow与endRowKey，如果加入的数据符合某个region维护的rowKey范围，则该数据交给这个region维护。那么依照这个原则，我们可以将数据所要投放的分区提前大致的规划好，以提高HBase性能。</p>
 <ol>
 <li><p>手动设定预分区</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase&gt; create <span class="string">'staff1'</span>,<span class="string">'info'</span>,<span class="string">'partition1'</span>,SPLITS =&gt; [<span class="string">'1000'</span>,<span class="string">'2000'</span>,<span class="string">'3000'</span>,<span class="string">'4000'</span>]</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">HBase&gt; create &#39;staff1&#39;,&#39;info&#39;,&#39;partition1&#39;,SPLITS =&gt; [&#39;1000&#39;,&#39;2000&#39;,&#39;3000&#39;,&#39;4000&#39;]
+</code></pre>
 </li>
 <li><p>生成16进制序列预分区</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create <span class="string">'staff2'</span>,<span class="string">'info'</span>,<span class="string">'partition2'</span>,&#123;NUMREGIONS =&gt; 15, SPLITALGO =&gt; <span class="string">'HexStringSplit'</span>&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">create &#39;staff2&#39;,&#39;info&#39;,&#39;partition2&#39;,{NUMREGIONS =&gt; 15, SPLITALGO =&gt; &#39;HexStringSplit&#39;}
+</code></pre>
 </li>
 <li><p>按照文件中设置的规则预分区</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">创建splits.txt文件内容如下：</span><br><span class="line">aaaa</span><br><span class="line">bbbb</span><br><span class="line">cccc</span><br><span class="line">dddd</span><br><span class="line"></span><br><span class="line">create <span class="string">'staff3'</span>,<span class="string">'partition3'</span>,SPLITS_FILE =&gt; <span class="string">'splits.txt'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">创建splits.txt文件内容如下：
+aaaa
+bbbb
+cccc
+dddd
+
+create &#39;staff3&#39;,&#39;partition3&#39;,SPLITS_FILE =&gt; &#39;splits.txt&#39;
+</code></pre>
 </li>
 <li><p>使用JavaAPI创建预分区</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义算法，产生一系列Hash散列值存储在二维数组中</span></span><br><span class="line"><span class="keyword">byte</span>[][] splitKeys = 某个散列值函数</span><br><span class="line"><span class="comment">//创建HBaseAdmin实例</span></span><br><span class="line">HBaseAdmin hAdmin = <span class="keyword">new</span> HBaseAdmin(HBaseConfiguration.create());</span><br><span class="line"><span class="comment">//创建HTableDescriptor实例</span></span><br><span class="line">HTableDescriptor tableDesc = <span class="keyword">new</span> HTableDescriptor(tableName);</span><br><span class="line"><span class="comment">//通过HTableDescriptor实例和散列值二维数组创建带有预分区的HBase表</span></span><br><span class="line">hAdmin.createTable(tableDesc, splitKeys);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">//自定义算法，产生一系列Hash散列值存储在二维数组中
+byte[][] splitKeys = 某个散列值函数
+//创建HBaseAdmin实例
+HBaseAdmin hAdmin = new HBaseAdmin(HBaseConfiguration.create());
+//创建HTableDescriptor实例
+HTableDescriptor tableDesc = new HTableDescriptor(tableName);
+//通过HTableDescriptor实例和散列值二维数组创建带有预分区的HBase表
+hAdmin.createTable(tableDesc, splitKeys);
+</code></pre>
 </li>
 </ol>
 <h2 id="RowKey设计"><a href="#RowKey设计" class="headerlink" title="RowKey设计"></a>RowKey设计</h2><p>一条数据的唯一标识就是rowkey，那么这条数据存储于哪个分区，取决于rowkey处于哪个一个预分区的区间内，设计rowkey的主要目的 ，就是让数据均匀的分布于所有的region中，在一定程度上防止数据倾斜。接下来我们就谈一谈rowkey常用的设计方案.</p>
@@ -1452,16 +1469,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+              <a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  HBase05-HBase-MR
+                  HBase06-与Hive集成
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
-                HBase08-扩展
+              <a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+                HBase04-HBase-API
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

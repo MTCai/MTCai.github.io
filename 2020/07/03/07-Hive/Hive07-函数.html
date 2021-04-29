@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1371,11 +1371,29 @@
 <li><p>导入依赖</p>
 </li>
 </ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--https://mvnrepository.com/artifact/org.apache.hive/hive-exec --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hive<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hive-exec<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;dependencies&gt;
+&lt;!--https://mvnrepository.com/artifact/org.apache.hive/hive-exec --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.hive&lt;/groupId&gt;
+        &lt;artifactId&gt;hive-exec&lt;/artifactId&gt;
+        &lt;version&gt;1.2.1&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
 <ol>
 <li>创建自定义UDF类</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.hive;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hive.ql.exec.UDF;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lower</span> <span class="keyword">extends</span> <span class="title">UDF</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">evaluate</span> <span class="params">(String s)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (s == <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> s.toLowerCase();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package com.atguigu.hive;
+import org.apache.hadoop.hive.ql.exec.UDF;
+public class Lower extends UDF {
+    public String evaluate (String s) {
+        if (s == null) {
+            return null;
+        }
+        return s.toLowerCase();
+    }
+}
+</code></pre>
 <ol>
 <li><p>打成jar 包上传到服务器/opt/module/datas/udf.jar</p>
 </li>
@@ -1389,7 +1407,52 @@
 <h3 id="自定义UDTF-函数"><a href="#自定义UDTF-函数" class="headerlink" title="自定义UDTF 函数"></a>自定义UDTF 函数</h3><p>UDTF(user defined Table functions) 用于处理单行数据，并生成多个数据行。</p>
 <p>用户定义聚集函数（user-defined aggregate function ）， UDAF</p>
 <p>自定义一个UDTF 实现将一个任意分割符的字符串切割成独立的单词</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.udtf;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hive.ql.exec.UDFArgumentException;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hive.ql.metadata.HiveException;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hive.ql.udf.generic.GenericUDTF;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hive.serde2.objectinspector.ObjectInspectorFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hive.serde2.objectinspector.StructObjectInspector;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.hive.serde2.objectinspector.primitive.PrimitiveObjectInspectorFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUDTF</span> <span class="keyword">extends</span> <span class="title">GenericUDTF</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; outList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> StructObjectInspector <span class="title">initialize</span><span class="params">(StructObjectInspector argOIs)</span> <span class="keyword">throws</span> UDFArgumentException </span>&#123;</span><br><span class="line">        <span class="comment">//1.定义输出数据的列名和类型</span></span><br><span class="line">        List&lt;String&gt; fieldNames = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;ObjectInspector&gt; fieldOIs = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//2.添加输出数据的列名和类型</span></span><br><span class="line">        fieldNames.add(<span class="string">"lineToWord"</span>);</span><br><span class="line">        fieldOIs.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);</span><br><span class="line">        <span class="keyword">return</span> ObjectInspectorFactory.getStandardStructObjectInspector(fieldNames, fieldOIs);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">process</span><span class="params">(Object[] args)</span> <span class="keyword">throws</span> HiveException </span>&#123;</span><br><span class="line">        <span class="comment">//1.获取原始数据</span></span><br><span class="line">        String arg = args[<span class="number">0</span>].toString();</span><br><span class="line">        <span class="comment">//2.获取数据传入的第二个参数，此处为分隔符</span></span><br><span class="line">        String splitKey = args[<span class="number">1</span>].toString();</span><br><span class="line">        <span class="comment">//3.将原始数据按照传入的分隔符进行切分</span></span><br><span class="line">        String[] fields = arg.split(splitKey);</span><br><span class="line">        <span class="comment">//4.遍历切分后的结果，并写出</span></span><br><span class="line">        <span class="keyword">for</span> (String field : fields) &#123;</span><br><span class="line">            <span class="comment">//集合为复用的，首先清空集合</span></span><br><span class="line">            outList.clear();</span><br><span class="line">            <span class="comment">//将每一个单词添加至集合</span></span><br><span class="line">            outList.add(field);</span><br><span class="line">            <span class="comment">//将集合内容写出</span></span><br><span class="line">            forward(outList);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> HiveException </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package com.atguigu.udtf;
+import org.apache.hadoop.hive.ql.exec.UDFArgumentException;
+import org.apache.hadoop.hive.ql.metadata.HiveException;
+import org.apache.hadoop.hive.ql.udf.generic.GenericUDTF;
+import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector;
+import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspectorFactory;
+import org.apache.hadoop.hive.serde2.objectinspector.StructObjectInspector;
+import org.apache.hadoop.hive.serde2.objectinspector.primitive.PrimitiveObjectInspectorFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+public class MyUDTF extends GenericUDTF {
+    private ArrayList&lt;String&gt; outList = new ArrayList&lt;&gt;();
+    @Override
+    public StructObjectInspector initialize(StructObjectInspector argOIs) throws UDFArgumentException {
+        //1.定义输出数据的列名和类型
+        List&lt;String&gt; fieldNames = new ArrayList&lt;&gt;();
+        List&lt;ObjectInspector&gt; fieldOIs = new ArrayList&lt;&gt;();
+        //2.添加输出数据的列名和类型
+        fieldNames.add(&quot;lineToWord&quot;);
+        fieldOIs.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
+        return ObjectInspectorFactory.getStandardStructObjectInspector(fieldNames, fieldOIs);
+    }
+    @Override
+    public void process(Object[] args) throws HiveException {
+        //1.获取原始数据
+        String arg = args[0].toString();
+        //2.获取数据传入的第二个参数，此处为分隔符
+        String splitKey = args[1].toString();
+        //3.将原始数据按照传入的分隔符进行切分
+        String[] fields = arg.split(splitKey);
+        //4.遍历切分后的结果，并写出
+        for (String field : fields) {
+            //集合为复用的，首先清空集合
+            outList.clear();
+            //将每一个单词添加至集合
+            outList.add(field);
+            //将集合内容写出
+            forward(outList);
+        }
+    }
+    @Override
+    public void close() throws HiveException {
+    }
+}
+</code></pre>
 <p>打成jar 包上传到服务器/opt/module/data/udtf.jar</p>
 <p>将jar 包添加到hive 的classpath 下：hive (default)&gt; add jar /opt/module/data/udtf.jar;</p>
 <p>创建临时函数与开发好的java class 关联：hive (default)&gt; create temporary function myudtf as “com.atguigu.hive.MyUDTF”;</p>
@@ -1401,16 +1464,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+              <a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Hive04-DDL
+                  Hive08-压缩和存储
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
-                Hive06-查询
+              <a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+                Hive09-企业级调优
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

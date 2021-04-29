@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1339,7 +1339,13 @@
 <p>topic 是逻辑上的概念，而partition 是物理上的概念，<font color = #3333ff face="宋体">每个partition 对应于一个log 文件</font>，该log 文件中存储的就是producer 生产的数据。Producer 生产的数据会被不断追加到该log 文件末端，且每条数据都有自己的offset。消费者组中的每个消费者，都会实时记录自己消费到了哪个offset，以便出错恢复时，从上次的位置继续消费。</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210419135238066.png" alt="image-20210419135238066"></p>
 <p>由于生产者生产的消息会不断追加到log 文件末尾，为防止log 文件过大导致数据定位效率低下，Kafka 采取了分片和索引机制，将每个partition 分为多个segment。每个segment对应两个文件——“.index”文件和“.log”文件。这些文件位于一个文件夹下，该文件夹的命名规则为：topic 名称+分区序号。例如，first 这个topic 有三个分区，则其对应的文件夹为first-0,first-1,first-2。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00000000000000000000</span>.index</span><br><span class="line"><span class="number">00000000000000000000</span>.log</span><br><span class="line"><span class="number">00000000000000170410</span>.index</span><br><span class="line"><span class="number">00000000000000170410</span>.log</span><br><span class="line"><span class="number">00000000000000239430</span>.index</span><br><span class="line"><span class="number">00000000000000239430</span>.log</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">00000000000000000000.index
+00000000000000000000.log
+00000000000000170410.index
+00000000000000170410.log
+00000000000000239430.index
+00000000000000239430.log
+</code></pre>
 <p>index 和log 文件以当前segment 的第一条消息的offset 命名。下图为index 文件和log文件的结构示意图。</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210419135500760.png" alt="image-20210419135500760"></p>
 <p>“.index”文件存储大量的 索引信息 ，“.log”文件存储大量的数据 ，索引文件中的元数据指向对应数据文件中 message的物理偏移地址</p>
@@ -1460,16 +1466,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+              <a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Kafka03-API
+                  Kafka00-安装
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
-                Kafka05-Flume对接Kafka
+              <a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+                Kafka01-概述&shell操作
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

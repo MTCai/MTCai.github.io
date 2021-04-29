@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1352,15 +1352,47 @@
 <h3 id="配置jdk"><a href="#配置jdk" class="headerlink" title="配置jdk"></a>配置jdk</h3><p>验证命令：java -version</p>
 <h3 id="配置Maven"><a href="#配置Maven" class="headerlink" title="配置Maven"></a>配置Maven</h3><blockquote>
 <p>[root@hadoop101 apache-maven-3.0.5]# vi conf/settings.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- mirror</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">| Specifies a repository mirror site to use instead of a given repository. The repository that</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">| this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">| for inheritance and direct lookup purposes, and must be unique across the set of mirrors.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">|</span></span><br><span class="line"><span class="comment">&lt;mirror&gt;</span></span><br><span class="line"><span class="comment">	&lt;id&gt;mirrorId&lt;/id&gt;</span></span><br><span class="line"><span class="comment">	&lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;</span></span><br><span class="line"><span class="comment">	&lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</span></span><br><span class="line"><span class="comment">	&lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;</span></span><br><span class="line"><span class="comment">&lt;/mirror&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;mirrors&gt;
+
+&lt;!-- mirror
+
+| Specifies a repository mirror site to use instead of a given repository. The repository that
+
+| this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used
+
+| for inheritance and direct lookup purposes, and must be unique across the set of mirrors.
+
+|
+&lt;mirror&gt;
+    &lt;id&gt;mirrorId&lt;/id&gt;
+    &lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;
+    &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;
+    &lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;
+&lt;/mirror&gt;
+--&gt;
+
+&lt;mirror&gt;
+    &lt;id&gt;nexus-aliyun&lt;/id&gt;
+    &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+    &lt;name&gt;Nexus aliyun&lt;/name&gt;
+    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;
+&lt;/mirror&gt;
+&lt;/mirrors&gt;
+</code></pre>
 <p>[root@hadoop101 apache-maven-3.0.5]# vi /etc/profile</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:<span class="string">' #MAVEN_HOME '</span></span><br><span class="line"><span class="built_in">export</span> MAVEN_HOME=/opt/module/apache-maven-3.0.5</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">:&#39; #MAVEN_HOME &#39;
+export MAVEN_HOME=/opt/module/apache-maven-3.0.5
+export PATH=$PATH:$MAVEN_HOME/bin
+</code></pre>
 <p>[root@hadoop101 software]#source /etc/profile</p>
 </blockquote>
 <p>验证命令：mvn -version</p>
 <h3 id="配置ant"><a href="#配置ant" class="headerlink" title="配置ant"></a>配置ant</h3><blockquote>
 <p>[root@hadoop101 apache-ant-1.9.9]# vi /etc/profile</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:<span class="string">' #ANT_HOME '</span></span><br><span class="line"><span class="built_in">export</span> ANT_HOME=/opt/module/apache-ant-1.9.9</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$ANT_HOME</span>/bin</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">:&#39; #ANT_HOME &#39;
+export ANT_HOME=/opt/module/apache-ant-1.9.9
+export PATH=$PATH:$ANT_HOME/bin
+</code></pre>
 <p>[root@hadoop101 software]#source /etc/profile</p>
 </blockquote>
 <p>验证命令：ant -version</p>
@@ -1378,14 +1410,23 @@
 <p>[root@hadoop101 protobuf-2.5.0]# make install </p>
 <p>[root@hadoop101 protobuf-2.5.0]# ldconfig </p>
 <p>[root@hadoop101 hadoop-dist]# vi /etc/profile</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:<span class="string">' #LD_LIBRARY_PATH '</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/opt/module/protobuf-2.5.0</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">:&#39; #LD_LIBRARY_PATH &#39;
+export LD_LIBRARY_PATH=/opt/module/protobuf-2.5.0
+export PATH=$PATH:$LD_LIBRARY_PATH
+</code></pre>
 <p>[root@hadoop101 software]#source /etc/profile</p>
 </blockquote>
 <p>验证命令：protoc —version</p>
 <h3 id="安装findbugs"><a href="#安装findbugs" class="headerlink" title="安装findbugs"></a>安装findbugs</h3><blockquote>
 <p>解压：tar -zxvf findbugs-3.0.1.tar.gz -C /opt/moudles/</p>
 <p>配置环境变量:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在 /etc/profile 文件末尾添加：</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> FINDBUGS_HOME=/opt/findbugs-3.0.1</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$FINDBUGS_HOME</span>/bin</span><br><span class="line"></span><br><span class="line">保存退出，并使更改生效。</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">在 /etc/profile 文件末尾添加：
+
+export FINDBUGS_HOME=/opt/findbugs-3.0.1
+export PATH=$PATH:$FINDBUGS_HOME/bin
+
+保存退出，并使更改生效。
+</code></pre>
 </blockquote>
 <p>验证命令：findbugs -version</p>
 <h3 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h3><blockquote>

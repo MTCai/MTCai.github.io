@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1373,21 +1373,127 @@
 <ol>
 <li>创建一个maven 项目，并引入以下依赖</li>
 </ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.flume<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>flume-ng-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.flume&lt;/groupId&gt;
+    &lt;artifactId&gt;flume-ng-core&lt;/artifactId&gt;
+    &lt;version&gt;1.7.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
 <ol>
 <li>定义CustomInterceptor 类并实现Interceptor 接口</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.flume.interceptor;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.Context;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.Event;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.interceptor.Interceptor;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomInterceptor</span> <span class="keyword">implements</span> <span class="title">Interceptor</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Event <span class="title">intercept</span><span class="params">(Event event)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">byte</span>[] body = event.getBody();</span><br><span class="line">		<span class="keyword">if</span> (body[<span class="number">0</span>] &lt; <span class="string">'z'</span> &amp;&amp; body[<span class="number">0</span>] &gt; <span class="string">'a'</span>) &#123;</span><br><span class="line">			event.getHeaders().put(<span class="string">"type"</span>, <span class="string">"letter"</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (body[<span class="number">0</span>] &gt; <span class="string">'0'</span> &amp;&amp; body[<span class="number">0</span>] &lt; <span class="string">'9'</span>)</span><br><span class="line">           event.getHeaders().put(<span class="string">"type"</span>, <span class="string">"number"</span>);</span><br><span class="line">		<span class="keyword">return</span> event;</span><br><span class="line">    &#125;</span><br><span class="line">   	<span class="meta">@Override</span></span><br><span class="line">   	<span class="function"><span class="keyword">public</span> List&lt;Event&gt; <span class="title">intercept</span><span class="params">(List&lt;Event&gt; events)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (Event event : events) &#123;</span><br><span class="line">           	intercept(event);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> events;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> <span class="keyword">implements</span> <span class="title">Interceptor</span>.<span class="title">Builder</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Interceptor <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   	    	<span class="keyword">return</span> <span class="keyword">new</span> CustomInterceptor();</span><br><span class="line">        &#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(Context context)</span> </span>&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package com.atguigu.flume.interceptor;
+import org.apache.flume.Context;
+import org.apache.flume.Event;
+import org.apache.flume.interceptor.Interceptor;
+import java.util.List;
+public class CustomInterceptor implements Interceptor {
+    @Override
+    public void initialize() {
+    }
+    @Override
+    public Event intercept(Event event) {
+        byte[] body = event.getBody();
+        if (body[0] &lt; &#39;z&#39; &amp;&amp; body[0] &gt; &#39;a&#39;) {
+            event.getHeaders().put(&quot;type&quot;, &quot;letter&quot;);
+        } else if (body[0] &gt; &#39;0&#39; &amp;&amp; body[0] &lt; &#39;9&#39;)
+           event.getHeaders().put(&quot;type&quot;, &quot;number&quot;);
+        return event;
+    }
+       @Override
+       public List&lt;Event&gt; intercept(List&lt;Event&gt; events) {
+        for (Event event : events) {
+               intercept(event);
+        }
+        return events;
+    }
+    @Override
+    public void close() {}
+    public static class Builder implements Interceptor.Builder {
+        @Override
+        public Interceptor build() {
+               return new CustomInterceptor();
+        }
+    @Override
+    public void configure(Context context) {}
+    }
+}
+</code></pre>
 <ol>
 <li><p>编辑 flume 配置文件</p>
 <p>为<br>hadoop102 上的 Flume1 配置 1 个 netcat source, 1 个 sink group, 2 个 avro sink并配置相应的 ChannelSelector 和 interceptor。</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a1.sources = r1</span></span><br><span class="line"><span class="string">a1.sinks = k1 k2</span></span><br><span class="line"><span class="string">a1.channels = c1 c2</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line">a1.sources.r1.type = netcat</span><br><span class="line">a1.sources.r1.bind = localhost</span><br><span class="line">a1.sources.r1.port = 44444</span><br><span class="line">a1.sources.r1.interceptors = i1</span><br><span class="line">a1.sources.r1.interceptors.i1.type = com.atguigu.flume.interceptor.CustomInterceptor<span class="variable">$Builder</span></span><br><span class="line">a1.sources.r1.selector.type = multiplexing</span><br><span class="line">a1.sources.r1.selector.header = <span class="built_in">type</span></span><br><span class="line">a1.sources.r1.selector.mapping.letter = c1</span><br><span class="line">a1.sourc es.r1.selector.mapping.number = c2</span><br><span class="line"><span class="comment"># Describe the sink</span></span><br><span class="line">a1.sinks.k1.type = avro</span><br><span class="line">a1.sinks.k1.hostname = hadoop103</span><br><span class="line">a1.sinks.k1.port = 4141</span><br><span class="line">a1.sinks.k2.type=avro</span><br><span class="line">a1.sinks.k2.hostname = hadoop104</span><br><span class="line">a1.sinks.k2.port = 4242</span><br><span class="line"><span class="string">'Use a channel which buffers events in memory</span></span><br><span class="line"><span class="string">a1.channels.c1.type = memory</span></span><br><span class="line"><span class="string">a1.channels.c1.capacity = 1000</span></span><br><span class="line"><span class="string">a1.channels.c1.transactionCapacity = 100</span></span><br><span class="line"><span class="string">'</span>Use a channel <span class="built_in">which</span> buffers events <span class="keyword">in</span> memory</span><br><span class="line">a1.channels.c2.type = memory</span><br><span class="line">a1.channels.c2.capacity = 1000</span><br><span class="line">a1.channels.c2.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bind the source and sink to the channel</span></span><br><span class="line"><span class="string">a1.sources.r1.channels = c1 c2</span></span><br><span class="line"><span class="string">a1.sinks.k1.channel = c1</span></span><br><span class="line"><span class="string">a1.sinks.k2.channel = c2</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a1.sources = r1
+a1.sinks = k1 k2
+a1.channels = c1 c2
+&#39;Describe/configure the source
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = localhost
+a1.sources.r1.port = 44444
+a1.sources.r1.interceptors = i1
+a1.sources.r1.interceptors.i1.type = com.atguigu.flume.interceptor.CustomInterceptor$Builder
+a1.sources.r1.selector.type = multiplexing
+a1.sources.r1.selector.header = type
+a1.sources.r1.selector.mapping.letter = c1
+a1.sourc es.r1.selector.mapping.number = c2
+# Describe the sink
+a1.sinks.k1.type = avro
+a1.sinks.k1.hostname = hadoop103
+a1.sinks.k1.port = 4141
+a1.sinks.k2.type=avro
+a1.sinks.k2.hostname = hadoop104
+a1.sinks.k2.port = 4242
+&#39;Use a channel which buffers events in memory
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+&#39;Use a channel which buffers events in memory
+a1.channels.c2.type = memory
+a1.channels.c2.capacity = 1000
+a1.channels.c2.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a1.sources.r1.channels = c1 c2
+a1.sinks.k1.channel = c1
+a1.sinks.k2.channel = c2
+</code></pre>
 <p>   为<br>   hadoop 103 上的 F lume2 配置一个 avro source 和一个 logger sink 。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">a1.sources = r1</span><br><span class="line">a1.sinks = k1</span><br><span class="line">a1.channels = c1</span><br><span class="line">   </span><br><span class="line">a1.sources.r1.type = avro</span><br><span class="line">a1.sources.r1.bind = hadoop103</span><br><span class="line">a1.sources.r1.port = 4141</span><br><span class="line">   </span><br><span class="line">a1.sinks.k1.type = logger</span><br><span class="line">   </span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line">   </span><br><span class="line">a1.sinks.k1.channel = c1</span><br><span class="line">a1.sources.r1.channels = c1</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+a1.sources.r1.type = avro
+a1.sources.r1.bind = hadoop103
+a1.sources.r1.port = 4141
+
+a1.sinks.k1.type = logger
+
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+
+a1.sinks.k1.channel = c1
+a1.sources.r1.channels = c1
+</code></pre>
 <p>   为hadoop 10 4 上的 Flume3 配置一个 avro source 和一个 logger sink 。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">a1.sources = r1</span><br><span class="line">a1.sinks = k1</span><br><span class="line">a1.channels = c1</span><br><span class="line">   </span><br><span class="line">a1.sources.r1.type = avro</span><br><span class="line">a1.sources.r1.bind = hadoop104</span><br><span class="line">a1.sources.r1.port = 4242</span><br><span class="line">   </span><br><span class="line">a1.sinks.k1.type = logger</span><br><span class="line">   </span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 10 00</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line">   </span><br><span class="line">a1.sinks.k1.channel = c1</span><br><span class="line">a1.sources.r1.channels = c1</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+a1.sources.r1.type = avro
+a1.sources.r1.bind = hadoop104
+a1.sources.r1.port = 4242
+
+a1.sinks.k1.type = logger
+
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 10 00
+a1.channels.c1.transactionCapacity = 100
+
+a1.sinks.k1.channel = c1
+a1.sources.r1.channels = c1
+</code></pre>
 <ol>
 <li><p>分别在 hadoop102 hadoop103 hadoop104 上启动 flume 进程 ，注意先后顺序。</p>
 </li>
@@ -1410,18 +1516,92 @@
 <ol>
 <li>导入pom 依赖</li>
 </ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.flume<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>flume-ng-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.flume&lt;/groupId&gt;
+        &lt;artifactId&gt;flume-ng-core&lt;/artifactId&gt;
+        &lt;version&gt;1.7.0&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
 <ol>
 <li>编写 MySource 代码</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.flume.Context;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.EventDeliveryException;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.PollableSource;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.conf.Configurable;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.event.SimpleEvent;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.source.AbstractSource;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line">   </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySource</span> <span class="keyword">extends</span> <span class="title">AbstractSource</span> <span class="keyword">implements</span> <span class="title">Configurable</span>, <span class="title">PollableSource</span> </span>&#123;</span><br><span class="line">	<span class="comment">//定义配置文件将来要读取的字段</span></span><br><span class="line">	<span class="keyword">private</span> Long delay;</span><br><span class="line">	<span class="keyword">private</span> String field;</span><br><span class="line">	<span class="comment">//初始化配置信息</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">		delay = context.getLong(<span class="string">"delay"</span>);</span><br><span class="line">		field = context.getString(<span class="string">"field"</span>, <span class="string">"Hello!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Status <span class="title">process</span><span class="params">()</span> <span class="keyword">throws</span> EventDeliveryException </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//创建事件头信息</span></span><br><span class="line">			HashMap&lt;String, String&gt; hearderMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">			<span class="comment">//创建事件</span></span><br><span class="line">			SimpleEvent event = <span class="keyword">new</span> SimpleEvent();</span><br><span class="line">			<span class="comment">//循环封装事件</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">				<span class="comment">//给事件设置头信息</span></span><br><span class="line">				event.setHeaders(hearderMap);</span><br><span class="line">				<span class="comment">//给事件设置内容</span></span><br><span class="line">				event.setBody((field + i).getBytes());</span><br><span class="line">				<span class="comment">//将事件写入 channel</span></span><br><span class="line">				getChannelProcessor().processEvent(event);</span><br><span class="line">				Thread.sleep(delay);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (E xception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">return</span> Status.BACKOFF;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> Status.READY;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getBackOffSleepIncrement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">long</span> getMaxBackOffS <span class="title">leepInterval</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">import org.apache.flume.Context;
+import org.apache.flume.EventDeliveryException;
+import org.apache.flume.PollableSource;
+import org.apache.flume.conf.Configurable;
+import org.apache.flume.event.SimpleEvent;
+import org.apache.flume.source.AbstractSource;
+import java.util.HashMap;
+
+public class MySource extends AbstractSource implements Configurable, PollableSource {
+    //定义配置文件将来要读取的字段
+    private Long delay;
+    private String field;
+    //初始化配置信息
+    @Override
+    public void configure(Context context) {
+        delay = context.getLong(&quot;delay&quot;);
+        field = context.getString(&quot;field&quot;, &quot;Hello!&quot;);
+    }
+    @Override
+    public Status process() throws EventDeliveryException {
+        try {
+            //创建事件头信息
+            HashMap&lt;String, String&gt; hearderMap = new HashMap&lt;&gt;();
+            //创建事件
+            SimpleEvent event = new SimpleEvent();
+            //循环封装事件
+            for (int i = 0; i &lt; 5; i++) {
+                //给事件设置头信息
+                event.setHeaders(hearderMap);
+                //给事件设置内容
+                event.setBody((field + i).getBytes());
+                //将事件写入 channel
+                getChannelProcessor().processEvent(event);
+                Thread.sleep(delay);
+            }
+        } catch (E xception e) {
+            e.printStackTrace();
+            return Status.BACKOFF;
+        }
+        return Status.READY;
+    }
+    @Override
+    public long getBackOffSleepIncrement() {
+        return 0;
+    }
+    @Override
+    public long getMaxBackOffS leepInterval() {
+        return 0;
+    }
+}
+</code></pre>
 <ol>
 <li><p>打包，将写好的代码打包，并放到<br>flume 的 lib 目录（ opt/module/flume ）下。</p>
 </li>
 <li><p>配置文件</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent'</span></span><br><span class="line">a1.sources = r1</span><br><span class="line">a1.sinks = k1</span><br><span class="line">a1.channels = c1</span><br><span class="line"><span class="string">'Describe/configure the source'</span></span><br><span class="line">a1.sources.r1.type = com.atguigu.MySource</span><br><span class="line">a1.sources.r1.delay = 1000</span><br><span class="line">a1.sources.r1.field = atguigu</span><br><span class="line"><span class="string">'Describe the sink'</span></span><br><span class="line">a1.sinks.k1.type = logger</span><br><span class="line"><span class="string">'Use a channel which buffers events in memory</span></span><br><span class="line"><span class="string">a1.channels.c1.type = memory</span></span><br><span class="line"><span class="string">a1.channels.c1.capacity = 1000</span></span><br><span class="line"><span class="string">a1.channels.c1.transac tionCapacity = 100</span></span><br><span class="line"><span class="string">'</span>Bind the <span class="built_in">source</span> and sink to the channel<span class="string">'</span></span><br><span class="line"><span class="string">a1.sources.r1.channels = c1</span></span><br><span class="line"><span class="string">a1.sinks.k1.channel = c1</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent&#39;
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+&#39;Describe/configure the source&#39;
+a1.sources.r1.type = com.atguigu.MySource
+a1.sources.r1.delay = 1000
+a1.sources.r1.field = atguigu
+&#39;Describe the sink&#39;
+a1.sinks.k1.type = logger
+&#39;Use a channel which buffers events in memory
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transac tionCapacity = 100
+&#39;Bind the source and sink to the channel&#39;
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+</code></pre>
 <ol>
 <li><p>开启任务</p>
 <p>[atguigu@hadoop102 flume]$ bin/flume-ng agent -c conf/ -f<br>job/my-source.conf -n a1 -Dflume.root.logger=INFO,console</p>
@@ -1445,7 +1625,61 @@
 <ol>
 <li>编码</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.flume.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.conf.Configurable;</span><br><span class="line"><span class="keyword">import</span> org.apache.flume.sink.AbstractSink;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySink</span> <span class="keyword">extends</span> <span class="title">AbstractSink</span> <span class="keyword">implements</span> <span class="title">Configurable</span> </span>&#123;</span><br><span class="line">	<span class="comment">//创建 Logger 对象</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG =</span><br><span class="line">	LoggerFactory.getLogger(AbstractSink<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">	<span class="keyword">private</span> String prefix;</span><br><span class="line">	<span class="keyword">private</span> String suffix;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Status <span class="title">process</span><span class="params">()</span> <span class="keyword">throws</span> EventDeliveryException </span>&#123;</span><br><span class="line">		<span class="comment">//声明返回值状态信息</span></span><br><span class="line">		Status status;</span><br><span class="line">		<span class="comment">//获取当前 Sink 绑定的 Channel</span></span><br><span class="line">		Channel ch = getChannel();</span><br><span class="line">		<span class="comment">//获取事务</span></span><br><span class="line">		Transaction txn = ch.getTransaction();</span><br><span class="line">		<span class="comment">//声明事件</span></span><br><span class="line">		Event event;</span><br><span class="line">		<span class="comment">//开启事务</span></span><br><span class="line">		txn.begin();</span><br><span class="line">		<span class="comment">//读取 Channel 中的事件，直到读取到事件结束循环</span></span><br><span class="line">		<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">			event = ch.take();</span><br><span class="line">			<span class="keyword">if</span> (event != <span class="keyword">null</span>) &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//处理事件（打印）</span></span><br><span class="line">			LOG.info(prefix + <span class="keyword">new</span> String(event.getBody()) + suffix);</span><br><span class="line">			<span class="comment">//事务提交</span></span><br><span class="line">			txn.commit();</span><br><span class="line">			status = Status.READY;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">			<span class="comment">//遇到异常，事务回滚</span></span><br><span class="line">			txn.rollback();</span><br><span class="line">			status = Status.BACKOFF;</span><br><span class="line">		&#125; <span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//关闭事务</span></span><br><span class="line">			txn.close();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> status;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//读取配置文件内容，有默认值</span></span><br><span class="line">		prefix = context.getString(<span class="string">"prefix"</span>, <span class="string">"hello:"</span>);</span><br><span class="line">		<span class="comment">//读取配置文件内容，无默认值</span></span><br><span class="line">		suffix = context.getString(<span class="string">"suffix"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">import org.apache.flume.*;
+import org.apache.flume.conf.Configurable;
+import org.apache.flume.sink.AbstractSink;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+public class MySink extends AbstractSink implements Configurable {
+    //创建 Logger 对象
+    private static final Logger LOG =
+    LoggerFactory.getLogger(AbstractSink.class);
+    private String prefix;
+    private String suffix;
+    @Override
+    public Status process() throws EventDeliveryException {
+        //声明返回值状态信息
+        Status status;
+        //获取当前 Sink 绑定的 Channel
+        Channel ch = getChannel();
+        //获取事务
+        Transaction txn = ch.getTransaction();
+        //声明事件
+        Event event;
+        //开启事务
+        txn.begin();
+        //读取 Channel 中的事件，直到读取到事件结束循环
+        while (true) {
+            event = ch.take();
+            if (event != null) {
+                break;
+            }
+        }
+        try {
+            //处理事件（打印）
+            LOG.info(prefix + new String(event.getBody()) + suffix);
+            //事务提交
+            txn.commit();
+            status = Status.READY;
+        } catch (Exception e){
+            //遇到异常，事务回滚
+            txn.rollback();
+            status = Status.BACKOFF;
+        } finally{
+            //关闭事务
+            txn.close();
+        }
+        return status;
+    }
+    @Override
+    public void configure(Context context) {
+        //读取配置文件内容，有默认值
+        prefix = context.getString(&quot;prefix&quot;, &quot;hello:&quot;);
+        //读取配置文件内容，无默认值
+        suffix = context.getString(&quot;suffix&quot;);
+    }
+}
+</code></pre>
 <ol>
 <li><p>打包</p>
 <p>将写好的代码打包，并放到<br>flume 的 lib 目录（ （/opt/module/flume ）下。</p>
@@ -1453,11 +1687,36 @@
 <li><p>配置文件</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent'</span></span><br><span class="line">a1.sources = r1</span><br><span class="line">a1.sinks = k1</span><br><span class="line">a1.channels = c1</span><br><span class="line"><span class="string">'Describe/configure the source'</span></span><br><span class="line">a1.sources.r1.type = netcat</span><br><span class="line">a1.sources.r1.bind = localhost</span><br><span class="line">a1.sources.r1.port = 44444</span><br><span class="line"><span class="string">'Describe the sink'</span></span><br><span class="line">a1.sinks.k1.type = com.atguigu.MySink</span><br><span class="line"><span class="string">'a1.sinks.k1.prefix ='</span></span><br><span class="line">a1.sinks.k1.suffix = :atguigu</span><br><span class="line"><span class="string">'Use a channel which buffers events in memory'</span></span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bind the source and sink to the channel'</span></span><br><span class="line">a1.sources.r1.channels = c1</span><br><span class="line">a1.sinks.k1.channel = c1</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent&#39;
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+&#39;Describe/configure the source&#39;
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = localhost
+a1.sources.r1.port = 44444
+&#39;Describe the sink&#39;
+a1.sinks.k1.type = com.atguigu.MySink
+&#39;a1.sinks.k1.prefix =&#39;
+a1.sinks.k1.suffix = :atguigu
+&#39;Use a channel which buffers events in memory&#39;
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+&#39;Bind the source and sink to the channel&#39;
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+</code></pre>
 <ol>
 <li>开启任务</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 flume]$ bin/flume-ng agent -c conf/ -f job/mysink.conf -n a1 -Dflume.root.logger=INFO,console</span><br><span class="line">[atguigu@hadoop102 ~]$ nc localhost 44444</span><br><span class="line">hello</span><br><span class="line">OK</span><br><span class="line">atguigu</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 flume]$ bin/flume-ng agent -c conf/ -f job/mysink.conf -n a1 -Dflume.root.logger=INFO,console
+[atguigu@hadoop102 ~]$ nc localhost 44444
+hello
+OK
+atguigu
+OK
+</code></pre>
 <ol>
 <li>结果展示</li>
 </ol>
@@ -1483,19 +1742,73 @@
 </blockquote>
 </li>
 <li><p>修改配置文件 /etc/httpd/conf.d/ganglia.conf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Ganglia monitoring system php web frontend</span></span><br><span class="line">Alias /ganglia /usr/share/ganglia</span><br><span class="line">&lt;Location/ ganglia&gt;</span><br><span class="line">    Order deny,allow</span><br><span class="line">    <span class="comment">#Deny from all</span></span><br><span class="line">    Allow from all  <span class="comment">##这一行</span></span><br><span class="line">    <span class="comment"># Allow from 127.0.0.1</span></span><br><span class="line">    <span class="comment"># Allow from ::1</span></span><br><span class="line">    <span class="comment"># Allow from .example.com</span></span><br><span class="line">&lt;/Location&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash"># Ganglia monitoring system php web frontend
+Alias /ganglia /usr/share/ganglia
+&lt;Location/ ganglia&gt;
+    Order deny,allow
+    #Deny from all
+    Allow from all  ##这一行
+    # Allow from 127.0.0.1
+    # Allow from ::1
+    # Allow from .example.com
+&lt;/Location&gt;
+</code></pre>
 </li>
 <li><p>修改配置文件 /etc/ganglia/gmetad.conf</p>
 <p>data_source “hadoop102” 192.168. 9 .102</p>
 </li>
 <li><p>修改配置文件 /etc/ganglia/gmond.conf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">cluster &#123;</span><br><span class="line">    name = <span class="string">"hadoop102"</span></span><br><span class="line">    owner = <span class="string">"unspecified"</span></span><br><span class="line">    latlong = <span class="string">"unspecified"</span></span><br><span class="line">    url = <span class="string">"unspecified"</span></span><br><span class="line">&#125;</span><br><span class="line">udp_send_channel &#123;</span><br><span class="line">	<span class="comment">#bind_hostname = yes # Highly recommended, soon to be default.</span></span><br><span class="line">	<span class="comment"># This option tells gmond to use a source address</span></span><br><span class="line">	<span class="comment"># that resolves to the machine's hostname. Without</span></span><br><span class="line">    <span class="comment"># this, the metrics may appear to come from any</span></span><br><span class="line">    <span class="comment"># interface and the DNS names associated with</span></span><br><span class="line">    <span class="comment"># those IPs will be used to create the</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># mcast_join = 239.2.11.71</span></span><br><span class="line">    host = 192.168.9.102</span><br><span class="line">    port = 8649</span><br><span class="line">    ttl = 1</span><br><span class="line">&#125;</span><br><span class="line">udp_recv_channel &#123;</span><br><span class="line">    <span class="comment"># mcast_join = 239.2.11.71</span></span><br><span class="line">    port = 8649</span><br><span class="line">    <span class="built_in">bind</span> = 192.168. 9 .102</span><br><span class="line">    retry_bind = <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Size of the UDP buffer. If you are handling lots of metrics you really</span></span><br><span class="line">    <span class="comment"># should bump it up to e.g. 10MB or even</span></span><br><span class="line">    <span class="comment"># buffer = 10485760</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">cluster {
+    name = &quot;hadoop102&quot;
+    owner = &quot;unspecified&quot;
+    latlong = &quot;unspecified&quot;
+    url = &quot;unspecified&quot;
+}
+udp_send_channel {
+    #bind_hostname = yes # Highly recommended, soon to be default.
+    # This option tells gmond to use a source address
+    # that resolves to the machine&#39;s hostname. Without
+    # this, the metrics may appear to come from any
+    # interface and the DNS names associated with
+    # those IPs will be used to create the
+
+    # mcast_join = 239.2.11.71
+    host = 192.168.9.102
+    port = 8649
+    ttl = 1
+}
+udp_recv_channel {
+    # mcast_join = 239.2.11.71
+    port = 8649
+    bind = 192.168. 9 .102
+    retry_bind = true
+    # Size of the UDP buffer. If you are handling lots of metrics you really
+    # should bump it up to e.g. 10MB or even
+    # buffer = 10485760
+}
+</code></pre>
 </li>
 <li><p>修改配置文件 /etc/selinux/config</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This file controls the state of SELinux on the</span></span><br><span class="line"><span class="comment"># SELINUX= can take one of these three</span></span><br><span class="line"><span class="comment"># enforcing SELinux security policy is enforced.</span></span><br><span class="line"><span class="comment"># permissive SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="comment"># disabled No SE Linux policy is loaded.</span></span><br><span class="line">SELINUX=disabled  <span class="comment">### 这一行</span></span><br><span class="line"><span class="comment"># SELINUXTYPE= can take one of these two</span></span><br><span class="line"><span class="comment"># targeted Targeted processes are protected,</span></span><br><span class="line"><span class="comment"># mls Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted</span><br><span class="line"></span><br><span class="line"><span class="string">'提示selinux 本次生效关闭必须重启，如果此时不想重启，可以临时生效之：</span></span><br><span class="line"><span class="string">'</span>[atguigu@hadoop102 flume]$ sudo setenforce 0</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash"># This file controls the state of SELinux on the
+# SELINUX= can take one of these three
+# enforcing SELinux security policy is enforced.
+# permissive SELinux prints warnings instead of enforcing.
+# disabled No SE Linux policy is loaded.
+SELINUX=disabled  ### 这一行
+# SELINUXTYPE= can take one of these two
+# targeted Targeted processes are protected,
+# mls Multi Level Security protection.
+SELINUXTYPE=targeted
+
+&#39;提示selinux 本次生效关闭必须重启，如果此时不想重启，可以临时生效之：
+&#39;[atguigu@hadoop102 flume]$ sudo setenforce 0
+</code></pre>
 </li>
 <li><p>启动 ganglia</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 flume]$ sudo service httpd start</span><br><span class="line">[atguigu@hadoop102 flume]$ sudo service gmetad start</span><br><span class="line">[atguigu@hadoop102 flume]$ sudo service gmond start</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 flume]$ sudo service httpd start
+[atguigu@hadoop102 flume]$ sudo service gmetad start
+[atguigu@hadoop102 flume]$ sudo service gmond start
+</code></pre>
 </li>
 <li><p>打开网页浏览 ganglia 页面</p>
 <p><a href="http://192.168.9.102/ganglia" target="_blank" rel="noopener">http://192.168.9.102/ganglia</a></p>
@@ -1505,10 +1818,15 @@
 </ol>
 <h3 id="操作-Flume测试监控"><a href="#操作-Flume测试监控" class="headerlink" title="操作 Flume测试监控"></a>操作 Flume测试监控</h3><ol>
 <li><p>修改 /opt/module/flume/conf 目录下的 flume env.sh 配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JAVA_OPTS=<span class="string">" Dflume.monitoring.type=ganglia</span></span><br><span class="line"><span class="string">-Dflume.monitoring.hosts= 192.168.9.102:8649</span></span><br><span class="line"><span class="string">-Xms100m</span></span><br><span class="line"><span class="string">-Xmx200m"</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">JAVA_OPTS=&quot; Dflume.monitoring.type=ganglia
+-Dflume.monitoring.hosts= 192.168.9.102:8649
+-Xms100m
+-Xmx200m&quot;
+</code></pre>
 </li>
 <li><p>启动 Flume 任务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a1 --conf-file job/flume netcat logger.conf -Dflume.root.logger==INFO,console -Dflume.monitoring.type=ganglia -Dflume.monitorin g.hosts= 192.168.9.102:8649</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a1 --conf-file job/flume netcat logger.conf -Dflume.root.logger==INFO,console -Dflume.monitoring.type=ganglia -Dflume.monitorin g.hosts= 192.168.9.102:8649
+</code></pre>
 </li>
 <li><p>发送数据观察 ganglia 监测图</p>
 <p>[atguigu@hadoop102 flume]$ nc localhost 44444</p>
@@ -1578,8 +1896,8 @@
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
-                Kafka01-概述&shell操作
+              <a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+                flume04-面试题
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

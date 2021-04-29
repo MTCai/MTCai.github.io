@@ -490,8 +490,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -499,8 +499,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1376,19 +1376,20 @@ D
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+			<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
 				<h2 class="index-title">
-					MySQL03-DML
+					MySQL02-DQL
 				</h2>
 				<div class="index-brief">
-					DML语言数据操作语言：
+					DQL
+基础查询SELECT 要查询的东西 (FROM 表名);
+# 通过select查询完的结果 ，是一个虚拟的表格，不是真实存在
+# 要查询的东西 可以是常量值、可以是表达式、可以是字段、可以是函数
 
-插入：insert
-修改：update
-删除：delete
 
-插入经典的插入
-12345678910111213141516171819202122232425262728&#x2F;*语法：insert into 表名(列名,...) values(值1,...);*&
+USE myemployees;
+# 1.查询表中的单个字段
+SELECT last_nam
 					...
 				</div>
 			</a>
@@ -1409,13 +1410,62 @@ D
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+			<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
 				<h2 class="index-title">
-					MySQL02-DQL
+					MySQL03-DML
 				</h2>
 				<div class="index-brief">
-					DQL
-基础查询1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757
+					DML语言数据操作语言：
+
+插入：insert
+修改：update
+删除：delete
+
+插入经典的插入
+/*
+语法：
+insert into 表名(列名,...) values(值1,...);
+*/
+
+#1.插入的值的类型要与列的类型一致或兼容
+INSERT INTO beauty(id,NAM
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2020-06-03</span>
+                    
+                            
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/MySQL/">MySQL</a>
+										
+                                    </span>
+                                
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+				<h2 class="index-title">
+					MySQL04-DDL
+				</h2>
+				<div class="index-brief">
+					DDL语言库和表的管理
+一、库的管理：创建、修改、删除
+二、表的管理：创建、修改、删除
+创建： create；修改： alter；删除： drop。
+库的管理
+#1、库的创建
+/*
+语法：
+create database  [if not exists] 库名;
+*/
+#案例：创建库Books
+CR
 					...
 				</div>
 			</a>
@@ -1447,37 +1497,6 @@ D
 
 原子性：一个事务不可再分割，要么都执行要么都不执行
 一致性：一个事务执行会使数据从一个一致状态切换到另外一
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-06-03</span>
-                    
-                            
-                                
-                                    <span>
-                                        <i class="fa fa-folder" aria-hidden="true"></i>
-                                        <a href="/categories/MySQL/">MySQL</a>
-										
-                                    </span>
-                                
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
-				<h2 class="index-title">
-					MySQL04-DDL
-				</h2>
-				<div class="index-brief">
-					DDL语言库和表的管理
-一、库的管理：创建、修改、删除
-二、表的管理：创建、修改、删除
-创建： create；修改： alter；删除： drop。
-库的管理
-123456789101112131415#1、库的创建&#x2F;*语法：create database  [if not exists]
 					...
 				</div>
 			</a>

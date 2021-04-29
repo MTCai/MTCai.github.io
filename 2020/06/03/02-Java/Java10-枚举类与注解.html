@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1346,7 +1346,19 @@
 <li>在类的内部创建枚举类的实例。声明为： public static final</li>
 <li>对象如果有实例变量，应该声明为 private final ，并在构造器中初始化</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Season</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String SEASONNAME;<span class="comment">// 季节的名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String SEASONDESC;<span class="comment">// 季节的描述</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Season</span><span class="params">(String seasonName, String seasonDesc)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.SEASONNAME = seasonName;</span><br><span class="line">        <span class="keyword">this</span>.SEASONDESC = seasonDesc;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Season SPRING = <span class="keyword">new</span> Season( <span class="string">"春天"</span>, <span class="string">"春暖花开"</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Season SUMMER = <span class="keyword">new</span> Season( <span class="string">"夏天"</span>, <span class="string">"夏日炎炎"</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Season AUTUMN = <span class="keyword">new</span> Season( <span class="string">"秋天"</span>, <span class="string">"秋高气爽"</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Season WINTER = <span class="keyword">new</span> Season( <span class="string">"冬天"</span>, <span class="string">"白雪皑皑"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">class Season{
+    private final String SEASONNAME;// 季节的名称
+    private final String SEASONDESC;// 季节的描述
+    private Season(String seasonName, String seasonDesc){
+        this.SEASONNAME = seasonName;
+        this.SEASONDESC = seasonDesc;
+    }
+    public static final Season SPRING = new Season( &quot;春天&quot;, &quot;春暖花开&quot;);
+    public static final Season SUMMER = new Season( &quot;夏天&quot;, &quot;夏日炎炎&quot;);
+    public static final Season AUTUMN = new Season( &quot;秋天&quot;, &quot;秋高气爽&quot;);
+    public static final Season WINTER = new Season( &quot;冬天&quot;, &quot;白雪皑皑&quot;);
+}
+</code></pre>
 <h3 id="使用-enum-定义枚举类"><a href="#使用-enum-定义枚举类" class="headerlink" title="使用 enum 定义枚举类"></a>使用 enum 定义枚举类</h3><p>使用说明</p>
 <ul>
 <li>使用 enum 定义的枚举类默认继承 了 java.lang.Enum 类，因此不能再继承其他类</li>
@@ -1355,7 +1367,21 @@
 <li>必须在枚举类的第一行声明枚举类对象</li>
 </ul>
 <p>JDK 1.5 中可以在 switch 表达式中使用 Enum 定义的枚举类的对象作为表达式 , case 子句可以直接使用枚举值的名字 , 无需添加枚举类作为限定。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Season&#123;</span><br><span class="line">    SPRING( <span class="string">"春天"</span>, <span class="string">"春暖花开"</span>),</span><br><span class="line">    SUMMER( <span class="string">"夏天"</span>, <span class="string">"夏日炎炎"</span>),</span><br><span class="line">    AUTUMN( <span class="string">"秋天"</span>, <span class="string">"秋高气爽"</span>),</span><br><span class="line">    WINTER( <span class="string">"冬天"</span>, <span class="string">"白雪皑皑"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String SEASONNAME;<span class="comment">// 季节的名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String SEASONDESC;<span class="comment">// 季节的描述</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Season</span><span class="params">(String seasonName, String seasonDesc)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.SEASONNAME = seasonName;</span><br><span class="line">        <span class="keyword">this</span>.SEASONDESC = seasonDesc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">enum Season{
+    SPRING( &quot;春天&quot;, &quot;春暖花开&quot;),
+    SUMMER( &quot;夏天&quot;, &quot;夏日炎炎&quot;),
+    AUTUMN( &quot;秋天&quot;, &quot;秋高气爽&quot;),
+    WINTER( &quot;冬天&quot;, &quot;白雪皑皑&quot;);
+
+    private final String SEASONNAME;// 季节的名称
+    private final String SEASONDESC;// 季节的描述
+    private Season(String seasonName, String seasonDesc){
+        this.SEASONNAME = seasonName;
+        this.SEASONDESC = seasonDesc;
+    }
+
+}
+</code></pre>
 <p>Enum 类 的主要方法：</p>
 <ol>
 <li>values() 方法 ：返回枚举类型的对象数组。该方法可以很方便地遍历所有的枚举值。</li>
@@ -1368,7 +1394,62 @@
 <li>若每个枚举值在调用实现的接口方法呈现相同的行为方式，则只要统一实现该方法即可。</li>
 <li>若需要每个枚举值在调用实现的接口方法呈现出不同的行为方式 ,<br>则可以让每个枚举值分别来实现该方法。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Info</span></span>&#123;</span><br><span class="line">    show();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//情况一</span></span><br><span class="line"><span class="keyword">enum</span> Season implements Info&#123;</span><br><span class="line">    SPRING( <span class="string">"春天"</span>, <span class="string">"春暖花开"</span>),</span><br><span class="line">    SUMMER( <span class="string">"夏天"</span>, <span class="string">"夏日炎炎"</span>),</span><br><span class="line">    AUTUMN( <span class="string">"秋天"</span>, <span class="string">"秋高气爽"</span>),</span><br><span class="line">    WINTER( <span class="string">"冬天"</span>, <span class="string">"白雪皑皑"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String SEASONNAME;<span class="comment">// 季节的名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String SEASONDESC;<span class="comment">// 季节的描述</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Season</span><span class="params">(String seasonName, String seasonDesc)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.SEASONNAME = seasonName;</span><br><span class="line">        <span class="keyword">this</span>.SEASONDESC = seasonDesc;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 所有对象执行相同的行为方式</span></span><br><span class="line">    show()&#123;</span><br><span class="line">        System.out.println(<span class="string">"XXXXXXXXXXXX"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//情况二</span></span><br><span class="line"><span class="keyword">enum</span> Season implements Info&#123;</span><br><span class="line">    <span class="comment">// 对象执行不同的行为方式</span></span><br><span class="line">    <span class="comment">// 在对象内部定义需要重写的接口</span></span><br><span class="line">    SPRING( <span class="string">"春天"</span>, <span class="string">"春暖花开"</span>)&#123;</span><br><span class="line">    	show()&#123;</span><br><span class="line">            System.out.println(<span class="string">"11111"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    SUMMER( <span class="string">"夏天"</span>, <span class="string">"夏日炎炎"</span>)&#123;	</span><br><span class="line">        show()&#123;</span><br><span class="line">            System.out.println(<span class="string">"22222"</span>);</span><br><span class="line">        &#125;&#125;,</span><br><span class="line">    AUTUMN( <span class="string">"秋天"</span>, <span class="string">"秋高气爽"</span>)&#123;</span><br><span class="line">        show()&#123;</span><br><span class="line">            System.out.println(<span class="string">"333333"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    WINTER( <span class="string">"冬天"</span>, <span class="string">"白雪皑皑"</span>)&#123;</span><br><span class="line">        show()&#123;</span><br><span class="line">            System.out.println(<span class="string">"444444"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String SEASONNAME;<span class="comment">// 季节的名称</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String SEASONDESC;<span class="comment">// 季节的描述</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Season</span><span class="params">(String seasonName, String seasonDesc)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.SEASONNAME = seasonName;</span><br><span class="line">        <span class="keyword">this</span>.SEASONDESC = seasonDesc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">interface Info{
+    show();
+}
+
+//情况一
+enum Season implements Info{
+    SPRING( &quot;春天&quot;, &quot;春暖花开&quot;),
+    SUMMER( &quot;夏天&quot;, &quot;夏日炎炎&quot;),
+    AUTUMN( &quot;秋天&quot;, &quot;秋高气爽&quot;),
+    WINTER( &quot;冬天&quot;, &quot;白雪皑皑&quot;);
+
+    private final String SEASONNAME;// 季节的名称
+    private final String SEASONDESC;// 季节的描述
+    private Season(String seasonName, String seasonDesc){
+        this.SEASONNAME = seasonName;
+        this.SEASONDESC = seasonDesc;
+    }
+    // 所有对象执行相同的行为方式
+    show(){
+        System.out.println(&quot;XXXXXXXXXXXX&quot;);
+    }
+
+}
+
+//情况二
+enum Season implements Info{
+    // 对象执行不同的行为方式
+    // 在对象内部定义需要重写的接口
+    SPRING( &quot;春天&quot;, &quot;春暖花开&quot;){
+        show(){
+            System.out.println(&quot;11111&quot;);
+        }
+    },
+    SUMMER( &quot;夏天&quot;, &quot;夏日炎炎&quot;){    
+        show(){
+            System.out.println(&quot;22222&quot;);
+        }},
+    AUTUMN( &quot;秋天&quot;, &quot;秋高气爽&quot;){
+        show(){
+            System.out.println(&quot;333333&quot;);
+        }
+    },
+    WINTER( &quot;冬天&quot;, &quot;白雪皑皑&quot;){
+        show(){
+            System.out.println(&quot;444444&quot;);
+        }
+    };
+
+    private final String SEASONNAME;// 季节的名称
+    private final String SEASONDESC;// 季节的描述
+    private Season(String seasonName, String seasonDesc){
+        this.SEASONNAME = seasonName;
+        this.SEASONDESC = seasonDesc;
+    }
+}
+</code></pre>
 <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>Annotation 其实就是代码里的 特殊标记 , 这些标记可以在编译 , 类加载 , 运行时被读取 , 并执行相应 的处理。通过 使用 Annotation, 程序员可以在不改变原有逻辑的情况下 , 在源文件中嵌入一些 补充 信息 。 代码分析工具、开发工具和部署工具可以通过这些补充信息进行验证或者进行部署。</p>
 <p>Annotation 可以像修饰符一样被使用 , 可用于 修饰包 类 , 构造器 , 方法 , 成员变量 , 参数 , 局部变量的声明 , 这些信息被保存在 Annotation的 “name=value” 对中 。</p>
 <p>未来的开发模式都是基于注解的， JPA 是基于注解的， Spring2.5 以上都是基于注解的， Hibernate3.x 以后也是基于注解的，现在的Struts2 有一部分也是基于注解的了，注解是一种趋势 ，一定程度上可以说： ==框架 = 注解 + 反射 + 设计模式==。</p>
@@ -1407,7 +1488,22 @@
 <li>没有成员定义的 Annotation 称为 标记；包含成员变量的 Annotation 称为元数据 Annotation</li>
 <li>注意：==自定义注解必须配上注解的信息处理流程才有意义==。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MyAnnotation</span>( value = <span class="string">"尚硅谷"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAnnotationTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args )</span></span></span><br><span class="line"><span class="function">        Class clazz </span>= MyAnnotationTest<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">        Annotation a = clazz.getAnnotation(MyAnnotation<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        MyAnnotation m = (MyAnnotation)a;</span><br><span class="line">        String info = m.value();</span><br><span class="line">        System.out.println(info);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line">	<span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> "尚硅谷"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">@MyAnnotation( value = &quot;尚硅谷&quot;)
+public class MyAnnotationTest {
+    public static void main(String[] args )
+        Class clazz = MyAnnotationTest.class;
+        Annotation a = clazz.getAnnotation(MyAnnotation.class);
+        MyAnnotation m = (MyAnnotation)a;
+        String info = m.value();
+        System.out.println(info);
+    }
+}
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@interface MyAnnotation{
+    String value() default &quot;尚硅谷&quot;;
+}
+</code></pre>
 <h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>JDK 的元 Annotation 用于修饰其他 Annotation 定义</p>
 <p>JDK5.0 提供了 4 个标准的 meta-annotation 类型分别是：</p>
 <ul>
@@ -1451,8 +1547,35 @@
 <li><p>ElementType.TYPE_PARAMETER 表示该注解能写在类型变量的声明语句中，如泛型声明</p>
 </li>
 <li><p>ElementType.TYPE_USE 表示该注解能写在使用类型的任何语句中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestTypeDefine</span>&lt;<span class="title">TestTypeDefine</span>&lt;@<span class="title">TypeDefine</span> () <span class="title">U</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="title">private</span> <span class="title">U</span> <span class="title">u</span></span>;</span><br><span class="line">    <span class="keyword">public</span> &lt;<span class="meta">@TypeDefine</span>() T&gt; <span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(T t</span></span></span><br><span class="line"><span class="function"><span class="params">    &#125;</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span></span></span><br><span class="line"><span class="function"><span class="params">@Target(&#123; ElementType.TYPE_PARAMETER&#125;)</span></span></span><br><span class="line"><span class="function">@interface TypeDefine</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MyAnnotation</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnnotationTest</span>&lt;<span class="title">U</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@MyAnnotation</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        AnnotationTest&lt;<span class="meta">@MyAnnotation</span> String&gt; t = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">int</span> a = (<span class="meta">@MyAnnotation</span> <span class="keyword">int</span> )<span class="number">2L</span>;</span><br><span class="line">        <span class="meta">@MyAnnotation</span></span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;<span class="meta">@MyAnnotation</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">(T t )</span></span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(@MyAnnotation String arg )</span> <span class="keyword">throws</span> @MyAnnotation Exception</span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Target</span>(ElementType.TYPE_USE)</span><br><span class="line"><span class="meta">@interface</span> MyAnnotation</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="lang-java">public class TestTypeDefine&lt;TestTypeDefine&lt;@TypeDefine () U&gt;
+    private U u;
+    public &lt;@TypeDefine() T&gt; void test(T t
+    }
+}
+@Target({ ElementType.TYPE_PARAMETER})
+@interface TypeDefine{
+}
+</code></pre>
+<pre><code class="lang-java">@MyAnnotation
+public class AnnotationTest&lt;U&gt; {
+    @MyAnnotation
+    private String name;
+    public static void main(String[] args){
+        AnnotationTest&lt;@MyAnnotation String&gt; t = null;
+        int a = (@MyAnnotation int )2L;
+        @MyAnnotation
+        int b = 10;
+    }
+    public static &lt;@MyAnnotation T&gt; void method(T t )
+    }
+    public static void test(@MyAnnotation String arg ) throws @MyAnnotation Exception{
+    }
+}
+@Target(ElementType.TYPE_USE)
+@interface MyAnnotation
+}
+</code></pre>
+</li>
 </ul>
 
 </div>
@@ -1469,8 +1592,8 @@
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
-                Java12-泛型
+              <a href="/2020/06/03/02-Java/Java08-%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">
+                Java08-多线程
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

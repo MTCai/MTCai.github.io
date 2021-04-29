@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1342,25 +1342,76 @@
 <li><p>配置hive-env.sh 文件</p>
 </li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">配置HADOOP_HOME 路径 ：</span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">    </span><br><span class="line">配置HIVE_CONF_DIR 路径 ：</span><br><span class="line"><span class="built_in">export</span> HIVE_CONF_DIR=/opt/module/hive/conf</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">配置HADOOP_HOME 路径 ：
+export HADOOP_HOME=/opt/module/hadoop-2.7.2
+
+配置HIVE_CONF_DIR 路径 ：
+export HIVE_CONF_DIR=/opt/module/hive/conf
+</code></pre>
 <ol>
 <li><p>启动hdfs和yarn：sbin/start-dfs.sh、sbin/start-yarn.sh</p>
 </li>
 <li><p>在 HDFS 上创建/tmp 和/user/hive/warehouse 两个目录并修改他们的同组权限可写。(可不操作，系统会自动创建) </p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs -mkdir /tmp </span><br><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs -mkdir -p /user/hive/warehouse </span><br><span class="line">    </span><br><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs -chmod g+w /tmp </span><br><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs -chmod g+w /user/hive/warehouse</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs -mkdir /tmp 
+[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs -mkdir -p /user/hive/warehouse 
+
+[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs -chmod g+w /tmp 
+[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs -chmod g+w /user/hive/warehouse
+</code></pre>
 <ol>
 <li>Hive基本操作</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动hive</span></span><br><span class="line">[atguigu@hadoop102 hive]$ bin/hive </span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">hive&gt; show databases; </span><br><span class="line"><span class="comment"># 打开默认数据库</span></span><br><span class="line">hive&gt; use default; </span><br><span class="line"><span class="comment"># 显示default 数据库中的表</span></span><br><span class="line">hive&gt; show tables; </span><br><span class="line"><span class="comment"># 创建一张表</span></span><br><span class="line">hive&gt; create table student(id int, name string); </span><br><span class="line"><span class="comment"># 显示数据库中有几张表</span></span><br><span class="line">hive&gt; show tables; </span><br><span class="line"><span class="comment"># 查看表的结构</span></span><br><span class="line">hive&gt; desc student; </span><br><span class="line"><span class="comment"># 向表中插入数据</span></span><br><span class="line">hive&gt; insert into student values(1000,<span class="string">"ss"</span>);</span><br><span class="line"><span class="comment"># 查询表中数据</span></span><br><span class="line">hive&gt; select * from student;</span><br><span class="line"><span class="comment"># 退出hive</span></span><br><span class="line">hive&gt; quit;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash"># 启动hive
+[atguigu@hadoop102 hive]$ bin/hive 
+# 查看数据库
+hive&gt; show databases; 
+# 打开默认数据库
+hive&gt; use default; 
+# 显示default 数据库中的表
+hive&gt; show tables; 
+# 创建一张表
+hive&gt; create table student(id int, name string); 
+# 显示数据库中有几张表
+hive&gt; show tables; 
+# 查看表的结构
+hive&gt; desc student; 
+# 向表中插入数据
+hive&gt; insert into student values(1000,&quot;ss&quot;);
+# 查询表中数据
+hive&gt; select * from student;
+# 退出hive
+hive&gt; quit;
+</code></pre>
 <h2 id="本地文件导入Hive"><a href="#本地文件导入Hive" class="headerlink" title="本地文件导入Hive"></a>本地文件导入Hive</h2><p>将本地/opt/module/data/student.txt 这个目录下的数据导入到 hive 的 student(id int, name string)表中。 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># student.txt 注意以tab键间隔</span></span><br><span class="line">1001 zhangshan </span><br><span class="line">1002 lishi </span><br><span class="line">1003 zhaoliu </span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动hive</span></span><br><span class="line"><span class="comment"># 创建student 表, 并声明文件分隔符’\t’</span></span><br><span class="line">hive&gt; create table student(id int, name string) ROW FORMAT DELIMITED FIELDS TERMINATED  BY <span class="string">'\t'</span>; </span><br><span class="line"><span class="comment"># 加载/opt/module/data/student.txt 文件到 student 数据库表中。</span></span><br><span class="line"><span class="comment"># 这个命令其实就是HDFS的put操作。新建相同格式的txt放到对应的HDFS目录下，同样可以查询到数据</span></span><br><span class="line">hive&gt; load data <span class="built_in">local</span> inpath <span class="string">'/opt/module/data/student.txt'</span> into table student;</span><br><span class="line">hive&gt; load data inpath <span class="string">"/HDFS/path"</span> into table stu; <span class="comment">#这个是从HDFS上mv文件。</span></span><br><span class="line"><span class="comment"># Hive 查询结果</span></span><br><span class="line">hive&gt; select * from student; </span><br><span class="line">OK </span><br><span class="line">1001 zhangshan </span><br><span class="line">1002 lishi </span><br><span class="line">1003 zhaoliu </span><br><span class="line">Time taken: 0.266 seconds, Fetched: 3 row(s)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash"># student.txt 注意以tab键间隔
+1001 zhangshan 
+1002 lishi 
+1003 zhaoliu 
+
+# 启动hive
+# 创建student 表, 并声明文件分隔符’\t’
+hive&gt; create table student(id int, name string) ROW FORMAT DELIMITED FIELDS TERMINATED  BY &#39;\t&#39;; 
+# 加载/opt/module/data/student.txt 文件到 student 数据库表中。
+# 这个命令其实就是HDFS的put操作。新建相同格式的txt放到对应的HDFS目录下，同样可以查询到数据
+hive&gt; load data local inpath &#39;/opt/module/data/student.txt&#39; into table student;
+hive&gt; load data inpath &quot;/HDFS/path&quot; into table stu; #这个是从HDFS上mv文件。
+# Hive 查询结果
+hive&gt; select * from student; 
+OK 
+1001 zhangshan 
+1002 lishi 
+1003 zhaoliu 
+Time taken: 0.266 seconds, Fetched: 3 row(s)
+</code></pre>
 <p>注意：Metastore 默认存储在自带的derby 数据库中，不能同时打开多个hive窗口，但mysql支持。</p>
 <h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><h3 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h3><ol>
 <li>查看mysql 是否安装，如果安装了，卸载mysql</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep mysql <span class="comment"># 查询</span></span><br><span class="line">rpm -e --nodeps mysql-libs-XXXXX.x86_64  <span class="comment"># 卸载</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">rpm -qa|grep mysql # 查询
+rpm -e --nodeps mysql-libs-XXXXX.x86_64  # 卸载
+</code></pre>
 <ol>
 <li><p>安装mysql 服务端：rpm -ivh MySQL-server-5.6.24-1.el6.x86_64.rpm</p>
 </li>
@@ -1380,7 +1431,20 @@
 </li>
 </ol>
 <h3 id="MySql-中user-表中主机配置"><a href="#MySql-中user-表中主机配置" class="headerlink" title="MySql 中user 表中主机配置"></a>MySql 中user 表中主机配置</h3><p>配置只要是root 用户+密码，在任何主机上都能登录MySQL 数据库。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop102 mysql-libs]<span class="comment"># mysql -uroot -p000000</span></span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;show tables; </span><br><span class="line">mysql&gt;select User, Host, Password from user;</span><br><span class="line"></span><br><span class="line">mysql&gt;update user <span class="built_in">set</span> host=<span class="string">'%'</span> <span class="built_in">where</span> host=<span class="string">'localhost'</span>; </span><br><span class="line"></span><br><span class="line">mysql&gt;delete from user <span class="built_in">where</span> Host=<span class="string">'hadoop102'</span>; </span><br><span class="line">mysql&gt;delete from user <span class="built_in">where</span> Host=<span class="string">'127.0.0.1'</span>; </span><br><span class="line">mysql&gt;delete from user <span class="built_in">where</span> Host=<span class="string">'::1'</span>; </span><br><span class="line"></span><br><span class="line">mysql&gt;flush privileges; </span><br><span class="line">mysql&gt;quit;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[root@hadoop102 mysql-libs]# mysql -uroot -p000000
+mysql&gt;use mysql;
+mysql&gt;show tables; 
+mysql&gt;select User, Host, Password from user;
+
+mysql&gt;update user set host=&#39;%&#39; where host=&#39;localhost&#39;; 
+
+mysql&gt;delete from user where Host=&#39;hadoop102&#39;; 
+mysql&gt;delete from user where Host=&#39;127.0.0.1&#39;; 
+mysql&gt;delete from user where Host=&#39;::1&#39;; 
+
+mysql&gt;flush privileges; 
+mysql&gt;quit;
+</code></pre>
 <h3 id="配置Metastore-到MySql"><a href="#配置Metastore-到MySql" class="headerlink" title="配置Metastore 到MySql"></a>配置Metastore 到MySql</h3><ol>
 <li><p>驱动拷贝：cp /opt/software/mysql-libs/mysql-connector-java-5.1.27/mysql-c onnector-java-5.1.27-bin.jar /opt/module/hive/lib/ </p>
 </li>
@@ -1388,47 +1452,96 @@
 <ul>
 <li><p>先创建 hive-site.xml</p>
 </li>
-<li><p>```xml<br>  &lt;?xml version=”1.0”?&gt;<br>  &lt;?xml-stylesheet type=”text/xsl” href=”configuration.xsl”?&gt;<br>  <configuration> </p>
-<pre><code>  &lt;property&gt; 
-      &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt; 
-      &lt;value&gt;jdbc:mysql://hadoop102:3306/metastore?createDatabaseI fNotExist=true&lt;/value&gt; 
-      &lt;description&gt;JDBC connect string for a JDBC metastore&lt;/description&gt; 
-  &lt;/property&gt; 
+<li><pre><code class="lang-xml">  &lt;?xml version=&quot;1.0&quot;?&gt; 
+  &lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt; 
+  &lt;configuration&gt; 
+      &lt;property&gt; 
+          &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt; 
+          &lt;value&gt;jdbc:mysql://hadoop102:3306/metastore?createDatabaseI fNotExist=true&lt;/value&gt; 
+          &lt;description&gt;JDBC connect string for a JDBC metastore&lt;/description&gt; 
+      &lt;/property&gt; 
 
-  &lt;property&gt; 
-      &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt; 
-      &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt; 
-      &lt;description&gt;Driver class name for a JDBC metastore&lt;/description&gt; &lt;/description&gt; 
-  &lt;/property&gt; 
+      &lt;property&gt; 
+          &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt; 
+          &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt; 
+          &lt;description&gt;Driver class name for a JDBC metastore&lt;/description&gt; &lt;/description&gt; 
+      &lt;/property&gt; 
 
-  &lt;property&gt; 
-      &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt; 
-      &lt;value&gt;root&lt;/value&gt; 
-      &lt;description&gt;username to use against metastore database&lt;/description&gt; 
-  &lt;/property&gt; 
+      &lt;property&gt; 
+          &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt; 
+          &lt;value&gt;root&lt;/value&gt; 
+          &lt;description&gt;username to use against metastore database&lt;/description&gt; 
+      &lt;/property&gt; 
 
-  &lt;property&gt; 
-      &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt; 
-      &lt;value&gt;000000&lt;/value&gt; 
-      &lt;description&gt;password to use against metastore database&lt;/description&gt; 
-  &lt;/property&gt; 
-</code></pre><p>  &lt;/configuration&gt; </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 配置完毕后，如果启动 hive 异常，可以重新启动虚拟机。（重启后，别忘了启动hadoop 集群） </span><br><span class="line"></span><br><span class="line">4. 打开多个窗口，分别启动 hive：bin&#x2F;hive</span><br><span class="line"></span><br><span class="line">5. 启动 hive 后，回到 MySQL 窗口查看数据库，显示增加了 metastore 数据库</span><br><span class="line"></span><br><span class="line">    &#96;&#96;&#96;bash</span><br><span class="line">    mysql&gt; show databases; </span><br><span class="line">    +--------------------+ </span><br><span class="line">    | Database           | </span><br><span class="line">    +--------------------+ </span><br><span class="line">    | information_schema | </span><br><span class="line">    | metastore          | </span><br><span class="line">    | mysql              | </span><br><span class="line">    | performance_schema | </span><br><span class="line">    | test               | </span><br><span class="line">    +--------------------+</span><br></pre></td></tr></table></figure>
+      &lt;property&gt; 
+          &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt; 
+          &lt;value&gt;000000&lt;/value&gt; 
+          &lt;description&gt;password to use against metastore database&lt;/description&gt; 
+      &lt;/property&gt; 
+
+  &lt;/configuration&gt;
+</code></pre>
 </li>
 </ul>
+</li>
+<li><p>配置完毕后，如果启动 hive 异常，可以重新启动虚拟机。（重启后，别忘了启动hadoop 集群） </p>
+</li>
+<li><p>打开多个窗口，分别启动 hive：bin/hive</p>
+</li>
+<li><p>启动 hive 后，回到 MySQL 窗口查看数据库，显示增加了 metastore 数据库</p>
+<pre><code class="lang-bash"> mysql&gt; show databases; 
+ +--------------------+ 
+ | Database           | 
+ +--------------------+ 
+ | information_schema | 
+ | metastore          | 
+ | mysql              | 
+ | performance_schema | 
+ | test               | 
+ +--------------------+
+</code></pre>
 </li>
 </ol>
 <h2 id="Hive-JDBC访问"><a href="#Hive-JDBC访问" class="headerlink" title="Hive JDBC访问"></a>Hive JDBC访问</h2><ol>
 <li><p>启动hiveserver2 服务：[atguigu@hadoop102 hive]$ bin/hiveserver2 </p>
 </li>
 <li><p>启动beeline</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hive]$ bin/beeline </span><br><span class="line">Beeline version 1.2.1 by Apache Hive </span><br><span class="line">beeline&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash"> [atguigu@hadoop102 hive]$ bin/beeline 
+ Beeline version 1.2.1 by Apache Hive 
+ beeline&gt;
+</code></pre>
 </li>
 <li><p>连接hiveserver2</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">beeline&gt; !connect jdbc:hive2://hadoop102:10000（回车） </span><br><span class="line">Connecting to jdbc:hive2://hadoop102:10000 </span><br><span class="line">Enter username <span class="keyword">for</span> jdbc:hive2://hadoop102:10000: atguigu（回车） </span><br><span class="line">Enter password <span class="keyword">for</span> jdbc:hive2://hadoop102:10000: （直接回车） </span><br><span class="line">Connected to: Apache Hive (version 1.2.1) </span><br><span class="line">Driver: Hive JDBC (version 1.2.1) </span><br><span class="line">Transaction isolation: TRANSACTION_REPEATABLE_READ </span><br><span class="line">0: jdbc:hive2://hadoop102:10000&gt; show databases; </span><br><span class="line">+----------------+--+ </span><br><span class="line">| database_name  | </span><br><span class="line">+----------------+--+ </span><br><span class="line">| default        |</span><br><span class="line">| hive db2       |</span><br><span class="line">+----------------+--+</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash"> beeline&gt; !connect jdbc:hive2://hadoop102:10000（回车） 
+ Connecting to jdbc:hive2://hadoop102:10000 
+ Enter username for jdbc:hive2://hadoop102:10000: atguigu（回车） 
+ Enter password for jdbc:hive2://hadoop102:10000: （直接回车） 
+ Connected to: Apache Hive (version 1.2.1) 
+ Driver: Hive JDBC (version 1.2.1) 
+ Transaction isolation: TRANSACTION_REPEATABLE_READ 
+ 0: jdbc:hive2://hadoop102:10000&gt; show databases; 
+ +----------------+--+ 
+ | database_name  | 
+ +----------------+--+ 
+ | default        |
+ | hive db2       |
+ +----------------+--+
+</code></pre>
 </li>
 </ol>
-<h2 id="Hive命令"><a href="#Hive命令" class="headerlink" title="Hive命令"></a>Hive命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hive]$ bin/hive -<span class="built_in">help</span> </span><br><span class="line">usage: hive</span><br><span class="line">-d,--define &lt;key=value&gt;	Variable subsitution to apply to hive. commands. e.g. -d A=B or --define A=B</span><br><span class="line">--database &lt;databasename&gt;	Specify the database to use</span><br><span class="line">-e &lt;quoted-query-string&gt;	SQL from <span class="built_in">command</span> line</span><br><span class="line">-f &lt;filename&gt;	SQL from files</span><br><span class="line">-H,--<span class="built_in">help</span>	Print <span class="built_in">help</span> information</span><br><span class="line">--hiveconf &lt;property=value&gt;	Use value <span class="keyword">for</span> given property</span><br><span class="line">--hivevar &lt;key=value&gt;	Variable subsitution to apply to hive. commands. e.g. --hivevar A=B</span><br><span class="line">-i &lt;filename&gt;	Initialization SQL file</span><br><span class="line">-S,--silent	Silent mode <span class="keyword">in</span> interactive shell</span><br><span class="line">-v,--verbose	Verbose mode (<span class="built_in">echo</span> executed SQL to the console)</span><br></pre></td></tr></table></figure>
+<h2 id="Hive命令"><a href="#Hive命令" class="headerlink" title="Hive命令"></a>Hive命令</h2><pre><code class="lang-bash">[atguigu@hadoop102 hive]$ bin/hive -help 
+usage: hive
+-d,--define &lt;key=value&gt;    Variable subsitution to apply to hive. commands. e.g. -d A=B or --define A=B
+--database &lt;databasename&gt;    Specify the database to use
+-e &lt;quoted-query-string&gt;    SQL from command line
+-f &lt;filename&gt;    SQL from files
+-H,--help    Print help information
+--hiveconf &lt;property=value&gt;    Use value for given property
+--hivevar &lt;key=value&gt;    Variable subsitution to apply to hive. commands. e.g. --hivevar A=B
+-i &lt;filename&gt;    Initialization SQL file
+-S,--silent    Silent mode in interactive shell
+-v,--verbose    Verbose mode (echo executed SQL to the console)
+</code></pre>
 <p>[atguigu@hadoop102 hive]$ bin/hive -e “select id from student;”</p>
 <p>[atguigu@hadoop102 hive]$ bin/hive -f /opt/module/datas/hivef.sql</p>
 <p>在 hive cli 命令窗口中如何查看 hdfs 文件系统：hive&gt; dfs -ls /; </p>
@@ -1436,9 +1549,23 @@
 <p>查看在 hive 中输入的所有历史命令：入到当前用户的根目录/root 或/home/atguigu，查看. hivehistory 文件</p>
 <h2 id="Hive-常见属性配置"><a href="#Hive-常见属性配置" class="headerlink" title="Hive 常见属性配置"></a>Hive 常见属性配置</h2><h3 id="Hive-数据仓库位置配置"><a href="#Hive-数据仓库位置配置" class="headerlink" title="Hive 数据仓库位置配置"></a>Hive 数据仓库位置配置</h3><p>Default 数据仓库的最原始位置是在hdfs 上的：/user/hive/warehouse 路径下。 在仓库目录下，没有对默认的数据库 default 创建文件夹。如果某张表属于 default 数据库，直接在数据仓库目录下创建一个文件夹。 </p>
 <p>在hive-site.xml 文件中添加以下内容：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.warehouse.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/user/hive/warehouse<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>location	of	default	database	for	the warehouse<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;
+    &lt;value&gt;/user/hive/warehouse&lt;/value&gt;
+    &lt;description&gt;location    of    default    database    for    the warehouse&lt;/description&gt;
+&lt;/property&gt;
+</code></pre>
 <h3 id="查询后信息显示配置"><a href="#查询后信息显示配置" class="headerlink" title="查询后信息显示配置"></a>查询后信息显示配置</h3><p>在 hive-site.xml 文件中添加如下配置信息，就可以实现显示当前数据库，以及查询表的头信息配置。 </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.cli.print.header<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.cli.print.current.db<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;hive.cli.print.header&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+    &lt;name&gt;hive.cli.print.current.db&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <p> <img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201221211404075.png" alt="image-20201221211404075" style="zoom:80%;" /></p>
 <h3 id="Hive-运行日志信息配置"><a href="#Hive-运行日志信息配置" class="headerlink" title="Hive 运行日志信息配置"></a>Hive 运行日志信息配置</h3><p>Hive 的log 默认存放在/tmp/atguigu/hive.log 目录下（当前用户名下）</p>
 <p>修改 hive 的 log 存放日志到/opt/module/hive/logs</p>
@@ -1480,13 +1607,50 @@
 <li><p>本地解压缩apache-tez-0.9.1-bin.tar.gz</p>
 </li>
 <li><p>在Hive的/opt/module/hive/conf下面创建一个tez-site.xml文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>tez.lib.uris<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>$&#123;fs.defaultFS&#125;/tez/apache-tez-0.9.1-bin.tar.gz<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">name</span>&gt;</span>tez.use.cluster.hadoop-libs<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">name</span>&gt;</span>tez.history.logging.service.class<span class="tag">&lt;/<span class="name">name</span>&gt;</span>        </span><br><span class="line">         <span class="tag">&lt;<span class="name">value</span>&gt;</span>org.apache.tez.dag.history.logging.ats.ATSHistoryLoggingService<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;tez.lib.uris&lt;/name&gt;
+        &lt;value&gt;${fs.defaultFS}/tez/apache-tez-0.9.1-bin.tar.gz&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+         &lt;name&gt;tez.use.cluster.hadoop-libs&lt;/name&gt;
+         &lt;value&gt;true&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+         &lt;name&gt;tez.history.logging.service.class&lt;/name&gt;        
+         &lt;value&gt;org.apache.tez.dag.history.logging.ats.ATSHistoryLoggingService&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
 </li>
 <li><p>在hive-env.sh文件中添加tez环境变量配置和依赖包环境变量配置</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set HADOOP_HOME to point to a specific hadoop install directory</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hive Configuration Directory can be controlled by:</span></span><br><span class="line"><span class="built_in">export</span> HIVE_CONF_DIR=/opt/module/hive/conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># Folder containing extra libraries required for hive compilation/execution can be controlled by:</span></span><br><span class="line"><span class="built_in">export</span> TEZ_HOME=/opt/module/tez-0.9.1    <span class="comment">#是你的tez的解压目录</span></span><br><span class="line"><span class="built_in">export</span> TEZ_JARS=<span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> jar <span class="keyword">in</span> `ls <span class="variable">$TEZ_HOME</span> |grep jar`; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">export</span> TEZ_JARS=<span class="variable">$TEZ_JARS</span>:<span class="variable">$TEZ_HOME</span>/<span class="variable">$jar</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="keyword">for</span> jar <span class="keyword">in</span> `ls <span class="variable">$TEZ_HOME</span>/lib`; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">export</span> TEZ_JARS=<span class="variable">$TEZ_JARS</span>:<span class="variable">$TEZ_HOME</span>/lib/<span class="variable">$jar</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> HIVE_AUX_JARS_PATH=/opt/module/hadoop-2.7.2/share/hadoop/common/hadoop-lzo-0.4.20.jar<span class="variable">$TEZ_JARS</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh"># Set HADOOP_HOME to point to a specific hadoop install directory
+export HADOOP_HOME=/opt/module/hadoop-2.7.2
+
+# Hive Configuration Directory can be controlled by:
+export HIVE_CONF_DIR=/opt/module/hive/conf
+
+# Folder containing extra libraries required for hive compilation/execution can be controlled by:
+export TEZ_HOME=/opt/module/tez-0.9.1    #是你的tez的解压目录
+export TEZ_JARS=&quot;&quot;
+for jar in `ls $TEZ_HOME |grep jar`; do
+    export TEZ_JARS=$TEZ_JARS:$TEZ_HOME/$jar
+done
+for jar in `ls $TEZ_HOME/lib`; do
+    export TEZ_JARS=$TEZ_JARS:$TEZ_HOME/lib/$jar
+done
+
+export HIVE_AUX_JARS_PATH=/opt/module/hadoop-2.7.2/share/hadoop/common/hadoop-lzo-0.4.20.jar$TEZ_JARS
+</code></pre>
 </li>
 <li><p>在hive-site.xml文件中添加如下配置，更改hive计算引擎</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.execution.engine<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>tez<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;hive.execution.engine&lt;/name&gt;
+    &lt;value&gt;tez&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 </li>
 <li><p><strong>测试</strong></p>
 <ul>

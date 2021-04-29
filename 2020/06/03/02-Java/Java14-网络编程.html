@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1341,7 +1341,14 @@
 <li><p>IPV6： 128 位（16 个字节）写成 8 个无符号整数，每个整数用四个十六进制位表示，数之间 用冒号（:）分开，如： 3ffe:3201:1401:1280:c8ff:fe4d:db39:1984</p>
 </li>
 <li><p>在Java中使用 InetAddress 类代表IP</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">InetAddress inet1 = InetAddress.getByName(<span class="string">"192.168.10.14"</span>);</span><br><span class="line">InetAddress inet2 = InetAddress.getByName(<span class="string">"www.atguigu.com"</span>);</span><br><span class="line"><span class="comment">//获取本地ip</span></span><br><span class="line">InetAddress inet4 = InetAddress.getLocalHost();</span><br><span class="line"><span class="comment">// 两个常用方法</span></span><br><span class="line"><span class="number">1</span>. getHostName()</span><br><span class="line"><span class="number">2</span>. getHostAddress()</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">InetAddress inet1 = InetAddress.getByName(&quot;192.168.10.14&quot;);
+InetAddress inet2 = InetAddress.getByName(&quot;www.atguigu.com&quot;);
+//获取本地ip
+InetAddress inet4 = InetAddress.getLocalHost();
+// 两个常用方法
+1. getHostName()
+2. getHostAddress()
+</code></pre>
 </li>
 <li><p>本地回环地址 (hostAddress) 127.0.0.1；主机名 (hostName):  localhost</p>
 </li>
@@ -1401,7 +1408,21 @@
 <li>流套接字（ stream socket ）：使用 TCP 提供可依赖的字节流服务</li>
 <li>数据报套接字（ datagram socket ）：使用 UDP 提供“尽力而为”的数据报服务</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Socket 类的常用构造器</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Socket</span><span class="params">(InetAddress address,<span class="keyword">int</span> port)</span></span>; <span class="comment">//创建一个流套接字并将其连接到指定 IP 地址的指定端口号 。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Socket</span><span class="params">(String host,<span class="keyword">int</span> port)</span></span>; <span class="comment">// 创建一个流套接字并将其连接到指定主机上的指定端口号 。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Socket 类的常用方法：</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> InputStream <span class="title">getInputStream</span><span class="params">()</span></span>; <span class="comment">// 返回此套接字的输入流。 可以用于接收网络消息</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> OutputStream <span class="title">getOutputStream</span><span class="params">()</span></span>; <span class="comment">// 返回此套接字的输出流。可以用于发送网络消息</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> InetAddress <span class="title">getInetAddress</span><span class="params">()</span></span>; <span class="comment">// 此套接字连接到的  远程IP 地址；如果套接字是未连接的，则返回 null。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> InetAddress <span class="title">getLocalAddress</span><span class="params">()</span></span>; <span class="comment">// 获取套接字绑定的本地地址。即 本端的IP 地址</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPort</span><span class="params">()</span></span>; <span class="comment">// 此套接字连接到的远程端口号；如果尚未连接套接字，则返回 0 。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLocalPort</span><span class="params">()</span></span>; <span class="comment">// 返回此套接字绑定到的本地端口。如果尚未绑定套接字，则返回 1。 即本端的端口号 。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span></span>; <span class="comment">// 关闭此套接 。套接字被关闭后，便不可在以后的网络连接中使用，即无法重新连接或重新绑定。 需要创建新的套接字对象。 关闭此套接字也将会关闭该套接字的 InputStream 和 OutputStream。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdownInput</span><span class="params">()</span></span>; <span class="comment">// 如果在套接字上调用 shutdownInput() 后从套接字输入流读取内容，则流将返回 EOF 文件结束符。即不能在从此套接字的输入流中接收任何数据 。</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdownOutput</span><span class="params">()</span></span>; <span class="comment">// 禁用此套接字的输出流。 对于 TCP 套接字，任何以前写入的数据都将被发送，并且后跟 TCP 的正常连接终止序列。 如果在套接字上调用 shutdownOutput() 后写入套接字输出流则该流将抛出 IOException。 即不能通过此套接字的输出流发送任何数据 。</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// Socket 类的常用构造器
+public Socket(InetAddress address,int port); //创建一个流套接字并将其连接到指定 IP 地址的指定端口号 。
+public Socket(String host,int port); // 创建一个流套接字并将其连接到指定主机上的指定端口号 。
+
+// Socket 类的常用方法：
+public InputStream getInputStream(); // 返回此套接字的输入流。 可以用于接收网络消息
+public OutputStream getOutputStream(); // 返回此套接字的输出流。可以用于发送网络消息
+public InetAddress getInetAddress(); // 此套接字连接到的  远程IP 地址；如果套接字是未连接的，则返回 null。
+public InetAddress getLocalAddress(); // 获取套接字绑定的本地地址。即 本端的IP 地址
+public int getPort(); // 此套接字连接到的远程端口号；如果尚未连接套接字，则返回 0 。
+public int getLocalPort(); // 返回此套接字绑定到的本地端口。如果尚未绑定套接字，则返回 1。 即本端的端口号 。
+public void close(); // 关闭此套接 。套接字被关闭后，便不可在以后的网络连接中使用，即无法重新连接或重新绑定。 需要创建新的套接字对象。 关闭此套接字也将会关闭该套接字的 InputStream 和 OutputStream。
+public void shutdownInput(); // 如果在套接字上调用 shutdownInput() 后从套接字输入流读取内容，则流将返回 EOF 文件结束符。即不能在从此套接字的输入流中接收任何数据 。
+public void shutdownOutput(); // 禁用此套接字的输出流。 对于 TCP 套接字，任何以前写入的数据都将被发送，并且后跟 TCP 的正常连接终止序列。 如果在套接字上调用 shutdownOutput() 后写入套接字输出流则该流将抛出 IOException。 即不能通过此套接字的输出流发送任何数据 。
+</code></pre>
 <h2 id="TCP网络编程"><a href="#TCP网络编程" class="headerlink" title="TCP网络编程"></a>TCP网络编程</h2><p>客户端 Socket 的工作过程包含以下四个基本的步骤</p>
 <ol>
 <li><p>创建 Socket 根据指定服务端的 IP 地址或端口号构造 Socket 类对象。若服务器端响应，则建立客户端到服务器的通信线路。若连接失败，会出现异常。</p>
@@ -1432,16 +1453,258 @@
 <li>ServerSocket 对象负责等待客户端请求建立套接字连接，类似邮局某个窗口中的业务员。也就是说， 服务器必须事先建立一个等待客户请求建立套接字连接的 ServerSocket 对象。</li>
 <li>所谓“接收”客户的套接字请求，就是 accept() 方法会返回一个 Socket 对象</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现TCP的网络编程</span></span><br><span class="line"><span class="comment"> * 例子1：客户端发送信息给服务端，服务端将数据显示在控制台上</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TCPTest1</span> </span>&#123;</span><br><span class="line">    <span class="comment">//客户端</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">client</span><span class="params">()</span>  </span>&#123;</span><br><span class="line">        Socket socket = <span class="keyword">null</span>;</span><br><span class="line">        OutputStream os = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//1.创建Socket对象，指明服务器端的ip和端口号</span></span><br><span class="line">            InetAddress inet = InetAddress.getByName(<span class="string">"192.168.14.100"</span>);</span><br><span class="line">            socket = <span class="keyword">new</span> Socket(inet,<span class="number">8899</span>);</span><br><span class="line">            <span class="comment">//2.获取一个输出流，用于输出数据</span></span><br><span class="line">            os = socket.getOutputStream();</span><br><span class="line">            <span class="comment">//3.写出数据的操作</span></span><br><span class="line">            os.write(<span class="string">"你好，我是客户端mm"</span>.getBytes());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//4.资源的关闭</span></span><br><span class="line">            <span class="keyword">if</span>(os != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    os.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(socket != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    socket.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//服务端</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">server</span><span class="params">()</span>  </span>&#123;</span><br><span class="line"></span><br><span class="line">        ServerSocket ss = <span class="keyword">null</span>;</span><br><span class="line">        Socket socket = <span class="keyword">null</span>;</span><br><span class="line">        InputStream is = <span class="keyword">null</span>;</span><br><span class="line">        ByteArrayOutputStream baos = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//1.创建服务器端的ServerSocket，指明自己的端口号</span></span><br><span class="line">            ss = <span class="keyword">new</span> ServerSocket(<span class="number">8899</span>);</span><br><span class="line">            <span class="comment">//2.调用accept()表示接收来自于客户端的socket</span></span><br><span class="line">            socket = ss.accept();</span><br><span class="line">            <span class="comment">//3.获取输入流</span></span><br><span class="line">            is = socket.getInputStream();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//不建议这样写，可能会有乱码</span></span><br><span class="line"><span class="comment">//        byte[] buffer = new byte[1024];</span></span><br><span class="line"><span class="comment">//        int len;</span></span><br><span class="line"><span class="comment">//        while((len = is.read(buffer)) != -1)&#123;</span></span><br><span class="line"><span class="comment">//            String str = new String(buffer,0,len);</span></span><br><span class="line"><span class="comment">//            System.out.print(str);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">            <span class="comment">//4.读取输入流中的数据</span></span><br><span class="line">            ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];</span><br><span class="line">            <span class="keyword">int</span> len;</span><br><span class="line">            <span class="keyword">while</span>((len = is.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                baos.write(buffer,<span class="number">0</span>,len);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(baos.toString());</span><br><span class="line">            System.out.println(<span class="string">"收到了来自于："</span> + socket.getInetAddress().getHostAddress() + <span class="string">"的数据"</span>);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(baos != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="comment">//5.关闭资源</span></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    baos.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(is != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    is.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(socket != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    socket.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(ss != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    ss.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实现TCP的网络编程</span></span><br><span class="line"><span class="comment"> * 例题3：从客户端发送文件给服务端，服务端保存到本地。并返回“发送成功”给客户端。</span></span><br><span class="line"><span class="comment"> * 并关闭相应的连接。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TCPTest3</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    这里涉及到的异常，应该使用try-catch-finally处理</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">client</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1.</span></span><br><span class="line">        Socket socket = <span class="keyword">new</span> Socket(InetAddress.getByName(<span class="string">"127.0.0.1"</span>),<span class="number">9090</span>);</span><br><span class="line">        <span class="comment">//2.</span></span><br><span class="line">        OutputStream os = socket.getOutputStream();</span><br><span class="line">        <span class="comment">//3.</span></span><br><span class="line">        FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"beauty.jpg"</span>));</span><br><span class="line">        <span class="comment">//4.</span></span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> len;</span><br><span class="line">        <span class="keyword">while</span>((len = fis.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            os.write(buffer,<span class="number">0</span>,len);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//关闭数据的输出</span></span><br><span class="line">        socket.shutdownOutput();<span class="comment">//关闭连接,表明传输完成</span></span><br><span class="line">        <span class="comment">//5.接收来自于服务器端的数据，并显示到控制台上</span></span><br><span class="line">        InputStream is = socket.getInputStream();</span><br><span class="line">        ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">        <span class="keyword">byte</span>[] bufferr = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">20</span>];</span><br><span class="line">        <span class="keyword">int</span> len1;</span><br><span class="line">        <span class="keyword">while</span>((len1 = is.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            baos.write(buffer,<span class="number">0</span>,len1);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(baos.toString());</span><br><span class="line">        <span class="comment">//6.</span></span><br><span class="line">        fis.close();</span><br><span class="line">        os.close();</span><br><span class="line">        socket.close();</span><br><span class="line">        baos.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    这里涉及到的异常，应该使用try-catch-finally处理</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">server</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//1.</span></span><br><span class="line">        ServerSocket ss = <span class="keyword">new</span> ServerSocket(<span class="number">9090</span>);</span><br><span class="line">        <span class="comment">//2.</span></span><br><span class="line">        Socket socket = ss.accept();</span><br><span class="line">        <span class="comment">//3.</span></span><br><span class="line">        InputStream is = socket.getInputStream();</span><br><span class="line">        <span class="comment">//4.</span></span><br><span class="line">        FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(<span class="string">"beauty2.jpg"</span>));</span><br><span class="line">        <span class="comment">//5.</span></span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> len;</span><br><span class="line">        <span class="keyword">while</span>((len = is.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            fos.write(buffer,<span class="number">0</span>,len);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"图片传输完成"</span>);</span><br><span class="line">        <span class="comment">//6.服务器端给予客户端反馈</span></span><br><span class="line">        OutputStream os = socket.getOutputStream();</span><br><span class="line">        os.write(<span class="string">"你好，美女，照片我已收到，非常漂亮！"</span>.getBytes());</span><br><span class="line">        <span class="comment">//7.</span></span><br><span class="line">        fos.close();</span><br><span class="line">        is.close();</span><br><span class="line">        socket.close();</span><br><span class="line">        ss.close();</span><br><span class="line">        os.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * 实现TCP的网络编程
+ * 例子1：客户端发送信息给服务端，服务端将数据显示在控制台上
+ */
+public class TCPTest1 {
+    //客户端
+    @Test
+    public void client()  {
+        Socket socket = null;
+        OutputStream os = null;
+        try {
+            //1.创建Socket对象，指明服务器端的ip和端口号
+            InetAddress inet = InetAddress.getByName(&quot;192.168.14.100&quot;);
+            socket = new Socket(inet,8899);
+            //2.获取一个输出流，用于输出数据
+            os = socket.getOutputStream();
+            //3.写出数据的操作
+            os.write(&quot;你好，我是客户端mm&quot;.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            //4.资源的关闭
+            if(os != null){
+                try {
+                    os.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(socket != null){
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    //服务端
+    @Test
+    public void server()  {
+
+        ServerSocket ss = null;
+        Socket socket = null;
+        InputStream is = null;
+        ByteArrayOutputStream baos = null;
+        try {
+            //1.创建服务器端的ServerSocket，指明自己的端口号
+            ss = new ServerSocket(8899);
+            //2.调用accept()表示接收来自于客户端的socket
+            socket = ss.accept();
+            //3.获取输入流
+            is = socket.getInputStream();
+
+            //不建议这样写，可能会有乱码
+//        byte[] buffer = new byte[1024];
+//        int len;
+//        while((len = is.read(buffer)) != -1){
+//            String str = new String(buffer,0,len);
+//            System.out.print(str);
+//        }
+            //4.读取输入流中的数据
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[5];
+            int len;
+            while((len = is.read(buffer)) != -1){
+                baos.write(buffer,0,len);
+            }
+            System.out.println(baos.toString());
+            System.out.println(&quot;收到了来自于：&quot; + socket.getInetAddress().getHostAddress() + &quot;的数据&quot;);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(baos != null){
+                //5.关闭资源
+                try {
+                    baos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(is != null){
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(socket != null){
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(ss != null){
+                try {
+                    ss.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-java">import org.junit.Test;
+
+import java.io.*;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+/**
+ * 实现TCP的网络编程
+ * 例题3：从客户端发送文件给服务端，服务端保存到本地。并返回“发送成功”给客户端。
+ * 并关闭相应的连接。
+ */
+public class TCPTest3 {
+    /*
+    这里涉及到的异常，应该使用try-catch-finally处理
+     */
+    @Test
+    public void client() throws IOException {
+        //1.
+        Socket socket = new Socket(InetAddress.getByName(&quot;127.0.0.1&quot;),9090);
+        //2.
+        OutputStream os = socket.getOutputStream();
+        //3.
+        FileInputStream fis = new FileInputStream(new File(&quot;beauty.jpg&quot;));
+        //4.
+        byte[] buffer = new byte[1024];
+        int len;
+        while((len = fis.read(buffer)) != -1){
+            os.write(buffer,0,len);
+        }
+        //关闭数据的输出
+        socket.shutdownOutput();//关闭连接,表明传输完成
+        //5.接收来自于服务器端的数据，并显示到控制台上
+        InputStream is = socket.getInputStream();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] bufferr = new byte[20];
+        int len1;
+        while((len1 = is.read(buffer)) != -1){
+            baos.write(buffer,0,len1);
+        }
+        System.out.println(baos.toString());
+        //6.
+        fis.close();
+        os.close();
+        socket.close();
+        baos.close();
+    }
+
+    /*
+    这里涉及到的异常，应该使用try-catch-finally处理
+     */
+    @Test
+    public void server() throws IOException {
+        //1.
+        ServerSocket ss = new ServerSocket(9090);
+        //2.
+        Socket socket = ss.accept();
+        //3.
+        InputStream is = socket.getInputStream();
+        //4.
+        FileOutputStream fos = new FileOutputStream(new File(&quot;beauty2.jpg&quot;));
+        //5.
+        byte[] buffer = new byte[1024];
+        int len;
+        while((len = is.read(buffer)) != -1){
+            fos.write(buffer,0,len);
+        }
+        System.out.println(&quot;图片传输完成&quot;);
+        //6.服务器端给予客户端反馈
+        OutputStream os = socket.getOutputStream();
+        os.write(&quot;你好，美女，照片我已收到，非常漂亮！&quot;.getBytes());
+        //7.
+        fos.close();
+        is.close();
+        socket.close();
+        ss.close();
+        os.close();
+    }
+}
+</code></pre>
 <h2 id="UDP网络编程"><a href="#UDP网络编程" class="headerlink" title="UDP网络编程"></a>UDP网络编程</h2><ul>
 <li>类 DatagramSocket 和 DatagramPacket 实现了基于 UDP 协议网络程序。</li>
 <li>UDP 数据报通过数据报套接字 DatagramSocket 发送和接收， 系统 不 保证UDP 数据报一定能够安全送到目的地，也不能确定什么时候可以抵达。</li>
 <li>DatagramPacket 对象封装了 UDP 数据报，在数据报中包含了发送端的 IP地址和端口号以及接收端的 IP 地址和端口号。</li>
 <li>UDP 协议中 每个数据报都给出了完整的地址信息，因此无须建立发送方和接收方 的 连接。 如同发快递包裹一样 。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DatagramSocket</span><span class="params">(<span class="keyword">int</span> port)</span> <span class="comment">//创建数据报套接字并将其绑定到本地主机上的指定端口 。 套接字将被绑定到通配符地址,IP 地址由内核来选择 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DatagramSocket</span><span class="params">(<span class="keyword">int</span> port,InetAddress laddr)</span> <span class="comment">//创建数据报套接字, 将其绑定到指定的本地地址。本地端口必须在 0 到 65535 之间(包括两者)。 如果 IP 地址为 0.0.0.0 套接字将被绑定到通配符地址 IP 地址由内核选择 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="comment">//关闭此数据报套接字 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(DatagramPacket p)</span> <span class="comment">//从此套接字发送数据报包。 DatagramPacket 包含的信息指示：将要发送的数据、 其长度、 远程主机的 IP 地址和远程主机的端口号 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(DatagramPacket p)</span> <span class="comment">// 从此套接字接收数据报包。 当此方法返回时 DatagramPacket的缓冲区填充了接收的数据。 数据报包也包含发送方的 IP 地址和发送方机器上的端口号。 此方法在接收到数据报前一直阻塞。 数据报包对象的 length 字段包含所接收信息的长度。 如果信息比包的长度长 该信息将被截短。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> InetAddress <span class="title">getLocalAddress</span><span class="params">()</span> <span class="comment">//获取套接字绑定的本地地址 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLocalPort</span><span class="params">()</span> <span class="comment">//返回此套接字绑定的本地主机上的端口号 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> InetAddress <span class="title">getInetAddress</span><span class="params">()</span> <span class="comment">//返回此套接字连接的地址。 如果套接字未连接 则返回 null 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPort</span><span class="params">()</span> <span class="comment">// 返回此套接字的端口。 如果套接字未连接,则返回 1 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DatagramPacket</span><span class="params">(<span class="keyword">byte</span>[] buf,<span class="keyword">int</span> length)</span> <span class="comment">// 构造 DatagramPacket 用来接收长度为 length 的数据包。 length 参数必须小于等于 buf.length 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DatagramPacket</span><span class="params">(<span class="keyword">byte</span>[] buf,<span class="keyword">int</span> length,InetAddress address,<span class="keyword">int</span> port)</span> <span class="comment">//构造数据报包,用来将长度为 length 的包发送到指定主机上的指定端口号 。 length参数必须小于等于 buf.length 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> InetAddress <span class="title">getAddress</span><span class="params">()</span> <span class="comment">// 返回某台机器的 IP 地址 此数据报将要发往该机器或者是从该机器接收到的 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPort</span><span class="params">()</span> <span class="comment">// 返回某台远程主机的端口号 此数据报将要发往该主机或者是从该主机接收到的 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">byte</span>[] <span class="title">getData</span><span class="params">()</span> <span class="comment">// 返回数据缓冲区 。 接收到的或将要发送的数据从缓冲区中的偏移量 offset 处开始 持续 length 长度 。</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLength</span><span class="params">()</span> <span class="comment">// 返回将要发送或接收到的数据的长度。</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.DatagramPacket;</span><br><span class="line"><span class="keyword">import</span> java.net.DatagramSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * UDPd协议的网络编程</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UDPTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">//发送端</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sender</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        DatagramSocket socket = <span class="keyword">new</span> DatagramSocket();</span><br><span class="line">        String str = <span class="string">"我是UDP方式发送的导弹"</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] data = str.getBytes();</span><br><span class="line">        InetAddress inet = InetAddress.getLocalHost();</span><br><span class="line">        DatagramPacket packet = <span class="keyword">new</span> DatagramPacket(data,<span class="number">0</span>,data.length,inet,<span class="number">9090</span>);</span><br><span class="line">        socket.send(packet);</span><br><span class="line">        socket.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//接收端</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receiver</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        DatagramSocket socket = <span class="keyword">new</span> DatagramSocket(<span class="number">9090</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">100</span>];</span><br><span class="line">        DatagramPacket packet = <span class="keyword">new</span> DatagramPacket(buffer,<span class="number">0</span>,buffer.length);</span><br><span class="line">        socket.receive(packet);</span><br><span class="line">        System.out.println(<span class="keyword">new</span> String(packet.getData(),<span class="number">0</span>,packet.getLength()));</span><br><span class="line">        socket.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public DatagramSocket(int port) //创建数据报套接字并将其绑定到本地主机上的指定端口 。 套接字将被绑定到通配符地址,IP 地址由内核来选择 。
+public DatagramSocket(int port,InetAddress laddr) //创建数据报套接字, 将其绑定到指定的本地地址。本地端口必须在 0 到 65535 之间(包括两者)。 如果 IP 地址为 0.0.0.0 套接字将被绑定到通配符地址 IP 地址由内核选择 。
+public void close() //关闭此数据报套接字 。
+public void send(DatagramPacket p) //从此套接字发送数据报包。 DatagramPacket 包含的信息指示：将要发送的数据、 其长度、 远程主机的 IP 地址和远程主机的端口号 。
+public void receive(DatagramPacket p) // 从此套接字接收数据报包。 当此方法返回时 DatagramPacket的缓冲区填充了接收的数据。 数据报包也包含发送方的 IP 地址和发送方机器上的端口号。 此方法在接收到数据报前一直阻塞。 数据报包对象的 length 字段包含所接收信息的长度。 如果信息比包的长度长 该信息将被截短。
+public InetAddress getLocalAddress() //获取套接字绑定的本地地址 。
+public int getLocalPort() //返回此套接字绑定的本地主机上的端口号 。
+public InetAddress getInetAddress() //返回此套接字连接的地址。 如果套接字未连接 则返回 null 。
+public int getPort() // 返回此套接字的端口。 如果套接字未连接,则返回 1 。
+public DatagramPacket(byte[] buf,int length) // 构造 DatagramPacket 用来接收长度为 length 的数据包。 length 参数必须小于等于 buf.length 。
+public DatagramPacket(byte[] buf,int length,InetAddress address,int port) //构造数据报包,用来将长度为 length 的包发送到指定主机上的指定端口号 。 length参数必须小于等于 buf.length 。
+public InetAddress getAddress() // 返回某台机器的 IP 地址 此数据报将要发往该机器或者是从该机器接收到的 。
+public int getPort() // 返回某台远程主机的端口号 此数据报将要发往该主机或者是从该主机接收到的 。
+public byte[] getData() // 返回数据缓冲区 。 接收到的或将要发送的数据从缓冲区中的偏移量 offset 处开始 持续 length 长度 。
+public int getLength() // 返回将要发送或接收到的数据的长度。
+</code></pre>
+<pre><code class="lang-java">import org.junit.Test;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+/**
+ * UDPd协议的网络编程
+ */
+public class UDPTest {
+    //发送端
+    @Test
+    public void sender() throws IOException {
+        DatagramSocket socket = new DatagramSocket();
+        String str = &quot;我是UDP方式发送的导弹&quot;;
+        byte[] data = str.getBytes();
+        InetAddress inet = InetAddress.getLocalHost();
+        DatagramPacket packet = new DatagramPacket(data,0,data.length,inet,9090);
+        socket.send(packet);
+        socket.close();
+    }
+    //接收端
+    @Test
+    public void receiver() throws IOException {
+        DatagramSocket socket = new DatagramSocket(9090);
+        byte[] buffer = new byte[100];
+        DatagramPacket packet = new DatagramPacket(buffer,0,buffer.length);
+        socket.receive(packet);
+        System.out.println(new String(packet.getData(),0,packet.getLength()));
+        socket.close();
+    }
+}
+</code></pre>
 <h2 id="URL网络编程"><a href="#URL网络编程" class="headerlink" title="URL网络编程"></a>URL网络编程</h2><p>URI、 URL 和 URN 的区别</p>
 <blockquote>
 <p>URI 是 uniform resource identifier，==统一资源标识符==，用来唯一的标识一个资源。而 </p>
@@ -1458,11 +1721,69 @@
 <li>参数列表格式：参数名 参数值 参数名 参数值</li>
 </ul>
 <p>为了表示 URL java.net 中实现了类 URL 。我们可以通过下面的构造器来初始化一个 URL 对象：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">URL</span> <span class="params">(String spec)</span></span>; <span class="comment">//通过一个表示 URL 地址的字符串可以构造一个 URL 对象。例如 URL url = new URL(http://www. atguigu.com/");</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">URL</span><span class="params">(URL context, String spec)</span></span>; <span class="comment">//通过基 URL 和相对 URL 构造一个 URL 对象 。例如 URL downloadUrl = new (url , "download.html");</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">URL</span><span class="params">(String protocol, String host, String file)</span></span>; <span class="comment">//例如 new URL("http",www.atguigu.com ", “download. html");</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">URL</span><span class="params">(String protocol, String host, <span class="keyword">int</span> port, String file)</span></span>; <span class="comment">//例如 : URL gamelan = newURL ("http", www.atguigu.com ", "80", “download.html");</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public URL (String spec); //通过一个表示 URL 地址的字符串可以构造一个 URL 对象。例如 URL url = new URL(http://www. atguigu.com/&quot;);
+public URL(URL context, String spec); //通过基 URL 和相对 URL 构造一个 URL 对象 。例如 URL downloadUrl = new (url , &quot;download.html&quot;);
+public URL(String protocol, String host, String file); //例如 new URL(&quot;http&quot;,www.atguigu.com &quot;, “download. html&quot;);
+public URL(String protocol, String host, int port, String file); //例如 : URL gamelan = newURL (&quot;http&quot;, www.atguigu.com &quot;, &quot;80&quot;, “download.html&quot;);
+</code></pre>
 <p>URL 类的构造器都声明抛出非运行时异常，必须要对这一异常进行处理，通常是用 try-catch 语句进行捕获。</p>
 <p>URL 类常用方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getProtocol</span><span class="params">()</span></span>; <span class="comment">// 获取该 URL 的协议名</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getHost</span><span class="params">()</span></span>; <span class="comment">// 获取该 URL 的主机名</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getPort</span><span class="params">()</span></span>; <span class="comment">// 获取该 URL 的端口号</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getPath</span><span class="params">()</span></span>; <span class="comment">// 获取该 URL 的文件路径</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getFile</span><span class="params">()</span></span>; <span class="comment">// 获取该 URL 的文件名</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getQuery</span><span class="params">()</span></span>; <span class="comment">// 获取该 URL 的查询名</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">URLTest1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        HttpURLConnection urlConnection = <span class="keyword">null</span>;</span><br><span class="line">        InputStream is = <span class="keyword">null</span>;</span><br><span class="line">        FileOutputStream fos = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            URL url = <span class="keyword">new</span> URL(<span class="string">"http://localhost:8080/examples/beauty.jpg"</span>);</span><br><span class="line">            urlConnection = (HttpURLConnection) url.openConnection();</span><br><span class="line">            urlConnection.connect();</span><br><span class="line">            is = urlConnection.getInputStream();</span><br><span class="line">            fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"day10\\beauty3.jpg"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="keyword">int</span> len;</span><br><span class="line">            <span class="keyword">while</span>((len = is.read(buffer)) != -<span class="number">1</span>)&#123;</span><br><span class="line">                fos.write(buffer,<span class="number">0</span>,len);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"下载完成"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//关闭资源</span></span><br><span class="line">            <span class="keyword">if</span>(is != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    is.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(fos != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    fos.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(urlConnection != <span class="keyword">null</span>)&#123;</span><br><span class="line">                urlConnection.disconnect();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public String getProtocol(); // 获取该 URL 的协议名
+public String getHost(); // 获取该 URL 的主机名
+public String getPort(); // 获取该 URL 的端口号
+public String getPath(); // 获取该 URL 的文件路径
+public String getFile(); // 获取该 URL 的文件名
+public String getQuery(); // 获取该 URL 的查询名
+</code></pre>
+<pre><code class="lang-java">import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class URLTest1 {
+    public static void main(String[] args) {
+        HttpURLConnection urlConnection = null;
+        InputStream is = null;
+        FileOutputStream fos = null;
+        try {
+            URL url = new URL(&quot;http://localhost:8080/examples/beauty.jpg&quot;);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.connect();
+            is = urlConnection.getInputStream();
+            fos = new FileOutputStream(&quot;day10\\beauty3.jpg&quot;);
+
+            byte[] buffer = new byte[1024];
+            int len;
+            while((len = is.read(buffer)) != -1){
+                fos.write(buffer,0,len);
+            }
+            System.out.println(&quot;下载完成&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            //关闭资源
+            if(is != null){
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(fos != null){
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(urlConnection != null){
+                urlConnection.disconnect();
+            }
+        }
+    }
+}
+</code></pre>
 
 </div>
 
@@ -1470,9 +1791,9 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/02-Java/Java11-%E9%9B%86%E5%90%88.html">
+              <a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Java11-集合
+                  Java12-泛型
               </a>
             
         </div>

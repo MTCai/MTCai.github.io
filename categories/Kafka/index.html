@@ -490,8 +490,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -499,8 +499,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1311,44 +1311,6 @@
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
-				<h2 class="index-title">
-					Kafka01-概述&shell操作
-				</h2>
-				<div class="index-brief">
-					概述Kafka 是一个分布式的基于发布/订阅模式的消息队列（Message Queue），主要应用于大数据实时处理领域。
-消息队列MQ：异步处理
-
-使用消息队列的好处：
-
-解耦
-
-允许你独立的扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束。
-
-
-可恢复性
-
-系统的一部分组件失效时，不会影响
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-08-12</span>
-                    
-                            
-                                
-                                    <span>
-                                        <i class="fa fa-folder" aria-hidden="true"></i>
-                                        <a href="/categories/Kafka/">Kafka</a>
-										
-                                    </span>
-                                
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
 			<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
 				<h2 class="index-title">
 					Kafka00-安装
@@ -1360,7 +1322,7 @@
 
 2.创建logs文件夹: kafka根目录下
 3.修改配置文件
-12345678910111213141516171819
+vim /config/server.properties
 					...
 				</div>
 			</a>
@@ -1381,9 +1343,37 @@
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+			<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
 				<h2 class="index-title">
-					Kafka04-监控
+					Kafka02-架构原理
+				</h2>
+				<div class="index-brief">
+					Kafka工作流程与文件存储
+Kafka 中消息是以topic 进行分类的，生产者生产消息，消费者消费消息，都是面向topic的。
+topic 是逻辑上的概念，而partition 是物理上的概念，每个partition 对应于一个log 文件，该log 文件中存储的就是producer 生产的数据
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2020-08-12</span>
+                    
+                            
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/Kafka/">Kafka</a>
+										
+                                    </span>
+                                
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+				<h2 class="index-title">
+					Kafka01-概述&shell操作
 				</h2>
 				<div class="index-brief">
 					概述Kafka 是一个分布式的基于发布/订阅模式的消息队列（Message Queue），主要应用于大数据实时处理领域。
@@ -1445,14 +1435,24 @@
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+			<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
 				<h2 class="index-title">
-					Kafka02-架构原理
+					Kafka04-监控
 				</h2>
 				<div class="index-brief">
-					Kafka工作流程与文件存储
-Kafka 中消息是以topic 进行分类的，生产者生产消息，消费者消费消息，都是面向topic的。
-topic 是逻辑上的概念，而partition 是物理上的概念，每个partition 对应于一个log 文件，该log 文件中存储的就是producer 生产的数据
+					概述Kafka 是一个分布式的基于发布/订阅模式的消息队列（Message Queue），主要应用于大数据实时处理领域。
+消息队列MQ：异步处理
+
+使用消息队列的好处：
+
+解耦
+
+允许你独立的扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束。
+
+
+可恢复性
+
+系统的一部分组件失效时，不会影响
 					...
 				</div>
 			</a>
@@ -1479,7 +1479,14 @@ topic 是逻辑上的概念，而partition 是物理上的概念，每个partiti
 				</h2>
 				<div class="index-brief">
 					配置 flume(flume-kafka.conf)
-1234567891011121314151617181920212223242526'define'a1.sources = r1a1.sinks = k1a1.channels = c1' source'a1.sources.r1.type 
+&#39;define&#39;
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+&#39; source&#39;
+a1.sources.r1.type = exec
+a1.sources.r1.
 					...
 				</div>
 			</a>

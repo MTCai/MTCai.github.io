@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1341,13 +1341,172 @@
 <li>删除：delete</li>
 </ul>
 <h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p><strong>经典的插入</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">语法：</span><br><span class="line">insert into 表名(列名,...) values(值1,...);</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">#1.插入的值的类型要与列的类型一致或兼容</span><br><span class="line">INSERT INTO beauty(id,NAME,sex,borndate,phone,photo,boyfriend_id)</span><br><span class="line">VALUES(13,&#39;唐艺昕&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2);</span><br><span class="line"></span><br><span class="line">#2.不可以为null的列必须插入值。可以为null的列如何插入值？</span><br><span class="line">#方式一：</span><br><span class="line">INSERT INTO beauty(id,NAME,sex,borndate,phone,photo,boyfriend_id)</span><br><span class="line">VALUES(13,&#39;唐艺昕&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2);</span><br><span class="line">#方式二：</span><br><span class="line">INSERT INTO beauty(id,NAME,sex,phone)</span><br><span class="line">VALUES(15,&#39;娜扎&#39;,&#39;女&#39;,&#39;1388888888&#39;);</span><br><span class="line"></span><br><span class="line">#3.列的顺序是否可以调换，对应即可</span><br><span class="line">INSERT INTO beauty(NAME,sex,id,phone)</span><br><span class="line">VALUES(&#39;蒋欣&#39;,&#39;女&#39;,16,&#39;110&#39;);</span><br><span class="line"></span><br><span class="line">#4.列数和值的个数必须一致</span><br><span class="line">INSERT INTO beauty(NAME,sex,id,phone)</span><br><span class="line">VALUES(&#39;关晓彤&#39;,&#39;女&#39;,17,&#39;110&#39;);</span><br><span class="line"></span><br><span class="line">#5.可以省略列名，默认所有列，而且列的顺序和表中列的顺序一致</span><br><span class="line">INSERT INTO beauty</span><br><span class="line">VALUES(18,&#39;张飞&#39;,&#39;男&#39;,NULL,&#39;119&#39;,NULL,NULL);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">/*
+语法：
+insert into 表名(列名,...) values(值1,...);
+*/
+
+#1.插入的值的类型要与列的类型一致或兼容
+INSERT INTO beauty(id,NAME,sex,borndate,phone,photo,boyfriend_id)
+VALUES(13,&#39;唐艺昕&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2);
+
+#2.不可以为null的列必须插入值。可以为null的列如何插入值？
+#方式一：
+INSERT INTO beauty(id,NAME,sex,borndate,phone,photo,boyfriend_id)
+VALUES(13,&#39;唐艺昕&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2);
+#方式二：
+INSERT INTO beauty(id,NAME,sex,phone)
+VALUES(15,&#39;娜扎&#39;,&#39;女&#39;,&#39;1388888888&#39;);
+
+#3.列的顺序是否可以调换，对应即可
+INSERT INTO beauty(NAME,sex,id,phone)
+VALUES(&#39;蒋欣&#39;,&#39;女&#39;,16,&#39;110&#39;);
+
+#4.列数和值的个数必须一致
+INSERT INTO beauty(NAME,sex,id,phone)
+VALUES(&#39;关晓彤&#39;,&#39;女&#39;,17,&#39;110&#39;);
+
+#5.可以省略列名，默认所有列，而且列的顺序和表中列的顺序一致
+INSERT INTO beauty
+VALUES(18,&#39;张飞&#39;,&#39;男&#39;,NULL,&#39;119&#39;,NULL,NULL);
+</code></pre>
 <p><strong>方式二：插入</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">语法：</span><br><span class="line">insert into 表名</span><br><span class="line">set 列名&#x3D;值,列名&#x3D;值,...</span><br><span class="line">*&#x2F;</span><br><span class="line">INSERT INTO beauty</span><br><span class="line">SET id&#x3D;19,NAME&#x3D;&#39;刘涛&#39;,phone&#x3D;&#39;999&#39;;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">/*
+语法：
+insert into 表名
+set 列名=值,列名=值,...
+*/
+INSERT INTO beauty
+SET id=19,NAME=&#39;刘涛&#39;,phone=&#39;999&#39;;
+</code></pre>
 <p><strong>两种方式比较：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#1、方式一支持插入多行,方式二不支持</span><br><span class="line">INSERT INTO beauty</span><br><span class="line">VALUES(23,&#39;唐艺昕1&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2)</span><br><span class="line">,(24,&#39;唐艺昕2&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2)</span><br><span class="line">,(25,&#39;唐艺昕3&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2);</span><br><span class="line"></span><br><span class="line">#2、方式一支持子查询，方式二不支持</span><br><span class="line">INSERT INTO beauty(id,NAME,phone)</span><br><span class="line">SELECT 26,&#39;宋茜&#39;,&#39;11809866&#39;; # 将查询后的结果插入到表中</span><br><span class="line"></span><br><span class="line">INSERT INTO beauty(id,NAME,phone)</span><br><span class="line">SELECT id,boyname,&#39;1234567&#39;</span><br><span class="line">FROM boys WHERE id&lt;3;</span><br></pre></td></tr></table></figure>
-<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">1.修改单表的记录★</span><br><span class="line"></span><br><span class="line">语法：</span><br><span class="line">update 表名</span><br><span class="line">set 列&#x3D;新值,列&#x3D;新值,...</span><br><span class="line">where 筛选条件;</span><br><span class="line"></span><br><span class="line">2.修改多表的记录【补充】</span><br><span class="line">语法：</span><br><span class="line">sql92语法：</span><br><span class="line">update 表1 别名,表2 别名</span><br><span class="line">set 列&#x3D;值,...</span><br><span class="line">where 连接条件</span><br><span class="line">and 筛选条件;</span><br><span class="line"></span><br><span class="line">sql99语法：</span><br><span class="line">update 表1 别名</span><br><span class="line">inner|left|right join 表2 别名</span><br><span class="line">on 连接条件</span><br><span class="line">set 列&#x3D;值,...</span><br><span class="line">where 筛选条件;</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">#1.修改单表的记录</span><br><span class="line">#案例 修改beauty表中姓唐的女神的电话为13899888899</span><br><span class="line">UPDATE beauty SET phone &#x3D; &#39;13899888899&#39;</span><br><span class="line">WHERE NAME LIKE &#39;唐%&#39;;</span><br><span class="line"></span><br><span class="line">#案例 修改boys表中id好为2的名称为张飞，魅力值 10</span><br><span class="line">UPDATE boys SET boyname&#x3D;&#39;张飞&#39;,usercp&#x3D;10</span><br><span class="line">WHERE id&#x3D;2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#2.修改多表的记录</span><br><span class="line">#案例 修改张无忌的女朋友的手机号为114</span><br><span class="line">UPDATE boys bo</span><br><span class="line">INNER JOIN beauty b ON bo.&#96;id&#96;&#x3D;b.&#96;boyfriend_id&#96;</span><br><span class="line">SET b.&#96;phone&#96;&#x3D;&#39;119&#39;,bo.&#96;userCP&#96;&#x3D;1000</span><br><span class="line">WHERE bo.&#96;boyName&#96;&#x3D;&#39;张无忌&#39;;</span><br><span class="line"></span><br><span class="line">#案例 修改没有男朋友的女神的男朋友编号都为2号</span><br><span class="line">UPDATE boys bo</span><br><span class="line">RIGHT JOIN beauty b ON bo.&#96;id&#96;&#x3D;b.&#96;boyfriend_id&#96;</span><br><span class="line">SET b.&#96;boyfriend_id&#96;&#x3D;2</span><br><span class="line">WHERE bo.&#96;id&#96; IS NULL;</span><br></pre></td></tr></table></figure>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"></span><br><span class="line">方式一：delete</span><br><span class="line">语法：</span><br><span class="line"></span><br><span class="line">1、单表的删除【★】</span><br><span class="line">delete from 表名 where 筛选条件</span><br><span class="line"></span><br><span class="line">2、多表的删除【补充】</span><br><span class="line"></span><br><span class="line">2.1 sql92语法：</span><br><span class="line">delete 表1的别名,表2的别名</span><br><span class="line">from 表1 别名,表2 别名</span><br><span class="line">where 连接条件</span><br><span class="line">and 筛选条件;</span><br><span class="line"></span><br><span class="line">2.2 sql99语法：</span><br><span class="line">delete 表1的别名,表2的别名</span><br><span class="line">from 表1 别名</span><br><span class="line">inner|left|right join 表2 别名 on 连接条件</span><br><span class="line">where 筛选条件;</span><br><span class="line"></span><br><span class="line">方式二：truncate</span><br><span class="line">语法：truncate table 表名; # 删除整个表</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#方式一：delete</span><br><span class="line">#1.单表的删除</span><br><span class="line">#案例：删除手机号以9结尾的女神信息</span><br><span class="line">DELETE FROM beauty WHERE phone LIKE &#39;%9&#39;;</span><br><span class="line"></span><br><span class="line">#2.多表的删除</span><br><span class="line">#案例：删除张无忌的女朋友的信息</span><br><span class="line">DELETE b</span><br><span class="line">FROM beauty b</span><br><span class="line">INNER JOIN boys bo ON b.&#96;boyfriend_id&#96; &#x3D; bo.&#96;id&#96;</span><br><span class="line">WHERE bo.&#96;boyName&#96;&#x3D;&#39;张无忌&#39;;</span><br><span class="line">#案例：删除黄晓明的信息以及他女朋友的信息</span><br><span class="line">DELETE b,bo</span><br><span class="line">FROM beauty b</span><br><span class="line">INNER JOIN boys bo ON b.&#96;boyfriend_id&#96;&#x3D;bo.&#96;id&#96;</span><br><span class="line">WHERE bo.&#96;boyName&#96;&#x3D;&#39;黄晓明&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#方式二：truncate语句</span><br><span class="line"></span><br><span class="line">#案例：将魅力值&gt;100的男神信息删除</span><br><span class="line">TRUNCATE TABLE boys ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># delete 和 truncate【面试题★】</span><br><span class="line">&#x2F;*</span><br><span class="line">1.delete 可以加where 条件，truncate不能加</span><br><span class="line">2.truncate删除，效率高一丢丢</span><br><span class="line">3.假如要删除的表中有自增长列，</span><br><span class="line">	如果用delete删除后，再插入数据，自增长列的值从断点开始，</span><br><span class="line">	而truncate删除后，再插入数据，自增长列的值从1开始。</span><br><span class="line">4.truncate删除没有返回值，delete删除有返回值</span><br><span class="line">5.truncate删除不能回滚，delete删除可以回滚. 相比drop&#96;&#96;&#x2F;&#96;&#96;delete，truncate用来清除数据时，速度最快。</span><br><span class="line">*&#x2F;</span><br><span class="line">DELETE FROM boys;</span><br><span class="line">TRUNCATE TABLE boys;</span><br><span class="line">INSERT INTO boys (boyname,usercp)</span><br><span class="line">VALUES(&#39;张飞&#39;,100),(&#39;刘备&#39;,100),(&#39;关云长&#39;,100);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">#1、方式一支持插入多行,方式二不支持
+INSERT INTO beauty
+VALUES(23,&#39;唐艺昕1&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2)
+,(24,&#39;唐艺昕2&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2)
+,(25,&#39;唐艺昕3&#39;,&#39;女&#39;,&#39;1990-4-23&#39;,&#39;1898888888&#39;,NULL,2);
+
+#2、方式一支持子查询，方式二不支持
+INSERT INTO beauty(id,NAME,phone)
+SELECT 26,&#39;宋茜&#39;,&#39;11809866&#39;; # 将查询后的结果插入到表中
+
+INSERT INTO beauty(id,NAME,phone)
+SELECT id,boyname,&#39;1234567&#39;
+FROM boys WHERE id&lt;3;
+</code></pre>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><pre><code class="lang-mysql">/*
+1.修改单表的记录★
+
+语法：
+update 表名
+set 列=新值,列=新值,...
+where 筛选条件;
+
+2.修改多表的记录【补充】
+语法：
+sql92语法：
+update 表1 别名,表2 别名
+set 列=值,...
+where 连接条件
+and 筛选条件;
+
+sql99语法：
+update 表1 别名
+inner|left|right join 表2 别名
+on 连接条件
+set 列=值,...
+where 筛选条件;
+*/
+
+#1.修改单表的记录
+#案例 修改beauty表中姓唐的女神的电话为13899888899
+UPDATE beauty SET phone = &#39;13899888899&#39;
+WHERE NAME LIKE &#39;唐%&#39;;
+
+#案例 修改boys表中id好为2的名称为张飞，魅力值 10
+UPDATE boys SET boyname=&#39;张飞&#39;,usercp=10
+WHERE id=2;
+
+
+#2.修改多表的记录
+#案例 修改张无忌的女朋友的手机号为114
+UPDATE boys bo
+INNER JOIN beauty b ON bo.`id`=b.`boyfriend_id`
+SET b.`phone`=&#39;119&#39;,bo.`userCP`=1000
+WHERE bo.`boyName`=&#39;张无忌&#39;;
+
+#案例 修改没有男朋友的女神的男朋友编号都为2号
+UPDATE boys bo
+RIGHT JOIN beauty b ON bo.`id`=b.`boyfriend_id`
+SET b.`boyfriend_id`=2
+WHERE bo.`id` IS NULL;
+</code></pre>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><pre><code class="lang-mysql">/*
+
+方式一：delete
+语法：
+
+1、单表的删除【★】
+delete from 表名 where 筛选条件
+
+2、多表的删除【补充】
+
+2.1 sql92语法：
+delete 表1的别名,表2的别名
+from 表1 别名,表2 别名
+where 连接条件
+and 筛选条件;
+
+2.2 sql99语法：
+delete 表1的别名,表2的别名
+from 表1 别名
+inner|left|right join 表2 别名 on 连接条件
+where 筛选条件;
+
+方式二：truncate
+语法：truncate table 表名; # 删除整个表
+*/
+
+
+#方式一：delete
+#1.单表的删除
+#案例：删除手机号以9结尾的女神信息
+DELETE FROM beauty WHERE phone LIKE &#39;%9&#39;;
+
+#2.多表的删除
+#案例：删除张无忌的女朋友的信息
+DELETE b
+FROM beauty b
+INNER JOIN boys bo ON b.`boyfriend_id` = bo.`id`
+WHERE bo.`boyName`=&#39;张无忌&#39;;
+#案例：删除黄晓明的信息以及他女朋友的信息
+DELETE b,bo
+FROM beauty b
+INNER JOIN boys bo ON b.`boyfriend_id`=bo.`id`
+WHERE bo.`boyName`=&#39;黄晓明&#39;;
+
+
+#方式二：truncate语句
+
+#案例：将魅力值&gt;100的男神信息删除
+TRUNCATE TABLE boys ;
+
+
+# delete 和 truncate【面试题★】
+/*
+1.delete 可以加where 条件，truncate不能加
+2.truncate删除，效率高一丢丢
+3.假如要删除的表中有自增长列，
+    如果用delete删除后，再插入数据，自增长列的值从断点开始，
+    而truncate删除后，再插入数据，自增长列的值从1开始。
+4.truncate删除没有返回值，delete删除有返回值
+5.truncate删除不能回滚，delete删除可以回滚. 相比drop``/``delete，truncate用来清除数据时，速度最快。
+*/
+DELETE FROM boys;
+TRUNCATE TABLE boys;
+INSERT INTO boys (boyname,usercp)
+VALUES(&#39;张飞&#39;,100),(&#39;刘备&#39;,100),(&#39;关云长&#39;,100);
+</code></pre>
 
 </div>
 
@@ -1355,16 +1514,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+              <a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  MySQL01-概述
+                  MySQL02-DQL
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
-                MySQL02-DQL
+              <a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+                MySQL04-DDL
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

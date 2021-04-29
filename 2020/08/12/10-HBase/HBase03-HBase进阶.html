@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1411,8 +1411,47 @@
 </li>
 <li><p><strong>0.94版本之后的切分策略</strong></p>
 <p>默认使用IncreasingToUpperBoundRegionSplitPolicy策略切分region，getSizeToCheck()是检查region的大小以判断是否满足切割切割条件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">long</span> <span class="title">getSizeToCheck</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> tableRegionsCount)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// safety check for 100 to avoid numerical overflow in extreme cases</span></span><br><span class="line">    <span class="keyword">return</span> tableRegionsCount == <span class="number">0</span> || tableRegionsCount &gt; <span class="number">100</span></span><br><span class="line">               ? getDesiredMaxFileSize()</span><br><span class="line">               : Math.min(getDesiredMaxFileSize(),</span><br><span class="line">                          initialSize * tableRegionsCount * tableRegionsCount * tableRegionsCount);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// tableRegionsCount：为当前Region Server中属于该Table的region的个数。</span></span><br><span class="line"><span class="comment">// getDesiredMaxFileSize() 这个值是hbase.hregion.max.filesize参数值，默认为10GB。</span></span><br><span class="line"><span class="comment">// initialSize的初始化比较复杂，由多个参数决定。</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configureForRegion</span><span class="params">(HRegion region)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.configureForRegion(region);</span><br><span class="line">	Configuration conf = getConf();</span><br><span class="line">	<span class="comment">//默认hbase.increasing.policy.initial.size 没有在配置文件中指定</span></span><br><span class="line">    initialSize = conf.getLong(<span class="string">"hbase.increasing.policy.initial.size"</span>, -<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (initialSize &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 获取用户表中自定义的memstoreFlushSize大小，默认也为128M</span></span><br><span class="line">    HTableDescriptor desc = region.getTableDesc();</span><br><span class="line">    <span class="keyword">if</span> (desc != <span class="keyword">null</span>) &#123;</span><br><span class="line">		initialSize = <span class="number">2</span> * desc.getMemStoreFlushSize();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 判断用户指定的memstoreFlushSize是否合法，如果不合法，则为hbase.hregion.memstore.flush.size，默认为128. </span></span><br><span class="line">    <span class="keyword">if</span> (initialSize &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">		initialSize = <span class="number">2</span> * conf.getLong(HConstants.HREGION_MEMSTORE_FLUSH_SIZE, HTableDescriptor.DEFAULT_MEMSTORE_FLUSH_SIZE);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">具体的切分策略为tableRegionsCount在0和100之间，则为</span></span><br><span class="line"><span class="comment">	initialSize（默认为2*128） *  tableRegionsCount^3,例如：</span></span><br><span class="line"><span class="comment">第一次split：1^3 * 256 = 256MB </span></span><br><span class="line"><span class="comment">第二次split：2^3 * 256 = 2048MB </span></span><br><span class="line"><span class="comment">第三次split：3^3 * 256 = 6912MB </span></span><br><span class="line"><span class="comment">第四次split：4^3 * 256 = 16384MB &gt; 10GB，因此取较小的值10GB </span></span><br><span class="line"><span class="comment">后面每次split的size都是10GB了。</span></span><br><span class="line"><span class="comment">tableRegionsCount超过100个，则超过10GB才会切分region。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">protected long getSizeToCheck(final int tableRegionsCount) {
+    // safety check for 100 to avoid numerical overflow in extreme cases
+    return tableRegionsCount == 0 || tableRegionsCount &gt; 100
+               ? getDesiredMaxFileSize()
+               : Math.min(getDesiredMaxFileSize(),
+                          initialSize * tableRegionsCount * tableRegionsCount * tableRegionsCount);
+  }
+// tableRegionsCount：为当前Region Server中属于该Table的region的个数。
+// getDesiredMaxFileSize() 这个值是hbase.hregion.max.filesize参数值，默认为10GB。
+// initialSize的初始化比较复杂，由多个参数决定。
+</code></pre>
+<pre><code class="lang-java">@Override
+protected void configureForRegion(HRegion region) {
+    super.configureForRegion(region);
+    Configuration conf = getConf();
+    //默认hbase.increasing.policy.initial.size 没有在配置文件中指定
+    initialSize = conf.getLong(&quot;hbase.increasing.policy.initial.size&quot;, -1);
+    if (initialSize &gt; 0) {
+        return;
+    }
+    // 获取用户表中自定义的memstoreFlushSize大小，默认也为128M
+    HTableDescriptor desc = region.getTableDesc();
+    if (desc != null) {
+        initialSize = 2 * desc.getMemStoreFlushSize();
+    }
+    // 判断用户指定的memstoreFlushSize是否合法，如果不合法，则为hbase.hregion.memstore.flush.size，默认为128. 
+    if (initialSize &lt;= 0) {
+        initialSize = 2 * conf.getLong(HConstants.HREGION_MEMSTORE_FLUSH_SIZE, HTableDescriptor.DEFAULT_MEMSTORE_FLUSH_SIZE);
+    }
+}
+/*
+具体的切分策略为tableRegionsCount在0和100之间，则为
+    initialSize（默认为2*128） *  tableRegionsCount^3,例如：
+第一次split：1^3 * 256 = 256MB 
+第二次split：2^3 * 256 = 2048MB 
+第三次split：3^3 * 256 = 6912MB 
+第四次split：4^3 * 256 = 16384MB &gt; 10GB，因此取较小的值10GB 
+后面每次split的size都是10GB了。
+tableRegionsCount超过100个，则超过10GB才会切分region。
+*/
+</code></pre>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210419230623836.png" alt="image-20210419230623836"></p>
 <p>hbase.regionserver.region.split.policy：</p>
 </li>
@@ -1424,16 +1463,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+              <a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  HBase01-概述
+                  HBase00-安装
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
-                HBase04-HBase-API
+              <a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+                HBase02-HBase-shell操作
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

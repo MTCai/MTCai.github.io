@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1340,7 +1340,33 @@
 </blockquote>
 <p>2.创建logs文件夹: kafka根目录下</p>
 <p>3.修改配置文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">vim /config/server.properties</span><br><span class="line"></span><br><span class="line"><span class="string">'broker的全局唯一编号，不能重复'</span></span><br><span class="line">broker.id=0</span><br><span class="line"><span class="string">'删除 topic 功能使能'</span></span><br><span class="line">delete.topic.enable=<span class="literal">true</span></span><br><span class="line"><span class="string">'处理网络请求的线程数量'</span></span><br><span class="line">num.network.threads=3</span><br><span class="line"><span class="string">'用来处理磁盘 IO 的现成数量'</span></span><br><span class="line">num.io.threads=8</span><br><span class="line"><span class="string">'发送套接字的缓冲区大小'</span></span><br><span class="line">socket.send.buffer.bytes=102400</span><br><span class="line"><span class="string">'接收套接字的缓冲区大小'</span></span><br><span class="line">socket.receive.buffer.bytes=102400</span><br><span class="line"><span class="string">'请求套接字的缓冲区大小'</span></span><br><span class="line">socket.request.max.bytes=104857600</span><br><span class="line"><span class="string">'kafka 运行日志存放的路径'</span></span><br><span class="line">log.dirs=/opt/module/kafka/logs</span><br><span class="line"><span class="string">'topic 在当前 broker 上的分区个数'</span></span><br><span class="line">num.partitions=1</span><br><span class="line"><span class="string">'用来恢复和清理 data 下数据的线程数量'</span></span><br><span class="line">num.recovery.threads.per.data.dir=1</span><br><span class="line"><span class="string">'segment文件保留的最长时间，超时将被删除'</span></span><br><span class="line">log.retention.hours=168</span><br><span class="line"><span class="string">'配置连接 Zookeeper 集群地址'</span></span><br><span class="line">zookeeper.connect=hadoop102:2181,hadoop103:2181,hadoop104:2181</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">vim /config/server.properties
+
+&#39;broker的全局唯一编号，不能重复&#39;
+broker.id=0
+&#39;删除 topic 功能使能&#39;
+delete.topic.enable=true
+&#39;处理网络请求的线程数量&#39;
+num.network.threads=3
+&#39;用来处理磁盘 IO 的现成数量&#39;
+num.io.threads=8
+&#39;发送套接字的缓冲区大小&#39;
+socket.send.buffer.bytes=102400
+&#39;接收套接字的缓冲区大小&#39;
+socket.receive.buffer.bytes=102400
+&#39;请求套接字的缓冲区大小&#39;
+socket.request.max.bytes=104857600
+&#39;kafka 运行日志存放的路径&#39;
+log.dirs=/opt/module/kafka/logs
+&#39;topic 在当前 broker 上的分区个数&#39;
+num.partitions=1
+&#39;用来恢复和清理 data 下数据的线程数量&#39;
+num.recovery.threads.per.data.dir=1
+&#39;segment文件保留的最长时间，超时将被删除&#39;
+log.retention.hours=168
+&#39;配置连接 Zookeeper 集群地址&#39;
+zookeeper.connect=hadoop102:2181,hadoop103:2181,hadoop104:2181
+</code></pre>
 <p>4.配置环境变量</p>
 <blockquote>
 <h1 id="KAFKA-HOME"><a href="#KAFKA-HOME" class="headerlink" title="KAFKA_HOME"></a>KAFKA_HOME</h1><p>export KAFKA_HOME=/opt/module/kafka</p>
@@ -1370,8 +1396,8 @@
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
-                Kafka04-监控
+              <a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+                Kafka02-架构原理
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

@@ -490,8 +490,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -499,8 +499,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1378,14 +1378,18 @@ more BUILDING.txt
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+			<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
 				<h2 class="index-title">
-					Hadoop02-HDFS概述、shell&客户端操作
+					Hadoop01-概述、运行模式&源码编译
 				</h2>
 				<div class="index-brief">
-					HDFS概述HDFS（Hadoop Distributed File System）是一种分布式文件管理系统。通过目录树定位文件；其次有很多服务器联合起来实现其功能，集群中的服务器有各自的角色。
-应用场景：适合一次写入，多次读出的场景，且不支持文件的修改，适合用来做数据分析，不适合用来做网盘应用。
+					大数据概述
+Hadoop三大发行版本：Apache、Cloudera、Hortonworks。
 
+Apache版本最原始（最基础）的版本，对于入门学习最好。
+
+官网地址：http://hadoop.apache.org/releases.html
+下载地址：https://archive.apach
 					...
 				</div>
 			</a>
@@ -1406,18 +1410,14 @@ more BUILDING.txt
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+			<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
 				<h2 class="index-title">
-					Hadoop01-概述、运行模式&源码编译
+					Hadoop02-HDFS概述、shell&客户端操作
 				</h2>
 				<div class="index-brief">
-					大数据概述
-Hadoop三大发行版本：Apache、Cloudera、Hortonworks。
+					HDFS概述HDFS（Hadoop Distributed File System）是一种分布式文件管理系统。通过目录树定位文件；其次有很多服务器联合起来实现其功能，集群中的服务器有各自的角色。
+应用场景：适合一次写入，多次读出的场景，且不支持文件的修改，适合用来做数据分析，不适合用来做网盘应用。
 
-Apache版本最原始（最基础）的版本，对于入门学习最好。
-
-官网地址：http://hadoop.apache.org/releases.html
-下载地址：https://archive.apach
 					...
 				</div>
 			</a>
@@ -1479,7 +1479,7 @@ NameNode返回是否可以上传。
 一个数据块在DataNode上以文件形式存储在磁盘上，包括两个文件，一个是数据本身，一个是元数据包括数据块的长度，块数据的校验和，以及时间戳。
 
 DataNode启动后向NameNode注册，通过后，周期性（1小时）的向NameNode上报所有的块信息。
-12345678
+&lt;!-- 
 					...
 				</div>
 			</a>
@@ -1506,7 +1506,36 @@ DataNode启动后向NameNode注册，通过后，周期性（1小时）的向Nam
 				</h2>
 				<div class="index-brief">
 					HDFS 2.X新特性集群间数据拷贝采用distcp命令实现两个Hadoop集群之间的递归数据复制：
-1[atguigu@hadoop102 hadoop-2.7.2]$  bin/hadoop distcp hdfs://haoop102:9000/user/atguigu/hello.txt h
+[atguigu@hadoop102 hadoop-2.7.2]$  bin/hadoop distcp hdfs://haoop102:9000/user/atguigu/hello.txt hd
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2020-06-03</span>
+                    
+                            
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/Hadoop/">Hadoop</a>
+										
+                                    </span>
+                                
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+				<h2 class="index-title">
+					Hadoop06-MapReduce概述&序列化
+				</h2>
+				<div class="index-brief">
+					MapReduce概述定义MapReduce是一个分布式运算程序的编程框架，是用户开发“基于Hadoop的数据分析应用”的核心框架。
+MapReduce核心功能是将用户编写的业务逻辑代码和自带默认组件整合成一个完整的分布式运算程序，并发运行在一个Hadoop集群上。
+优点
+MapReduce 易于编
 					...
 				</div>
 			</a>
@@ -1561,35 +1590,6 @@ DataNode启动后向NameNode注册，通过后，周期性（1小时）的向Nam
 				<div class="index-brief">
 					Yarn基本架构Yarn是一个资源调度平台，负责为运算程序提供服务器运算资源，相当于一个分布式的操作系统平台，而MapReduce等运算程序则相当于运行于操作系统之上的应用程序。
 YARN主要由ResourceManager、NodeManager、ApplicationMaster和Contain
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-06-03</span>
-                    
-                            
-                                
-                                    <span>
-                                        <i class="fa fa-folder" aria-hidden="true"></i>
-                                        <a href="/categories/Hadoop/">Hadoop</a>
-										
-                                    </span>
-                                
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
-				<h2 class="index-title">
-					Hadoop06-MapReduce概述&序列化
-				</h2>
-				<div class="index-brief">
-					MapReduce概述定义MapReduce是一个分布式运算程序的编程框架，是用户开发“基于Hadoop的数据分析应用”的核心框架。
-MapReduce核心功能是将用户编写的业务逻辑代码和自带默认组件整合成一个完整的分布式运算程序，并发运行在一个Hadoop集群上。
-优点
-MapReduce 易于编
 					...
 				</div>
 			</a>

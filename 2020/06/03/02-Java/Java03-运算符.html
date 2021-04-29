@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1334,13 +1334,66 @@
 </div>
 
 <div id="article-content">
-	<h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> num1=<span class="number">12</span>;</span><br><span class="line"><span class="keyword">int</span> num2=<span class="number">5</span>;</span><br><span class="line"><span class="keyword">double</span> num3=num1/num2; <span class="comment">//2</span></span><br><span class="line"><span class="keyword">double</span> num3=(<span class="keyword">double</span>)num1/num2; <span class="comment">//2.4</span></span><br><span class="line"></span><br><span class="line">++  -- += /= *=符号不会改变本身数据类型。</span><br><span class="line"><span class="keyword">short</span> s1=<span class="number">10</span>;</span><br><span class="line">s1++;</span><br></pre></td></tr></table></figure>
+	<h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><pre><code class="lang-java">int num1=12;
+int num2=5;
+double num3=num1/num2; //2
+double num3=(double)num1/num2; //2.4
+
+++  -- += /= *=符号不会改变本身数据类型。
+short s1=10;
+s1++;
+</code></pre>
 <h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20200928225022814.png" alt="image-20200928225022814"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &amp;&amp; 若第一个值为false，第二个值不会判断(第二个值被短路)，整体表达式判定为false</span></span><br><span class="line"><span class="comment">// 若第一个值为true，第二个值会继续判断</span></span><br><span class="line"><span class="comment">// &amp; 任何情况都会判断两个值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// | || 同理</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> b1=<span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">int</span> num1=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">if</span> (b1 &amp; (num1++ &gt; <span class="number">0</span>))&#123;</span><br><span class="line">    System.out.println(<span class="string">"a"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"b"</span>);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(num1); <span class="comment">// num1=11</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> b2=<span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">int</span> num2=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">if</span> (b2 &amp;&amp; (num2++ &gt; <span class="number">0</span>))&#123;</span><br><span class="line">    System.out.println(<span class="string">"c"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"d"</span>);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(num2); <span class="comment">// num2=10</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// &amp;&amp; 若第一个值为false，第二个值不会判断(第二个值被短路)，整体表达式判定为false
+// 若第一个值为true，第二个值会继续判断
+// &amp; 任何情况都会判断两个值
+
+// | || 同理
+
+boolean b1=false;
+int num1=10;
+if (b1 &amp; (num1++ &gt; 0)){
+    System.out.println(&quot;a&quot;);
+}else{
+    System.out.println(&quot;b&quot;);
+}
+System.out.println(num1); // num1=11
+
+
+boolean b2=false;
+int num2=10;
+if (b2 &amp;&amp; (num2++ &gt; 0)){
+    System.out.println(&quot;c&quot;);
+}else{
+    System.out.println(&quot;d&quot;);
+}
+System.out.println(num2); // num2=10
+</code></pre>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20200928231954435.png" alt="image-20200928231954435"></p>
 <h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20200929193717895.png" alt="image-20200929193717895"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 交换两个数的值</span></span><br><span class="line"><span class="keyword">int</span> num1 = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> mun2 = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法1 不限定数据量类型</span></span><br><span class="line"><span class="keyword">int</span> temp = num1;</span><br><span class="line">num1 = num2;</span><br><span class="line">num2 = temp;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2 相加操作可能超出范围，仅用于数值类型</span></span><br><span class="line">num1 = num1 + num2;</span><br><span class="line">num2 = num1 - num2;</span><br><span class="line">num1 = num1 - num2;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方法3 仅用于数值类型</span></span><br><span class="line">num1 = num1 ^ num2;</span><br><span class="line">num2 = num1 ^ num2;</span><br><span class="line">num1 = num1 ^ num2;</span><br></pre></td></tr></table></figure>
-<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(条件表达时)?表达式<span class="number">1</span>：表达式<span class="number">2</span></span><br><span class="line"><span class="keyword">true</span>：执行表达式<span class="number">1</span></span><br><span class="line"><span class="keyword">false</span>：执行表达式<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// 交换两个数的值
+int num1 = 10;
+int mun2 = 10;
+
+//方法1 不限定数据量类型
+int temp = num1;
+num1 = num2;
+num2 = temp;
+
+//方法2 相加操作可能超出范围，仅用于数值类型
+num1 = num1 + num2;
+num2 = num1 - num2;
+num1 = num1 - num2;
+
+//方法3 仅用于数值类型
+num1 = num1 ^ num2;
+num2 = num1 ^ num2;
+num1 = num1 ^ num2;
+</code></pre>
+<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><pre><code class="lang-java">(条件表达时)?表达式1：表达式2
+true：执行表达式1
+false：执行表达式2
+</code></pre>
 <h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20200929200948388.png" alt="image-20200929200948388"></p>
 
 </div>

@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1343,16 +1343,35 @@
 </ul>
 <ol>
 <li><p>准备编译环境</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install svn</span><br><span class="line">yum install autoconf automake libtool cmake</span><br><span class="line">yum install ncurses-devel</span><br><span class="line">yum install openssl-devel</span><br><span class="line">yum install gcc*</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">yum install svn
+yum install autoconf automake libtool cmake
+yum install ncurses-devel
+yum install openssl-devel
+yum install gcc*
+</code></pre>
 </li>
 <li><p>编译安装snappy</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> snappy-1.1.3/</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="string">'查看snappy 库文件</span></span><br><span class="line"><span class="string">ls -lh /usr/local/lib |grep snappy</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">cd snappy-1.1.3/
+./configure
+make
+make install
+&#39;查看snappy 库文件
+ls -lh /usr/local/lib |grep snappy
+</code></pre>
 </li>
 <li><p>编译安装protobuf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> protobuf-2.5.0/</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"><span class="string">'查看protobuf 版本以测试是否安装成功</span></span><br><span class="line"><span class="string">protoc --version</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">cd protobuf-2.5.0/
+./configure
+make
+make install
+&#39;查看protobuf 版本以测试是否安装成功
+protoc --version
+</code></pre>
 </li>
 <li><p>编译hadoop native</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hadoop-2.7.2-src/</span><br><span class="line">mvn clean package -DskipTests -Pdist,native -Dtar -Dsnappy.lib=/usr/<span class="built_in">local</span>/lib -Dbundle.snappy</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">cd hadoop-2.7.2-src/
+mvn clean package -DskipTests -Pdist,native -Dtar -Dsnappy.lib=/usr/local/lib -Dbundle.snappy
+</code></pre>
 <p>执行成功后，/opt/software/hadoop-2.7.2-src/hadoop-dist/target/hadoop-2.7.2.tar.gz 即为新生成的支持snappy 压缩的二进制安装包。</p>
 </li>
 </ol>
@@ -1543,9 +1562,27 @@
 </table>
 </div>
 <h2 id="开启Map-输出阶段压缩"><a href="#开启Map-输出阶段压缩" class="headerlink" title="开启Map 输出阶段压缩"></a>开启Map 输出阶段压缩</h2><p>开启map 输出阶段压缩可以减少job 中map 和Reduce task 间数据传输量。具体配置如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'开启hive 中间传输数据压缩功能</span></span><br><span class="line"><span class="string">hive (default)&gt;set hive.exec.compress.intermediate=true;</span></span><br><span class="line"><span class="string">'</span>开启mapreduce 中map 输出压缩功能</span><br><span class="line">hive (default)&gt;<span class="built_in">set</span> mapreduce.map.output.compress=<span class="literal">true</span>;</span><br><span class="line"><span class="string">'设置mapreduce 中map 输出数据的压缩方式</span></span><br><span class="line"><span class="string">hive (default)&gt;set mapreduce.map.output.compress.codec= org.apache.hadoop.io.compress.SnappyCodec;</span></span><br><span class="line"><span class="string">'</span>执行查询语句</span><br><span class="line">hive (default)&gt; select count(ename) name from emp;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;开启hive 中间传输数据压缩功能
+hive (default)&gt;set hive.exec.compress.intermediate=true;
+&#39;开启mapreduce 中map 输出压缩功能
+hive (default)&gt;set mapreduce.map.output.compress=true;
+&#39;设置mapreduce 中map 输出数据的压缩方式
+hive (default)&gt;set mapreduce.map.output.compress.codec= org.apache.hadoop.io.compress.SnappyCodec;
+&#39;执行查询语句
+hive (default)&gt; select count(ename) name from emp;
+</code></pre>
 <h2 id="开启Reduce-输出阶段压缩"><a href="#开启Reduce-输出阶段压缩" class="headerlink" title="开启Reduce 输出阶段压缩"></a>开启Reduce 输出阶段压缩</h2><p>当Hive 将输出写入到表中时， 输出内容同样可以进行压缩。属性<br>hive.exec.compress.output 控制着这个功能。用户可能需要保持默认设置文件中的默认值<br>false，这样默认的输出就是非压缩的纯文本文件了。用户可以通过在查询语句或执行脚本中设置这个值为true，来开启输出结果压缩功能。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'开启hive 最终输出数据压缩功能</span></span><br><span class="line"><span class="string">hive (default)&gt;set hive.exec.compress.output=true;</span></span><br><span class="line"><span class="string">'</span>开启mapreduce 最终输出数据压缩</span><br><span class="line">hive (default)&gt;<span class="built_in">set</span> mapreduce.output.fileoutputformat.compress=<span class="literal">true</span>;</span><br><span class="line"><span class="string">'设置mapreduce 最终数据输出压缩方式</span></span><br><span class="line"><span class="string">hive (default)&gt; set mapreduce.output.fileoutputformat.compress.codec = org.apache.hadoop.io.compress.SnappyCodec;</span></span><br><span class="line"><span class="string">'</span>设置mapreduce 最终数据输出压缩为块压缩</span><br><span class="line">hive (default)&gt; <span class="built_in">set</span> mapreduce.output.fileoutputformat.compress.type=BLOCK;</span><br><span class="line"><span class="string">'测试一下输出结果是否是压缩文件</span></span><br><span class="line"><span class="string">hive (default)&gt; insert overwrite local directory '</span>/opt/module/datas/distribute-result<span class="string">' select * from emp distribute by deptno sort by empno desc;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;开启hive 最终输出数据压缩功能
+hive (default)&gt;set hive.exec.compress.output=true;
+&#39;开启mapreduce 最终输出数据压缩
+hive (default)&gt;set mapreduce.output.fileoutputformat.compress=true;
+&#39;设置mapreduce 最终数据输出压缩方式
+hive (default)&gt; set mapreduce.output.fileoutputformat.compress.codec = org.apache.hadoop.io.compress.SnappyCodec;
+&#39;设置mapreduce 最终数据输出压缩为块压缩
+hive (default)&gt; set mapreduce.output.fileoutputformat.compress.type=BLOCK;
+&#39;测试一下输出结果是否是压缩文件
+hive (default)&gt; insert overwrite local directory &#39;/opt/module/datas/distribute-result&#39; select * from emp distribute by deptno sort by empno desc;
+</code></pre>
 <h2 id="文件存储格式"><a href="#文件存储格式" class="headerlink" title="文件存储格式"></a>文件存储格式</h2><p>Hive 支持的存储数的格式主要有：TEXTFILE 、SEQUENCEFILE、ORC、PARQUET。图中左边为逻辑表，右边第一个为行式存储，第二个为列式存储。</p>
 <h3 id="列式存储和行式存储"><a href="#列式存储和行式存储" class="headerlink" title="列式存储和行式存储"></a>列式存储和行式存储</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210114201111218.png" alt="image-20210114201111218"></p>
 <p>TEXTFILE 和SEQUENCEFILE 的存储格式都是基于行存储的；</p>
@@ -1573,9 +1610,60 @@
 <p>通常情况下，在存储Parquet 数据的时候会按照Block 大小设置行组的大小，由于一般情况下每一个Mapper 任务处理数据的最小单位是一个Block，这样可以把每一个行组由一个Mapper 任务处理，增大任务执行并行度。</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210114202357559.png" alt="image-20210114202357559"></p>
 <p>上图展示了一个Parquet 文件的内容，一个文件中可以存储多个行组，文件的首位都是该文件的Magic Code，用于校验它是否是一个Parquet 文件，Footer length 记录了文件元数据的大小，通过该值和文件长度可以计算出元数据的偏移量，文件的元数据中包括每一个行组的元数据信息和该文件存储数据的Schema 信息。除了文件中每一个行组的元数据，每一页的开始都会存储该页的元数据，在Parquet 中，有三种类型的页：数据页、字典页和索引页。数据页用于存储当前行组中该列的值，字典页存储该列值的编码字典，每一个列块中最多包含一个字典页，索引页用来存储当前行组下该列的索引，目前Parquet 中还不支持索引页。</p>
-<h2 id="存储和压缩结合"><a href="#存储和压缩结合" class="headerlink" title="存储和压缩结合"></a>存储和压缩结合</h2><h3 id="修改Hadoop-集群具有Snappy-压缩方式"><a href="#修改Hadoop-集群具有Snappy-压缩方式" class="headerlink" title="修改Hadoop 集群具有Snappy 压缩方式"></a>修改Hadoop 集群具有Snappy 压缩方式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'查看hadoop checknative 命令使用'</span></span><br><span class="line">[atguigu@hadoop104 hadoop-2.7.2]$ hadoop checknative [-a|-h] check native hadoop and compression libraries availability</span><br><span class="line"><span class="string">'查看hadoop 支持的压缩方式'</span></span><br><span class="line">[atguigu@hadoop104 hadoop-2.7.2]$ hadoop checknative</span><br><span class="line">17/12/24 20:32:52 WARN bzip2.Bzip2Factory: Failed to load/initialize native-bzip2 library system-native, will use pure-Java version</span><br><span class="line">17/12/24 20:32:52 INFO zlib.ZlibFactory: Successfully loaded &amp; initialized native-zlib library</span><br><span class="line">Native library checking:</span><br><span class="line">hadoop: <span class="literal">true</span></span><br><span class="line">/opt/module/hadoop-2.7.2/lib/native/libhadoop.so</span><br><span class="line">zlib: <span class="literal">true</span> /lib64/libz.so.1</span><br><span class="line">snappy: <span class="literal">false</span></span><br><span class="line">lz4: <span class="literal">true</span> revision:99</span><br><span class="line">bzip2: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="string">'将编译好的支持Snappy 压缩的hadoop-2.7.2.tar.gz 包导入到hadoop102 的 /opt/software 中'</span></span><br><span class="line"><span class="string">'进入到/opt/software/hadoop-2.7.2/lib/native 路径可以看到支持Snappy 压缩的动态链接库'</span></span><br><span class="line">libsnappy.a</span><br><span class="line">libsnappy.la</span><br><span class="line">libsnappy.so -&gt; libsnappy.so.1.3.0</span><br><span class="line">libsnappy.so.1 -&gt; libsnappy.so.1.3.0</span><br><span class="line">libsnappy.so.1.3.0</span><br><span class="line"><span class="string">'拷贝/opt/software/hadoop-2.7.2/lib/native 里面的所有内容到开发集群的/opt/module/hadoop-2.7.2/lib/native 路径上'</span></span><br><span class="line"><span class="string">'分发集群'</span></span><br><span class="line"><span class="string">'再次查看hadoop 支持的压缩类型'</span></span><br><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ hadoop checknative</span><br><span class="line">17/12/24 20:45:02 WARN bzip2.Bzip2Factory: Failed to load/initialize native-bzip2 library system-native, will usepure-Java version</span><br><span class="line">17/12/24 20:45:02 INFO zlib.ZlibFactory: Successfully loaded &amp; initialized native-zlib library</span><br><span class="line">Native library checking:</span><br><span class="line">hadoop: <span class="literal">true</span></span><br><span class="line">/opt/module/hadoop-2.7.2/lib/native/libhadoop.so</span><br><span class="line">zlib: <span class="literal">true</span> /lib64/libz.so.1</span><br><span class="line">snappy: <span class="literal">true</span></span><br><span class="line">/opt/module/hadoop-2.7.2/lib/native/libsnappy.so.1</span><br><span class="line">lz4: <span class="literal">true</span> revision:99</span><br><span class="line">bzip2: <span class="literal">false</span></span><br><span class="line"><span class="string">'重新启动hadoop 集群和hive'</span></span><br></pre></td></tr></table></figure>
+<h2 id="存储和压缩结合"><a href="#存储和压缩结合" class="headerlink" title="存储和压缩结合"></a>存储和压缩结合</h2><h3 id="修改Hadoop-集群具有Snappy-压缩方式"><a href="#修改Hadoop-集群具有Snappy-压缩方式" class="headerlink" title="修改Hadoop 集群具有Snappy 压缩方式"></a>修改Hadoop 集群具有Snappy 压缩方式</h3><pre><code class="lang-bash">&#39;查看hadoop checknative 命令使用&#39;
+[atguigu@hadoop104 hadoop-2.7.2]$ hadoop checknative [-a|-h] check native hadoop and compression libraries availability
+&#39;查看hadoop 支持的压缩方式&#39;
+[atguigu@hadoop104 hadoop-2.7.2]$ hadoop checknative
+17/12/24 20:32:52 WARN bzip2.Bzip2Factory: Failed to load/initialize native-bzip2 library system-native, will use pure-Java version
+17/12/24 20:32:52 INFO zlib.ZlibFactory: Successfully loaded &amp; initialized native-zlib library
+Native library checking:
+hadoop: true
+/opt/module/hadoop-2.7.2/lib/native/libhadoop.so
+zlib: true /lib64/libz.so.1
+snappy: false
+lz4: true revision:99
+bzip2: false
+
+&#39;将编译好的支持Snappy 压缩的hadoop-2.7.2.tar.gz 包导入到hadoop102 的 /opt/software 中&#39;
+&#39;进入到/opt/software/hadoop-2.7.2/lib/native 路径可以看到支持Snappy 压缩的动态链接库&#39;
+libsnappy.a
+libsnappy.la
+libsnappy.so -&gt; libsnappy.so.1.3.0
+libsnappy.so.1 -&gt; libsnappy.so.1.3.0
+libsnappy.so.1.3.0
+&#39;拷贝/opt/software/hadoop-2.7.2/lib/native 里面的所有内容到开发集群的/opt/module/hadoop-2.7.2/lib/native 路径上&#39;
+&#39;分发集群&#39;
+&#39;再次查看hadoop 支持的压缩类型&#39;
+[atguigu@hadoop102 hadoop-2.7.2]$ hadoop checknative
+17/12/24 20:45:02 WARN bzip2.Bzip2Factory: Failed to load/initialize native-bzip2 library system-native, will usepure-Java version
+17/12/24 20:45:02 INFO zlib.ZlibFactory: Successfully loaded &amp; initialized native-zlib library
+Native library checking:
+hadoop: true
+/opt/module/hadoop-2.7.2/lib/native/libhadoop.so
+zlib: true /lib64/libz.so.1
+snappy: true
+/opt/module/hadoop-2.7.2/lib/native/libsnappy.so.1
+lz4: true revision:99
+bzip2: false
+&#39;重新启动hadoop 集群和hive&#39;
+</code></pre>
 <h3 id="测试存储和压缩"><a href="#测试存储和压缩" class="headerlink" title="测试存储和压缩"></a>测试存储和压缩</h3><p>在实际的项目开发当中，hive 表的数据存储格式一般选择：orc 或parquet。压缩方式一<br>般选择snappy，lzo。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'创建一个SNAPPY 压缩的ORC 存储方式:</span></span><br><span class="line"><span class="string">create table log_orc_snappy(</span></span><br><span class="line"><span class="string">track_time string,</span></span><br><span class="line"><span class="string">url string,</span></span><br><span class="line"><span class="string">session_id string,</span></span><br><span class="line"><span class="string">referer string,</span></span><br><span class="line"><span class="string">ip string,</span></span><br><span class="line"><span class="string">end_user_id string,</span></span><br><span class="line"><span class="string">city_id string</span></span><br><span class="line"><span class="string">)</span></span><br><span class="line"><span class="string">row format delimited fields terminated by '</span>\t<span class="string">'</span></span><br><span class="line"><span class="string">stored as orc tblproperties ("orc.compress"="SNAPPY");</span></span><br><span class="line"><span class="string">'</span>插入数据<span class="string">'</span></span><br><span class="line"><span class="string">'</span>查看插入后数据<span class="string">'</span></span><br><span class="line"><span class="string">hive (default)&gt; dfs -du -h /user/hive/warehouse/log_orc_none/;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;创建一个SNAPPY 压缩的ORC 存储方式:
+create table log_orc_snappy(
+track_time string,
+url string,
+session_id string,
+referer string,
+ip string,
+end_user_id string,
+city_id string
+)
+row format delimited fields terminated by &#39;\t&#39;
+stored as orc tblproperties (&quot;orc.compress&quot;=&quot;SNAPPY&quot;);
+&#39;插入数据&#39;
+&#39;查看插入后数据&#39;
+hive (default)&gt; dfs -du -h /user/hive/warehouse/log_orc_none/;
+</code></pre>
 <p>ORC 存储方式的压缩：</p>
 <div class="table-container">
 <table>
@@ -1640,8 +1728,8 @@
         </div>
         <div class="item right">
             
-              <a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
-                Hive09-企业级调优
+              <a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+                Hive07-函数
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

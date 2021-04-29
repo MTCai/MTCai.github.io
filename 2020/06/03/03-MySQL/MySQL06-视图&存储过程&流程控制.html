@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1344,8 +1344,89 @@
 <li>通过定义视图可以降低数据的冗余。</li>
 </ol>
 <p>需要注意的是视图名在数据库中需要是唯一的，<strong>不能与其他视图和表重名</strong>。视图不仅可以基于真实表，我们也可以在视图的基础上继续创建视图。</p>
-<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*语法：</span><br><span class="line">create view 视图名</span><br><span class="line">as</span><br><span class="line">查询语句;</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">USE myemployees;</span><br><span class="line"></span><br><span class="line">#查询姓名中包含a字符的员工名、部门名和工种信息</span><br><span class="line">#①创建</span><br><span class="line">CREATE VIEW myv1</span><br><span class="line">AS</span><br><span class="line">SELECT last_name,department_name,job_title</span><br><span class="line">FROM employees e</span><br><span class="line">JOIN departments d ON e.department_id  &#x3D; d.department_id</span><br><span class="line">JOIN jobs j ON j.job_id  &#x3D; e.job_id;</span><br><span class="line"></span><br><span class="line">#②使用</span><br><span class="line">SELECT * FROM myv1 WHERE last_name LIKE &#39;%a%&#39;;</span><br><span class="line"></span><br><span class="line">#查询各部门的平均工资级别</span><br><span class="line">#①创建视图查看每个部门的平均工资</span><br><span class="line">CREATE VIEW myv2</span><br><span class="line">AS</span><br><span class="line">SELECT AVG(salary) ag,department_id</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY department_id;</span><br><span class="line">#②使用</span><br><span class="line">SELECT myv2.&#96;ag&#96;,g.grade_level</span><br><span class="line">FROM myv2</span><br><span class="line">JOIN job_grades g</span><br><span class="line">ON myv2.&#96;ag&#96; BETWEEN g.&#96;lowest_sal&#96; AND g.&#96;highest_sal&#96;;</span><br><span class="line"></span><br><span class="line">#查询平均工资最低的部门信息</span><br><span class="line">SELECT * FROM myv2 ORDER BY ag LIMIT 1;</span><br><span class="line"></span><br><span class="line">#查询平均工资最低的部门名和工资</span><br><span class="line">CREATE VIEW myv3</span><br><span class="line">AS</span><br><span class="line">SELECT * FROM myv2 ORDER BY ag LIMIT 1;</span><br><span class="line"></span><br><span class="line">SELECT d.*,m.ag</span><br><span class="line">FROM myv3 m</span><br><span class="line">JOIN departments d</span><br><span class="line">ON m.&#96;department_id&#96;&#x3D;d.&#96;department_id&#96;;</span><br></pre></td></tr></table></figure>
-<h3 id="视图修改、删除、查看"><a href="#视图修改、删除、查看" class="headerlink" title="视图修改、删除、查看"></a>视图修改、删除、查看</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#方式一：</span><br><span class="line">&#x2F;*</span><br><span class="line">create or replace view  视图名</span><br><span class="line">as</span><br><span class="line">查询语句;</span><br><span class="line">*&#x2F;</span><br><span class="line">SELECT * FROM myv3 </span><br><span class="line"></span><br><span class="line">CREATE OR REPLACE VIEW myv3</span><br><span class="line">AS</span><br><span class="line">SELECT AVG(salary),job_id</span><br><span class="line">FROM employees</span><br><span class="line">GROUP BY job_id;</span><br><span class="line"></span><br><span class="line">#方式二：</span><br><span class="line">&#x2F;*</span><br><span class="line">语法：</span><br><span class="line">alter view 视图名</span><br><span class="line">as </span><br><span class="line">查询语句;</span><br><span class="line">*&#x2F;</span><br><span class="line">ALTER VIEW myv3</span><br><span class="line">AS</span><br><span class="line">SELECT * FROM employees;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 删除视图</span><br><span class="line">&#x2F;*</span><br><span class="line">语法：drop view 视图名,视图名,...;</span><br><span class="line">*&#x2F;</span><br><span class="line">DROP VIEW emp_v1,emp_v2,myv3;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 查看视图</span><br><span class="line">DESC myv3;</span><br><span class="line">SHOW CREATE VIEW myv3;</span><br></pre></td></tr></table></figure>
+<h3 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h3><pre><code class="lang-mysql">/*语法：
+create view 视图名
+as
+查询语句;
+*/
+
+USE myemployees;
+
+#查询姓名中包含a字符的员工名、部门名和工种信息
+#①创建
+CREATE VIEW myv1
+AS
+SELECT last_name,department_name,job_title
+FROM employees e
+JOIN departments d ON e.department_id  = d.department_id
+JOIN jobs j ON j.job_id  = e.job_id;
+
+#②使用
+SELECT * FROM myv1 WHERE last_name LIKE &#39;%a%&#39;;
+
+#查询各部门的平均工资级别
+#①创建视图查看每个部门的平均工资
+CREATE VIEW myv2
+AS
+SELECT AVG(salary) ag,department_id
+FROM employees
+GROUP BY department_id;
+#②使用
+SELECT myv2.`ag`,g.grade_level
+FROM myv2
+JOIN job_grades g
+ON myv2.`ag` BETWEEN g.`lowest_sal` AND g.`highest_sal`;
+
+#查询平均工资最低的部门信息
+SELECT * FROM myv2 ORDER BY ag LIMIT 1;
+
+#查询平均工资最低的部门名和工资
+CREATE VIEW myv3
+AS
+SELECT * FROM myv2 ORDER BY ag LIMIT 1;
+
+SELECT d.*,m.ag
+FROM myv3 m
+JOIN departments d
+ON m.`department_id`=d.`department_id`;
+</code></pre>
+<h3 id="视图修改、删除、查看"><a href="#视图修改、删除、查看" class="headerlink" title="视图修改、删除、查看"></a>视图修改、删除、查看</h3><pre><code class="lang-mysql">#方式一：
+/*
+create or replace view  视图名
+as
+查询语句;
+*/
+SELECT * FROM myv3 
+
+CREATE OR REPLACE VIEW myv3
+AS
+SELECT AVG(salary),job_id
+FROM employees
+GROUP BY job_id;
+
+#方式二：
+/*
+语法：
+alter view 视图名
+as 
+查询语句;
+*/
+ALTER VIEW myv3
+AS
+SELECT * FROM employees;
+
+
+# 删除视图
+/*
+语法：drop view 视图名,视图名,...;
+*/
+DROP VIEW emp_v1,emp_v2,myv3;
+
+
+# 查看视图
+DESC myv3;
+SHOW CREATE VIEW myv3;
+</code></pre>
 <h3 id="视图的更新"><a href="#视图的更新" class="headerlink" title="视图的更新"></a>视图的更新</h3><p>因为视图是一个虚拟表，所以对视图的操作就是对底层基础表的操作，所以在修改时只有满足底层基本表的定义才能成功修改。</p>
 <p>对于一个视图来说，如果包含以下结构的任意一种都是不可以被更新的：</p>
 <ul>
@@ -1356,7 +1437,30 @@
 <li>UNION 或 UNION ALL 运算符。</li>
 <li>FROM 子句中包含多个表。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE VIEW myv1</span><br><span class="line">AS</span><br><span class="line">SELECT last_name,email</span><br><span class="line">FROM employees;</span><br><span class="line"></span><br><span class="line">#插入、会影响原始表</span><br><span class="line">INSERT INTO myv1 VALUES(&#39;张飞&#39;,&#39;zf@qq.com&#39;);</span><br><span class="line"></span><br><span class="line">#修改、会影响原始表</span><br><span class="line">UPDATE myv1 SET last_name &#x3D; &#39;张无忌&#39; WHERE last_name&#x3D;&#39;张飞&#39;;</span><br><span class="line"></span><br><span class="line">#删除、会影响原始表</span><br><span class="line">DELETE FROM myv1 WHERE last_name &#x3D; &#39;张无忌&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;*</span><br><span class="line">视图的可更新性和视图中查询的定义有关系，以下类型的视图是不能更新的。</span><br><span class="line">• 包含以下关键字的sql语句：分组函数、distinct、group by、having、union或者union all</span><br><span class="line">• 常量视图</span><br><span class="line">• Select中包含子查询</span><br><span class="line">• join</span><br><span class="line">• from一个不能更新的视图</span><br><span class="line">• where子句的子查询引用了from子句中的表</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">CREATE OR REPLACE VIEW myv1
+AS
+SELECT last_name,email
+FROM employees;
+
+#插入、会影响原始表
+INSERT INTO myv1 VALUES(&#39;张飞&#39;,&#39;zf@qq.com&#39;);
+
+#修改、会影响原始表
+UPDATE myv1 SET last_name = &#39;张无忌&#39; WHERE last_name=&#39;张飞&#39;;
+
+#删除、会影响原始表
+DELETE FROM myv1 WHERE last_name = &#39;张无忌&#39;;
+
+/*
+视图的可更新性和视图中查询的定义有关系，以下类型的视图是不能更新的。
+• 包含以下关键字的sql语句：分组函数、distinct、group by、having、union或者union all
+• 常量视图
+• Select中包含子查询
+• join
+• from一个不能更新的视图
+• where子句的子查询引用了from子句中的表
+*/
+</code></pre>
 <blockquote>
 <p>​         创建语法的关键字    是否实际占用物理空间        使用</p>
 <p>视图    create view            只是保存了sql逻辑             增删改查，只是一般不能增删改</p>
@@ -1411,7 +1515,68 @@
 <li>简化操作</li>
 <li>减少了编译次数并且减少了和数据库服务器的连接次数，提高了效率</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#创建语法</span><br><span class="line">CREATE PROCEDURE 存储过程名(参数列表)</span><br><span class="line">BEGIN</span><br><span class="line">	存储过程体（一组合法的SQL语句）</span><br><span class="line">END</span><br><span class="line">&#x2F;*参数列表包含三部分</span><br><span class="line">参数模式  参数名  参数类型</span><br><span class="line">参数模式：</span><br><span class="line">in：该参数可以作为输入，也就是该参数需要调用方传入值</span><br><span class="line">out：该参数可以作为输出，也就是该参数可以作为返回值</span><br><span class="line">inout：该参数既可以作为输入又可以作为输出，也就是该参数既需要传入值，又可以返回值</span><br><span class="line">举例：</span><br><span class="line">in stuname varchar(20)</span><br><span class="line"></span><br><span class="line">如果存储过程体仅仅只有一句话，begin end可以省略</span><br><span class="line">存储过程体中的每条sql语句的结尾要求必须加分号。</span><br><span class="line">存储过程的结尾可以使用 delimiter 重新设置</span><br><span class="line">语法：</span><br><span class="line">delimiter 结束标记</span><br><span class="line">案例：</span><br><span class="line">delimiter $</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#调用语法</span><br><span class="line">CALL 存储过程名(实参列表);</span><br><span class="line">#案例 创建存储过程实现，用户是否登录成功</span><br><span class="line">CREATE PROCEDURE myp4(IN username VARCHAR(20),IN PASSWORD VARCHAR(20))</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE result INT DEFAULT 0;#声明并初始化</span><br><span class="line">	SELECT COUNT(*) INTO result#赋值</span><br><span class="line">	FROM admin</span><br><span class="line">	WHERE admin.username &#x3D; username</span><br><span class="line">	AND admin.password &#x3D; PASSWORD;</span><br><span class="line">	SELECT IF(result&gt;0,&#39;成功&#39;,&#39;失败&#39;);#使用</span><br><span class="line">END $</span><br><span class="line">#调用</span><br><span class="line">CALL myp3(&#39;张飞&#39;,&#39;8888&#39;)$</span><br><span class="line">#案例 根据输入的女神名，返回对应的男神名和魅力值</span><br><span class="line">CREATE PROCEDURE myp7(IN beautyName VARCHAR(20),OUT boyName VARCHAR(20),OUT usercp INT) </span><br><span class="line">BEGIN</span><br><span class="line">	SELECT boys.boyname, boys.usercp INTO boyname,usercp</span><br><span class="line">	FROM boys </span><br><span class="line">	RIGHT JOIN</span><br><span class="line">	beauty b ON b.boyfriend_id &#x3D; boys.id</span><br><span class="line">	WHERE b.name&#x3D;beautyName ;</span><br><span class="line">END $</span><br><span class="line">#调用</span><br><span class="line">CALL myp7(&#39;小昭&#39;,@name,@cp)$</span><br><span class="line">SELECT @name,@cp$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#存储过程的删除，不能修改存储过程</span><br><span class="line">#语法：drop procedure 存储过程名，一次只能删除一个</span><br><span class="line">DROP PROCEDURE p1;</span><br><span class="line">DROP PROCEDURE p2,p3;#×</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#存储过程的查看</span><br><span class="line">DESC myp2;×</span><br><span class="line">SHOW CREATE PROCEDURE  myp2;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">#创建语法
+CREATE PROCEDURE 存储过程名(参数列表)
+BEGIN
+    存储过程体（一组合法的SQL语句）
+END
+/*参数列表包含三部分
+参数模式  参数名  参数类型
+参数模式：
+in：该参数可以作为输入，也就是该参数需要调用方传入值
+out：该参数可以作为输出，也就是该参数可以作为返回值
+inout：该参数既可以作为输入又可以作为输出，也就是该参数既需要传入值，又可以返回值
+举例：
+in stuname varchar(20)
+
+如果存储过程体仅仅只有一句话，begin end可以省略
+存储过程体中的每条sql语句的结尾要求必须加分号。
+存储过程的结尾可以使用 delimiter 重新设置
+语法：
+delimiter 结束标记
+案例：
+delimiter $
+*/
+
+
+#调用语法
+CALL 存储过程名(实参列表);
+#案例 创建存储过程实现，用户是否登录成功
+CREATE PROCEDURE myp4(IN username VARCHAR(20),IN PASSWORD VARCHAR(20))
+BEGIN
+    DECLARE result INT DEFAULT 0;#声明并初始化
+    SELECT COUNT(*) INTO result#赋值
+    FROM admin
+    WHERE admin.username = username
+    AND admin.password = PASSWORD;
+    SELECT IF(result&gt;0,&#39;成功&#39;,&#39;失败&#39;);#使用
+END $
+#调用
+CALL myp3(&#39;张飞&#39;,&#39;8888&#39;)$
+#案例 根据输入的女神名，返回对应的男神名和魅力值
+CREATE PROCEDURE myp7(IN beautyName VARCHAR(20),OUT boyName VARCHAR(20),OUT usercp INT) 
+BEGIN
+    SELECT boys.boyname, boys.usercp INTO boyname,usercp
+    FROM boys 
+    RIGHT JOIN
+    beauty b ON b.boyfriend_id = boys.id
+    WHERE b.name=beautyName ;
+END $
+#调用
+CALL myp7(&#39;小昭&#39;,@name,@cp)$
+SELECT @name,@cp$
+
+
+#存储过程的删除，不能修改存储过程
+#语法：drop procedure 存储过程名，一次只能删除一个
+DROP PROCEDURE p1;
+DROP PROCEDURE p2,p3;#×
+
+
+#存储过程的查看
+DESC myp2;×
+SHOW CREATE PROCEDURE  myp2;
+</code></pre>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>含义：一组预先编译好的SQL语句的集合，理解成批处理语句</p>
 <ol>
 <li>提高代码的重用性</li>
@@ -1423,7 +1588,49 @@
 <li>存储过程：可以有0个返回，也可以有多个返回，适合做批量插入、批量更新</li>
 <li>函数：有且仅有1 个返回，适合做处理数据后返回一个结果</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#创建语法</span><br><span class="line">CREATE FUNCTION 函数名(参数列表) RETURNS 返回类型</span><br><span class="line">BEGIN</span><br><span class="line">	函数体</span><br><span class="line">END</span><br><span class="line">&#x2F;*注意：</span><br><span class="line">1.参数列表 包含两部分：</span><br><span class="line">参数名 参数类型</span><br><span class="line">2.函数体：肯定会有return语句，如果没有会报错</span><br><span class="line">如果return语句没有放在函数体的最后也不报错，但不建议</span><br><span class="line">return 值;</span><br><span class="line">3.函数体中仅有一句话，则可以省略begin end</span><br><span class="line">4.使用 delimiter语句设置结束标记*&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#调用语法</span><br><span class="line">SELECT 函数名(参数列表)</span><br><span class="line">#案例：返回公司的员工个数</span><br><span class="line">CREATE FUNCTION myf1() RETURNS INT</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE c INT DEFAULT 0;#定义局部变量</span><br><span class="line">	SELECT COUNT(*) INTO c#赋值</span><br><span class="line">	FROM employees;</span><br><span class="line">	RETURN c;</span><br><span class="line">END $</span><br><span class="line">SELECT myf1()$</span><br><span class="line">#案例 根据部门名，返回该部门的平均工资</span><br><span class="line">CREATE FUNCTION myf3(deptName VARCHAR(20)) RETURNS DOUBLE</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE sal DOUBLE ;</span><br><span class="line">	SELECT AVG(salary) INTO sal</span><br><span class="line">	FROM employees e</span><br><span class="line">	JOIN departments d ON e.department_id &#x3D; d.department_id</span><br><span class="line">	WHERE d.department_name&#x3D;deptName;</span><br><span class="line">	RETURN sal;</span><br><span class="line">END $</span><br><span class="line">SELECT myf3(&#39;IT&#39;)$</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#查看和删除</span><br><span class="line">SHOW CREATE FUNCTION myf3;</span><br><span class="line">DROP FUNCTION myf3;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">#创建语法
+CREATE FUNCTION 函数名(参数列表) RETURNS 返回类型
+BEGIN
+    函数体
+END
+/*注意：
+1.参数列表 包含两部分：
+参数名 参数类型
+2.函数体：肯定会有return语句，如果没有会报错
+如果return语句没有放在函数体的最后也不报错，但不建议
+return 值;
+3.函数体中仅有一句话，则可以省略begin end
+4.使用 delimiter语句设置结束标记*/
+
+
+#调用语法
+SELECT 函数名(参数列表)
+#案例：返回公司的员工个数
+CREATE FUNCTION myf1() RETURNS INT
+BEGIN
+    DECLARE c INT DEFAULT 0;#定义局部变量
+    SELECT COUNT(*) INTO c#赋值
+    FROM employees;
+    RETURN c;
+END $
+SELECT myf1()$
+#案例 根据部门名，返回该部门的平均工资
+CREATE FUNCTION myf3(deptName VARCHAR(20)) RETURNS DOUBLE
+BEGIN
+    DECLARE sal DOUBLE ;
+    SELECT AVG(salary) INTO sal
+    FROM employees e
+    JOIN departments d ON e.department_id = d.department_id
+    WHERE d.department_name=deptName;
+    RETURN sal;
+END $
+SELECT myf3(&#39;IT&#39;)$
+
+
+#查看和删除
+SHOW CREATE FUNCTION myf3;
+DROP FUNCTION myf3;
+</code></pre>
 <h2 id="流程控制结构"><a href="#流程控制结构" class="headerlink" title="流程控制结构"></a>流程控制结构</h2><h3 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h3><p><strong>if函数</strong></p>
 <p>语法：if(条件,值1，值2)</p>
 <p>功能：实现双分支，应用任何地方。</p>
@@ -1438,7 +1645,29 @@
 <p>功能：类似于多重if</p>
 </blockquote>
 <p>只能应用在begin end 中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#案例 创建函数，实现传入成绩，如果成绩&gt;90,返回A，如果成绩&gt;80,返回B，如果成绩&gt;60,返回C，否则返回D</span><br><span class="line">CREATE FUNCTION test_if(score FLOAT) RETURNS CHAR</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE ch CHAR DEFAULT &#39;A&#39;;</span><br><span class="line">	IF score&gt;90 THEN SET ch&#x3D;&#39;A&#39;;</span><br><span class="line">	ELSEIF score&gt;80 THEN SET ch&#x3D;&#39;B&#39;;</span><br><span class="line">	ELSEIF score&gt;60 THEN SET ch&#x3D;&#39;C&#39;;</span><br><span class="line">	ELSE SET ch&#x3D;&#39;D&#39;;</span><br><span class="line">	END IF;</span><br><span class="line">	RETURN ch;</span><br><span class="line">END $</span><br><span class="line">SELECT test_if(87)$</span><br><span class="line"></span><br><span class="line">#案例 创建存储过程，如果工资&lt;2000,则删除，如果5000&gt;工资&gt;2000,则涨工资1000，否则涨工资500</span><br><span class="line">CREATE PROCEDURE test_if_pro(IN sal DOUBLE)</span><br><span class="line">BEGIN</span><br><span class="line">	IF sal&lt;2000 THEN DELETE FROM employees WHERE employees.salary&#x3D;sal;</span><br><span class="line">	ELSEIF sal&gt;&#x3D;2000 AND sal&lt;5000 THEN UPDATE employees SET salary&#x3D;salary+1000 WHERE employees.&#96;salary&#96;&#x3D;sal;</span><br><span class="line">	ELSE UPDATE employees SET salary&#x3D;salary+500 WHERE employees.&#96;salary&#96;&#x3D;sal;</span><br><span class="line">	END IF;</span><br><span class="line">END $</span><br><span class="line">CALL test_if_pro(2100)$</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">#案例 创建函数，实现传入成绩，如果成绩&gt;90,返回A，如果成绩&gt;80,返回B，如果成绩&gt;60,返回C，否则返回D
+CREATE FUNCTION test_if(score FLOAT) RETURNS CHAR
+BEGIN
+    DECLARE ch CHAR DEFAULT &#39;A&#39;;
+    IF score&gt;90 THEN SET ch=&#39;A&#39;;
+    ELSEIF score&gt;80 THEN SET ch=&#39;B&#39;;
+    ELSEIF score&gt;60 THEN SET ch=&#39;C&#39;;
+    ELSE SET ch=&#39;D&#39;;
+    END IF;
+    RETURN ch;
+END $
+SELECT test_if(87)$
+
+#案例 创建存储过程，如果工资&lt;2000,则删除，如果5000&gt;工资&gt;2000,则涨工资1000，否则涨工资500
+CREATE PROCEDURE test_if_pro(IN sal DOUBLE)
+BEGIN
+    IF sal&lt;2000 THEN DELETE FROM employees WHERE employees.salary=sal;
+    ELSEIF sal&gt;=2000 AND sal&lt;5000 THEN UPDATE employees SET salary=salary+1000 WHERE employees.`salary`=sal;
+    ELSE UPDATE employees SET salary=salary+500 WHERE employees.`salary`=sal;
+    END IF;
+END $
+CALL test_if_pro(2100)$
+</code></pre>
 <p><strong>case结构</strong></p>
 <p>语法：</p>
 <ul>
@@ -1465,7 +1694,20 @@
 </ul>
 <p>作为独立的语句只能在begin end 中或外面；作为表达式，嵌套在其他语句中使用，可以用在任何地方。</p>
 <p>else可以省略，若else省略，并when的所有条件都不满足，则返回null。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#案例 创建函数，实现传入成绩，如果成绩&gt;90,返回A，如果成绩&gt;80,返回B，如果成绩&gt;60,返回C，否则返回D</span><br><span class="line">CREATE FUNCTION test_case(score FLOAT) RETURNS CHAR</span><br><span class="line">BEGIN </span><br><span class="line">	DECLARE ch CHAR DEFAULT &#39;A&#39;;</span><br><span class="line">	CASE </span><br><span class="line">	WHEN score&gt;90 THEN SET ch&#x3D;&#39;A&#39;;</span><br><span class="line">	WHEN score&gt;80 THEN SET ch&#x3D;&#39;B&#39;;</span><br><span class="line">	WHEN score&gt;60 THEN SET ch&#x3D;&#39;C&#39;;</span><br><span class="line">	ELSE SET ch&#x3D;&#39;D&#39;;</span><br><span class="line">	END CASE;</span><br><span class="line">	RETURN ch;</span><br><span class="line">END $</span><br><span class="line">SELECT test_case(56)$</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">#案例 创建函数，实现传入成绩，如果成绩&gt;90,返回A，如果成绩&gt;80,返回B，如果成绩&gt;60,返回C，否则返回D
+CREATE FUNCTION test_case(score FLOAT) RETURNS CHAR
+BEGIN 
+    DECLARE ch CHAR DEFAULT &#39;A&#39;;
+    CASE 
+    WHEN score&gt;90 THEN SET ch=&#39;A&#39;;
+    WHEN score&gt;80 THEN SET ch=&#39;B&#39;;
+    WHEN score&gt;60 THEN SET ch=&#39;C&#39;;
+    ELSE SET ch=&#39;D&#39;;
+    END CASE;
+    RETURN ch;
+END $
+SELECT test_case(56)$
+</code></pre>
 <h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>分类：while、loop、repeat</p>
 <p>循环控制：iterate类似于 continue，继续，结束本次循环，继续下一次；leave 类似于  break，跳出，结束当前所在的循环。</p>
 <p><strong>while</strong></p>
@@ -1475,7 +1717,34 @@
 <p>​    循环体;</p>
 <p>end while【 标签】;</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#案例：批量插入，根据次数插入到admin表中多条记录</span><br><span class="line">DROP PROCEDURE pro_while1$</span><br><span class="line">CREATE PROCEDURE pro_while1(IN insertCount INT)</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 1;</span><br><span class="line">	WHILE i&lt;&#x3D;insertCount DO</span><br><span class="line">		INSERT INTO admin(username,&#96;password&#96;) VALUES(CONCAT(&#39;Rose&#39;,i),&#39;666&#39;);</span><br><span class="line">		SET i&#x3D;i+1;</span><br><span class="line">	END WHILE;</span><br><span class="line">END $</span><br><span class="line">CALL pro_while1(100)$</span><br><span class="line"></span><br><span class="line">#添加leave语句</span><br><span class="line">#案例 批量插入，根据次数插入到admin表中多条记录，如果次数&gt;20则停止</span><br><span class="line">TRUNCATE TABLE admin$</span><br><span class="line">DROP PROCEDURE test_while1$</span><br><span class="line">CREATE PROCEDURE test_while1(IN insertCount INT)</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 1;</span><br><span class="line">	a:WHILE i&lt;&#x3D;insertCount DO</span><br><span class="line">		INSERT INTO admin(username,&#96;password&#96;) VALUES(CONCAT(&#39;xiaohua&#39;,i),&#39;0000&#39;);</span><br><span class="line">		IF i&gt;&#x3D;20 THEN LEAVE a;</span><br><span class="line">		END IF;</span><br><span class="line">		SET i&#x3D;i+1;</span><br><span class="line">	END WHILE a;</span><br><span class="line">END $</span><br><span class="line">CALL test_while1(100)$</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">#案例：批量插入，根据次数插入到admin表中多条记录
+DROP PROCEDURE pro_while1$
+CREATE PROCEDURE pro_while1(IN insertCount INT)
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    WHILE i&lt;=insertCount DO
+        INSERT INTO admin(username,`password`) VALUES(CONCAT(&#39;Rose&#39;,i),&#39;666&#39;);
+        SET i=i+1;
+    END WHILE;
+END $
+CALL pro_while1(100)$
+
+#添加leave语句
+#案例 批量插入，根据次数插入到admin表中多条记录，如果次数&gt;20则停止
+TRUNCATE TABLE admin$
+DROP PROCEDURE test_while1$
+CREATE PROCEDURE test_while1(IN insertCount INT)
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    a:WHILE i&lt;=insertCount DO
+        INSERT INTO admin(username,`password`) VALUES(CONCAT(&#39;xiaohua&#39;,i),&#39;0000&#39;);
+        IF i&gt;=20 THEN LEAVE a;
+        END IF;
+        SET i=i+1;
+    END WHILE a;
+END $
+CALL test_while1(100)$
+</code></pre>
 <p><strong>loop</strong></p>
 <p>语法：</p>
 <blockquote>
@@ -1492,7 +1761,35 @@
 <p>until 结束循环的条件</p>
 <p>end repeat 【标签】;</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*已知表stringcontent</span><br><span class="line">其中字段：</span><br><span class="line">id 自增长</span><br><span class="line">content varchar(20)</span><br><span class="line"></span><br><span class="line">向该表插入指定个数的，随机的字符串</span><br><span class="line">*&#x2F;</span><br><span class="line">DROP TABLE IF EXISTS stringcontent;</span><br><span class="line">CREATE TABLE stringcontent(</span><br><span class="line">	id INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">	content VARCHAR(20)</span><br><span class="line">);</span><br><span class="line">DELIMITER $</span><br><span class="line">CREATE PROCEDURE test_randstr_insert(IN insertCount INT)</span><br><span class="line">BEGIN</span><br><span class="line">	DECLARE i INT DEFAULT 1;</span><br><span class="line">	DECLARE str VARCHAR(26) DEFAULT &#39;abcdefghijklmnopqrstuvwxyz&#39;;</span><br><span class="line">	DECLARE startIndex INT;#代表初始索引</span><br><span class="line">	DECLARE len INT;#代表截取的字符长度</span><br><span class="line">	WHILE i&lt;&#x3D;insertcount DO</span><br><span class="line">		SET startIndex&#x3D;FLOOR(RAND()*26+1);#代表初始索引，随机范围1-26</span><br><span class="line">		SET len&#x3D;FLOOR(RAND()*(20-startIndex+1)+1);#代表截取长度，随机范围1-（20-startIndex+1）</span><br><span class="line">		INSERT INTO stringcontent(content) VALUES(SUBSTR(str,startIndex,len));</span><br><span class="line">		SET i&#x3D;i+1;</span><br><span class="line">	END WHILE;</span><br><span class="line">END $</span><br><span class="line"></span><br><span class="line">CALL test_randstr_insert(10)$</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">/*已知表stringcontent
+其中字段：
+id 自增长
+content varchar(20)
+
+向该表插入指定个数的，随机的字符串
+*/
+DROP TABLE IF EXISTS stringcontent;
+CREATE TABLE stringcontent(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(20)
+);
+DELIMITER $
+CREATE PROCEDURE test_randstr_insert(IN insertCount INT)
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE str VARCHAR(26) DEFAULT &#39;abcdefghijklmnopqrstuvwxyz&#39;;
+    DECLARE startIndex INT;#代表初始索引
+    DECLARE len INT;#代表截取的字符长度
+    WHILE i&lt;=insertcount DO
+        SET startIndex=FLOOR(RAND()*26+1);#代表初始索引，随机范围1-26
+        SET len=FLOOR(RAND()*(20-startIndex+1)+1);#代表截取长度，随机范围1-（20-startIndex+1）
+        INSERT INTO stringcontent(content) VALUES(SUBSTR(str,startIndex,len));
+        SET i=i+1;
+    END WHILE;
+END $
+
+CALL test_randstr_insert(10)$
+</code></pre>
 
 </div>
 
@@ -1500,16 +1797,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+              <a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  JDBC-01 概览&连接数据库方式
+                  Hadoop03-HDFS读写流程&NN和2NN
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
-                JDBC-02 CRUD
+              <a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+                Hadoop04-HDFS-DataNode
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

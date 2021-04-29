@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1335,10 +1335,45 @@
 
 <div id="article-content">
 	<p>使用hbase shell可以进入一个shell命令行界面：bin/HBase shell</p>
-<h2 id="集群的操作"><a href="#集群的操作" class="headerlink" title="集群的操作"></a>集群的操作</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'查看集群状态'</span></span><br><span class="line">使用status可以查看集群状态，默认为summary，可以选择‘simple’和‘detailed’来查看详情</span><br><span class="line">hbase(main):011:0&gt; status</span><br><span class="line">1 active master, 0 backup masters, 3 servers, 0 dead, 0.6667 average load</span><br><span class="line"></span><br><span class="line"><span class="string">'查看版本'</span></span><br><span class="line">hbase(main):002:0&gt; version</span><br><span class="line">1.3.1, r930b9a55528fe45d8edce7af42fef2d35e77677a, Thu Apr  6 19:36:54 PDT 2017</span><br><span class="line"></span><br><span class="line"><span class="string">'查看操作用户及组信息'</span></span><br><span class="line">hbase(main):003:0&gt; whoami</span><br><span class="line">atguigu (auth:SIMPLE)</span><br><span class="line">groups: atguigu</span><br><span class="line"></span><br><span class="line"><span class="string">'查看表操作信息'</span></span><br><span class="line">hbase(main):004:0&gt; table_help</span><br><span class="line">Help <span class="keyword">for</span> table-reference commands.</span><br><span class="line"></span><br><span class="line"><span class="string">'查看帮助信息'</span></span><br><span class="line">hbase(main):005:0&gt; <span class="built_in">help</span></span><br><span class="line">HBase Shell, version 1.3.1, r930b9a55528fe45d8edce7af42fef2d35e77677a, Thu Apr  6 19:36:54 PDT 2017</span><br><span class="line">Type <span class="string">'help "COMMAND"'</span>, (e.g. <span class="string">'help "get"'</span> -- the quotes are necessary) <span class="keyword">for</span> <span class="built_in">help</span> on a specific <span class="built_in">command</span>.</span><br><span class="line">Commands are grouped. Type <span class="string">'help "COMMAND_GROUP"'</span>, (e.g. <span class="string">'help "general"'</span>) <span class="keyword">for</span> <span class="built_in">help</span> on a <span class="built_in">command</span> group.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">'查看具体命令的帮助'</span></span><br><span class="line"><span class="string">'注意引号是必须的！'</span></span><br><span class="line">hbase(main):006:0&gt; <span class="built_in">help</span> <span class="string">'get'</span></span><br><span class="line">Get row or cell contents; pass table name, row, and optionally</span><br><span class="line">a dictionary of column(s), timestamp, timerange and versions. Examples:</span><br><span class="line">  hbase&gt; get <span class="string">'ns1:t1'</span>, <span class="string">'r1'</span></span><br></pre></td></tr></table></figure>
+<h2 id="集群的操作"><a href="#集群的操作" class="headerlink" title="集群的操作"></a>集群的操作</h2><pre><code class="lang-sh">&#39;查看集群状态&#39;
+使用status可以查看集群状态，默认为summary，可以选择‘simple’和‘detailed’来查看详情
+hbase(main):011:0&gt; status
+1 active master, 0 backup masters, 3 servers, 0 dead, 0.6667 average load
+
+&#39;查看版本&#39;
+hbase(main):002:0&gt; version
+1.3.1, r930b9a55528fe45d8edce7af42fef2d35e77677a, Thu Apr  6 19:36:54 PDT 2017
+
+&#39;查看操作用户及组信息&#39;
+hbase(main):003:0&gt; whoami
+atguigu (auth:SIMPLE)
+groups: atguigu
+
+&#39;查看表操作信息&#39;
+hbase(main):004:0&gt; table_help
+Help for table-reference commands.
+
+&#39;查看帮助信息&#39;
+hbase(main):005:0&gt; help
+HBase Shell, version 1.3.1, r930b9a55528fe45d8edce7af42fef2d35e77677a, Thu Apr  6 19:36:54 PDT 2017
+Type &#39;help &quot;COMMAND&quot;&#39;, (e.g. &#39;help &quot;get&quot;&#39; -- the quotes are necessary) for help on a specific command.
+Commands are grouped. Type &#39;help &quot;COMMAND_GROUP&quot;&#39;, (e.g. &#39;help &quot;general&quot;&#39;) for help on a command group.
+
+
+&#39;查看具体命令的帮助&#39;
+&#39;注意引号是必须的！&#39;
+hbase(main):006:0&gt; help &#39;get&#39;
+Get row or cell contents; pass table name, row, and optionally
+a dictionary of column(s), timestamp, timerange and versions. Examples:
+  hbase&gt; get &#39;ns1:t1&#39;, &#39;r1&#39;
+</code></pre>
 <h2 id="表的操作"><a href="#表的操作" class="headerlink" title="表的操作"></a>表的操作</h2><ol>
 <li><p>list</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):008:0&gt; list</span><br><span class="line">TABLE</span><br><span class="line">0 row(s) <span class="keyword">in</span> 0.0410 seconds</span><br><span class="line"><span class="string">'list后可以使用*等通配符来进行表的过滤！'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):008:0&gt; list
+TABLE
+0 row(s) in 0.0410 seconds
+&#39;list后可以使用*等通配符来进行表的过滤！&#39;
+</code></pre>
 </li>
 <li><p>create</p>
 <p>创建表时，需要指定表名和列族名，而且至少需要指定一个列族，没有列族的表是没有任何意义的。</p>
@@ -1347,43 +1382,66 @@
 <p>​        create ‘表名’, { NAME =&gt; ‘列族名1’, 属性名 =&gt; 属性值}, {NAME =&gt; ‘列族名2’, 属性名 =&gt; 属性值}, …</p>
 <p>如果你只需要创建列族，而不需要定义列族属性，那么可以采用以下快捷写法：</p>
 <p>​        create’表名’,’列族名1’ ,’列族名2’, …</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HBase(main):002:0&gt; create <span class="string">'student'</span>,<span class="string">'info'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">HBase(main):002:0&gt; create &#39;student&#39;,&#39;info&#39;
+</code></pre>
 </li>
 <li><p>desc</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):003:0&gt; describe <span class="string">'person'</span></span><br><span class="line">hbase(main):004:0&gt; desc <span class="string">'person'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):003:0&gt; describe &#39;person&#39;
+hbase(main):004:0&gt; desc &#39;person&#39;
+</code></pre>
 </li>
 <li><p>disable</p>
 <p>停用表后，可以防止在对表做一些维护时，客户端依然可以持续写入数据到表。一般在删除表前，必须停用表。</p>
 <p>在对表中的列族进行修改时，也需要停用表.</p>
 <p>disable_all ‘正则表达式’ 可以使用正则来匹配表名。</p>
 <p>is_disabled 可以用来判断表是否被停用。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):005:0&gt; <span class="built_in">disable</span> <span class="string">'person'</span></span><br><span class="line">0 row(s) <span class="keyword">in</span> 2.4250 seconds</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):005:0&gt; disable &#39;person&#39;
+0 row(s) in 2.4250 seconds
+</code></pre>
 </li>
 <li><p>enable</p>
 <p>和停用表类似。enable ‘表名’用来启用表，is_enabled ‘表名’用来判断一个表是否被启用。</p>
 <p>  enable_all ‘正则表达式’可以通过正则来过滤表，启用复合条件的表。</p>
 </li>
 <li><p>exists</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):008:0&gt; exists <span class="string">'person'</span></span><br><span class="line">Table person does exist</span><br><span class="line">0 row(s) <span class="keyword">in</span> 0.0210 seconds</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):008:0&gt; exists &#39;person&#39;
+Table person does exist
+0 row(s) in 0.0210 seconds
+</code></pre>
 </li>
 <li><p>count</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):012:0&gt; count <span class="string">'person'</span></span><br><span class="line">1 row(s) <span class="keyword">in</span> 0.0240 seconds</span><br><span class="line">=&gt; 1</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):012:0&gt; count &#39;person&#39;
+1 row(s) in 0.0240 seconds
+=&gt; 1
+</code></pre>
 </li>
 <li><p>drop</p>
 <p><strong>删除表前，需要先disable表，否则会报错。ERROR: Table xxx is enabled. Disable it first.</strong></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):011:0&gt; drop <span class="string">'person'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):011:0&gt; drop &#39;person&#39;
+</code></pre>
 </li>
 <li><p>truncate</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):013:0&gt; truncate <span class="string">'person'</span></span><br><span class="line">Truncating <span class="string">'person'</span> table (it may take a <span class="keyword">while</span>):</span><br><span class="line"> - Disabling table...</span><br><span class="line"> - Truncating table...</span><br><span class="line">0 row(s) <span class="keyword">in</span> 4.0010 seconds</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):013:0&gt; truncate &#39;person&#39;
+Truncating &#39;person&#39; table (it may take a while):
+ - Disabling table...
+ - Truncating table...
+0 row(s) in 4.0010 seconds
+</code></pre>
 </li>
 <li><p>get_split</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):015:0&gt; get_splits <span class="string">'person'</span></span><br><span class="line">Total number of splits = 1</span><br><span class="line"></span><br><span class="line">=&gt; []</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):015:0&gt; get_splits &#39;person&#39;
+Total number of splits = 1
+
+=&gt; []
+</code></pre>
 <p>获取表所对应的Region个数。每个表在一开始只有一个region，之后记录增多后，region会被自动拆分。</p>
 </li>
 <li><p>alter</p>
 <p>alter命令可以修改表的属性，通常是修改某个列族的属性。</p>
 <p>​        alter ‘表名’， ‘delete’ =&gt; ‘列族名’</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hbase(main):050:0&gt; alter <span class="string">'myns:t1'</span>,&#123;NAME =&gt; <span class="string">'info'</span>,VERSIONS =&gt; <span class="string">'5'</span>&#125;</span><br><span class="line">hbase&gt; alter <span class="string">'ns1:t1'</span>, <span class="string">'delete'</span> =&gt; <span class="string">'f1'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">hbase(main):050:0&gt; alter &#39;myns:t1&#39;,{NAME =&gt; &#39;info&#39;,VERSIONS =&gt; &#39;5&#39;}
+hbase&gt; alter &#39;ns1:t1&#39;, &#39;delete&#39; =&gt; &#39;f1&#39;
+</code></pre>
 </li>
 </ol>
 <h2 id="数据的操作"><a href="#数据的操作" class="headerlink" title="数据的操作"></a>数据的操作</h2><ol>
@@ -1399,7 +1457,10 @@
 <p>scan ‘表名’, { RAW =&gt; true, VERSIONS =&gt;版本数}</p>
 <p>​                    显示原始单元格记录，在Hbase中，被删掉的记录在HBase被删除掉的记录并不会立即从磁盘上清除，而是先被打上墓碑标记，然后等待下次major compaction的时候再被删除掉。注意RAW参数必须和VERSIONS一起使用，但是不能和COLUMNS参数一起使用。</p>
 <p>scan ‘表名’, { FILTER =&gt; “过滤器”} and|or { FILTER =&gt; “过滤器”}: 使用过滤器扫描</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HBase(main):008:0&gt; scan <span class="string">'student'</span></span><br><span class="line">HBase(main):009:0&gt; scan <span class="string">'student'</span>,&#123;STARTROW =&gt; <span class="string">'1001'</span>, STOPROW  =&gt; <span class="string">'1001'</span>&#125;</span><br><span class="line">HBase(main):010:0&gt; scan <span class="string">'student'</span>,&#123;STARTROW =&gt; <span class="string">'1001'</span>&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">HBase(main):008:0&gt; scan &#39;student&#39;
+HBase(main):009:0&gt; scan &#39;student&#39;,{STARTROW =&gt; &#39;1001&#39;, STOPROW  =&gt; &#39;1001&#39;}
+HBase(main):010:0&gt; scan &#39;student&#39;,{STARTROW =&gt; &#39;1001&#39;}
+</code></pre>
 </li>
 <li><p>put</p>
 <p>put可以新增记录还可以为记录设置属性。</p>
@@ -1407,14 +1468,26 @@
 <p>put ‘表名’, ‘行键’, ‘列名’, ‘值’,时间戳</p>
 <p>put ‘表名’, ‘行键’, ‘列名’, ‘值’, { ‘属性名’ =&gt; ‘属性值’}</p>
 <p>put ‘表名’, ‘行键’, ‘列名’, ‘值’,时间戳, { ‘属性名’ =&gt;’属性值’}</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HBase(main):012:0&gt; put <span class="string">'student'</span>,<span class="string">'1001'</span>,<span class="string">'info:name'</span>,<span class="string">'Nick'</span></span><br><span class="line">HBase(main):003:0&gt; put <span class="string">'student'</span>,<span class="string">'1001'</span>,<span class="string">'info:sex'</span>,<span class="string">'male'</span></span><br><span class="line">HBase(main):004:0&gt; put <span class="string">'student'</span>,<span class="string">'1001'</span>,<span class="string">'info:age'</span>,<span class="string">'18'</span></span><br><span class="line">HBase(main):005:0&gt; put <span class="string">'student'</span>,<span class="string">'1002'</span>,<span class="string">'info:name'</span>,<span class="string">'Janna'</span></span><br><span class="line">HBase(main):006:0&gt; put <span class="string">'student'</span>,<span class="string">'1002'</span>,<span class="string">'info:sex'</span>,<span class="string">'female'</span></span><br><span class="line">HBase(main):007:0&gt; put <span class="string">'student'</span>,<span class="string">'1002'</span>,<span class="string">'info:age'</span>,<span class="string">'20'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">HBase(main):012:0&gt; put &#39;student&#39;,&#39;1001&#39;,&#39;info:name&#39;,&#39;Nick&#39;
+HBase(main):003:0&gt; put &#39;student&#39;,&#39;1001&#39;,&#39;info:sex&#39;,&#39;male&#39;
+HBase(main):004:0&gt; put &#39;student&#39;,&#39;1001&#39;,&#39;info:age&#39;,&#39;18&#39;
+HBase(main):005:0&gt; put &#39;student&#39;,&#39;1002&#39;,&#39;info:name&#39;,&#39;Janna&#39;
+HBase(main):006:0&gt; put &#39;student&#39;,&#39;1002&#39;,&#39;info:sex&#39;,&#39;female&#39;
+HBase(main):007:0&gt; put &#39;student&#39;,&#39;1002&#39;,&#39;info:age&#39;,&#39;20&#39;
+</code></pre>
 </li>
 <li><p>get</p>
 <p>get支持scan所支持的大部分属性，如COLUMNS，TIMERANGE，VERSIONS，FILTER</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HBase(main):014:0&gt; get <span class="string">'student'</span>,<span class="string">'1001'</span></span><br><span class="line">HBase(main):015:0&gt; get <span class="string">'student'</span>,<span class="string">'1001'</span>,<span class="string">'info:name'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">HBase(main):014:0&gt; get &#39;student&#39;,&#39;1001&#39;
+HBase(main):015:0&gt; get &#39;student&#39;,&#39;1001&#39;,&#39;info:name&#39;
+</code></pre>
 </li>
 <li><p>delete</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'删除某rowkey的全部数据：'</span></span><br><span class="line">HBase(main):016:0&gt; deleteall <span class="string">'student'</span>,<span class="string">'1001'</span></span><br><span class="line"><span class="string">'删除某rowkey的某一列数据：'</span></span><br><span class="line">HBase(main):017:0&gt; delete <span class="string">'student'</span>,<span class="string">'1002'</span>,<span class="string">'info:sex'</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">&#39;删除某rowkey的全部数据：&#39;
+HBase(main):016:0&gt; deleteall &#39;student&#39;,&#39;1001&#39;
+&#39;删除某rowkey的某一列数据：&#39;
+HBase(main):017:0&gt; delete &#39;student&#39;,&#39;1002&#39;,&#39;info:sex&#39;
+</code></pre>
 </li>
 </ol>
 
@@ -1424,16 +1497,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+              <a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  HBase00-安装
+                  HBase03-HBase进阶
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
-                HBase01-概述
+              <a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+                HBase05-HBase-MR
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

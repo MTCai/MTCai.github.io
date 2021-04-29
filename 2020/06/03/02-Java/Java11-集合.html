@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1444,7 +1444,19 @@
 <p>ArrayList 和 LinkedList 的异同：二者都线程不安全，相对线程安全的Vector ，执行效率高。此外，ArrayList 是实现了基于动态数组的数据结构， LinkedList 基于链表的数据结构。对于随机访问 get 和 set ArrayList 绝对优于 LinkedList ，因为 LinkedList 要移动指针。对于新增和删除 操作 add (特指插入) 和 remove，LinkedList 比较占优势，因为 ArrayList 要移动数据。</p>
 <p>ArrayList 和 Vector 的区别：Vector和 ArrayList 几乎是完全相同的，唯一的区别在于 Vector 是同步类 ( synchronized)，属于强同步类。因此开销就比 ArrayList 要大，访问要慢。正常情况下 大多数的 Java 程序员使用ArrayList 而不是 Vector, 因为同步完全可以由程序员自己来控制。 Vector 每次扩容请求其大小的 2 倍空间，而 ArrayList 是 1.5 倍。 Vector 还有一个子类 Stack 。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testListRemove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    list.add(<span class="number">1</span>);</span><br><span class="line">    list.add(<span class="number">2</span>);</span><br><span class="line">    list.add(<span class="number">3</span>);</span><br><span class="line">	updateList(list);</span><br><span class="line">	System.out.println(list);<span class="comment">// 1 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">updateList</span><span class="params">(List list)</span></span></span><br><span class="line"><span class="function">	list.<span class="title">remove</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">@Test
+public void testListRemove() {
+    List list = new ArrayList();
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    updateList(list);
+    System.out.println(list);// 1 2
+}
+private static void updateList(List list)
+    list.remove(2);
+}
+</code></pre>
 <h2 id="Collection-子接口二：-Set"><a href="#Collection-子接口二：-Set" class="headerlink" title="Collection 子接口二： Set"></a>Collection 子接口二： Set</h2><p>Set 接口是 Collection 的子接口， set 接口没有提供额外的方法；Set 集合不允许包含相同的元素，如果试把两个相同的元素加入同一个Set 集合中，则添加操作失败。Set 判断两个对象是否相同不是使用 == 运算符，而是根据 equals() 方法。</p>
 <p><strong>无序性：</strong>不等于随机性。存储的数据在底层数组中并非按照数组索引的顺序添加，而是根据数据的哈希值决定</p>
 <p><strong>不可重复性：</strong>Set 判断两个对象是否相同是根据 equals() 方法，相同的元素只能添加一个。</p>
@@ -1527,12 +1539,55 @@
 </ul>
 <p>TreeSet 两种排序方法： 自然排序 和 定制排序 。默认情况下， TreeSet 采用自然排序。</p>
 <p><strong>练习：在List 内去除重复数字值，要求尽量简单</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//练习：在List内去除重复数字值，要求尽量简单</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List <span class="title">duplicateList</span><span class="params">(List list)</span> </span>&#123;</span><br><span class="line">    HashSet set = <span class="keyword">new</span> HashSet();</span><br><span class="line">    set.addAll(list);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ArrayList(set);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">1</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">2</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">2</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">4</span>));</span><br><span class="line">    list.add(<span class="keyword">new</span> Integer(<span class="number">4</span>));</span><br><span class="line">    List list2 = duplicateList(list);</span><br><span class="line">    <span class="keyword">for</span> (Object integer : list2) &#123;</span><br><span class="line">        System.out.println(integer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">//练习：在List内去除重复数字值，要求尽量简单
+public static List duplicateList(List list) {
+    HashSet set = new HashSet();
+    set.addAll(list);
+    return new ArrayList(set);
+}
+@Test
+public void test2(){
+    List list = new ArrayList();
+    list.add(new Integer(1));
+    list.add(new Integer(2));
+    list.add(new Integer(2));
+    list.add(new Integer(4));
+    list.add(new Integer(4));
+    List list2 = duplicateList(list);
+    for (Object integer : list2) {
+        System.out.println(integer);
+    }
+}
+</code></pre>
 <p><strong>面试题</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">    HashSet set = <span class="keyword">new</span> HashSet();</span><br><span class="line">    <span class="comment">// 其中Person 类中重写了 hashCode() 和 equal() 方法</span></span><br><span class="line">    Person p1 = <span class="keyword">new</span> Person(<span class="number">1001</span>,<span class="string">"AA"</span>);</span><br><span class="line">    Person p2 = <span class="keyword">new</span> Person(<span class="number">1002</span>,<span class="string">"BB"</span>);</span><br><span class="line"></span><br><span class="line">    set.add(p1);</span><br><span class="line">    set.add(p2);</span><br><span class="line">    System.out.println(set);<span class="comment">//2个数据</span></span><br><span class="line"></span><br><span class="line">    p1.name = <span class="string">"CC"</span>;</span><br><span class="line">    set.remove(p1);<span class="comment">// 删除失败，hashcode不一致</span></span><br><span class="line">    System.out.println(set);</span><br><span class="line">    set.add(<span class="keyword">new</span> Person(<span class="number">1001</span>,<span class="string">"CC"</span>));<span class="comment">// 3个数据</span></span><br><span class="line">    System.out.println(set);</span><br><span class="line">    set.add(<span class="keyword">new</span> Person(<span class="number">1001</span>,<span class="string">"AA"</span>));<span class="comment">// 4个数据</span></span><br><span class="line">    System.out.println(set);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public void test3(){
+    HashSet set = new HashSet();
+    // 其中Person 类中重写了 hashCode() 和 equal() 方法
+    Person p1 = new Person(1001,&quot;AA&quot;);
+    Person p2 = new Person(1002,&quot;BB&quot;);
+
+    set.add(p1);
+    set.add(p2);
+    System.out.println(set);//2个数据
+
+    p1.name = &quot;CC&quot;;
+    set.remove(p1);// 删除失败，hashcode不一致
+    System.out.println(set);
+    set.add(new Person(1001,&quot;CC&quot;));// 3个数据
+    System.out.println(set);
+    set.add(new Person(1001,&quot;AA&quot;));// 4个数据
+    System.out.println(set);
+}
+</code></pre>
 <h2 id="Map-接口"><a href="#Map-接口" class="headerlink" title="Map 接口"></a>Map 接口</h2><p>Map 接口： 双列数据，保存具有映射关系“ key-value对”的集合</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201021230536054.png" alt="image-20201021230536054" style="zoom: 50%;" /></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|----Map：双列数据</span><br><span class="line">    |----HashMap：作为Map的主要实现类；线程不安全，效率高；存储<span class="keyword">null</span>的key或value</span><br><span class="line">	    |----LinkedHashMap：保证在遍历map元素时，可以按照添加的顺序实现遍历。对于频繁的遍历操作，此类执行效率高于HashMap</span><br><span class="line">    |----TreeMap：保证按照添加的key-value对进行排序，实现遍历。此时考虑key的自然排序或者定制排序。底层使用红黑树。</span><br><span class="line">    |----Hashtable：作为古老的实现类；线程安全，效率低；不能存储<span class="keyword">null</span>的key或value</span><br><span class="line">    	|----Properties：常用来处理配置文件。key-value都是String类型。</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">|----Map：双列数据
+    |----HashMap：作为Map的主要实现类；线程不安全，效率高；存储null的key或value
+        |----LinkedHashMap：保证在遍历map元素时，可以按照添加的顺序实现遍历。对于频繁的遍历操作，此类执行效率高于HashMap
+    |----TreeMap：保证按照添加的key-value对进行排序，实现遍历。此时考虑key的自然排序或者定制排序。底层使用红黑树。
+    |----Hashtable：作为古老的实现类；线程安全，效率低；不能存储null的key或value
+        |----Properties：常用来处理配置文件。key-value都是String类型。
+</code></pre>
 <p>Map 中的 key 和 value 都可以是任何引用类型的数据；Map 中的 key 用 Set 来存放， 不允许重复 ，即同一个 Map 对象所对应的类，须重写 hashCode 和 equals 方法；常用 String 类作为 Map 的“键”。</p>
 <ul>
 <li>key无序且不可重复，使用Set存储；key所在类要重写equals()和hashcode() / compareTo方法</li>
@@ -1562,15 +1617,46 @@
 <li><p>Collection values()：返回所有 value 构成的 Collection 集合</p>
 </li>
 <li><p>Set entrySet()：返回所有 key-value 对构成的 Set 集合</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Set entrySet = map.entrySet();</span><br><span class="line">Iterator iterator1 = entrySet.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator1.hasNext())&#123;</span><br><span class="line">	Object obj = iterator1.next();</span><br><span class="line">	<span class="comment">//entrySet集合中的元素都是entry</span></span><br><span class="line">	Map.Entry entry = (Map.Entry) obj;</span><br><span class="line">	System.out.println(entry.getKey() + <span class="string">"----&gt;"</span> + entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">Set entrySet = map.entrySet();
+Iterator iterator1 = entrySet.iterator();
+while (iterator1.hasNext()){
+    Object obj = iterator1.next();
+    //entrySet集合中的元素都是entry
+    Map.Entry entry = (Map.Entry) obj;
+    System.out.println(entry.getKey() + &quot;----&gt;&quot; + entry.getValue());
+}
+</code></pre>
 </li>
 </ul>
 <h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>允许使用 null 键和 null 值，与 HashSet 一样，不保证映射的顺序。</p>
 <p><strong>底层实现原理：</strong></p>
 <p>JDK 7及以前版本： HashMap 是数组 + 链表结构，即为链地址法</p>
 <p>JDK 8版本发布以后： HashMap 是数组 + 链表 + 红黑树实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">JDK <span class="number">7</span>:</span><br><span class="line"></span><br><span class="line">HashMap map = <span class="keyword">new</span> HashMap();</span><br><span class="line"><span class="comment">/*在实例化以后，底层创建了长度是16的一维数组Entry[] table。*/</span></span><br><span class="line">...可能已经执行过多次put...</span><br><span class="line">map.put(key1,value1):</span><br><span class="line"><span class="comment">/*首先，调用key1所在类的hashCode()计算key1哈希值，此哈希值经过某种算法计算以后，得到在Entry数组中的存放位置。</span></span><br><span class="line"><span class="comment">1. 如果此位置上的数据为空，此时的key1-value1添加成功。 ----情况1</span></span><br><span class="line"><span class="comment">2. 如果此位置上的数据不为空，(意味着此位置上存在一个或多个数据(以链表形式存在)),比较key1和已经存在的一个或多个数据的哈希值：</span></span><br><span class="line"><span class="comment">	2.1 如果key1的哈希值与已经存在的数据的哈希值都不相同，此时key1-value1添加成功。----情况2</span></span><br><span class="line"><span class="comment">	2.2 如果key1的哈希值和已经存在的某一个数据(key2-value2)的哈希值相同，继续比较：调用key1所在类的equals(key2)方法，比较：</span></span><br><span class="line"><span class="comment">		2.2.1 如果equals()返回false:此时key1-value1添加成功。----情况3</span></span><br><span class="line"><span class="comment">		2.2.2 如果equals()返回true:使用value1替换value2。----情况4</span></span><br><span class="line"><span class="comment">补充：关于情况2和情况3：此时key1-value1和原来的数据以链表的方式存储。</span></span><br><span class="line"><span class="comment">在不断的添加过程中，会涉及到扩容问题，当超出临界值(且要存放的位置非空)时，扩容。默认的扩容方式：扩容为原来容量的2倍，并将原有的数据复制过来。</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">JDK <span class="number">8</span> 相较于jdk7在底层实现方面的不同：</span><br><span class="line">    </span><br><span class="line"><span class="number">1</span>. <span class="keyword">new</span> HashMap():底层没有创建一个长度为<span class="number">16</span>的数组</span><br><span class="line"><span class="number">2</span>. jdk <span class="number">8</span>底层的数组是：Node[],而非Entry[]</span><br><span class="line"><span class="number">3</span>. 首次调用put()方法时，底层创建长度为<span class="number">16</span>的数组</span><br><span class="line"><span class="number">4</span>. jdk7底层结构只有：数组+链表。jdk8中底层结构：数组+链表+红黑树。</span><br><span class="line">	<span class="number">4.1</span> 形成链表时，七上八下（jdk7:新的元素指向旧的元素。jdk8：旧的元素指向新的元素）</span><br><span class="line">	<span class="number">4.2</span> 当数组的某一个索引位置上的元素以链表形式存在的数据个数 &gt; <span class="number">8</span> 且当前数组的长度 &gt; <span class="number">64</span>时，此时此索引位置上的所数据改为使用红黑树存储。</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">JDK 7:
+
+HashMap map = new HashMap();
+/*在实例化以后，底层创建了长度是16的一维数组Entry[] table。*/
+...可能已经执行过多次put...
+map.put(key1,value1):
+/*首先，调用key1所在类的hashCode()计算key1哈希值，此哈希值经过某种算法计算以后，得到在Entry数组中的存放位置。
+1. 如果此位置上的数据为空，此时的key1-value1添加成功。 ----情况1
+2. 如果此位置上的数据不为空，(意味着此位置上存在一个或多个数据(以链表形式存在)),比较key1和已经存在的一个或多个数据的哈希值：
+    2.1 如果key1的哈希值与已经存在的数据的哈希值都不相同，此时key1-value1添加成功。----情况2
+    2.2 如果key1的哈希值和已经存在的某一个数据(key2-value2)的哈希值相同，继续比较：调用key1所在类的equals(key2)方法，比较：
+        2.2.1 如果equals()返回false:此时key1-value1添加成功。----情况3
+        2.2.2 如果equals()返回true:使用value1替换value2。----情况4
+补充：关于情况2和情况3：此时key1-value1和原来的数据以链表的方式存储。
+在不断的添加过程中，会涉及到扩容问题，当超出临界值(且要存放的位置非空)时，扩容。默认的扩容方式：扩容为原来容量的2倍，并将原有的数据复制过来。
+</code></pre>
+<pre><code class="lang-java">JDK 8 相较于jdk7在底层实现方面的不同：
+
+1. new HashMap():底层没有创建一个长度为16的数组
+2. jdk 8底层的数组是：Node[],而非Entry[]
+3. 首次调用put()方法时，底层创建长度为16的数组
+4. jdk7底层结构只有：数组+链表。jdk8中底层结构：数组+链表+红黑树。
+    4.1 形成链表时，七上八下（jdk7:新的元素指向旧的元素。jdk8：旧的元素指向新的元素）
+    4.2 当数组的某一个索引位置上的元素以链表形式存在的数据个数 &gt; 8 且当前数组的长度 &gt; 64时，此时此索引位置上的所数据改为使用红黑树存储。
+</code></pre>
 <p><strong>HashMap的put()</strong></p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/caption/HashMap的put(" alt="HashMap的put()">.png)</p>
 <p><strong>HashMap源码中的重要常量：</strong></p>
@@ -1620,7 +1706,11 @@
 <h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><p>Properties 类是 Hashtable 的子类，该对象用于处理属性文件</p>
 <p>由于属性文件里的 key 、 value 都是字符串类型，所以 Properties 里的 key和value 都是字符串类型</p>
 <p>存取数据时，建议使用 setProperty (String key,String value) 方法和getProperty (String key) 方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">pros. load(<span class="keyword">new</span> FileInputStream(FileInputStream(<span class="string">"jdbc.properties"</span>));</span><br><span class="line">String user = pros.getProperty(<span class="string">"user"</span>);</span><br><span class="line">System.out.println(user);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">Properties pros = new Properties();
+pros. load(new FileInputStream(FileInputStream(&quot;jdbc.properties&quot;));
+String user = pros.getProperty(&quot;user&quot;);
+System.out.println(user);
+</code></pre>
 <h2 id="Collections-工具类"><a href="#Collections-工具类" class="headerlink" title="Collections 工具类"></a>Collections 工具类</h2><p>Collections 是一个操作 Set 、 List 和 Map 等集合的工具类；操作数组的工具类：Arrays</p>
 <p>Collections 中提供了一系列静态的方法对集合元素进行排序、查询和修改等操作，还提供了对集合对象设置不可变、对集合对象实现同步控制等方法</p>
 <h3 id="排序操作：（均为-static-方法）"><a href="#排序操作：（均为-static-方法）" class="headerlink" title="排序操作：（均为 static 方法）"></a>排序操作：（均为 static 方法）</h3><ul>
@@ -1642,7 +1732,23 @@
 <li><p>int frequency(Collection，Object)：返回指定集合中指定元素的出现次数</p>
 </li>
 <li><p>void copy(List dest,List src)：将src中的内容复制到dest中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.add(<span class="number">123</span>);</span><br><span class="line">list.add(<span class="number">43</span>);</span><br><span class="line">list.add(<span class="number">765</span>);</span><br><span class="line">list.add(-<span class="number">97</span>);</span><br><span class="line">list.add(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//报异常：IndexOutOfBoundsException("Source does not fit in dest")</span></span><br><span class="line"><span class="comment">//List dest = new ArrayList();</span></span><br><span class="line"><span class="comment">//Collections.copy(dest,list);</span></span><br><span class="line"><span class="comment">//正确的：</span></span><br><span class="line">List dest = Arrays.asList(<span class="keyword">new</span> Object[list.size()]);</span><br><span class="line">System.out.println(dest.size());<span class="comment">//list.size();</span></span><br><span class="line">Collections.copy(dest,list);</span><br><span class="line"></span><br><span class="line">System.out.println(dest);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">List list = new ArrayList();
+list.add(123);
+list.add(43);
+list.add(765);
+list.add(-97);
+list.add(0);
+
+//报异常：IndexOutOfBoundsException(&quot;Source does not fit in dest&quot;)
+//List dest = new ArrayList();
+//Collections.copy(dest,list);
+//正确的：
+List dest = Arrays.asList(new Object[list.size()]);
+System.out.println(dest.size());//list.size();
+Collections.copy(dest,list);
+
+System.out.println(dest);
+</code></pre>
 </li>
 <li><p>boolean replaceAll(List list，Object oldVal，Object newVal)：使用新值替换 List 对象的所有旧值</p>
 </li>
@@ -1657,16 +1763,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
+              <a href="/2020/06/03/02-Java/Java08-%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Java12-泛型
+                  Java08-多线程
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/02-Java/Java14-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.html">
-                Java14-网络编程
+              <a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
+                Java12-泛型
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

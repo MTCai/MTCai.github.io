@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1356,7 +1356,30 @@
 <p>每次分解之后的合并操作只需要一次加法运算，我们把这次加法运算的时间消耗记作 1。所以，从上往下，第一层的总时间消耗是 1，第二层的总时间消耗是 2，第三层的总时间消耗就是 2^2^。依次类推，第 k 层的时间消耗就是 2^k−1^，那整个算法的总的时间消耗就是每一层时间消耗之和。</p>
 <p>如果路径长度都为 n，那这个总和就是 2^n^−1。</p>
 <p>如果路径长度都是 n/2 ，那整个算法的总的时间消耗就是 2^n/2^−1。</p>
-<h2 id="实战三：分析全排列的时间复杂度"><a href="#实战三：分析全排列的时间复杂度" class="headerlink" title="实战三：分析全排列的时间复杂度"></a>实战三：分析全排列的时间复杂度</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用方式：</span></span><br><span class="line"><span class="comment">// int[]a = a=&#123;1, 2, 3, 4&#125;; printPermutations(a, 4, 4);</span></span><br><span class="line"><span class="comment">// k 表示要处理的子数组的数据个数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printPermutations</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (k == <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">      System.out.print(data[i] + <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++i) &#123;</span><br><span class="line">    <span class="keyword">int</span> tmp = data[i];</span><br><span class="line">    data[i] = data[k-<span class="number">1</span>];</span><br><span class="line">    data[k-<span class="number">1</span>] = tmp;</span><br><span class="line"> </span><br><span class="line">    printPermutations(data, n, k - <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">    tmp = data[i];</span><br><span class="line">    data[i] = data[k-<span class="number">1</span>];</span><br><span class="line">    data[k-<span class="number">1</span>] = tmp;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实战三：分析全排列的时间复杂度"><a href="#实战三：分析全排列的时间复杂度" class="headerlink" title="实战三：分析全排列的时间复杂度"></a>实战三：分析全排列的时间复杂度</h2><pre><code class="lang-java">// 调用方式：
+// int[]a = a={1, 2, 3, 4}; printPermutations(a, 4, 4);
+// k 表示要处理的子数组的数据个数
+public void printPermutations(int[] data, int n, int k) {
+  if (k == 1) {
+    for (int i = 0; i &lt; n; ++i) {
+      System.out.print(data[i] + &quot; &quot;);
+    }
+    System.out.println();
+  }
+
+  for (int i = 0; i &lt; k; ++i) {
+    int tmp = data[i];
+    data[i] = data[k-1];
+    data[k-1] = tmp;
+
+    printPermutations(data, n, k - 1);
+
+    tmp = data[i];
+    data[i] = data[k-1];
+    data[k-1] = tmp;
+  }
+}
+</code></pre>
 <p>如果我们确定了最后一位数据，那就变成了求解剩下 n−1 个数据的排列问题。而最后一位数据可以是 n 个数据中的任意一个，因此它的取值就有 nn种情况。所以，“n 个数据的排列”问题，就可以分解成 n 个“n−1 个数据的排列”的子问题。</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210302191832677.png" alt="image-20210302191832677"></p>
 <p>第一层分解有 nn次交换操作，第二层有 n 个节点，每个节点分解需要 n−1 次交换，所以第二层总的交换次数是 n∗(n−1)。第三层有 n∗(n−1)n∗(n−1) 个节点，每个节点分解需要 n−2次交换，所以第三层总的交换次数是 n∗(n−1)∗(n−2)n∗(n−1)∗(n−2)。第 kk 层总的交换次数就是 n∗(n−1)∗(n−2)∗…∗(n−k+1)。最后一层为n∗(n−1)∗(n−2)∗…∗2∗1等于 n!。也就是说，全排列的递归算法的时间复杂度大于O(n!)，小于 O(n∗n!)。</p>

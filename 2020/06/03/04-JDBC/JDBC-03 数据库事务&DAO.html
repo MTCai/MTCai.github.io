@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1372,9 +1372,65 @@
 </li>
 </ul>
 <p>【案例：用户AA向用户BB转账100】</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJDBCTransaction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Connection conn = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">// 1.获取数据库连接</span></span><br><span class="line">		conn = JDBCUtils.getConnection();</span><br><span class="line">		<span class="comment">// 2.开启事务</span></span><br><span class="line">		conn.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">		<span class="comment">// 3.进行数据库操作</span></span><br><span class="line">		String sql1 = <span class="string">"update user_table set balance = balance - 100 where user = ?"</span>;</span><br><span class="line">		update(conn, sql1, <span class="string">"AA"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 模拟网络异常</span></span><br><span class="line">		<span class="comment">//System.out.println(10 / 0);</span></span><br><span class="line"></span><br><span class="line">		String sql2 = <span class="string">"update user_table set balance = balance + 100 where user = ?"</span>;</span><br><span class="line">		update(conn, sql2, <span class="string">"BB"</span>);</span><br><span class="line">		<span class="comment">// 4.若没有异常，则提交事务</span></span><br><span class="line">		conn.commit();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="comment">// 5.若有异常，则回滚事务</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			conn.rollback();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e1) &#123;</span><br><span class="line">			e1.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//6.恢复每次DML操作的自动提交功能</span></span><br><span class="line">			conn.setAutoCommit(<span class="keyword">true</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">        <span class="comment">//7.关闭连接</span></span><br><span class="line">		JDBCUtils.closeResource(conn, <span class="keyword">null</span>, <span class="keyword">null</span>); </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public void testJDBCTransaction() {
+    Connection conn = null;
+    try {
+        // 1.获取数据库连接
+        conn = JDBCUtils.getConnection();
+        // 2.开启事务
+        conn.setAutoCommit(false);
+        // 3.进行数据库操作
+        String sql1 = &quot;update user_table set balance = balance - 100 where user = ?&quot;;
+        update(conn, sql1, &quot;AA&quot;);
+
+        // 模拟网络异常
+        //System.out.println(10 / 0);
+
+        String sql2 = &quot;update user_table set balance = balance + 100 where user = ?&quot;;
+        update(conn, sql2, &quot;BB&quot;);
+        // 4.若没有异常，则提交事务
+        conn.commit();
+    } catch (Exception e) {
+        e.printStackTrace();
+        // 5.若有异常，则回滚事务
+        try {
+            conn.rollback();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+    } finally {
+        try {
+            //6.恢复每次DML操作的自动提交功能
+            conn.setAutoCommit(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //7.关闭连接
+        JDBCUtils.closeResource(conn, null, null); 
+    }  
+}
+</code></pre>
 <p>其中，对数据库操作的方法为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用事务以后的通用的增删改操作（version 2.0）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Connection conn ,String sql, Object... args)</span> </span>&#123;</span><br><span class="line">	PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">// 1.获取PreparedStatement的实例 (或：预编译sql语句)</span></span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		<span class="comment">// 2.填充占位符</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">			ps.setObject(i + <span class="number">1</span>, args[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 3.执行sql语句</span></span><br><span class="line">		ps.execute();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		<span class="comment">// 4.关闭资源</span></span><br><span class="line">		JDBCUtils.closeResource(<span class="keyword">null</span>, ps);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">//使用事务以后的通用的增删改操作（version 2.0）
+public void update(Connection conn ,String sql, Object... args) {
+    PreparedStatement ps = null;
+    try {
+        // 1.获取PreparedStatement的实例 (或：预编译sql语句)
+        ps = conn.prepareStatement(sql);
+        // 2.填充占位符
+        for (int i = 0; i &lt; args.length; i++) {
+            ps.setObject(i + 1, args[i]);
+        }
+        // 3.执行sql语句
+        ps.execute();
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        // 4.关闭资源
+        JDBCUtils.closeResource(null, ps);
+    }
+}
+</code></pre>
 <h3 id="6-3-事务的ACID属性"><a href="#6-3-事务的ACID属性" class="headerlink" title="6.3 事务的ACID属性"></a>6.3 事务的ACID属性</h3><ol>
 <li><p><strong>原子性（Atomicity）</strong><br> 原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 </p>
 </li>
@@ -1412,26 +1468,98 @@
 <li><p>每启动一个 mysql 程序, 就会获得一个单独的数据库连接. 每个数据库连接都有一个全局变量 @@tx_isolation, 表示当前的事务隔离级别。</p>
 </li>
 <li><p>查看当前的隔离级别: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT @@tx_isolation;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">SELECT @@tx_isolation;
+</code></pre>
 </li>
 <li><p>设置当前 mySQL 连接的隔离级别:  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set  transaction isolation level read committed;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">set  transaction isolation level read committed;
+</code></pre>
 </li>
 <li><p>设置数据库系统的全局的隔离级别:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global transaction isolation level read committed;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">set global transaction isolation level read committed;
+</code></pre>
 </li>
 <li><p>补充操作：</p>
 <ul>
 <li><p>创建mysql数据库用户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user tom identified by &#39;abc123&#39;;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">create user tom identified by &#39;abc123&#39;;
+</code></pre>
 </li>
 <li><p>授予权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#授予通过网络方式登录的tom用户，对所有库所有表的全部权限，密码设为abc123.</span><br><span class="line">grant all privileges on *.* to tom@&#39;%&#39;  identified by &#39;abc123&#39;; </span><br><span class="line"></span><br><span class="line"> #给tom用户使用本地命令行方式，授予atguigudb这个库下的所有表的插删改查的权限。</span><br><span class="line">grant select,insert,delete,update on atguigudb.* to tom@localhost identified by &#39;abc123&#39;;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-mysql">#授予通过网络方式登录的tom用户，对所有库所有表的全部权限，密码设为abc123.
+grant all privileges on *.* to tom@&#39;%&#39;  identified by &#39;abc123&#39;; 
+
+ #给tom用户使用本地命令行方式，授予atguigudb这个库下的所有表的插删改查的权限。
+grant select,insert,delete,update on atguigudb.* to tom@localhost identified by &#39;abc123&#39;;
+</code></pre>
 </li>
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// *****************************************************</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testTransactionSelect</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		Connection conn = JDBCUtils.getConnection();</span><br><span class="line">		<span class="comment">//获取当前连接的隔离级别</span></span><br><span class="line">		System.out.println(conn.getTransactionIsolation());</span><br><span class="line">		<span class="comment">//设置数据库的隔离级别：</span></span><br><span class="line">		conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);</span><br><span class="line">		<span class="comment">//取消自动提交数据</span></span><br><span class="line">		conn.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">		</span><br><span class="line">		String sql = <span class="string">"select user,password,balance from user_table where user = ?"</span>;</span><br><span class="line">		User user = getInstance(conn, User.class, sql, "CC");</span><br><span class="line">		System.out.println(user);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testTransactionUpdate</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		Connection conn = JDBCUtils.getConnection();</span><br><span class="line">		<span class="comment">//取消自动提交数据</span></span><br><span class="line">		conn.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">		String sql = <span class="string">"update user_table set balance = ? where user = ?"</span>;</span><br><span class="line">		update(conn, sql, <span class="number">5000</span>,<span class="string">"CC"</span>);</span><br><span class="line">		Thread.sleep(<span class="number">15000</span>);</span><br><span class="line">		System.out.println(<span class="string">"修改结束"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//通用的查询操作，用于返回数据表中的一条记录（version 2.0：考虑上事务）</span></span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">getInstance</span><span class="params">(Connection conn,Class&lt;T&gt; clazz,String sql, Object... args)</span> </span>&#123;</span><br><span class="line">		PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line">		ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">				ps.setObject(i + <span class="number">1</span>, args[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			rs = ps.executeQuery();</span><br><span class="line">			<span class="comment">// 获取结果集的元数据 :ResultSetMetaData</span></span><br><span class="line">			ResultSetMetaData rsmd = rs.getMetaData();</span><br><span class="line">			<span class="comment">// 通过ResultSetMetaData获取结果集中的列数</span></span><br><span class="line">			<span class="keyword">int</span> columnCount = rsmd.getColumnCount();</span><br><span class="line">			<span class="keyword">if</span> (rs.next()) &#123;</span><br><span class="line">				T t = clazz.newInstance();</span><br><span class="line">				<span class="comment">// 处理结果集一行数据中的每一个列</span></span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; columnCount; i++) &#123;</span><br><span class="line">					<span class="comment">// 获取列值</span></span><br><span class="line">					Object columValue = rs.getObject(i + <span class="number">1</span>);</span><br><span class="line">					<span class="comment">// 获取每个列的列名</span></span><br><span class="line">					<span class="comment">// String columnName = rsmd.getColumnName(i + 1);</span></span><br><span class="line">					String columnLabel = rsmd.getColumnLabel(i + <span class="number">1</span>);</span><br><span class="line">					<span class="comment">// 给t对象指定的columnName属性，赋值为columValue：通过反射</span></span><br><span class="line">					Field field = clazz.getDeclaredField(columnLabel);</span><br><span class="line">					field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">					field.set(t, columValue);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> t;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			JDBCUtils.closeResource(<span class="keyword">null</span>, ps, rs);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// *****************************************************
+    @Test
+    public void testTransactionSelect() throws Exception{
+        Connection conn = JDBCUtils.getConnection();
+        //获取当前连接的隔离级别
+        System.out.println(conn.getTransactionIsolation());
+        //设置数据库的隔离级别：
+        conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+        //取消自动提交数据
+        conn.setAutoCommit(false);
+
+        String sql = &quot;select user,password,balance from user_table where user = ?&quot;;
+        User user = getInstance(conn, User.class, sql, &quot;CC&quot;);
+        System.out.println(user);
+    }
+
+    @Test
+    public void testTransactionUpdate() throws Exception{
+        Connection conn = JDBCUtils.getConnection();
+        //取消自动提交数据
+        conn.setAutoCommit(false);
+        String sql = &quot;update user_table set balance = ? where user = ?&quot;;
+        update(conn, sql, 5000,&quot;CC&quot;);
+        Thread.sleep(15000);
+        System.out.println(&quot;修改结束&quot;);
+    }
+    //通用的查询操作，用于返回数据表中的一条记录（version 2.0：考虑上事务）
+    public &lt;T&gt; T getInstance(Connection conn,Class&lt;T&gt; clazz,String sql, Object... args) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = conn.prepareStatement(sql);
+            for (int i = 0; i &lt; args.length; i++) {
+                ps.setObject(i + 1, args[i]);
+            }
+            rs = ps.executeQuery();
+            // 获取结果集的元数据 :ResultSetMetaData
+            ResultSetMetaData rsmd = rs.getMetaData();
+            // 通过ResultSetMetaData获取结果集中的列数
+            int columnCount = rsmd.getColumnCount();
+            if (rs.next()) {
+                T t = clazz.newInstance();
+                // 处理结果集一行数据中的每一个列
+                for (int i = 0; i &lt; columnCount; i++) {
+                    // 获取列值
+                    Object columValue = rs.getObject(i + 1);
+                    // 获取每个列的列名
+                    // String columnName = rsmd.getColumnName(i + 1);
+                    String columnLabel = rsmd.getColumnLabel(i + 1);
+                    // 给t对象指定的columnName属性，赋值为columValue：通过反射
+                    Field field = clazz.getDeclaredField(columnLabel);
+                    field.setAccessible(true);
+                    field.set(t, columValue);
+                }
+                return t;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtils.closeResource(null, ps, rs);
+        }
+        return null;
+    }
+</code></pre>
 <h2 id="第7章：DAO及相关实现类"><a href="#第7章：DAO及相关实现类" class="headerlink" title="第7章：DAO及相关实现类"></a>第7章：DAO及相关实现类</h2><ul>
 <li>DAO：Data Access Object访问数据信息的类和接口，包括了对数据的CRUD（Create、Retrival、Update、Delete），而不包含任何业务相关的信息。有时也称作：BaseDAO</li>
 <li>作用：为了实现功能的模块化，更有利于代码的维护和升级。</li>
@@ -1442,14 +1570,395 @@
 <li>层次结构：</li>
 </ul>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/1566745811244.png" alt="1566745811244"></p>
-<h3 id="【BaseDAO-java】"><a href="#【BaseDAO-java】" class="headerlink" title="【BaseDAO.java】"></a>【BaseDAO.java】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bookstore.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.ParameterizedType;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Type;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.dbutils.QueryRunner;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.dbutils.handlers.BeanHandler;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.dbutils.handlers.BeanListHandler;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.dbutils.handlers.ScalarHandler;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义一个用来被继承的对数据库进行基本操作的Dao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> HanYanBing</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;T&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseDao</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> QueryRunner queryRunner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line">	<span class="comment">// 定义一个变量来接收泛型的类型</span></span><br><span class="line">	<span class="keyword">private</span> Class&lt;T&gt; type;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取T的Class对象，获取泛型的类型，泛型是在被子类继承时才确定</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BaseDao</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 获取子类的类型</span></span><br><span class="line">		Class clazz = <span class="keyword">this</span>.getClass();</span><br><span class="line">		<span class="comment">// 获取父类的类型</span></span><br><span class="line">		<span class="comment">// getGenericSuperclass()用来获取当前类的父类的类型</span></span><br><span class="line">		<span class="comment">// ParameterizedType表示的是带泛型的类型</span></span><br><span class="line">		ParameterizedType parameterizedType = (ParameterizedType) clazz.getGenericSuperclass();</span><br><span class="line">		<span class="comment">// 获取具体的泛型类型 getActualTypeArguments获取具体的泛型的类型</span></span><br><span class="line">		<span class="comment">// 这个方法会返回一个Type的数组</span></span><br><span class="line">		Type[] types = parameterizedType.getActualTypeArguments();</span><br><span class="line">		<span class="comment">// 获取具体的泛型的类型·</span></span><br><span class="line">		<span class="keyword">this</span>.type = (Class&lt;T&gt;) types[<span class="number">0</span>];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 通用的增删改操作</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> sql</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> params</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(Connection conn,String sql, Object... params)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			count = queryRunner.update(conn, sql, params);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取一个对象</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> sql</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> params</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">getBean</span><span class="params">(Connection conn,String sql, Object... params)</span> </span>&#123;</span><br><span class="line">		T t = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			t = queryRunner.query(conn, sql, <span class="keyword">new</span> BeanHandler&lt;T&gt;(type), params);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">return</span> t;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取所有对象</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> sql</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> params</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;T&gt; <span class="title">getBeanList</span><span class="params">(Connection conn,String sql, Object... params)</span> </span>&#123;</span><br><span class="line">		List&lt;T&gt; list = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			list = queryRunner.query(conn, sql, <span class="keyword">new</span> BeanListHandler&lt;T&gt;(type), params);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">return</span> list;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取一个但一值得方法，专门用来执行像 select count(*)...这样的sql语句</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> sql</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> params</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getValue</span><span class="params">(Connection conn,String sql, Object... params)</span> </span>&#123;</span><br><span class="line">		Object count = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 调用queryRunner的query方法获取一个单一的值</span></span><br><span class="line">			count = queryRunner.query(conn, sql, <span class="keyword">new</span> ScalarHandler&lt;&gt;(), params);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="【BookDAO-java】"><a href="#【BookDAO-java】" class="headerlink" title="【BookDAO.java】"></a>【BookDAO.java】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bookstore.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.beans.Book;</span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.beans.Page;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BookDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 从数据库中查询出所有的记录</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">List&lt;Book&gt; <span class="title">getBooks</span><span class="params">(Connection conn)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 向数据库中插入一条记录</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> book</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">saveBook</span><span class="params">(Connection conn,Book book)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 从数据库中根据图书的id删除一条记录</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> bookId</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">deleteBookById</span><span class="params">(Connection conn,String bookId)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据图书的id从数据库中查询出一条记录</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> bookId</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">Book <span class="title">getBookById</span><span class="params">(Connection conn,String bookId)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据图书的id从数据库中更新一条记录</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> book</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">updateBook</span><span class="params">(Connection conn,Book book)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取带分页的图书信息</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> page：是只包含了用户输入的pageNo属性的page对象</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回的Page对象是包含了所有属性的Page对象</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">Page&lt;Book&gt; <span class="title">getPageBooks</span><span class="params">(Connection conn,Page&lt;Book&gt; page)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取带分页和价格范围的图书信息</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> page：是只包含了用户输入的pageNo属性的page对象</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回的Page对象是包含了所有属性的Page对象</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">Page&lt;Book&gt; <span class="title">getPageBooksByPrice</span><span class="params">(Connection conn,Page&lt;Book&gt; page, <span class="keyword">double</span> minPrice, <span class="keyword">double</span> maxPrice)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="【UserDAO-java】"><a href="#【UserDAO-java】" class="headerlink" title="【UserDAO.java】"></a>【UserDAO.java】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bookstore.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.beans.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据User对象中的用户名和密码从数据库中获取一条记录</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> User 数据库中有记录 null 数据库中无此记录</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">User <span class="title">getUser</span><span class="params">(Connection conn,User user)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据User对象中的用户名从数据库中获取一条记录</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> true 数据库中有记录 false 数据库中无此记录</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">checkUsername</span><span class="params">(Connection conn,User user)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 向数据库中插入User对象</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">saveUser</span><span class="params">(Connection conn,User user)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="【BookDaoImpl-java】"><a href="#【BookDaoImpl-java】" class="headerlink" title="【BookDaoImpl.java】"></a>【BookDaoImpl.java】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bookstore.dao.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.beans.Book;</span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.beans.Page;</span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.dao.BaseDao;</span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.dao.BookDao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookDaoImpl</span> <span class="keyword">extends</span> <span class="title">BaseDao</span>&lt;<span class="title">Book</span>&gt; <span class="keyword">implements</span> <span class="title">BookDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">getBooks</span><span class="params">(Connection conn)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 调用BaseDao中得到一个List的方法</span></span><br><span class="line">		List&lt;Book&gt; beanList = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// 写sql语句</span></span><br><span class="line">		String sql = <span class="string">"select id,title,author,price,sales,stock,img_path imgPath from books"</span>;</span><br><span class="line">		beanList = getBeanList(conn,sql);</span><br><span class="line">		<span class="keyword">return</span> beanList;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveBook</span><span class="params">(Connection conn,Book book)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 写sql语句</span></span><br><span class="line">		String sql = <span class="string">"insert into books(title,author,price,sales,stock,img_path) values(?,?,?,?,?,?)"</span>;</span><br><span class="line">		<span class="comment">// 调用BaseDao中通用的增删改的方法</span></span><br><span class="line">		update(conn,sql, book.getTitle(), book.getAuthor(), book.getPrice(), book.getSales(), book.getStock(),book.getImgPath());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteBookById</span><span class="params">(Connection conn,String bookId)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 写sql语句</span></span><br><span class="line">		String sql = <span class="string">"DELETE FROM books WHERE id = ?"</span>;</span><br><span class="line">		<span class="comment">// 调用BaseDao中通用增删改的方法</span></span><br><span class="line">		update(conn,sql, bookId);</span><br><span class="line">			</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Book <span class="title">getBookById</span><span class="params">(Connection conn,String bookId)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 调用BaseDao中获取一个对象的方法</span></span><br><span class="line">		Book book = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// 写sql语句</span></span><br><span class="line">		String sql = <span class="string">"select id,title,author,price,sales,stock,img_path imgPath from books where id = ?"</span>;</span><br><span class="line">		book = getBean(conn,sql, bookId);</span><br><span class="line">		<span class="keyword">return</span> book;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateBook</span><span class="params">(Connection conn,Book book)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 写sql语句</span></span><br><span class="line">		String sql = <span class="string">"update books set title = ? , author = ? , price = ? , sales = ? , stock = ? where id = ?"</span>;</span><br><span class="line">		<span class="comment">// 调用BaseDao中通用的增删改的方法</span></span><br><span class="line">		update(conn,sql, book.getTitle(), book.getAuthor(), book.getPrice(), book.getSales(), book.getStock(), book.getId());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Page&lt;Book&gt; <span class="title">getPageBooks</span><span class="params">(Connection conn,Page&lt;Book&gt; page)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 获取数据库中图书的总记录数</span></span><br><span class="line">		String sql = <span class="string">"select count(*) from books"</span>;</span><br><span class="line">		<span class="comment">// 调用BaseDao中获取一个单一值的方法</span></span><br><span class="line">		<span class="keyword">long</span> totalRecord = (<span class="keyword">long</span>) getValue(conn,sql);</span><br><span class="line">		<span class="comment">// 将总记录数设置都page对象中</span></span><br><span class="line">		page.setTotalRecord((<span class="keyword">int</span>) totalRecord);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 获取当前页中的记录存放的List</span></span><br><span class="line">		String sql2 = <span class="string">"select id,title,author,price,sales,stock,img_path imgPath from books limit ?,?"</span>;</span><br><span class="line">		<span class="comment">// 调用BaseDao中获取一个集合的方法</span></span><br><span class="line">		List&lt;Book&gt; beanList = getBeanList(conn,sql2, (page.getPageNo() - <span class="number">1</span>) * Page.PAGE_SIZE, Page.PAGE_SIZE);</span><br><span class="line">		<span class="comment">// 将这个List设置到page对象中</span></span><br><span class="line">		page.setList(beanList);</span><br><span class="line">		<span class="keyword">return</span> page;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Page&lt;Book&gt; <span class="title">getPageBooksByPrice</span><span class="params">(Connection conn,Page&lt;Book&gt; page, <span class="keyword">double</span> minPrice, <span class="keyword">double</span> maxPrice)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 获取数据库中图书的总记录数</span></span><br><span class="line">		String sql = <span class="string">"select count(*) from books where price between ? and ?"</span>;</span><br><span class="line">		<span class="comment">// 调用BaseDao中获取一个单一值的方法</span></span><br><span class="line">		<span class="keyword">long</span> totalRecord = (<span class="keyword">long</span>) getValue(conn,sql,minPrice,maxPrice);</span><br><span class="line">		<span class="comment">// 将总记录数设置都page对象中</span></span><br><span class="line">		page.setTotalRecord((<span class="keyword">int</span>) totalRecord);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 获取当前页中的记录存放的List</span></span><br><span class="line">		String sql2 = <span class="string">"select id,title,author,price,sales,stock,img_path imgPath from books where price between ? and ? limit ?,?"</span>;</span><br><span class="line">		<span class="comment">// 调用BaseDao中获取一个集合的方法</span></span><br><span class="line">		List&lt;Book&gt; beanList = getBeanList(conn,sql2, minPrice , maxPrice , (page.getPageNo() - <span class="number">1</span>) * Page.PAGE_SIZE, Page.PAGE_SIZE);</span><br><span class="line">		<span class="comment">// 将这个List设置到page对象中</span></span><br><span class="line">		page.setList(beanList);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> page;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="【UserDaoImpl-java】"><a href="#【UserDaoImpl-java】" class="headerlink" title="【UserDaoImpl.java】"></a>【UserDaoImpl.java】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bookstore.dao.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.beans.User;</span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.dao.BaseDao;</span><br><span class="line"><span class="keyword">import</span> com.atguigu.bookstore.dao.UserDao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">extends</span> <span class="title">BaseDao</span>&lt;<span class="title">User</span>&gt; <span class="keyword">implements</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">(Connection conn,User user)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 调用BaseDao中获取一个对象的方法</span></span><br><span class="line">		User bean = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// 写sql语句</span></span><br><span class="line">		String sql = <span class="string">"select id,username,password,email from users where username = ? and password = ?"</span>;</span><br><span class="line">		bean = getBean(conn,sql, user.getUsername(), user.getPassword());</span><br><span class="line">		<span class="keyword">return</span> bean;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkUsername</span><span class="params">(Connection conn,User user)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 调用BaseDao中获取一个对象的方法</span></span><br><span class="line">		User bean = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// 写sql语句</span></span><br><span class="line">		String sql = <span class="string">"select id,username,password,email from users where username = ?"</span>;</span><br><span class="line">		bean = getBean(conn,sql, user.getUsername());</span><br><span class="line">		<span class="keyword">return</span> bean != <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveUser</span><span class="params">(Connection conn,User user)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//写sql语句</span></span><br><span class="line">		String sql = <span class="string">"insert into users(username,password,email) values(?,?,?)"</span>;</span><br><span class="line">		<span class="comment">//调用BaseDao中通用的增删改的方法</span></span><br><span class="line">		update(conn,sql, user.getUsername(),user.getPassword(),user.getEmail());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="【Book-java】"><a href="#【Book-java】" class="headerlink" title="【Book.java】"></a>【Book.java】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bookstore.beans;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 图书类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> songhongkang</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Integer id;</span><br><span class="line">	<span class="keyword">private</span> String title; <span class="comment">// 书名</span></span><br><span class="line">	<span class="keyword">private</span> String author; <span class="comment">// 作者</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span> price; <span class="comment">// 价格</span></span><br><span class="line">	<span class="keyword">private</span> Integer sales; <span class="comment">// 销量</span></span><br><span class="line">	<span class="keyword">private</span> Integer stock; <span class="comment">// 库存</span></span><br><span class="line">	<span class="keyword">private</span> String imgPath = <span class="string">"static/img/default.jpg"</span>; <span class="comment">// 封面图片的路径</span></span><br><span class="line">	<span class="comment">//构造器，get()，set()，toString()方法略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="【Page-java】"><a href="#【Page-java】" class="headerlink" title="【Page.java】"></a>【Page.java】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bookstore.beans;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 页码类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> songhongkang</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Page</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> List&lt;T&gt; list; <span class="comment">// 每页查到的记录存放的集合</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PAGE_SIZE = <span class="number">4</span>; <span class="comment">// 每页显示的记录数</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> pageNo; <span class="comment">// 当前页</span></span><br><span class="line"><span class="comment">//	private int totalPageNo; // 总页数，通过计算得到</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> totalRecord; <span class="comment">// 总记录数，通过查询数据库得到</span></span><br></pre></td></tr></table></figure>
-<h3 id="【User-java】"><a href="#【User-java】" class="headerlink" title="【User.java】"></a>【User.java】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.bookstore.beans;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> songhongkang</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Integer id;</span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="keyword">private</span> String email;</span><br></pre></td></tr></table></figure>
+<h3 id="【BaseDAO-java】"><a href="#【BaseDAO-java】" class="headerlink" title="【BaseDAO.java】"></a>【BaseDAO.java】</h3><pre><code class="lang-java">package com.atguigu.bookstore.dao;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+
+
+/**
+ * 定义一个用来被继承的对数据库进行基本操作的Dao
+ * @author HanYanBing
+ * @param &lt;T&gt;
+ */
+public abstract class BaseDao&lt;T&gt; {
+    private QueryRunner queryRunner = new QueryRunner();
+    // 定义一个变量来接收泛型的类型
+    private Class&lt;T&gt; type;
+
+    // 获取T的Class对象，获取泛型的类型，泛型是在被子类继承时才确定
+    public BaseDao() {
+        // 获取子类的类型
+        Class clazz = this.getClass();
+        // 获取父类的类型
+        // getGenericSuperclass()用来获取当前类的父类的类型
+        // ParameterizedType表示的是带泛型的类型
+        ParameterizedType parameterizedType = (ParameterizedType) clazz.getGenericSuperclass();
+        // 获取具体的泛型类型 getActualTypeArguments获取具体的泛型的类型
+        // 这个方法会返回一个Type的数组
+        Type[] types = parameterizedType.getActualTypeArguments();
+        // 获取具体的泛型的类型·
+        this.type = (Class&lt;T&gt;) types[0];
+    }
+
+    /**
+     * 通用的增删改操作
+     * 
+     * @param sql
+     * @param params
+     * @return
+     */
+    public int update(Connection conn,String sql, Object... params) {
+        int count = 0;
+        try {
+            count = queryRunner.update(conn, sql, params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return count;
+    }
+
+    /**
+     * 获取一个对象
+     * 
+     * @param sql
+     * @param params
+     * @return
+     */
+    public T getBean(Connection conn,String sql, Object... params) {
+        T t = null;
+        try {
+            t = queryRunner.query(conn, sql, new BeanHandler&lt;T&gt;(type), params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return t;
+    }
+
+    /**
+     * 获取所有对象
+     * 
+     * @param sql
+     * @param params
+     * @return
+     */
+    public List&lt;T&gt; getBeanList(Connection conn,String sql, Object... params) {
+        List&lt;T&gt; list = null;
+        try {
+            list = queryRunner.query(conn, sql, new BeanListHandler&lt;T&gt;(type), params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return list;
+    }
+
+    /**
+     * 获取一个但一值得方法，专门用来执行像 select count(*)...这样的sql语句
+     * 
+     * @param sql
+     * @param params
+     * @return
+     */
+    public Object getValue(Connection conn,String sql, Object... params) {
+        Object count = null;
+        try {
+            // 调用queryRunner的query方法获取一个单一的值
+            count = queryRunner.query(conn, sql, new ScalarHandler&lt;&gt;(), params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return count;
+    }
+}
+</code></pre>
+<h3 id="【BookDAO-java】"><a href="#【BookDAO-java】" class="headerlink" title="【BookDAO.java】"></a>【BookDAO.java】</h3><pre><code class="lang-java">package com.atguigu.bookstore.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.atguigu.bookstore.beans.Book;
+import com.atguigu.bookstore.beans.Page;
+
+public interface BookDao {
+
+    /**
+     * 从数据库中查询出所有的记录
+     * 
+     * @return
+     */
+    List&lt;Book&gt; getBooks(Connection conn);
+
+    /**
+     * 向数据库中插入一条记录
+     * 
+     * @param book
+     */
+    void saveBook(Connection conn,Book book);
+
+    /**
+     * 从数据库中根据图书的id删除一条记录
+     * 
+     * @param bookId
+     */
+    void deleteBookById(Connection conn,String bookId);
+
+    /**
+     * 根据图书的id从数据库中查询出一条记录
+     * 
+     * @param bookId
+     * @return
+     */
+    Book getBookById(Connection conn,String bookId);
+
+    /**
+     * 根据图书的id从数据库中更新一条记录
+     * 
+     * @param book
+     */
+    void updateBook(Connection conn,Book book);
+
+    /**
+     * 获取带分页的图书信息
+     * 
+     * @param page：是只包含了用户输入的pageNo属性的page对象
+     * @return 返回的Page对象是包含了所有属性的Page对象
+     */
+    Page&lt;Book&gt; getPageBooks(Connection conn,Page&lt;Book&gt; page);
+
+    /**
+     * 获取带分页和价格范围的图书信息
+     * 
+     * @param page：是只包含了用户输入的pageNo属性的page对象
+     * @return 返回的Page对象是包含了所有属性的Page对象
+     */
+    Page&lt;Book&gt; getPageBooksByPrice(Connection conn,Page&lt;Book&gt; page, double minPrice, double maxPrice);
+
+}
+</code></pre>
+<h3 id="【UserDAO-java】"><a href="#【UserDAO-java】" class="headerlink" title="【UserDAO.java】"></a>【UserDAO.java】</h3><pre><code class="lang-java">package com.atguigu.bookstore.dao;
+
+import java.sql.Connection;
+
+import com.atguigu.bookstore.beans.User;
+
+public interface UserDao {
+
+    /**
+     * 根据User对象中的用户名和密码从数据库中获取一条记录
+     * 
+     * @param user
+     * @return User 数据库中有记录 null 数据库中无此记录
+     */
+    User getUser(Connection conn,User user);
+
+    /**
+     * 根据User对象中的用户名从数据库中获取一条记录
+     * 
+     * @param user
+     * @return true 数据库中有记录 false 数据库中无此记录
+     */
+    boolean checkUsername(Connection conn,User user);
+
+    /**
+     * 向数据库中插入User对象
+     * 
+     * @param user
+     */
+    void saveUser(Connection conn,User user);
+}
+</code></pre>
+<h3 id="【BookDaoImpl-java】"><a href="#【BookDaoImpl-java】" class="headerlink" title="【BookDaoImpl.java】"></a>【BookDaoImpl.java】</h3><pre><code class="lang-java">package com.atguigu.bookstore.dao.impl;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.atguigu.bookstore.beans.Book;
+import com.atguigu.bookstore.beans.Page;
+import com.atguigu.bookstore.dao.BaseDao;
+import com.atguigu.bookstore.dao.BookDao;
+
+public class BookDaoImpl extends BaseDao&lt;Book&gt; implements BookDao {
+
+    @Override
+    public List&lt;Book&gt; getBooks(Connection conn) {
+        // 调用BaseDao中得到一个List的方法
+        List&lt;Book&gt; beanList = null;
+        // 写sql语句
+        String sql = &quot;select id,title,author,price,sales,stock,img_path imgPath from books&quot;;
+        beanList = getBeanList(conn,sql);
+        return beanList;
+    }
+
+    @Override
+    public void saveBook(Connection conn,Book book) {
+        // 写sql语句
+        String sql = &quot;insert into books(title,author,price,sales,stock,img_path) values(?,?,?,?,?,?)&quot;;
+        // 调用BaseDao中通用的增删改的方法
+        update(conn,sql, book.getTitle(), book.getAuthor(), book.getPrice(), book.getSales(), book.getStock(),book.getImgPath());
+    }
+
+    @Override
+    public void deleteBookById(Connection conn,String bookId) {
+        // 写sql语句
+        String sql = &quot;DELETE FROM books WHERE id = ?&quot;;
+        // 调用BaseDao中通用增删改的方法
+        update(conn,sql, bookId);
+
+    }
+
+    @Override
+    public Book getBookById(Connection conn,String bookId) {
+        // 调用BaseDao中获取一个对象的方法
+        Book book = null;
+        // 写sql语句
+        String sql = &quot;select id,title,author,price,sales,stock,img_path imgPath from books where id = ?&quot;;
+        book = getBean(conn,sql, bookId);
+        return book;
+    }
+
+    @Override
+    public void updateBook(Connection conn,Book book) {
+        // 写sql语句
+        String sql = &quot;update books set title = ? , author = ? , price = ? , sales = ? , stock = ? where id = ?&quot;;
+        // 调用BaseDao中通用的增删改的方法
+        update(conn,sql, book.getTitle(), book.getAuthor(), book.getPrice(), book.getSales(), book.getStock(), book.getId());
+    }
+
+    @Override
+    public Page&lt;Book&gt; getPageBooks(Connection conn,Page&lt;Book&gt; page) {
+        // 获取数据库中图书的总记录数
+        String sql = &quot;select count(*) from books&quot;;
+        // 调用BaseDao中获取一个单一值的方法
+        long totalRecord = (long) getValue(conn,sql);
+        // 将总记录数设置都page对象中
+        page.setTotalRecord((int) totalRecord);
+
+        // 获取当前页中的记录存放的List
+        String sql2 = &quot;select id,title,author,price,sales,stock,img_path imgPath from books limit ?,?&quot;;
+        // 调用BaseDao中获取一个集合的方法
+        List&lt;Book&gt; beanList = getBeanList(conn,sql2, (page.getPageNo() - 1) * Page.PAGE_SIZE, Page.PAGE_SIZE);
+        // 将这个List设置到page对象中
+        page.setList(beanList);
+        return page;
+    }
+
+    @Override
+    public Page&lt;Book&gt; getPageBooksByPrice(Connection conn,Page&lt;Book&gt; page, double minPrice, double maxPrice) {
+        // 获取数据库中图书的总记录数
+        String sql = &quot;select count(*) from books where price between ? and ?&quot;;
+        // 调用BaseDao中获取一个单一值的方法
+        long totalRecord = (long) getValue(conn,sql,minPrice,maxPrice);
+        // 将总记录数设置都page对象中
+        page.setTotalRecord((int) totalRecord);
+
+        // 获取当前页中的记录存放的List
+        String sql2 = &quot;select id,title,author,price,sales,stock,img_path imgPath from books where price between ? and ? limit ?,?&quot;;
+        // 调用BaseDao中获取一个集合的方法
+        List&lt;Book&gt; beanList = getBeanList(conn,sql2, minPrice , maxPrice , (page.getPageNo() - 1) * Page.PAGE_SIZE, Page.PAGE_SIZE);
+        // 将这个List设置到page对象中
+        page.setList(beanList);
+
+        return page;
+    }
+
+}
+</code></pre>
+<h3 id="【UserDaoImpl-java】"><a href="#【UserDaoImpl-java】" class="headerlink" title="【UserDaoImpl.java】"></a>【UserDaoImpl.java】</h3><pre><code class="lang-java">package com.atguigu.bookstore.dao.impl;
+
+import java.sql.Connection;
+
+import com.atguigu.bookstore.beans.User;
+import com.atguigu.bookstore.dao.BaseDao;
+import com.atguigu.bookstore.dao.UserDao;
+
+public class UserDaoImpl extends BaseDao&lt;User&gt; implements UserDao {
+
+    @Override
+    public User getUser(Connection conn,User user) {
+        // 调用BaseDao中获取一个对象的方法
+        User bean = null;
+        // 写sql语句
+        String sql = &quot;select id,username,password,email from users where username = ? and password = ?&quot;;
+        bean = getBean(conn,sql, user.getUsername(), user.getPassword());
+        return bean;
+    }
+
+    @Override
+    public boolean checkUsername(Connection conn,User user) {
+        // 调用BaseDao中获取一个对象的方法
+        User bean = null;
+        // 写sql语句
+        String sql = &quot;select id,username,password,email from users where username = ?&quot;;
+        bean = getBean(conn,sql, user.getUsername());
+        return bean != null;
+    }
+
+    @Override
+    public void saveUser(Connection conn,User user) {
+        //写sql语句
+        String sql = &quot;insert into users(username,password,email) values(?,?,?)&quot;;
+        //调用BaseDao中通用的增删改的方法
+        update(conn,sql, user.getUsername(),user.getPassword(),user.getEmail());
+    }
+
+}
+</code></pre>
+<h3 id="【Book-java】"><a href="#【Book-java】" class="headerlink" title="【Book.java】"></a>【Book.java】</h3><pre><code class="lang-java">package com.atguigu.bookstore.beans;
+/**
+ * 图书类
+ * @author songhongkang
+ *
+ */
+public class Book {
+
+    private Integer id;
+    private String title; // 书名
+    private String author; // 作者
+    private double price; // 价格
+    private Integer sales; // 销量
+    private Integer stock; // 库存
+    private String imgPath = &quot;static/img/default.jpg&quot;; // 封面图片的路径
+    //构造器，get()，set()，toString()方法略
+}
+</code></pre>
+<h3 id="【Page-java】"><a href="#【Page-java】" class="headerlink" title="【Page.java】"></a>【Page.java】</h3><pre><code class="lang-java">package com.atguigu.bookstore.beans;
+
+import java.util.List;
+/**
+ * 页码类
+ * @author songhongkang
+ *
+ */
+public class Page&lt;T&gt; {
+
+    private List&lt;T&gt; list; // 每页查到的记录存放的集合
+    public static final int PAGE_SIZE = 4; // 每页显示的记录数
+    private int pageNo; // 当前页
+//    private int totalPageNo; // 总页数，通过计算得到
+    private int totalRecord; // 总记录数，通过查询数据库得到
+</code></pre>
+<h3 id="【User-java】"><a href="#【User-java】" class="headerlink" title="【User.java】"></a>【User.java】</h3><pre><code class="lang-java">package com.atguigu.bookstore.beans;
+/**
+ * 用户类
+ * @author songhongkang
+ *
+ */
+public class User {
+
+    private Integer id;
+    private String username;
+    private String password;
+    private String email;
+</code></pre>
+
 </div>
 
 

@@ -490,8 +490,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -499,8 +499,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1324,7 +1324,8 @@
 配置hive-env.sh 文件
 
 
-12345配置HADOOP_HOME 路径 ：exp
+配置HADOOP_HOME 路径 ：
+export 
 					...
 				</div>
 			</a>
@@ -1390,35 +1391,8 @@ Hive 分析数据
 配置hive-env.sh 文件
 
 
-12345配置HADOOP_HOME 路径 ：exp
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-03</span>
-                    
-                            
-                                
-                                    <span>
-                                        <i class="fa fa-folder" aria-hidden="true"></i>
-                                        <a href="/categories/Hive/">Hive</a>
-										
-                                    </span>
-                                
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/03/07-Hive/Hive05-DML.html">
-				<h2 class="index-title">
-					Hive05-DML
-				</h2>
-				<div class="index-brief">
-					数据导入向表中装载数据（Load）1hive&gt; load data [local] inpath '/opt/module/datas/student.txt' [overwrite] | into table student [partition (partcol1=val1,…)];
-
-l
+配置HADOOP_HOME 路径 ：
+export 
 					...
 				</div>
 			</a>
@@ -1498,12 +1472,12 @@ long
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+			<a href="/2020/07/03/07-Hive/Hive05-DML.html">
 				<h2 class="index-title">
-					Hive04-DDL
+					Hive05-DML
 				</h2>
 				<div class="index-brief">
-					创建数据库1234567hive&gt; create database if not exists db_hive; -- 默认存储路径是/user/hive/warehouse/*.db。hive&gt; create database db_hive2 location '/db_hive2.
+					数据导入向表中装载数据（Load）hive&gt; load data [local] inpath &#39;/opt/module/datas/student.txt&#39; [overwrite] | into table student [partition (partcol1=val1,
 					...
 				</div>
 			</a>
@@ -1524,16 +1498,15 @@ long
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+			<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
 				<h2 class="index-title">
-					Hive07-函数
+					Hive04-DDL
 				</h2>
 				<div class="index-brief">
-					系统内置函数查看系统自带的函数：hive&gt; show functions;
-显示自带的函数的用法：hive&gt; desc function upper;
-详细显示自带的函数的用法：hive&gt; desc function extended upper;
-自定义函数
-UDF（User-D
+					创建数据库hive&gt; create database if not exists db_hive; 
+-- 默认存储路径是/user/hive/warehouse/*.db。
+
+hive&gt; create database db_hive2 location &#39;/db_hive2.
 					...
 				</div>
 			</a>
@@ -1560,7 +1533,8 @@ UDF（User-D
 				</h2>
 				<div class="index-brief">
 					相关指南：https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select
-123456789SELECT [ALL | DISTINCT] select_expr, select_expr, ...FROM table_r
+SELECT [ALL | DISTINCT] select_expr, select_expr, ...
+FROM table_reference
 					...
 				</div>
 			</a>
@@ -1595,6 +1569,36 @@ protobuf-2.5.0.tar.gz
 
 
 准备
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2020-07-03</span>
+                    
+                            
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/Hive/">Hive</a>
+										
+                                    </span>
+                                
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+				<h2 class="index-title">
+					Hive07-函数
+				</h2>
+				<div class="index-brief">
+					系统内置函数查看系统自带的函数：hive&gt; show functions;
+显示自带的函数的用法：hive&gt; desc function upper;
+详细显示自带的函数的用法：hive&gt; desc function extended upper;
+自定义函数
+UDF（User-D
 					...
 				</div>
 			</a>

@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1334,7 +1334,8 @@
 </div>
 
 <div id="article-content">
-	<h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><h3 id="向表中装载数据（Load）"><a href="#向表中装载数据（Load）" class="headerlink" title="向表中装载数据（Load）"></a>向表中装载数据（Load）</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; load data [local] inpath '/opt/module/datas/student.txt' [overwrite] | into table student [partition (partcol1=val1,…)];</span><br></pre></td></tr></table></figure>
+	<h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><h3 id="向表中装载数据（Load）"><a href="#向表中装载数据（Load）" class="headerlink" title="向表中装载数据（Load）"></a>向表中装载数据（Load）</h3><pre><code class="lang-sql">hive&gt; load data [local] inpath &#39;/opt/module/datas/student.txt&#39; [overwrite] | into table student [partition (partcol1=val1,…)];
+</code></pre>
 <ul>
 <li>load data:表示加载数据</li>
 <li>local:表示从本地加载数据到hive 表；否则从HDFS 加载数据到hive 表</li>
@@ -1344,21 +1345,75 @@
 <li>student:表示具体的表</li>
 <li>partition:表示上传到指定分区</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hive (default)&gt; create table student(id string, name string) row format delimited fields terminated by '\t';</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 加载本地文件到hive</span></span><br><span class="line">hive (default)&gt; load data local inpath '/opt/module/datas/student.txt' into table default.student;</span><br><span class="line"><span class="comment">-- 加载HDFS 文件到hive 中</span></span><br><span class="line">hive (default)&gt; dfs -put /opt/module/datas/student.txt /user/atguigu/hive;</span><br><span class="line">hive (default)&gt; load data inpath '/user/atguigu/hive/student.txt' into table default.student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 加载数据覆盖表中已有的数据</span></span><br><span class="line">hive (default)&gt; load data inpath '/user/atguigu/hive/student.txt' overwrite into table default.student;</span><br></pre></td></tr></table></figure>
-<h3 id="通过查询语句向表中插入数据（Insert）"><a href="#通过查询语句向表中插入数据（Insert）" class="headerlink" title="通过查询语句向表中插入数据（Insert）"></a>通过查询语句向表中插入数据（Insert）</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">hive (default)&gt; create table student(id int, name string) partitioned by (month string) row format delimited fields terminated by '\t';</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 基本插入数据</span></span><br><span class="line">hive (default)&gt; insert into table student partition(month='201709') values(1,'wangwu');</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 基本模式插入（根据单张表查询结果）</span></span><br><span class="line">hive (default)&gt; insert overwrite table student partition(month='201708') </span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span> <span class="keyword">from</span> student <span class="keyword">where</span> <span class="keyword">month</span>=<span class="string">'201709'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 多插入模式（根据多张表查询结果）</span></span><br><span class="line">hive (default)&gt; </span><br><span class="line">from student </span><br><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> student <span class="keyword">partition</span>(<span class="keyword">month</span>=<span class="string">'201707'</span>)</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span> <span class="keyword">where</span> <span class="keyword">month</span>=<span class="string">'201709'</span></span><br><span class="line"><span class="keyword">insert</span> overwrite <span class="keyword">table</span> student <span class="keyword">partition</span>(<span class="keyword">month</span>=<span class="string">'201706'</span>)</span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span> <span class="keyword">where</span> <span class="keyword">month</span>=<span class="string">'201709'</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">hive (default)&gt; create table student(id string, name string) row format delimited fields terminated by &#39;\t&#39;;
+
+-- 加载本地文件到hive
+hive (default)&gt; load data local inpath &#39;/opt/module/datas/student.txt&#39; into table default.student;
+-- 加载HDFS 文件到hive 中
+hive (default)&gt; dfs -put /opt/module/datas/student.txt /user/atguigu/hive;
+hive (default)&gt; load data inpath &#39;/user/atguigu/hive/student.txt&#39; into table default.student;
+
+-- 加载数据覆盖表中已有的数据
+hive (default)&gt; load data inpath &#39;/user/atguigu/hive/student.txt&#39; overwrite into table default.student;
+</code></pre>
+<h3 id="通过查询语句向表中插入数据（Insert）"><a href="#通过查询语句向表中插入数据（Insert）" class="headerlink" title="通过查询语句向表中插入数据（Insert）"></a>通过查询语句向表中插入数据（Insert）</h3><pre><code class="lang-sql">hive (default)&gt; create table student(id int, name string) partitioned by (month string) row format delimited fields terminated by &#39;\t&#39;;
+
+-- 基本插入数据
+hive (default)&gt; insert into table student partition(month=&#39;201709&#39;) values(1,&#39;wangwu&#39;);
+
+-- 基本模式插入（根据单张表查询结果）
+hive (default)&gt; insert overwrite table student partition(month=&#39;201708&#39;) 
+    select id, name from student where month=&#39;201709&#39;;
+
+-- 多插入模式（根据多张表查询结果）
+hive (default)&gt; 
+from student 
+insert overwrite table student partition(month=&#39;201707&#39;)
+    select id, name where month=&#39;201709&#39;
+insert overwrite table student partition(month=&#39;201706&#39;)
+    select id, name where month=&#39;201709&#39;;
+</code></pre>
 <h3 id="查询语句中创建表并加载数据（As-Select）"><a href="#查询语句中创建表并加载数据（As-Select）" class="headerlink" title="查询语句中创建表并加载数据（As Select）"></a>查询语句中创建表并加载数据（As Select）</h3><p>根据查询结果创建表（查询的结果会添加到新创建的表中）</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> student3 <span class="keyword">as</span> <span class="keyword">select</span> <span class="keyword">id</span>, <span class="keyword">name</span> <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
-<h3 id="创建表时通过Location-指定加载数据路径"><a href="#创建表时通过Location-指定加载数据路径" class="headerlink" title="创建表时通过Location 指定加载数据路径"></a>创建表时通过Location 指定加载数据路径</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建表，并指定在hdfs 上的位置</span></span><br><span class="line">hive (default)&gt; create table if not exists student5(id int, name string)</span><br><span class="line">row format delimited fields terminated by '\t'</span><br><span class="line">location '/user/hive/warehouse/student5';</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 上传数据到hdfs 上</span></span><br><span class="line">hive (default)&gt; dfs -put /opt/module/datas/student.txt /user/hive/warehouse/student5;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询数据</span></span><br><span class="line">hive (default)&gt; select * from student5;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">create table if not exists student3 as select id, name from student;
+</code></pre>
+<h3 id="创建表时通过Location-指定加载数据路径"><a href="#创建表时通过Location-指定加载数据路径" class="headerlink" title="创建表时通过Location 指定加载数据路径"></a>创建表时通过Location 指定加载数据路径</h3><pre><code class="lang-sql">-- 创建表，并指定在hdfs 上的位置
+hive (default)&gt; create table if not exists student5(id int, name string)
+row format delimited fields terminated by &#39;\t&#39;
+location &#39;/user/hive/warehouse/student5&#39;;
+
+-- 上传数据到hdfs 上
+hive (default)&gt; dfs -put /opt/module/datas/student.txt /user/hive/warehouse/student5;
+
+-- 查询数据
+hive (default)&gt; select * from student5;
+</code></pre>
 <h3 id="Import-数据到指定Hive-表中"><a href="#Import-数据到指定Hive-表中" class="headerlink" title="Import 数据到指定Hive 表中"></a>Import 数据到指定Hive 表中</h3><p>注意：先用export 导出后，再将数据导入。</p>
 <p>可以直接导入不存在的表</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive (default)&gt; import table student2 partition(month='201709') from '/user/hive/warehouse/export/student';</span><br></pre></td></tr></table></figure>
-<h2 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h2><h3 id="Insert-导出"><a href="#Insert-导出" class="headerlink" title="Insert 导出"></a>Insert 导出</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 将查询的结果导出到本地，local directory 这个代表本地文件</span></span><br><span class="line">hive (default)&gt; insert overwrite local directory '/opt/module/datas/export/student'</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 将查询的结果格式化导出到本地</span></span><br><span class="line">hive(default)&gt;insert overwrite local directory '/opt/module/datas/export/student1'</span><br><span class="line">ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 将查询的结果导出到HDFS 上(没有local)</span></span><br><span class="line">hive (default)&gt; insert overwrite directory '/user/atguigu/student2' </span><br><span class="line">ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' </span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
-<h3 id="Hadoop-命令导出到本地"><a href="#Hadoop-命令导出到本地" class="headerlink" title="Hadoop 命令导出到本地"></a>Hadoop 命令导出到本地</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive (default)&gt; dfs -get /user/hive/warehouse/student/month=201709/000000_0 /opt/module/datas/export/student3.txt;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">hive (default)&gt; import table student2 partition(month=&#39;201709&#39;) from &#39;/user/hive/warehouse/export/student&#39;;
+</code></pre>
+<h2 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h2><h3 id="Insert-导出"><a href="#Insert-导出" class="headerlink" title="Insert 导出"></a>Insert 导出</h3><pre><code class="lang-sql">-- 将查询的结果导出到本地，local directory 这个代表本地文件
+hive (default)&gt; insert overwrite local directory &#39;/opt/module/datas/export/student&#39;
+select * from student;
+
+-- 将查询的结果格式化导出到本地
+hive(default)&gt;insert overwrite local directory &#39;/opt/module/datas/export/student1&#39;
+ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;\t&#39;
+select * from student;
+
+-- 将查询的结果导出到HDFS 上(没有local)
+hive (default)&gt; insert overwrite directory &#39;/user/atguigu/student2&#39; 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;\t&#39; 
+select * from student;
+</code></pre>
+<h3 id="Hadoop-命令导出到本地"><a href="#Hadoop-命令导出到本地" class="headerlink" title="Hadoop 命令导出到本地"></a>Hadoop 命令导出到本地</h3><pre><code class="lang-sql">hive (default)&gt; dfs -get /user/hive/warehouse/student/month=201709/000000_0 /opt/module/datas/export/student3.txt;
+</code></pre>
 <h3 id="Hive-Shell-命令导出"><a href="#Hive-Shell-命令导出" class="headerlink" title="Hive Shell 命令导出"></a>Hive Shell 命令导出</h3><p>基本语法：（hive -f/-e 执行语句或者脚本&gt; file）</p>
 <p>-e  执行语句</p>
 <p>-f  执行sql脚本</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hive]$ bin/hive -e 'select * from default.student;' &gt; /opt/module/datas/export/student4.txt;</span><br></pre></td></tr></table></figure>
-<h3 id="Export-导出到HDFS-上"><a href="#Export-导出到HDFS-上" class="headerlink" title="Export 导出到HDFS 上"></a>Export 导出到HDFS 上</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(defahiveult)&gt; export table default.student to '/user/hive/warehouse/export/student';</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">[atguigu@hadoop102 hive]$ bin/hive -e &#39;select * from default.student;&#39; &gt; /opt/module/datas/export/student4.txt;
+</code></pre>
+<h3 id="Export-导出到HDFS-上"><a href="#Export-导出到HDFS-上" class="headerlink" title="Export 导出到HDFS 上"></a>Export 导出到HDFS 上</h3><pre><code class="lang-sql">(defahiveult)&gt; export table default.student to &#39;/user/hive/warehouse/export/student&#39;;
+</code></pre>
 <h2 id="清除表中数据"><a href="#清除表中数据" class="headerlink" title="清除表中数据"></a>清除表中数据</h2><p>注意：Truncate 只能删除管理表，不能删除外部表中数据。只清除数据，不清除元数据</p>
 <p>hive (default)&gt; truncate table student;</p>
 
@@ -1368,16 +1423,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+              <a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Hive02-安装
+                  Hive03-数据类型
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
-                Hive03-数据类型
+              <a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+                Hive04-DDL
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1334,27 +1334,99 @@
 </div>
 
 <div id="article-content">
-	<h2 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">1. 导包 import java.util.Sacnner;</span></span><br><span class="line"><span class="comment">2. Scanner的实例化， Scanner scan = new Scanner(System.in);</span></span><br><span class="line"><span class="comment">3. 调用相关方法，获取指定变量</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> m=<span class="number">0</span>,n=<span class="number">3</span>;</span><br><span class="line"><span class="keyword">if</span>(m&gt;<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span>(n&gt;<span class="number">2</span>)</span><br><span class="line">        System.out.println(<span class="string">"A"</span>);	</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    System.out.println(<span class="string">"B"</span>);</span><br><span class="line"><span class="comment">// if下只有一条语句，则不必有&#123;&#125;</span></span><br><span class="line"><span class="comment">// else采用就近原则匹配if</span></span><br></pre></td></tr></table></figure>
+	<h2 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h2><pre><code class="lang-java">/* 
+1. 导包 import java.util.Sacnner;
+2. Scanner的实例化， Scanner scan = new Scanner(System.in);
+3. 调用相关方法，获取指定变量
+*/
+</code></pre>
+<h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><pre><code class="lang-java">int m=0,n=3;
+if(m&gt;0)
+    if(n&gt;2)
+        System.out.println(&quot;A&quot;);    
+else
+    System.out.println(&quot;B&quot;);
+// if下只有一条语句，则不必有{}
+// else采用就近原则匹配if
+</code></pre>
 <h2 id="switch-case"><a href="#switch-case" class="headerlink" title="switch-case"></a>switch-case</h2><blockquote>
 <p>根据switch表达式中的值，依次匹配各个case中的常量。一旦匹配成功，则进入相应的case中，当执行完语句后，则继续向下执行其他case中的语句，直到遇到break或者全部case执行完。</p>
 <p>switch中的表达式只能是以下6种类型：byte，short，char， int，枚举类型(JDK5.0)，String(JGK7.0)</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式)&#123;</span><br><span class="line"><span class="keyword">case</span> 常量<span class="number">1</span>:</span><br><span class="line">    语句<span class="number">1</span>;</span><br><span class="line">    <span class="comment">//break;</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">case</span> 常量<span class="number">2</span>:</span><br><span class="line">    语句<span class="number">2</span>;</span><br><span class="line">    <span class="comment">//break;</span></span><br><span class="line">……</span><br><span class="line"><span class="keyword">case</span> 常量n:</span><br><span class="line">    语句n;</span><br><span class="line">    <span class="comment">//break;</span></span><br><span class="line"><span class="keyword">default</span>: <span class="comment">// (可选), 位置不定</span></span><br><span class="line">    语句;  </span><br><span class="line">    <span class="comment">//break;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">switch(表达式){
+case 常量1:
+    语句1;
+    //break;
+
+case 常量2:
+    语句2;
+    //break;
+……
+case 常量n:
+    语句n;
+    //break;
+default: // (可选), 位置不定
+    语句;  
+    //break;
+}
+</code></pre>
 <blockquote>
 <p>如果switch-case结构中的多个case的执行语句一样，则可以考虑合并</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对学生成绩大于 60 分的，输出“合格”。低于 60 分的，输出“不合格” 。</span></span><br><span class="line"><span class="keyword">int</span> score = <span class="number">78</span>;</span><br><span class="line"><span class="keyword">switch</span>(score / <span class="number">10</span>)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">        System.out.println(<span class="string">"不及格"</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">    <span class="keyword">case</span> <span class="number">10</span>:</span><br><span class="line">        System.out.println(<span class="string">"及格"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">//对学生成绩大于 60 分的，输出“合格”。低于 60 分的，输出“不合格” 。
+int score = 78;
+switch(score / 10){
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        System.out.println(&quot;不及格&quot;)
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+        System.out.println(&quot;及格&quot;)
+}
+</code></pre>
 <ul>
 <li><p>如果判断的具体数值不多，而且符合 byte、short、char、int、String、枚举等几种类型。虽然两个语句都可以使用，建议使用 swtich 语句。因为 效率稍高 。</p>
 </li>
 <li><p>其他情况：对区间判断，对结果为 boolean 类型判断，使用 if，if 的使用范围更 广。也就是说，使用switch case的，都可以改写为 if else。反之不成立。</p>
 </li>
 </ul>
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始化部分，可多个语句;循环条件;迭代部分，可多个语句)&#123;</span><br><span class="line">    循环体；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">初始条件;</span><br><span class="line"><span class="keyword">while</span>(循环条件)&#123;</span><br><span class="line">    循环体;</span><br><span class="line">    迭代部分;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">初始化部分;</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    循环体;</span><br><span class="line">    迭代部分;</span><br><span class="line">&#125;<span class="keyword">while</span>(循环条件)</span><br></pre></td></tr></table></figure>
-<h2 id="break、continue"><a href="#break、continue" class="headerlink" title="break、continue"></a>break、continue</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">label:<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">4</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=<span class="number">10</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j%<span class="number">4</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">continue</span>;<span class="comment">//  结束当次循环，后面不能声明执行语句</span></span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//     结束当前循环，后面不能声明执行语句</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">break</span> label;<span class="comment">//结束指定层循环</span></span><br><span class="line">            <span class="keyword">continue</span> label;<span class="comment">//结束指定层的某次循环</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(j);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><pre><code class="lang-java">for(初始化部分，可多个语句;循环条件;迭代部分，可多个语句){
+    循环体；
+}
+</code></pre>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><pre><code class="lang-java">初始条件;
+while(循环条件){
+    循环体;
+    迭代部分;
+}
+</code></pre>
+<h2 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h2><pre><code class="lang-java">初始化部分;
+do{
+    循环体;
+    迭代部分;
+}while(循环条件)
+</code></pre>
+<h2 id="break、continue"><a href="#break、continue" class="headerlink" title="break、continue"></a>break、continue</h2><pre><code class="lang-java">label:for(int i=0;i&lt;=4;i++){
+    for(int j=0;j&lt;=10;j++){
+        if(j%4==0){
+            continue;//  结束当次循环，后面不能声明执行语句
+            break;//     结束当前循环，后面不能声明执行语句
+
+            break label;//结束指定层循环
+            continue label;//结束指定层的某次循环
+        }
+        System.out.println(j);
+    }
+    System.out.println();
+}
+</code></pre>
 
 </div>
 

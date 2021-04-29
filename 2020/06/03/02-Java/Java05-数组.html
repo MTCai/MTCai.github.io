@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1342,7 +1342,16 @@
 </ul>
 <h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><p>声明方式：</p>
 <p>Java 语言中声明数组时不能指定其长度 数组中元素的数 例如： int a[5 ]; //非法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type var[];</span></span><br><span class="line"><span class="comment">// type[] var;</span></span><br><span class="line"><span class="keyword">int</span>[] ids;</span><br><span class="line"><span class="comment">// 静态初始化，数组的初始化和元素的赋值操作同时进行</span></span><br><span class="line">ids = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="comment">// 动态初始化，数组的初始化和元素的赋值操作分开进行</span></span><br><span class="line">String[] names = <span class="keyword">new</span> String[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;<span class="comment">//类型推断</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// type var[];
+// type[] var;
+int[] ids;
+// 静态初始化，数组的初始化和元素的赋值操作同时进行
+ids = new int[]{1,2,3,4};
+// 动态初始化，数组的初始化和元素的赋值操作分开进行
+String[] names = new String[5];
+
+int[] arr = {1,2,3,4};//类型推断
+</code></pre>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201005205653011.png" alt="image-20201005205653011"></p>
 <blockquote>
 <p>数组是引用类型，它的元素 相当于类的成员变量 ，因此数组一经分配空间，其中的每个元素也被按照成员变量同样的方式被隐式初始化. </p>
@@ -1352,10 +1361,41 @@
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201005211441728.png" alt="image-20201005211441728" style="zoom:80%;" /></p>
 <h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><p>对于二维数组的理解，我们可以看成是一维数组<br>array1 又作为另一个一维数组 array2 的元素而存<br>在。其实， 从数组底层的运行机制来看，其实没<br>有多维数组。</p>
 <p>格式1：动态初始化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">3</span>][<span class="number">2</span>];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">定义了名称为arr的二维数组</span></span><br><span class="line"><span class="comment">二维数组中有3个一维数组</span></span><br><span class="line"><span class="comment">每一个一维数组中有2个元素</span></span><br><span class="line"><span class="comment">一维数组的名称分别为arr [0], arr [1], arr [2]</span></span><br><span class="line"><span class="comment">给第一个一维数组1脚标位赋值为78写法是： arr[0][1] = 78</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>格式2：动态初始化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">3</span>][];</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">二维数组中有3个一维数组</span></span><br><span class="line"><span class="comment">每个一维数组都是默认初始化值null (注意：区别于格式 1)</span></span><br><span class="line"><span class="comment">可以对这个三个一维数组分别进行初始化</span></span><br><span class="line"><span class="comment">arr[0] = new int [3]; </span></span><br><span class="line"><span class="comment">arr[1] = new int [1]; </span></span><br><span class="line"><span class="comment">arr[2] = new int [2];</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">注：</span><br><span class="line"><span class="keyword">int</span> arr = <span class="keyword">new</span> <span class="keyword">int</span> [][<span class="number">3</span>]; <span class="comment">//非法</span></span><br></pre></td></tr></table></figure></p>
+<pre><code class="lang-java">int[][] arr = new int [3][2];
+/*
+定义了名称为arr的二维数组
+二维数组中有3个一维数组
+每一个一维数组中有2个元素
+一维数组的名称分别为arr [0], arr [1], arr [2]
+给第一个一维数组1脚标位赋值为78写法是： arr[0][1] = 78
+*/
+</code></pre>
+<p>格式2：动态初始化</p>
+<pre><code class="lang-java">int[][] arr = new int [3][];
+/*
+二维数组中有3个一维数组
+每个一维数组都是默认初始化值null (注意：区别于格式 1)
+可以对这个三个一维数组分别进行初始化
+arr[0] = new int [3]; 
+arr[1] = new int [1]; 
+arr[2] = new int [2];
+*/
+注：
+int arr = new int [][3]; //非法
+</code></pre>
 <p>格式3：静态初始化</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] arr = <span class="keyword">new</span> <span class="keyword">int</span>[][]&#123;&#123;<span class="number">3</span>,<span class="number">8</span>,<span class="number">2</span>&#125;,&#123;<span class="number">2</span>,<span class="number">7</span>&#125;,&#123;<span class="number">9</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">6</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[][] arr = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,&#123;<span class="number">33</span>,<span class="number">44</span>&#125;&#125;;<span class="comment">//类型推断</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">定义一个名称为arr的二维数组，二维数组中有三个一维数组</span></span><br><span class="line"><span class="comment">每一个一维数组中具体元素也都已初始化</span></span><br><span class="line"><span class="comment">第一个一维数组arr[0] = &#123;3,8,2&#125;</span></span><br><span class="line"><span class="comment">第二个一维数组arr[1] = &#123;2,7&#125;</span></span><br><span class="line"><span class="comment">第三个一维数组arr[2] = &#123;9.0,1,6&#125;</span></span><br><span class="line"><span class="comment">第三个一维数组的长度表示方式：arr[2].length</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">int[][] arr = new int[][]{{3,8,2},{2,7},{9,0,1,6}};
+
+int[][] arr = {{1,2,3,4},{33,44}};//类型推断
+/*
+定义一个名称为arr的二维数组，二维数组中有三个一维数组
+每一个一维数组中具体元素也都已初始化
+第一个一维数组arr[0] = {3,8,2}
+第二个一维数组arr[1] = {2,7}
+第三个一维数组arr[2] = {9.0,1,6}
+第三个一维数组的长度表示方式：arr[2].length
+*/
+</code></pre>
 <ul>
 <li>注意特殊写法情况： int[] x,y[];  x 是一维数组， y 是二维数组。</li>
 <li>Java 中多维数组==不必都是规则矩阵形式==.</li>
@@ -1400,8 +1440,8 @@
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A101%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html">
-                Java06-面向对象01三大特性
+              <a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A102%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%8E%A5%E5%8F%A3.html">
+                Java06-面向对象02抽象类接口
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1334,7 +1334,26 @@
 </div>
 
 <div id="article-content">
-	<h2 id="pom-xml中添加依赖"><a href="#pom-xml中添加依赖" class="headerlink" title="pom.xml中添加依赖"></a>pom.xml中添加依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hbase<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hbase-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hbase<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hbase-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jdk.tools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jdk.tools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>system<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">systemPath</span>&gt;</span>$&#123;JAVA_HOME&#125;/lib/tools.jar<span class="tag">&lt;/<span class="name">systemPath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+	<h2 id="pom-xml中添加依赖"><a href="#pom-xml中添加依赖" class="headerlink" title="pom.xml中添加依赖"></a>pom.xml中添加依赖</h2><pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+    &lt;artifactId&gt;hbase-server&lt;/artifactId&gt;
+    &lt;version&gt;1.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+    &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
+    &lt;version&gt;1.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;jdk.tools&lt;/groupId&gt;
+    &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt;
+    &lt;version&gt;1.8&lt;/version&gt;
+    &lt;scope&gt;system&lt;/scope&gt;
+    &lt;systemPath&gt;${JAVA_HOME}/lib/tools.jar&lt;/systemPath&gt;
+&lt;/dependency&gt;
+</code></pre>
 <p>在对HBase执行增删改查时，只需要引入hbase-client模块即可.</p>
 <p>运行MR操作hbase时，需要引入hbase-server。拷贝hdfs-site.xml文件到客户端的类路径下！</p>
 <h2 id="获取Configuration对象"><a href="#获取Configuration对象" class="headerlink" title="获取Configuration对象"></a>获取Configuration对象</h2><p>Connection代表对集群的连接对象，封装了与实际服务器的低级别单独连接以及与zookeeper的连接。</p>
@@ -1342,17 +1361,125 @@
 <p>Connection的生命周期由调用者管理，使用完毕后需要执行close()以释放资源。</p>
 <p>Connection是线程安全的，多个Table和Admin可以共用同一个Connection对象。因此一个客户端只需要实例化一个连接即可。</p>
 <p>反之，Table和Admin不是线程安全的！因此不建议并缓存或池化这两种对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Configuration conf;</span><br><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">	<span class="comment">//使用HBaseConfiguration的单例方法实例化</span></span><br><span class="line">	conf = HBaseConfiguration.create();</span><br><span class="line">    conf.set(<span class="string">"HBase.zookeeper.quorum"</span>, <span class="string">"192.166.9.102"</span>);</span><br><span class="line">    conf.set(<span class="string">"HBase.zookeeper.property.clientPort"</span>, <span class="string">"2181"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public static Configuration conf;
+static{
+    //使用HBaseConfiguration的单例方法实例化
+    conf = HBaseConfiguration.create();
+    conf.set(&quot;HBase.zookeeper.quorum&quot;, &quot;192.166.9.102&quot;);
+    conf.set(&quot;HBase.zookeeper.property.clientPort&quot;, &quot;2181&quot;);
+}
+</code></pre>
 <h2 id="表是否存在"><a href="#表是否存在" class="headerlink" title="表是否存在"></a>表是否存在</h2><p>Admin为HBase的管理类，可以通过Connection.getAdmin() 获取实例，且在使用完成后调用close()关闭。</p>
 <p>Admin可用于创建，删除，列出，启用和禁用以及以其他方式修改表，以及执行其他管理操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isTableExist</span><span class="params">(String tableName)</span> <span class="keyword">throws</span> MasterNotRunningException, ZooKeeperConnectionException, IOException</span>&#123;</span><br><span class="line">	<span class="comment">//在HBase中管理、访问表需要先创建HBaseAdmin对象</span></span><br><span class="line">    <span class="comment">//Connection connection = ConnectionFactory.createConnection(conf);</span></span><br><span class="line">    <span class="comment">//HBaseAdmin admin = (HBaseAdmin) connection.getAdmin();</span></span><br><span class="line">	HBaseAdmin admin = <span class="keyword">new</span> HBaseAdmin(conf);</span><br><span class="line">	<span class="keyword">return</span> admin.tableExists(tableName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">createTable</span><span class="params">(String tableName, String... columnFamily)</span> <span class="keyword">throws</span> MasterNotRunningException, ZooKeeperConnectionException, IOException</span>&#123;</span><br><span class="line">	HBaseAdmin admin = <span class="keyword">new</span> HBaseAdmin(conf);</span><br><span class="line">	<span class="comment">//判断表是否存在</span></span><br><span class="line">	<span class="keyword">if</span>(isTableExist(tableName))&#123;</span><br><span class="line">		System.out.println(<span class="string">"表"</span> + tableName + <span class="string">"已存在"</span>);</span><br><span class="line">		<span class="comment">//System.exit(0);</span></span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//创建表属性对象,表名需要转字节</span></span><br><span class="line">		HTableDescriptor descriptor = <span class="keyword">new</span> HTableDescriptor(TableName.valueOf(tableName));</span><br><span class="line">		<span class="comment">//创建多个列族</span></span><br><span class="line">		<span class="keyword">for</span>(String cf : columnFamily)&#123;</span><br><span class="line">			descriptor.addFamily(<span class="keyword">new</span> HColumnDescriptor(cf));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//根据对表的配置，创建表</span></span><br><span class="line">		admin.createTable(descriptor);</span><br><span class="line">		System.out.println(<span class="string">"表"</span> + tableName + <span class="string">"创建成功！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dropTable</span><span class="params">(String tableName)</span> <span class="keyword">throws</span> MasterNotRunningException,</span></span><br><span class="line"><span class="function"> ZooKeeperConnectionException, IOException</span>&#123;</span><br><span class="line">	HBaseAdmin admin = <span class="keyword">new</span> HBaseAdmin(conf);</span><br><span class="line">	<span class="keyword">if</span>(isTableExist(tableName))&#123;</span><br><span class="line">		admin.disableTable(tableName);</span><br><span class="line">		admin.deleteTable(tableName);</span><br><span class="line">		System.out.println(<span class="string">"表"</span> + tableName + <span class="string">"删除成功！"</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"表"</span> + tableName + <span class="string">"不存在！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="向表中插入数据"><a href="#向表中插入数据" class="headerlink" title="向表中插入数据"></a>向表中插入数据</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addRowData</span><span class="params">(String tableName, String rowKey, String columnFamily, String column, String value)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">	<span class="comment">//创建HTable对象</span></span><br><span class="line">	HTable hTable = <span class="keyword">new</span> HTable(conf, tableName);</span><br><span class="line">	<span class="comment">//向表中插入数据</span></span><br><span class="line">	Put put = <span class="keyword">new</span> Put(Bytes.toBytes(rowKey));</span><br><span class="line">	<span class="comment">//向Put对象中组装数据</span></span><br><span class="line">	put.add(Bytes.toBytes(columnFamily), Bytes.toBytes(column), Bytes.toBytes(value));</span><br><span class="line">	hTable.put(put);</span><br><span class="line">	hTable.close();</span><br><span class="line">	System.out.println(<span class="string">"插入数据成功"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="删除多行数据"><a href="#删除多行数据" class="headerlink" title="删除多行数据"></a>删除多行数据</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">deleteMultiRow</span><span class="params">(String tableName, String... rows)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">	HTable hTable = <span class="keyword">new</span> HTable(conf, tableName);</span><br><span class="line">	List&lt;Delete&gt; deleteList = <span class="keyword">new</span> ArrayList&lt;Delete&gt;();</span><br><span class="line">	<span class="keyword">for</span>(String row : rows)&#123;</span><br><span class="line">		Delete delete = <span class="keyword">new</span> Delete(Bytes.toBytes(row));</span><br><span class="line">		deleteList.add(delete);</span><br><span class="line">	&#125;</span><br><span class="line">	hTable.delete(deleteList);</span><br><span class="line">	hTable.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="获取所有数据"><a href="#获取所有数据" class="headerlink" title="获取所有数据"></a>获取所有数据</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getAllRows</span><span class="params">(String tableName)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">	HTable hTable = <span class="keyword">new</span> HTable(conf, tableName);</span><br><span class="line">	<span class="comment">//得到用于扫描region的对象</span></span><br><span class="line">	Scan scan = <span class="keyword">new</span> Scan();</span><br><span class="line">	<span class="comment">//使用HTable得到resultcanner实现类的对象</span></span><br><span class="line">	ResultScanner resultScanner = hTable.getScanner(scan);</span><br><span class="line">	<span class="keyword">for</span>(Result result : resultScanner)&#123;</span><br><span class="line">		Cell[] cells = result.rawCells();</span><br><span class="line">		<span class="keyword">for</span>(Cell cell : cells)&#123;</span><br><span class="line">			<span class="comment">//得到rowkey</span></span><br><span class="line">			System.out.println(<span class="string">"行键:"</span> + Bytes.toString(CellUtil.cloneRow(cell)));</span><br><span class="line">			<span class="comment">//得到列族</span></span><br><span class="line">			System.out.println(<span class="string">"列族"</span> + Bytes.toString(CellUtil.cloneFamily(cell)));</span><br><span class="line">			System.out.println(<span class="string">"列:"</span> + Bytes.toString(CellUtil.cloneQualifier(cell)));</span><br><span class="line">			System.out.println(<span class="string">"值:"</span> + Bytes.toString(CellUtil.cloneValue(cell)));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="获取某一行数据"><a href="#获取某一行数据" class="headerlink" title="获取某一行数据"></a>获取某一行数据</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getRow</span><span class="params">(String tableName, String rowKey)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">	HTable table = <span class="keyword">new</span> HTable(conf, tableName);</span><br><span class="line">	Get get = <span class="keyword">new</span> Get(Bytes.toBytes(rowKey));</span><br><span class="line">	<span class="comment">//get.setMaxVersions();显示所有版本</span></span><br><span class="line">    <span class="comment">//get.setTimeStamp();显示指定时间戳的版本</span></span><br><span class="line">	Result result = table.get(get);</span><br><span class="line">	<span class="keyword">for</span>(Cell cell : result.rawCells())&#123;</span><br><span class="line">		System.out.println(<span class="string">"行键:"</span> + Bytes.toString(result.getRow()));</span><br><span class="line">		System.out.println(<span class="string">"列族"</span> + Bytes.toString(CellUtil.cloneFamily(cell)));</span><br><span class="line">		System.out.println(<span class="string">"列:"</span> + Bytes.toString(CellUtil.cloneQualifier(cell)));</span><br><span class="line">		System.out.println(<span class="string">"值:"</span> + Bytes.toString(CellUtil.cloneValue(cell)));</span><br><span class="line">		System.out.println(<span class="string">"时间戳:"</span> + cell.getTimestamp());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="获取某一行指定“列族-列”的数据"><a href="#获取某一行指定“列族-列”的数据" class="headerlink" title="获取某一行指定“列族:列”的数据"></a>获取某一行指定“列族:列”的数据</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getRowQualifier</span><span class="params">(String tableName, String rowKey, String family, String qualifier)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">	HTable table = <span class="keyword">new</span> HTable(conf, tableName);</span><br><span class="line">	Get get = <span class="keyword">new</span> Get(Bytes.toBytes(rowKey));</span><br><span class="line">	get.addColumn(Bytes.toBytes(family), Bytes.toBytes(qualifier));</span><br><span class="line">	Result result = table.get(get);</span><br><span class="line">	<span class="keyword">for</span>(Cell cell : result.rawCells())&#123;</span><br><span class="line">		System.out.println(<span class="string">"行键:"</span> + Bytes.toString(result.getRow()));</span><br><span class="line">		System.out.println(<span class="string">"列族"</span> + Bytes.toString(CellUtil.cloneFamily(cell)));</span><br><span class="line">		System.out.println(<span class="string">"列:"</span> + Bytes.toString(CellUtil.cloneQualifier(cell)));</span><br><span class="line">		System.out.println(<span class="string">"值:"</span> + Bytes.toString(CellUtil.cloneValue(cell)));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public static boolean isTableExist(String tableName) throws MasterNotRunningException, ZooKeeperConnectionException, IOException{
+    //在HBase中管理、访问表需要先创建HBaseAdmin对象
+    //Connection connection = ConnectionFactory.createConnection(conf);
+    //HBaseAdmin admin = (HBaseAdmin) connection.getAdmin();
+    HBaseAdmin admin = new HBaseAdmin(conf);
+    return admin.tableExists(tableName);
+}
+</code></pre>
+<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><pre><code class="lang-java">public static void createTable(String tableName, String... columnFamily) throws MasterNotRunningException, ZooKeeperConnectionException, IOException{
+    HBaseAdmin admin = new HBaseAdmin(conf);
+    //判断表是否存在
+    if(isTableExist(tableName)){
+        System.out.println(&quot;表&quot; + tableName + &quot;已存在&quot;);
+        //System.exit(0);
+    }else{
+        //创建表属性对象,表名需要转字节
+        HTableDescriptor descriptor = new HTableDescriptor(TableName.valueOf(tableName));
+        //创建多个列族
+        for(String cf : columnFamily){
+            descriptor.addFamily(new HColumnDescriptor(cf));
+        }
+        //根据对表的配置，创建表
+        admin.createTable(descriptor);
+        System.out.println(&quot;表&quot; + tableName + &quot;创建成功！&quot;);
+    }
+}
+</code></pre>
+<h2 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h2><pre><code class="lang-java">public static void dropTable(String tableName) throws MasterNotRunningException,
+ ZooKeeperConnectionException, IOException{
+    HBaseAdmin admin = new HBaseAdmin(conf);
+    if(isTableExist(tableName)){
+        admin.disableTable(tableName);
+        admin.deleteTable(tableName);
+        System.out.println(&quot;表&quot; + tableName + &quot;删除成功！&quot;);
+    }else{
+        System.out.println(&quot;表&quot; + tableName + &quot;不存在！&quot;);
+    }
+}
+</code></pre>
+<h2 id="向表中插入数据"><a href="#向表中插入数据" class="headerlink" title="向表中插入数据"></a>向表中插入数据</h2><pre><code class="lang-java">public static void addRowData(String tableName, String rowKey, String columnFamily, String column, String value) throws IOException{
+    //创建HTable对象
+    HTable hTable = new HTable(conf, tableName);
+    //向表中插入数据
+    Put put = new Put(Bytes.toBytes(rowKey));
+    //向Put对象中组装数据
+    put.add(Bytes.toBytes(columnFamily), Bytes.toBytes(column), Bytes.toBytes(value));
+    hTable.put(put);
+    hTable.close();
+    System.out.println(&quot;插入数据成功&quot;);
+}
+</code></pre>
+<h2 id="删除多行数据"><a href="#删除多行数据" class="headerlink" title="删除多行数据"></a>删除多行数据</h2><pre><code class="lang-java">public static void deleteMultiRow(String tableName, String... rows) throws IOException{
+    HTable hTable = new HTable(conf, tableName);
+    List&lt;Delete&gt; deleteList = new ArrayList&lt;Delete&gt;();
+    for(String row : rows){
+        Delete delete = new Delete(Bytes.toBytes(row));
+        deleteList.add(delete);
+    }
+    hTable.delete(deleteList);
+    hTable.close();
+}
+</code></pre>
+<h2 id="获取所有数据"><a href="#获取所有数据" class="headerlink" title="获取所有数据"></a>获取所有数据</h2><pre><code class="lang-java">public static void getAllRows(String tableName) throws IOException{
+    HTable hTable = new HTable(conf, tableName);
+    //得到用于扫描region的对象
+    Scan scan = new Scan();
+    //使用HTable得到resultcanner实现类的对象
+    ResultScanner resultScanner = hTable.getScanner(scan);
+    for(Result result : resultScanner){
+        Cell[] cells = result.rawCells();
+        for(Cell cell : cells){
+            //得到rowkey
+            System.out.println(&quot;行键:&quot; + Bytes.toString(CellUtil.cloneRow(cell)));
+            //得到列族
+            System.out.println(&quot;列族&quot; + Bytes.toString(CellUtil.cloneFamily(cell)));
+            System.out.println(&quot;列:&quot; + Bytes.toString(CellUtil.cloneQualifier(cell)));
+            System.out.println(&quot;值:&quot; + Bytes.toString(CellUtil.cloneValue(cell)));
+        }
+    }
+}
+</code></pre>
+<h2 id="获取某一行数据"><a href="#获取某一行数据" class="headerlink" title="获取某一行数据"></a>获取某一行数据</h2><pre><code class="lang-java">public static void getRow(String tableName, String rowKey) throws IOException{
+    HTable table = new HTable(conf, tableName);
+    Get get = new Get(Bytes.toBytes(rowKey));
+    //get.setMaxVersions();显示所有版本
+    //get.setTimeStamp();显示指定时间戳的版本
+    Result result = table.get(get);
+    for(Cell cell : result.rawCells()){
+        System.out.println(&quot;行键:&quot; + Bytes.toString(result.getRow()));
+        System.out.println(&quot;列族&quot; + Bytes.toString(CellUtil.cloneFamily(cell)));
+        System.out.println(&quot;列:&quot; + Bytes.toString(CellUtil.cloneQualifier(cell)));
+        System.out.println(&quot;值:&quot; + Bytes.toString(CellUtil.cloneValue(cell)));
+        System.out.println(&quot;时间戳:&quot; + cell.getTimestamp());
+    }
+}
+</code></pre>
+<h2 id="获取某一行指定“列族-列”的数据"><a href="#获取某一行指定“列族-列”的数据" class="headerlink" title="获取某一行指定“列族:列”的数据"></a>获取某一行指定“列族:列”的数据</h2><pre><code class="lang-java">public static void getRowQualifier(String tableName, String rowKey, String family, String qualifier) throws IOException{
+    HTable table = new HTable(conf, tableName);
+    Get get = new Get(Bytes.toBytes(rowKey));
+    get.addColumn(Bytes.toBytes(family), Bytes.toBytes(qualifier));
+    Result result = table.get(get);
+    for(Cell cell : result.rawCells()){
+        System.out.println(&quot;行键:&quot; + Bytes.toString(result.getRow()));
+        System.out.println(&quot;列族&quot; + Bytes.toString(CellUtil.cloneFamily(cell)));
+        System.out.println(&quot;列:&quot; + Bytes.toString(CellUtil.cloneQualifier(cell)));
+        System.out.println(&quot;值:&quot; + Bytes.toString(CellUtil.cloneValue(cell)));
+    }
+}
+</code></pre>
 
 </div>
 
@@ -1360,16 +1487,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+              <a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  HBase03-HBase进阶
+                  HBase07-HBase优化
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
-                HBase06-与Hive集成
+              <a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+                HBase08-扩展
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

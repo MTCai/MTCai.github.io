@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1362,7 +1362,26 @@
 <p>案例一：统计Student表中有多少行数据</p>
 <p>$ /opt/module/hadoop-2.7.2/bin/yarn jar lib/HBase-server-1.3.1.jar rowcounter student</p>
 <p>案例二：使用MapReduce将本地数据导入到HBase</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1) 在本地创建一个tsv格式的文件：fruit.tsv</span><br><span class="line">1001	Apple	Red</span><br><span class="line">1002	Pear		Yellow</span><br><span class="line">1003	Pineapple	Yellow</span><br><span class="line"></span><br><span class="line">2) 创建HBase表</span><br><span class="line">HBase(main):001:0&gt; create <span class="string">'fruit'</span>,<span class="string">'info'</span></span><br><span class="line"></span><br><span class="line">3) 在HDFS中创建input_fruit文件夹并上传fruit.tsv文件</span><br><span class="line">$ /opt/module/hadoop-2.7.2/bin/hdfs dfs -mkdir /input_fruit/</span><br><span class="line">$ /opt/module/hadoop-2.7.2/bin/hdfs dfs -put fruit.tsv /input_fruit/</span><br><span class="line"></span><br><span class="line">4）执行MapReduce到HBase的fruit表中</span><br><span class="line">$ /opt/module/hadoop-2.7.2/bin/yarn jar lib/HBase-server-1.3.1.jar importtsv \</span><br><span class="line">-Dimporttsv.columns=HBASE_ROW_KEY,info:name,info:color fruit \</span><br><span class="line">hdfs://hadoop102:9000/input_fruit</span><br><span class="line"></span><br><span class="line">5）使用scan命令查看导入后的结果</span><br><span class="line">HBase(main):001:0&gt; scan ‘fruit’</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">1) 在本地创建一个tsv格式的文件：fruit.tsv
+1001    Apple    Red
+1002    Pear        Yellow
+1003    Pineapple    Yellow
+
+2) 创建HBase表
+HBase(main):001:0&gt; create &#39;fruit&#39;,&#39;info&#39;
+
+3) 在HDFS中创建input_fruit文件夹并上传fruit.tsv文件
+$ /opt/module/hadoop-2.7.2/bin/hdfs dfs -mkdir /input_fruit/
+$ /opt/module/hadoop-2.7.2/bin/hdfs dfs -put fruit.tsv /input_fruit/
+
+4）执行MapReduce到HBase的fruit表中
+$ /opt/module/hadoop-2.7.2/bin/yarn jar lib/HBase-server-1.3.1.jar importtsv \
+-Dimporttsv.columns=HBASE_ROW_KEY,info:name,info:color fruit \
+hdfs://hadoop102:9000/input_fruit
+
+5）使用scan命令查看导入后的结果
+HBase(main):001:0&gt; scan ‘fruit’
+</code></pre>
 </blockquote>
 </li>
 </ol>
@@ -1374,11 +1393,100 @@
 <li>主函数中调用运行该Job任务</li>
 <li>打包运行任务</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.Cell;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.CellUtil;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.client.Put;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.client.Result;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.io.ImmutableBytesWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.mapreduce.TableMapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.util.Bytes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadFruitMapper</span> <span class="keyword">extends</span> <span class="title">TableMapper</span>&lt;<span class="title">ImmutableBytesWritable</span>, <span class="title">Put</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(ImmutableBytesWritable key, Result value, Context context)</span> </span></span><br><span class="line"><span class="function">	<span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">	<span class="comment">//将fruit的name和color提取出来，相当于将每一行数据读取出来放入到Put对象中。</span></span><br><span class="line">		Put put = <span class="keyword">new</span> Put(key.get());</span><br><span class="line">		<span class="comment">//遍历添加column行</span></span><br><span class="line">		<span class="keyword">for</span>(Cell cell: value.rawCells())&#123;</span><br><span class="line">			<span class="comment">//添加/克隆列族:info</span></span><br><span class="line">			<span class="keyword">if</span>(<span class="string">"info"</span>.equals( Bytes.toString(CellUtil.cloneFamily(cell))))&#123;</span><br><span class="line">				<span class="comment">//添加/克隆列：name</span></span><br><span class="line">				<span class="keyword">if</span>(<span class="string">"name"</span>.equals( Bytes.toString(CellUtil.cloneQualifier(cell))))&#123;</span><br><span class="line">					<span class="comment">//将该列cell加入到put对象中</span></span><br><span class="line">					put.add(cell);</span><br><span class="line">					<span class="comment">//添加/克隆列:color</span></span><br><span class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"color"</span>.equals( Bytes.toString(CellUtil.cloneQualifier(cell))))&#123;</span><br><span class="line">					<span class="comment">//向该列cell加入到put对象中</span></span><br><span class="line">					put.add(cell);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//将从fruit读取到的每行数据写入到context中作为map的输出</span></span><br><span class="line">		context.write(key, put);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.client.Put;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.io.ImmutableBytesWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.mapreduce.TableReducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.NullWritable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WriteFruitMRReducer</span> <span class="keyword">extends</span> <span class="title">TableReducer</span>&lt;<span class="title">ImmutableBytesWritable</span>, <span class="title">Put</span>, <span class="title">NullWritable</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(ImmutableBytesWritable key, Iterable&lt;Put&gt; values, Context context)</span> </span></span><br><span class="line"><span class="function">	<span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">		<span class="comment">//读出来的每一行数据写入到fruit_mr表中</span></span><br><span class="line">		<span class="keyword">for</span>(Put put: values)&#123;</span><br><span class="line">			context.write(NullWritable.get(), put);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//组装Job</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">run</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//得到Configuration</span></span><br><span class="line">		Configuration conf = <span class="keyword">this</span>.getConf();</span><br><span class="line">		<span class="comment">//创建Job任务</span></span><br><span class="line">		Job job = Job.getInstance(conf, <span class="keyword">this</span>.getClass().getSimpleName());</span><br><span class="line">		job.setJarByClass(Fruit2FruitMRRunner<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//配置Job</span></span><br><span class="line">		Scan scan = <span class="keyword">new</span> Scan();</span><br><span class="line">		scan.setCacheBlocks(<span class="keyword">false</span>);</span><br><span class="line">		scan.setCaching(<span class="number">500</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//设置Mapper，注意导入的是mapreduce包下的，不是mapred包下的，后者是老版本</span></span><br><span class="line">		TableMapReduceUtil.initTableMapperJob(</span><br><span class="line">		<span class="string">"fruit"</span>, <span class="comment">//数据源的表名</span></span><br><span class="line">		scan, <span class="comment">//scan扫描控制器</span></span><br><span class="line">		ReadFruitMapper<span class="class">.<span class="keyword">class</span>,//设置<span class="title">Mapper</span>类</span></span><br><span class="line"><span class="class">		<span class="title">ImmutableBytesWritable</span>.<span class="title">class</span>,//设置<span class="title">Mapper</span>输出<span class="title">key</span>类型</span></span><br><span class="line"><span class="class">		<span class="title">Put</span>.<span class="title">class</span>,//设置<span class="title">Mapper</span>输出<span class="title">value</span>值类型</span></span><br><span class="line"><span class="class">		<span class="title">job</span>//设置给哪个<span class="title">JOB</span></span></span><br><span class="line"><span class="class">		)</span>;</span><br><span class="line">		<span class="comment">//设置Reducer</span></span><br><span class="line">		TableMapReduceUtil.initTableReducerJob(<span class="string">"fruit_mr"</span>, WriteFruitMRReducer<span class="class">.<span class="keyword">class</span>, <span class="title">job</span>)</span>;</span><br><span class="line">		<span class="comment">//设置Reduce数量，最少1个</span></span><br><span class="line">		job.setNumReduceTasks(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">boolean</span> isSuccess = job.waitForCompletion(<span class="keyword">true</span>);</span><br><span class="line">		<span class="keyword">if</span>(!isSuccess)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"Job running with error"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> isSuccess ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[] args )</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    Configuration conf = HBaseConfiguration.create();</span><br><span class="line">    <span class="keyword">int</span> status = ToolRunner.run(conf, <span class="keyword">new</span> Fruit2FruitMRRunner(), args);</span><br><span class="line">    System.exit(status);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /opt/module/hadoop-2.7.2/bin/yarn jar ~/softwares/jars/HBase-0.0.1-SNAPSHOT.jar com.z.HBase.mr1.Fruit2FruitMRRunner</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">import java.io.IOException;
+import org.apache.hadoop.HBase.Cell;
+import org.apache.hadoop.HBase.CellUtil;
+import org.apache.hadoop.HBase.client.Put;
+import org.apache.hadoop.HBase.client.Result;
+import org.apache.hadoop.HBase.io.ImmutableBytesWritable;
+import org.apache.hadoop.HBase.mapreduce.TableMapper;
+import org.apache.hadoop.HBase.util.Bytes;
+
+public class ReadFruitMapper extends TableMapper&lt;ImmutableBytesWritable, Put&gt; {
+    @Override
+    protected void map(ImmutableBytesWritable key, Result value, Context context) 
+    throws IOException, InterruptedException {
+    //将fruit的name和color提取出来，相当于将每一行数据读取出来放入到Put对象中。
+        Put put = new Put(key.get());
+        //遍历添加column行
+        for(Cell cell: value.rawCells()){
+            //添加/克隆列族:info
+            if(&quot;info&quot;.equals( Bytes.toString(CellUtil.cloneFamily(cell)))){
+                //添加/克隆列：name
+                if(&quot;name&quot;.equals( Bytes.toString(CellUtil.cloneQualifier(cell)))){
+                    //将该列cell加入到put对象中
+                    put.add(cell);
+                    //添加/克隆列:color
+                }else if(&quot;color&quot;.equals( Bytes.toString(CellUtil.cloneQualifier(cell)))){
+                    //向该列cell加入到put对象中
+                    put.add(cell);
+                }
+            }
+        }
+        //将从fruit读取到的每行数据写入到context中作为map的输出
+        context.write(key, put);
+    }
+}
+</code></pre>
+<pre><code class="lang-java">import java.io.IOException;
+import org.apache.hadoop.HBase.client.Put;
+import org.apache.hadoop.HBase.io.ImmutableBytesWritable;
+import org.apache.hadoop.HBase.mapreduce.TableReducer;
+import org.apache.hadoop.io.NullWritable;
+
+public class WriteFruitMRReducer extends TableReducer&lt;ImmutableBytesWritable, Put, NullWritable&gt; {
+    @Override
+    protected void reduce(ImmutableBytesWritable key, Iterable&lt;Put&gt; values, Context context) 
+    throws IOException, InterruptedException {
+        //读出来的每一行数据写入到fruit_mr表中
+        for(Put put: values){
+            context.write(NullWritable.get(), put);
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-java">//组装Job
+    public int run(String[] args) throws Exception {
+        //得到Configuration
+        Configuration conf = this.getConf();
+        //创建Job任务
+        Job job = Job.getInstance(conf, this.getClass().getSimpleName());
+        job.setJarByClass(Fruit2FruitMRRunner.class);
+
+        //配置Job
+        Scan scan = new Scan();
+        scan.setCacheBlocks(false);
+        scan.setCaching(500);
+
+        //设置Mapper，注意导入的是mapreduce包下的，不是mapred包下的，后者是老版本
+        TableMapReduceUtil.initTableMapperJob(
+        &quot;fruit&quot;, //数据源的表名
+        scan, //scan扫描控制器
+        ReadFruitMapper.class,//设置Mapper类
+        ImmutableBytesWritable.class,//设置Mapper输出key类型
+        Put.class,//设置Mapper输出value值类型
+        job//设置给哪个JOB
+        );
+        //设置Reducer
+        TableMapReduceUtil.initTableReducerJob(&quot;fruit_mr&quot;, WriteFruitMRReducer.class, job);
+        //设置Reduce数量，最少1个
+        job.setNumReduceTasks(1);
+
+        boolean isSuccess = job.waitForCompletion(true);
+        if(!isSuccess){
+            throw new IOException(&quot;Job running with error&quot;);
+        }
+        return isSuccess ? 0 : 1;
+    }
+</code></pre>
+<pre><code class="lang-java">public static void main( String[] args ) throws Exception{
+    Configuration conf = HBaseConfiguration.create();
+    int status = ToolRunner.run(conf, new Fruit2FruitMRRunner(), args);
+    System.exit(status);
+}
+</code></pre>
+<pre><code class="lang-sh">$ /opt/module/hadoop-2.7.2/bin/yarn jar ~/softwares/jars/HBase-0.0.1-SNAPSHOT.jar com.z.HBase.mr1.Fruit2FruitMRRunner
+</code></pre>
 <p>提示：运行任务前，如果待数据导入的表不存在，则需要提前创建。</p>
 <p>提示：maven打包命令：-P local clean package或-P dev clean package install（将第三方jar包一同打包，需要插件：maven-shade-plugin）</p>
 <h2 id="自定义HBase-MapReduce2"><a href="#自定义HBase-MapReduce2" class="headerlink" title="自定义HBase-MapReduce2"></a>自定义HBase-MapReduce2</h2><p>目标：实现将HDFS中的数据写入到HBase表中</p>
@@ -1389,11 +1497,95 @@
 <li>调用执行Job</li>
 <li>打包运行</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.client.Put;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.io.ImmutableBytesWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.util.Bytes;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.LongWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadFruitFromHDFSMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">LongWritable</span>, <span class="title">Text</span>, <span class="title">ImmutableBytesWritable</span>, <span class="title">Put</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value, Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">		<span class="comment">//从HDFS中读取的数据</span></span><br><span class="line">		String lineValue = value.toString();</span><br><span class="line">		<span class="comment">//读取出来的每行数据使用\t进行分割，存于String数组</span></span><br><span class="line">		String[] values = lineValue.split(<span class="string">"\t"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//根据数据中值的含义取值</span></span><br><span class="line">		String rowKey = values[<span class="number">0</span>];</span><br><span class="line">		String name = values[<span class="number">1</span>];</span><br><span class="line">		String color = values[<span class="number">2</span>];</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//初始化rowKey</span></span><br><span class="line">		ImmutableBytesWritable rowKeyWritable = <span class="keyword">new</span> ImmutableBytesWritable(Bytes.toBytes(rowKey));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//初始化put对象</span></span><br><span class="line">		Put put = <span class="keyword">new</span> Put(Bytes.toBytes(rowKey));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//参数分别:列族、列、值  </span></span><br><span class="line">        put.add(Bytes.toBytes(<span class="string">"info"</span>), Bytes.toBytes(<span class="string">"name"</span>),  Bytes.toBytes(name)); </span><br><span class="line">        put.add(Bytes.toBytes(<span class="string">"info"</span>), Bytes.toBytes(<span class="string">"color"</span>),  Bytes.toBytes(color)); </span><br><span class="line">        </span><br><span class="line">        context.write(rowKeyWritable, put);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.client.Put;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.io.ImmutableBytesWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.HBase.mapreduce.TableReducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.NullWritable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WriteFruitMRFromTxtReducer</span> <span class="keyword">extends</span> <span class="title">TableReducer</span>&lt;<span class="title">ImmutableBytesWritable</span>, <span class="title">Put</span>, <span class="title">NullWritable</span>&gt; </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(ImmutableBytesWritable key, Iterable&lt;Put&gt; values, Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">		<span class="comment">//读出来的每一行数据写入到fruit_hdfs表中</span></span><br><span class="line">		<span class="keyword">for</span>(Put put: values)&#123;</span><br><span class="line">			context.write(NullWritable.get(), put);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">run</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">//得到Configuration</span></span><br><span class="line">    Configuration conf = <span class="keyword">this</span>.getConf();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建Job任务</span></span><br><span class="line">    Job job = Job.getInstance(conf, <span class="keyword">this</span>.getClass().getSimpleName());</span><br><span class="line">    job.setJarByClass(Txt2FruitRunner<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    Path inPath = <span class="keyword">new</span> Path(<span class="string">"hdfs://hadoop102:9000/input_fruit/fruit.tsv"</span>);</span><br><span class="line">    FileInputFormat.addInputPath(job, inPath);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置Mapper</span></span><br><span class="line">    job.setMapperClass(ReadFruitFromHDFSMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    job.setMapOutputKeyClass(ImmutableBytesWritable<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    job.setMapOutputValueClass(Put<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置Reducer</span></span><br><span class="line">    TableMapReduceUtil.initTableReducerJob(<span class="string">"fruit_mr"</span>, WriteFruitMRFromTxtReducer<span class="class">.<span class="keyword">class</span>, <span class="title">job</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置Reduce数量，最少1个</span></span><br><span class="line">    job.setNumReduceTasks(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">boolean</span> isSuccess = job.waitForCompletion(<span class="keyword">true</span>);</span><br><span class="line">    <span class="keyword">if</span>(!isSuccess)&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"Job running with error"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> isSuccess ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	Configuration conf = HBaseConfiguration.create();</span><br><span class="line">    <span class="keyword">int</span> status = ToolRunner.run(conf, <span class="keyword">new</span> Txt2FruitRunner(), args);</span><br><span class="line">	System.exit(status);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /opt/module/hadoop-2.7.2/bin/yarn jar HBase-0.0.1-SNAPSHOT.jar com.atguigu.HBase.mr2.Txt2FruitRunner</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">import java.io.IOException;
+
+import org.apache.hadoop.HBase.client.Put;
+import org.apache.hadoop.HBase.io.ImmutableBytesWritable;
+import org.apache.hadoop.HBase.util.Bytes;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class ReadFruitFromHDFSMapper extends Mapper&lt;LongWritable, Text, ImmutableBytesWritable, Put&gt; {
+    @Override
+    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+        //从HDFS中读取的数据
+        String lineValue = value.toString();
+        //读取出来的每行数据使用\t进行分割，存于String数组
+        String[] values = lineValue.split(&quot;\t&quot;);
+
+        //根据数据中值的含义取值
+        String rowKey = values[0];
+        String name = values[1];
+        String color = values[2];
+
+        //初始化rowKey
+        ImmutableBytesWritable rowKeyWritable = new ImmutableBytesWritable(Bytes.toBytes(rowKey));
+
+        //初始化put对象
+        Put put = new Put(Bytes.toBytes(rowKey));
+
+        //参数分别:列族、列、值  
+        put.add(Bytes.toBytes(&quot;info&quot;), Bytes.toBytes(&quot;name&quot;),  Bytes.toBytes(name)); 
+        put.add(Bytes.toBytes(&quot;info&quot;), Bytes.toBytes(&quot;color&quot;),  Bytes.toBytes(color)); 
+
+        context.write(rowKeyWritable, put);
+    }
+}
+</code></pre>
+<pre><code class="lang-java">import java.io.IOException;
+import org.apache.hadoop.HBase.client.Put;
+import org.apache.hadoop.HBase.io.ImmutableBytesWritable;
+import org.apache.hadoop.HBase.mapreduce.TableReducer;
+import org.apache.hadoop.io.NullWritable;
+
+public class WriteFruitMRFromTxtReducer extends TableReducer&lt;ImmutableBytesWritable, Put, NullWritable&gt; {
+    @Override
+    protected void reduce(ImmutableBytesWritable key, Iterable&lt;Put&gt; values, Context context) throws IOException, InterruptedException {
+        //读出来的每一行数据写入到fruit_hdfs表中
+        for(Put put: values){
+            context.write(NullWritable.get(), put);
+        }
+    }
+}
+</code></pre>
+<pre><code class="lang-java">public int run(String[] args) throws Exception {
+    //得到Configuration
+    Configuration conf = this.getConf();
+
+    //创建Job任务
+    Job job = Job.getInstance(conf, this.getClass().getSimpleName());
+    job.setJarByClass(Txt2FruitRunner.class);
+    Path inPath = new Path(&quot;hdfs://hadoop102:9000/input_fruit/fruit.tsv&quot;);
+    FileInputFormat.addInputPath(job, inPath);
+
+    //设置Mapper
+    job.setMapperClass(ReadFruitFromHDFSMapper.class);
+    job.setMapOutputKeyClass(ImmutableBytesWritable.class);
+    job.setMapOutputValueClass(Put.class);
+
+    //设置Reducer
+    TableMapReduceUtil.initTableReducerJob(&quot;fruit_mr&quot;, WriteFruitMRFromTxtReducer.class, job);
+
+    //设置Reduce数量，最少1个
+    job.setNumReduceTasks(1);
+
+    boolean isSuccess = job.waitForCompletion(true);
+    if(!isSuccess){
+    throw new IOException(&quot;Job running with error&quot;);
+    }
+
+    return isSuccess ? 0 : 1;
+}
+</code></pre>
+<pre><code class="lang-java">public static void main(String[] args) throws Exception {
+    Configuration conf = HBaseConfiguration.create();
+    int status = ToolRunner.run(conf, new Txt2FruitRunner(), args);
+    System.exit(status);
+}
+</code></pre>
+<pre><code class="lang-sh">$ /opt/module/hadoop-2.7.2/bin/yarn jar HBase-0.0.1-SNAPSHOT.jar com.atguigu.HBase.mr2.Txt2FruitRunner
+</code></pre>
 
 </div>
 
@@ -1401,16 +1593,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+              <a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  HBase06-与Hive集成
+                  HBase02-HBase-shell操作
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
-                HBase07-HBase优化
+              <a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+                HBase06-与Hive集成
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

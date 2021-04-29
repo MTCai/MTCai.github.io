@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1349,17 +1349,60 @@
 </ol>
 <h2 id="HBase与Hive集成使用"><a href="#HBase与Hive集成使用" class="headerlink" title="HBase与Hive集成使用"></a>HBase与Hive集成使用</h2><p>尖叫提示：HBase与Hive的集成在最新的两个版本中无法兼容。所以，只能含着泪勇敢的重新编译：hive-HBase-handler-1.2.2.jar！！ </p>
 <p>因为我们后续可能会在操作Hive的同时对HBase也会产生影响，所以Hive需要持有操作HBase的Jar，那么接下来拷贝Hive所依赖的Jar包（或者使用软连接的形式）。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HBASE_HOME=/opt/module/HBase</span><br><span class="line"><span class="built_in">export</span> HIVE_HOME=/opt/module/hive</span><br><span class="line"></span><br><span class="line">ln -s <span class="variable">$HBASE_HOME</span>/lib/HBase-common-1.3.1.jar  <span class="variable">$HIVE_HOME</span>/lib/HBase-common-1.3.1.jar</span><br><span class="line">ln -s <span class="variable">$HBASE_HOME</span>/lib/HBase-server-1.3.1.jar <span class="variable">$HIVE_HOME</span>/lib/HBase-server-1.3.1.jar</span><br><span class="line">ln -s <span class="variable">$HBASE_HOME</span>/lib/HBase-client-1.3.1.jar <span class="variable">$HIVE_HOME</span>/lib/HBase-client-1.3.1.jar</span><br><span class="line">ln -s <span class="variable">$HBASE_HOME</span>/lib/HBase-protocol-1.3.1.jar <span class="variable">$HIVE_HOME</span>/lib/HBase-protocol-1.3.1.jar</span><br><span class="line">ln -s <span class="variable">$HBASE_HOME</span>/lib/HBase-it-1.3.1.jar <span class="variable">$HIVE_HOME</span>/lib/HBase-it-1.3.1.jar</span><br><span class="line">ln -s <span class="variable">$HBASE_HOME</span>/lib/htrace-core-3.1.0-incubating.jar <span class="variable">$HIVE_HOME</span>/lib/htrace-core-3.1.0-incubating.jar</span><br><span class="line">ln -s <span class="variable">$HBASE_HOME</span>/lib/HBase-hadoop2-compat-1.3.1.jar <span class="variable">$HIVE_HOME</span>/lib/HBase-hadoop2-compat-1.3.1.jar</span><br><span class="line">ln -s <span class="variable">$HBASE_HOME</span>/lib/HBase-hadoop-compat-1.3.1.jar <span class="variable">$HIVE_HOME</span>/lib/HBase-hadoop-compat-1.3.1.jar</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">export HBASE_HOME=/opt/module/HBase
+export HIVE_HOME=/opt/module/hive
+
+ln -s $HBASE_HOME/lib/HBase-common-1.3.1.jar  $HIVE_HOME/lib/HBase-common-1.3.1.jar
+ln -s $HBASE_HOME/lib/HBase-server-1.3.1.jar $HIVE_HOME/lib/HBase-server-1.3.1.jar
+ln -s $HBASE_HOME/lib/HBase-client-1.3.1.jar $HIVE_HOME/lib/HBase-client-1.3.1.jar
+ln -s $HBASE_HOME/lib/HBase-protocol-1.3.1.jar $HIVE_HOME/lib/HBase-protocol-1.3.1.jar
+ln -s $HBASE_HOME/lib/HBase-it-1.3.1.jar $HIVE_HOME/lib/HBase-it-1.3.1.jar
+ln -s $HBASE_HOME/lib/htrace-core-3.1.0-incubating.jar $HIVE_HOME/lib/htrace-core-3.1.0-incubating.jar
+ln -s $HBASE_HOME/lib/HBase-hadoop2-compat-1.3.1.jar $HIVE_HOME/lib/HBase-hadoop2-compat-1.3.1.jar
+ln -s $HBASE_HOME/lib/HBase-hadoop-compat-1.3.1.jar $HIVE_HOME/lib/HBase-hadoop-compat-1.3.1.jar
+</code></pre>
 <p>同时在hive-site.xml中修改zookeeper的属性，如下:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.zookeeper.quorum<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop102,hadoop103,hadoop104<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>The list of ZooKeeper servers to talk to. This is only needed for read/write locks.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.zookeeper.client.port<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>2181<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>The port of ZooKeeper servers to talk to. This is only needed for read/write locks.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+  &lt;name&gt;hive.zookeeper.quorum&lt;/name&gt;
+  &lt;value&gt;hadoop102,hadoop103,hadoop104&lt;/value&gt;
+  &lt;description&gt;The list of ZooKeeper servers to talk to. This is only needed for read/write locks.&lt;/description&gt;
+&lt;/property&gt;
+&lt;property&gt;
+  &lt;name&gt;hive.zookeeper.client.port&lt;/name&gt;
+  &lt;value&gt;2181&lt;/value&gt;
+  &lt;description&gt;The port of ZooKeeper servers to talk to. This is only needed for read/write locks.&lt;/description&gt;
+&lt;/property&gt;
+</code></pre>
 <p><strong>案例一:</strong></p>
 <p>建立Hive表，关联HBase表，插入数据到Hive表的同时能够影响HBase表。</p>
 <p>1.在Hive中创建表同时关联HBase:</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> hive_HBase_emp_table(</span><br><span class="line">empno <span class="built_in">int</span>,</span><br><span class="line">ename <span class="keyword">string</span>,</span><br><span class="line">job <span class="keyword">string</span>,</span><br><span class="line">mgr <span class="built_in">int</span>,</span><br><span class="line">hiredate <span class="keyword">string</span>,</span><br><span class="line">sal <span class="keyword">double</span>,</span><br><span class="line">comm <span class="keyword">double</span>,</span><br><span class="line">deptno <span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">BY</span> <span class="string">'org.apache.hadoop.hive.hbase.HBaseStorageHandler'</span></span><br><span class="line"><span class="keyword">WITH</span> SERDEPROPERTIES (<span class="string">"hbase.columns.mapping"</span> = <span class="string">":key,info:ename,info:job,info:mgr,info:hiredate,info:sal,info:comm,info:deptno"</span>)</span><br><span class="line">TBLPROPERTIES (<span class="string">"hbase.table.name"</span> = <span class="string">"hbase_emp_table"</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">CREATE TABLE hive_HBase_emp_table(
+empno int,
+ename string,
+job string,
+mgr int,
+hiredate string,
+sal double,
+comm double,
+deptno int)
+STORED BY &#39;org.apache.hadoop.hive.hbase.HBaseStorageHandler&#39;
+WITH SERDEPROPERTIES (&quot;hbase.columns.mapping&quot; = &quot;:key,info:ename,info:job,info:mgr,info:hiredate,info:sal,info:comm,info:deptno&quot;)
+TBLPROPERTIES (&quot;hbase.table.name&quot; = &quot;hbase_emp_table&quot;);
+</code></pre>
 <p>​      提示：完成之后，可以分别进入Hive和HBase查看，都生成了对应的表</p>
 <p>2.在Hive中创建临时中间表，用于load文件中的数据</p>
 <p>​       提示：不能将数据直接load进Hive所关联HBase的那张表中</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp(</span><br><span class="line">empno <span class="built_in">int</span>,</span><br><span class="line">ename <span class="keyword">string</span>,</span><br><span class="line">job <span class="keyword">string</span>,</span><br><span class="line">mgr <span class="built_in">int</span>,</span><br><span class="line">hiredate <span class="keyword">string</span>,</span><br><span class="line">sal <span class="keyword">double</span>,</span><br><span class="line">comm <span class="keyword">double</span>,</span><br><span class="line">deptno <span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">CREATE TABLE emp(
+empno int,
+ename string,
+job string,
+mgr int,
+hiredate string,
+sal double,
+comm double,
+deptno int)
+row format delimited fields terminated by &#39;\t&#39;;
+</code></pre>
 <p>3.向Hive中间表中load数据</p>
 <p>​      hive&gt; load data local inpath ‘/home/admin/softwares/data/emp.txt’ into table emp;</p>
 <p>4.通过insert命令将中间表中的数据导入到Hive关联HBase的那张表中</p>
@@ -1371,7 +1414,21 @@
 <p><strong>目标：</strong>在HBase中已经存储了某一张表HBase_emp_table，然后在Hive中创建一个外部表来关联HBase中的HBase_emp_table这张表，使之可以借助Hive来分析HBase这张表中的数据。</p>
 <p><strong>注：</strong>该案例2紧跟案例1的脚步，所以完成此案例前，请先完成案例1。</p>
 <p>1.在Hive中创建外部表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> relevance_HBase_emp(</span><br><span class="line">empno <span class="built_in">int</span>,</span><br><span class="line">ename <span class="keyword">string</span>,</span><br><span class="line">job <span class="keyword">string</span>,</span><br><span class="line">mgr <span class="built_in">int</span>,</span><br><span class="line">hiredate <span class="keyword">string</span>,</span><br><span class="line">sal <span class="keyword">double</span>,</span><br><span class="line">comm <span class="keyword">double</span>,</span><br><span class="line">deptno <span class="built_in">int</span>)</span><br><span class="line"><span class="keyword">STORED</span> <span class="keyword">BY</span> </span><br><span class="line"><span class="string">'org.apache.hadoop.hive.hbase.HBaseStorageHandler'</span></span><br><span class="line"><span class="keyword">WITH</span> SERDEPROPERTIES (<span class="string">"hbase.columns.mapping"</span> = </span><br><span class="line"><span class="string">":key,info:ename,info:job,info:mgr,info:hiredate,info:sal,info:comm,info:deptno"</span>) </span><br><span class="line">TBLPROPERTIES (<span class="string">"hbase.table.name"</span> = <span class="string">"HBase_emp_table"</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sql">CREATE EXTERNAL TABLE relevance_HBase_emp(
+empno int,
+ename string,
+job string,
+mgr int,
+hiredate string,
+sal double,
+comm double,
+deptno int)
+STORED BY 
+&#39;org.apache.hadoop.hive.hbase.HBaseStorageHandler&#39;
+WITH SERDEPROPERTIES (&quot;hbase.columns.mapping&quot; = 
+&quot;:key,info:ename,info:job,info:mgr,info:hiredate,info:sal,info:comm,info:deptno&quot;) 
+TBLPROPERTIES (&quot;hbase.table.name&quot; = &quot;HBase_emp_table&quot;);
+</code></pre>
 <p>2.关联后就可以使用Hive函数进行一些分析操作了</p>
 <p>hive (default)&gt; select * from relevance_HBase_emp;</p>
 
@@ -1381,16 +1438,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+              <a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  HBase04-HBase-API
+                  HBase05-HBase-MR
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
-                HBase05-HBase-MR
+              <a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+                HBase07-HBase优化
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

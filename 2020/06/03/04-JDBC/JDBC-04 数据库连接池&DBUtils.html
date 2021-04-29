@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1395,13 +1395,60 @@
 <h4 id="8-3-1-C3P0数据库连接池"><a href="#8-3-1-C3P0数据库连接池" class="headerlink" title="8.3.1 C3P0数据库连接池"></a>8.3.1 C3P0数据库连接池</h4><ul>
 <li>获取连接方式一</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用C3P0数据库连接池的方式，获取数据库的连接：不推荐</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection1</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	ComboPooledDataSource cpds = <span class="keyword">new</span> ComboPooledDataSource();</span><br><span class="line">	cpds.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>); </span><br><span class="line">	cpds.setJdbcUrl(<span class="string">"jdbc:mysql://localhost:3306/test"</span>);</span><br><span class="line">	cpds.setUser(<span class="string">"root"</span>);</span><br><span class="line">	cpds.setPassword(<span class="string">"abc123"</span>);</span><br><span class="line">	cpds.setInitiaPoolAize(<span class="number">10</span>);<span class="comment">// 设置初始时数据库连接池中的连接数</span></span><br><span class="line"><span class="comment">//	cpds.setMaxPoolSize(100);</span></span><br><span class="line">	</span><br><span class="line">	Connection conn = cpds.getConnection();</span><br><span class="line">	<span class="keyword">return</span> conn;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 销毁c3p0数据库连接池</span></span><br><span class="line">    <span class="comment">// DataSources.destory(cpds);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">//使用C3P0数据库连接池的方式，获取数据库的连接：不推荐
+public static Connection getConnection1() throws Exception{
+    ComboPooledDataSource cpds = new ComboPooledDataSource();
+    cpds.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;); 
+    cpds.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/test&quot;);
+    cpds.setUser(&quot;root&quot;);
+    cpds.setPassword(&quot;abc123&quot;);
+    cpds.setInitiaPoolAize(10);// 设置初始时数据库连接池中的连接数
+//    cpds.setMaxPoolSize(100);
+
+    Connection conn = cpds.getConnection();
+    return conn;
+
+    // 销毁c3p0数据库连接池
+    // DataSources.destory(cpds);
+}
+</code></pre>
 <ul>
 <li>获取连接方式二</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用C3P0数据库连接池的配置文件方式，获取数据库的连接：推荐</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> DataSource cpds = <span class="keyword">new</span> ComboPooledDataSource(<span class="string">"helloc3p0"</span>);</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection2</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>&#123;</span><br><span class="line">	Connection conn = cpds.getConnection();</span><br><span class="line">	<span class="keyword">return</span> conn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">//使用C3P0数据库连接池的配置文件方式，获取数据库的连接：推荐
+private static DataSource cpds = new ComboPooledDataSource(&quot;helloc3p0&quot;);
+public static Connection getConnection2() throws SQLException{
+    Connection conn = cpds.getConnection();
+    return conn;
+}
+</code></pre>
 <p>其中，src下的配置文件为：【c3p0-config.xml】</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">c3p0-config</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">named-config</span> <span class="attr">name</span>=<span class="string">"helloc3p0"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 获取连接的4个基本信息 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"user"</span>&gt;</span>root<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span>abc123<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbcUrl"</span>&gt;</span>jdbc:mysql:///test<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClass"</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">&lt;!-- 涉及到数据库连接池的管理的相关属性的设置 --&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 若数据库中连接数不足时, 一次向数据库服务器申请多少个连接 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"acquireIncrement"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 初始化数据库连接池时连接的数量 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialPoolSize"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 数据库连接池中的最小的数据库连接数 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minPoolSize"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 数据库连接池中的最大的数据库连接数 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxPoolSize"</span>&gt;</span>10<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- C3P0 数据库连接池可以维护的 Statement 的个数 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxStatements"</span>&gt;</span>20<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 每个连接同时可以使用的 Statement 对象的个数 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxStatementsPerConnection"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;/<span class="name">named-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">c3p0-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;c3p0-config&gt;
+    &lt;named-config name=&quot;helloc3p0&quot;&gt;
+        &lt;!-- 获取连接的4个基本信息 --&gt;
+        &lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;
+        &lt;property name=&quot;password&quot;&gt;abc123&lt;/property&gt;
+        &lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql:///test&lt;/property&gt;
+        &lt;property name=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;
+
+        &lt;!-- 涉及到数据库连接池的管理的相关属性的设置 --&gt;
+        &lt;!-- 若数据库中连接数不足时, 一次向数据库服务器申请多少个连接 --&gt;
+        &lt;property name=&quot;acquireIncrement&quot;&gt;5&lt;/property&gt;
+        &lt;!-- 初始化数据库连接池时连接的数量 --&gt;
+        &lt;property name=&quot;initialPoolSize&quot;&gt;5&lt;/property&gt;
+        &lt;!-- 数据库连接池中的最小的数据库连接数 --&gt;
+        &lt;property name=&quot;minPoolSize&quot;&gt;5&lt;/property&gt;
+        &lt;!-- 数据库连接池中的最大的数据库连接数 --&gt;
+        &lt;property name=&quot;maxPoolSize&quot;&gt;10&lt;/property&gt;
+        &lt;!-- C3P0 数据库连接池可以维护的 Statement 的个数 --&gt;
+        &lt;property name=&quot;maxStatements&quot;&gt;20&lt;/property&gt;
+        &lt;!-- 每个连接同时可以使用的 Statement 对象的个数 --&gt;
+        &lt;property name=&quot;maxStatementsPerConnection&quot;&gt;5&lt;/property&gt;
+
+    &lt;/named-config&gt;
+&lt;/c3p0-config&gt;
+</code></pre>
 <h4 id="8-3-2-DBCP数据库连接池"><a href="#8-3-2-DBCP数据库连接池" class="headerlink" title="8.3.2 DBCP数据库连接池"></a>8.3.2 DBCP数据库连接池</h4><ul>
 <li>DBCP 是 Apache 软件基金组织下的开源连接池实现，该连接池依赖该组织下的另一个开源系统：Common-pool。如需使用该连接池实现，应在系统中增加如下两个 jar 文件：<ul>
 <li>Commons-dbcp.jar：连接池的实现</li>
@@ -1479,17 +1526,90 @@
 <ul>
 <li>获取连接方式一：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection3</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	BasicDataSource source = <span class="keyword">new</span> BasicDataSource();</span><br><span class="line">		</span><br><span class="line">	source.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">	source.setUrl(<span class="string">"jdbc:mysql:///test"</span>);</span><br><span class="line">	source.setUsername(<span class="string">"root"</span>);</span><br><span class="line">	source.setPassword(<span class="string">"abc123"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	source.setInitialSize(<span class="number">10</span>);</span><br><span class="line">		</span><br><span class="line">	Connection conn = source.getConnection();</span><br><span class="line">	<span class="keyword">return</span> conn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public static Connection getConnection3() throws Exception {
+    BasicDataSource source = new BasicDataSource();
+
+    source.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
+    source.setUrl(&quot;jdbc:mysql:///test&quot;);
+    source.setUsername(&quot;root&quot;);
+    source.setPassword(&quot;abc123&quot;);
+
+    //
+    source.setInitialSize(10);
+
+    Connection conn = source.getConnection();
+    return conn;
+}
+</code></pre>
 <ul>
 <li>获取连接方式二：</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用dbcp数据库连接池的配置文件方式，获取数据库的连接：推荐</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> DataSource source = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">		</span><br><span class="line">		InputStream is = DBCPTest.class.getClassLoader().getResourceAsStream("dbcp.properties");</span><br><span class="line">			</span><br><span class="line">		pros.load(is);</span><br><span class="line">		<span class="comment">//根据提供的BasicDataSourceFactory创建对应的DataSource对象</span></span><br><span class="line">		source = BasicDataSourceFactory.createDataSource(pros);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection4</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		</span><br><span class="line">	Connection conn = source.getConnection();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> conn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">//使用dbcp数据库连接池的配置文件方式，获取数据库的连接：推荐
+private static DataSource source = null;
+static{
+    try {
+        Properties pros = new Properties();
+
+        InputStream is = DBCPTest.class.getClassLoader().getResourceAsStream(&quot;dbcp.properties&quot;);
+
+        pros.load(is);
+        //根据提供的BasicDataSourceFactory创建对应的DataSource对象
+        source = BasicDataSourceFactory.createDataSource(pros);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+}
+public static Connection getConnection4() throws Exception {
+
+    Connection conn = source.getConnection();
+
+    return conn;
+}
+</code></pre>
 <p>其中，src下的配置文件为：【dbcp.properties】</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">driverClassName</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true&amp;useServerPrepStmts=false</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">abc123</span></span><br><span class="line"></span><br><span class="line"><span class="attr">initialSize</span>=<span class="string">10</span></span><br><span class="line"><span class="comment">#...</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-properties">driverClassName=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true&amp;useServerPrepStmts=false
+username=root
+password=abc123
+
+initialSize=10
+#...
+</code></pre>
 <h4 id="8-3-3-Druid（德鲁伊）数据库连接池"><a href="#8-3-3-Druid（德鲁伊）数据库连接池" class="headerlink" title="8.3.3 Druid（德鲁伊）数据库连接池"></a>8.3.3 Druid（德鲁伊）数据库连接池</h4><p>Druid是阿里巴巴开源平台上一个数据库连接池实现，它结合了C3P0、DBCP、Proxool等DB池的优点，同时加入了日志监控，可以很好的监控DB池连接和SQL的执行情况，可以说是针对监控而生的DB连接池，<strong>可以说是目前最好的连接池之一。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.druid;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSourceFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDruid</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 可以放到静态代码块</span></span><br><span class="line">		Properties pro = <span class="keyword">new</span> Properties();		 </span><br><span class="line">		pro.load(TestDruid.class.getClassLoader().getResourceAsStream("druid.properties"));</span><br><span class="line">		DataSource ds = DruidDataSourceFactory.createDataSource(pro);</span><br><span class="line">        </span><br><span class="line">		Connection conn = ds.getConnection();</span><br><span class="line">		System.out.println(conn);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">package com.atguigu.druid;
+
+import java.sql.Connection;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+public class TestDruid {
+    public static void main(String[] args) throws Exception {
+
+        // 可以放到静态代码块
+        Properties pro = new Properties();         
+        pro.load(TestDruid.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;));
+        DataSource ds = DruidDataSourceFactory.createDataSource(pro);
+
+        Connection conn = ds.getConnection();
+        System.out.println(conn);
+    }
+}
+</code></pre>
 <p>其中，src下的配置文件为：【druid.properties】</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">url=jdbc:mysql:<span class="comment">//localhost:3306/test?rewriteBatchedStatements=true</span></span><br><span class="line">username=root</span><br><span class="line">password=<span class="number">123456</span></span><br><span class="line">driverClassName=com.mysql.jdbc.Driver</span><br><span class="line"></span><br><span class="line">initialSize=<span class="number">10</span></span><br><span class="line">maxActive=<span class="number">20</span></span><br><span class="line">maxWait=<span class="number">1000</span></span><br><span class="line">filters=wall</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">url=jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true
+username=root
+password=123456
+driverClassName=com.mysql.jdbc.Driver
+
+initialSize=10
+maxActive=20
+maxWait=1000
+filters=wall
+</code></pre>
 <ul>
 <li>详细配置参数：</li>
 </ul>
@@ -1685,9 +1805,52 @@
 <li><p>测试</p>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试添加</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testInsert</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();<span class="comment">//Druid连接方式</span></span><br><span class="line">	String sql = <span class="string">"insert into customers(name,email,birth)values(?,?,?)"</span>;</span><br><span class="line">	<span class="keyword">int</span> count = runner.update(conn, sql, <span class="string">"何成飞"</span>, <span class="string">"he@qq.com"</span>, <span class="string">"1992-09-08"</span>);</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"添加了"</span> + count + <span class="string">"条记录"</span>);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用Druid数据库连接池技术</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> DataSource source1;</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">			InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(<span class="string">"druid.properties"</span>);</span><br><span class="line">			pros.load(is);</span><br><span class="line">			source1 = DruidDataSourceFactory.createDataSource(pros);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection3</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span>&#123;</span><br><span class="line">		Connection conn = source1.getConnection();</span><br><span class="line">		<span class="keyword">return</span> conn;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试删除</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelete</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">	String sql = <span class="string">"delete from customers where id &lt; ?"</span>;</span><br><span class="line">	<span class="keyword">int</span> count = runner.update(conn, sql,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">	System.out.println(<span class="string">"删除了"</span> + count + <span class="string">"条记录"</span>);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// 测试添加
+@Test
+public void testInsert() throws Exception {
+    QueryRunner runner = new QueryRunner();
+    Connection conn = JDBCUtils.getConnection3();//Druid连接方式
+    String sql = &quot;insert into customers(name,email,birth)values(?,?,?)&quot;;
+    int count = runner.update(conn, sql, &quot;何成飞&quot;, &quot;he@qq.com&quot;, &quot;1992-09-08&quot;);
+
+    System.out.println(&quot;添加了&quot; + count + &quot;条记录&quot;);
+
+    JDBCUtils.closeResource(conn, null);
+}
+</code></pre>
+<pre><code class="lang-java">/**
+ * 使用Druid数据库连接池技术
+ */
+    private static DataSource source1;
+    static{
+        try {
+            Properties pros = new Properties();
+            InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream(&quot;druid.properties&quot;);
+            pros.load(is);
+            source1 = DruidDataSourceFactory.createDataSource(pros);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static Connection getConnection3() throws SQLException{
+        Connection conn = source1.getConnection();
+        return conn;
+    }
+</code></pre>
+<pre><code class="lang-java">// 测试删除
+@Test
+public void testDelete() throws Exception {
+    QueryRunner runner = new QueryRunner();
+    Connection conn = JDBCUtils.getConnection3();
+    String sql = &quot;delete from customers where id &lt; ?&quot;;
+    int count = runner.update(conn, sql,3);
+
+    System.out.println(&quot;删除了&quot; + count + &quot;条记录&quot;);
+
+    JDBCUtils.closeResource(conn, null);
+
+}
+</code></pre>
 <h4 id="9-2-3-ResultSetHandler接口及实现类"><a href="#9-2-3-ResultSetHandler接口及实现类" class="headerlink" title="9.2.3 ResultSetHandler接口及实现类"></a>9.2.3 ResultSetHandler接口及实现类</h4><ul>
 <li><p>该接口用于处理 java.sql.ResultSet，将数据按要求转换为另一种形式。</p>
 </li>
@@ -1709,11 +1872,142 @@
 <li><p>测试</p>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 测试查询:查询一条记录</span></span><br><span class="line"><span class="comment"> * 使用ResultSetHandler的实现类：BeanHandler</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryInstance</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line"></span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">		</span><br><span class="line">	String sql = <span class="string">"select id,name,email,birth from customers where id = ?"</span>;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	BeanHandler&lt;Customer&gt; handler = <span class="keyword">new</span> BeanHandler&lt;&gt;(Customer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">	Customer customer = runner.query(conn, sql, handler, <span class="number">23</span>);</span><br><span class="line">	System.out.println(customer);	</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 测试查询:查询多条记录构成的集合</span></span><br><span class="line"><span class="comment"> * 使用ResultSetHandler的实现类：BeanListHandler</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryList</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line"></span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">		</span><br><span class="line">	String sql = <span class="string">"select id,name,email,birth from customers where id &lt; ?"</span>;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	BeanListHandler&lt;Customer&gt; handler = <span class="keyword">new</span> BeanListHandler&lt;&gt;(Customer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">	List&lt;Customer&gt; list = runner.query(conn, sql, handler, <span class="number">23</span>);</span><br><span class="line">	list.forEach(System.out::println);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 自定义ResultSetHandler的实现类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryInstance1</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line"></span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">		</span><br><span class="line">	String sql = <span class="string">"select id,name,email,birth from customers where id = ?"</span>;</span><br><span class="line">		</span><br><span class="line">	ResultSetHandler&lt;Customer&gt; handler = <span class="keyword">new</span> ResultSetHandler&lt;Customer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Customer <span class="title">handle</span><span class="params">(ResultSet rs)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"handle"</span>);</span><br><span class="line"><span class="comment">//			return new Customer(1,"Tom","tom@126.com",new Date(123323432L));</span></span><br><span class="line">				</span><br><span class="line">			<span class="keyword">if</span>(rs.next())&#123;</span><br><span class="line">				<span class="keyword">int</span> id = rs.getInt(<span class="string">"id"</span>);</span><br><span class="line">				String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">				String email = rs.getString(<span class="string">"email"</span>);</span><br><span class="line">				Date birth = rs.getDate(<span class="string">"birth"</span>);</span><br><span class="line">					</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> Customer(id, name, email, birth);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">				</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">		</span><br><span class="line">	Customer customer = runner.query(conn, sql, handler, <span class="number">23</span>);</span><br><span class="line">		</span><br><span class="line">	System.out.println(customer);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 如何查询类似于最大的，最小的，平均的，总和，个数相关的数据，</span></span><br><span class="line"><span class="comment"> * 使用ScalarHandler</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQueryValue</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	QueryRunner runner = <span class="keyword">new</span> QueryRunner();</span><br><span class="line"></span><br><span class="line">	Connection conn = JDBCUtils.getConnection3();</span><br><span class="line">		</span><br><span class="line">	<span class="comment">//测试一：</span></span><br><span class="line"><span class="comment">//	String sql = "select count(*) from customers where id &lt; ?";</span></span><br><span class="line"><span class="comment">//	ScalarHandler handler = new ScalarHandler();</span></span><br><span class="line"><span class="comment">//	long count = (long) runner.query(conn, sql, handler, 20);</span></span><br><span class="line"><span class="comment">//	System.out.println(count);</span></span><br><span class="line">		</span><br><span class="line">	<span class="comment">//测试二：</span></span><br><span class="line">	String sql = <span class="string">"select max(birth) from customers"</span>;</span><br><span class="line">	ScalarHandler handler = <span class="keyword">new</span> ScalarHandler();</span><br><span class="line">	Date birth = (Date) runner.query(conn, sql, handler);</span><br><span class="line">	System.out.println(birth);</span><br><span class="line">		</span><br><span class="line">	JDBCUtils.closeResource(conn, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="JDBC总结"><a href="#JDBC总结" class="headerlink" title="JDBC总结"></a>JDBC总结</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">总结</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testUpdateWithTx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">	Connection conn = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//1.获取连接的操作（</span></span><br><span class="line">		<span class="comment">//① 手写的连接：JDBCUtils.getConnection();</span></span><br><span class="line">		<span class="comment">//② 使用数据库连接池：C3P0;DBCP;Druid</span></span><br><span class="line">		<span class="comment">//2.对数据表进行一系列CRUD操作</span></span><br><span class="line">		<span class="comment">//① 使用PreparedStatement实现通用的增删改、查询操作（version 1.0 \ version 2.0)</span></span><br><span class="line"><span class="comment">//version2.0的增删改public void update(Connection conn,String sql,Object ... args)&#123;&#125;</span></span><br><span class="line"><span class="comment">//version2.0的查询 public &lt;T&gt; T getInstance(Connection conn,Class&lt;T&gt; clazz,String sql,Object ... args)&#123;&#125;</span></span><br><span class="line">		<span class="comment">//② 使用dbutils提供的jar包中提供的QueryRunner类</span></span><br><span class="line">			</span><br><span class="line">		<span class="comment">//提交数据</span></span><br><span class="line">		conn.commit();</span><br><span class="line">	</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//回滚数据</span></span><br><span class="line">			conn.rollback();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e1) &#123;</span><br><span class="line">			e1.printStackTrace();</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">		<span class="comment">//3.关闭连接等操作</span></span><br><span class="line">		<span class="comment">//① JDBCUtils.closeResource();</span></span><br><span class="line">		<span class="comment">//② 使用dbutils提供的jar包中提供的DbUtils类提供了关闭的相关操作	</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">/*
+ * 测试查询:查询一条记录
+ * 使用ResultSetHandler的实现类：BeanHandler
+ */
+@Test
+public void testQueryInstance() throws Exception{
+    QueryRunner runner = new QueryRunner();
+
+    Connection conn = JDBCUtils.getConnection3();
+
+    String sql = &quot;select id,name,email,birth from customers where id = ?&quot;;
+
+    //
+    BeanHandler&lt;Customer&gt; handler = new BeanHandler&lt;&gt;(Customer.class);
+    Customer customer = runner.query(conn, sql, handler, 23);
+    System.out.println(customer);    
+    JDBCUtils.closeResource(conn, null);
+}
+</code></pre>
+<pre><code class="lang-java">/*
+ * 测试查询:查询多条记录构成的集合
+ * 使用ResultSetHandler的实现类：BeanListHandler
+ */
+@Test
+public void testQueryList() throws Exception{
+    QueryRunner runner = new QueryRunner();
+
+    Connection conn = JDBCUtils.getConnection3();
+
+    String sql = &quot;select id,name,email,birth from customers where id &lt; ?&quot;;
+
+    //
+    BeanListHandler&lt;Customer&gt; handler = new BeanListHandler&lt;&gt;(Customer.class);
+    List&lt;Customer&gt; list = runner.query(conn, sql, handler, 23);
+    list.forEach(System.out::println);
+
+    JDBCUtils.closeResource(conn, null);
+}
+</code></pre>
+<pre><code class="lang-java">/*
+ * 自定义ResultSetHandler的实现类
+ */
+@Test
+public void testQueryInstance1() throws Exception{
+    QueryRunner runner = new QueryRunner();
+
+    Connection conn = JDBCUtils.getConnection3();
+
+    String sql = &quot;select id,name,email,birth from customers where id = ?&quot;;
+
+    ResultSetHandler&lt;Customer&gt; handler = new ResultSetHandler&lt;Customer&gt;() {
+
+        @Override
+        public Customer handle(ResultSet rs) throws SQLException {
+            System.out.println(&quot;handle&quot;);
+//            return new Customer(1,&quot;Tom&quot;,&quot;tom@126.com&quot;,new Date(123323432L));
+
+            if(rs.next()){
+                int id = rs.getInt(&quot;id&quot;);
+                String name = rs.getString(&quot;name&quot;);
+                String email = rs.getString(&quot;email&quot;);
+                Date birth = rs.getDate(&quot;birth&quot;);
+
+                return new Customer(id, name, email, birth);
+            }
+            return null;
+
+        }
+    };
+
+    Customer customer = runner.query(conn, sql, handler, 23);
+
+    System.out.println(customer);
+
+    JDBCUtils.closeResource(conn, null);
+}
+</code></pre>
+<pre><code class="lang-java">/*
+ * 如何查询类似于最大的，最小的，平均的，总和，个数相关的数据，
+ * 使用ScalarHandler
+ * 
+ */
+@Test
+public void testQueryValue() throws Exception{
+    QueryRunner runner = new QueryRunner();
+
+    Connection conn = JDBCUtils.getConnection3();
+
+    //测试一：
+//    String sql = &quot;select count(*) from customers where id &lt; ?&quot;;
+//    ScalarHandler handler = new ScalarHandler();
+//    long count = (long) runner.query(conn, sql, handler, 20);
+//    System.out.println(count);
+
+    //测试二：
+    String sql = &quot;select max(birth) from customers&quot;;
+    ScalarHandler handler = new ScalarHandler();
+    Date birth = (Date) runner.query(conn, sql, handler);
+    System.out.println(birth);
+
+    JDBCUtils.closeResource(conn, null);
+}
+</code></pre>
+<h2 id="JDBC总结"><a href="#JDBC总结" class="headerlink" title="JDBC总结"></a>JDBC总结</h2><pre><code class="lang-java">总结
+@Test
+public void testUpdateWithTx() {
+
+    Connection conn = null;
+    try {
+        //1.获取连接的操作（
+        //① 手写的连接：JDBCUtils.getConnection();
+        //② 使用数据库连接池：C3P0;DBCP;Druid
+        //2.对数据表进行一系列CRUD操作
+        //① 使用PreparedStatement实现通用的增删改、查询操作（version 1.0 \ version 2.0)
+//version2.0的增删改public void update(Connection conn,String sql,Object ... args){}
+//version2.0的查询 public &lt;T&gt; T getInstance(Connection conn,Class&lt;T&gt; clazz,String sql,Object ... args){}
+        //② 使用dbutils提供的jar包中提供的QueryRunner类
+
+        //提交数据
+        conn.commit();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        try {
+            //回滚数据
+            conn.rollback();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }    
+    }finally{
+        //3.关闭连接等操作
+        //① JDBCUtils.closeResource();
+        //② 使用dbutils提供的jar包中提供的DbUtils类提供了关闭的相关操作    
+    }
+}
+</code></pre>
 
 </div>
 
@@ -1729,8 +2023,8 @@
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
-                Hadoop02-HDFS概述、shell&客户端操作
+              <a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+                Hadoop01-概述、运行模式&源码编译
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

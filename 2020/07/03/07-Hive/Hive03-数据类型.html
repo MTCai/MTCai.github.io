@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1438,24 +1438,52 @@
 </div>
 <p>Hive 有三种复杂数据类型ARRAY、MAP 和 STRUCT。ARRAY 和MAP 与Java 中的Array 和Map 类似，而STRUCT 与C 语言中的Struct 类似，它封装了一个命名字段集合，复杂数据类型允许任意层次的嵌套。 </p>
 <p><strong>案例：</strong></p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"songsong"</span>,</span><br><span class="line">    <span class="attr">"friends"</span>: [<span class="string">"bingbing"</span> , <span class="string">"lili"</span>] ,	<span class="comment">//列表 Array,</span></span><br><span class="line">    <span class="attr">"children"</span>: &#123;	<span class="comment">//键值 Map,</span></span><br><span class="line">    	<span class="attr">"xiao song"</span>: <span class="number">18</span> , </span><br><span class="line">        <span class="attr">"xiaoxiao song"</span>: <span class="number">19</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="string">"address"</span>: &#123;	<span class="comment">//结构 Struct,</span></span><br><span class="line">    	<span class="attr">"street"</span>: <span class="string">"hui long guan"</span> , </span><br><span class="line">    	<span class="attr">"city"</span>: <span class="string">"beijing"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-json">{
+    &quot;name&quot;: &quot;songsong&quot;,
+    &quot;friends&quot;: [&quot;bingbing&quot; , &quot;lili&quot;] ,    //列表 Array,
+    &quot;children&quot;: {    //键值 Map,
+        &quot;xiao song&quot;: 18 , 
+        &quot;xiaoxiao song&quot;: 19
+    }
+    &quot;address&quot;: {    //结构 Struct,
+        &quot;street&quot;: &quot;hui long guan&quot; , 
+        &quot;city&quot;: &quot;beijing&quot;
+    }
+}
+</code></pre>
 <p>基于上述数据结构，我们在Hive 里创建对应的表，并导入数据。</p>
 <ol>
 <li>创建本地测试文件 test.txt </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">songsong,bingbing_lili,xiao song:18_xiaoxiao song:19,hui long guan_beijing </span><br><span class="line">yangyang,caicai_susu,xiao yang:18_xiaoxiao yang:19,chao yang_beijing</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-txt">songsong,bingbing_lili,xiao song:18_xiaoxiao song:19,hui long guan_beijing 
+yangyang,caicai_susu,xiao yang:18_xiaoxiao yang:19,chao yang_beijing
+</code></pre>
 <p>注意：MAP，STRUCT 和ARRAY 里的元素间关系都可以用同一个字符表示，这里用“_”。 </p>
 <ol>
 <li>Hive 上创建测试表 test:</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table <span class="built_in">test</span>( </span><br><span class="line">name string, </span><br><span class="line">friends array&lt;string&gt;, </span><br><span class="line">children map&lt;string, int&gt;, </span><br><span class="line">address struct&lt;street:string, city:string&gt; ) </span><br><span class="line">row format delimited  fields terminated by <span class="string">','</span> <span class="comment">#  -- 列分隔符</span></span><br><span class="line">collection items terminated by <span class="string">'_'</span>             <span class="comment"># --MAP STRUCT 和 ARRAY 的分隔符(数据分割符号)</span></span><br><span class="line">map keys terminated by <span class="string">':'</span>                     <span class="comment"># -- MAP 中的key 与value 的分隔符 </span></span><br><span class="line">lines terminated by <span class="string">'\n'</span>;                      <span class="comment"># -- 行分隔符</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">create table test( 
+name string, 
+friends array&lt;string&gt;, 
+children map&lt;string, int&gt;, 
+address struct&lt;street:string, city:string&gt; ) 
+row format delimited  fields terminated by &#39;,&#39; #  -- 列分隔符
+collection items terminated by &#39;_&#39;             # --MAP STRUCT 和 ARRAY 的分隔符(数据分割符号)
+map keys terminated by &#39;:&#39;                     # -- MAP 中的key 与value 的分隔符 
+lines terminated by &#39;\n&#39;;                      # -- 行分隔符
+</code></pre>
 <ol>
 <li>导入文本数据到测试表:</li>
 </ol>
 <p>hive (default)&gt; load data local inpath “/opt/module/datas/test.txt” into table test;</p>
 <ol>
 <li><p>访问三种集合列里的数据，以下分别是ARRAY，MAP，STRUCT 的访问方式：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hive (default)&gt; select friends[1],children[<span class="string">'xiao song'</span>],address.city from <span class="built_in">test</span> <span class="built_in">where</span> name=<span class="string">"songsong"</span>;</span><br><span class="line">OK</span><br><span class="line">_c0	_c1	city</span><br><span class="line">lili	18	beijing</span><br><span class="line">Time taken: 0.076 seconds, Fetched: 1 row(s)</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash"> hive (default)&gt; select friends[1],children[&#39;xiao song&#39;],address.city from test where name=&quot;songsong&quot;;
+ OK
+ _c0    _c1    city
+ lili    18    beijing
+ Time taken: 0.076 seconds, Fetched: 1 row(s)
+</code></pre>
 </li>
 </ol>
 <h2 id="类型转化"><a href="#类型转化" class="headerlink" title="类型转化"></a>类型转化</h2><p>Hive 的原子数据类型是可以进行隐式转换的，类似于 Java 的类型转换，例如某表达式 使用 INT 类型，TINYINT 会自动转换为 INT 类型，但是 Hive 不会进行反向转化，例如， 某表达式使用 TINYINT 类型，INT 不会自动转换为 TINYINT 类型，它会返回错误，除非使 用 CAST 操作。</p>
@@ -1625,16 +1653,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/07/03/07-Hive/Hive05-DML.html">
+              <a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Hive05-DML
+                  Hive02-安装
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/07/03/07-Hive/Hive04-DDL.html">
-                Hive04-DDL
+              <a href="/2020/07/03/07-Hive/Hive05-DML.html">
+                Hive05-DML
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

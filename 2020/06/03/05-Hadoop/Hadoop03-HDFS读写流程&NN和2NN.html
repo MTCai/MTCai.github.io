@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1397,7 +1397,50 @@
 <h3 id="oiv-查看-Fsimage文件"><a href="#oiv-查看-Fsimage文件" class="headerlink" title="oiv 查看 Fsimage文件"></a>oiv 查看 Fsimage文件</h3><blockquote>
 <p>hdfs oiv -p 文件类型 -i镜像文件 -o 转换后文件输出路径</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 current]$ <span class="built_in">pwd</span></span><br><span class="line">/opt/module/hadoop-2.7.2/data/tmp/dfs/name/current</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 current]$ hdfs oiv -p XML -i fsimage_0000000000000000025 -o /opt/module/hadoop-2.7.2/fsimage.xml</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 current]$ cat /opt/module/hadoop-2.7.2/fsimage.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将显示的xml文件内容拷贝到Eclipse中创建的xml文件中，并格式化。部分显示结果如下。</span></span><br><span class="line">&lt;inode&gt;</span><br><span class="line">	&lt;id&gt;16386&lt;/id&gt;</span><br><span class="line">	&lt;<span class="built_in">type</span>&gt;DIRECTORY&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">	&lt;name&gt;user&lt;/name&gt;</span><br><span class="line">	&lt;mtime&gt;1512722284477&lt;/mtime&gt;</span><br><span class="line">	&lt;permission&gt;atguigu:supergroup:rwxr-xr-x&lt;/permission&gt;</span><br><span class="line">	&lt;nsquota&gt;-1&lt;/nsquota&gt;</span><br><span class="line">	&lt;dsquota&gt;-1&lt;/dsquota&gt;</span><br><span class="line">&lt;/inode&gt;</span><br><span class="line">&lt;inode&gt;</span><br><span class="line">	&lt;id&gt;16387&lt;/id&gt;</span><br><span class="line">	&lt;<span class="built_in">type</span>&gt;DIRECTORY&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">	&lt;name&gt;atguigu&lt;/name&gt;</span><br><span class="line">	&lt;mtime&gt;1512790549080&lt;/mtime&gt;</span><br><span class="line">	&lt;permission&gt;atguigu:supergroup:rwxr-xr-x&lt;/permission&gt;</span><br><span class="line">	&lt;nsquota&gt;-1&lt;/nsquota&gt;</span><br><span class="line">	&lt;dsquota&gt;-1&lt;/dsquota&gt;</span><br><span class="line">&lt;/inode&gt;</span><br><span class="line">&lt;inode&gt;</span><br><span class="line">	&lt;id&gt;16389&lt;/id&gt;</span><br><span class="line">	&lt;<span class="built_in">type</span>&gt;FILE&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">	&lt;name&gt;wc.input&lt;/name&gt;</span><br><span class="line">	&lt;replication&gt;3&lt;/replication&gt;</span><br><span class="line">	&lt;mtime&gt;1512722322219&lt;/mtime&gt;</span><br><span class="line">	&lt;atime&gt;1512722321610&lt;/atime&gt;</span><br><span class="line">	&lt;perferredBlockSize&gt;134217728&lt;/perferredBlockSize&gt;</span><br><span class="line">	&lt;permission&gt;atguigu:supergroup:rw-r--r--&lt;/permission&gt;</span><br><span class="line">	&lt;blocks&gt;</span><br><span class="line">		&lt;block&gt;</span><br><span class="line">			&lt;id&gt;1073741825&lt;/id&gt;</span><br><span class="line">			&lt;genstamp&gt;1001&lt;/genstamp&gt;</span><br><span class="line">			&lt;numBytes&gt;59&lt;/numBytes&gt;</span><br><span class="line">		&lt;/block&gt;</span><br><span class="line">	&lt;/blocks&gt;</span><br><span class="line">&lt;/inode &gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 current]$ pwd
+/opt/module/hadoop-2.7.2/data/tmp/dfs/name/current
+
+[atguigu@hadoop102 current]$ hdfs oiv -p XML -i fsimage_0000000000000000025 -o /opt/module/hadoop-2.7.2/fsimage.xml
+
+[atguigu@hadoop102 current]$ cat /opt/module/hadoop-2.7.2/fsimage.xml
+
+# 将显示的xml文件内容拷贝到Eclipse中创建的xml文件中，并格式化。部分显示结果如下。
+&lt;inode&gt;
+    &lt;id&gt;16386&lt;/id&gt;
+    &lt;type&gt;DIRECTORY&lt;/type&gt;
+    &lt;name&gt;user&lt;/name&gt;
+    &lt;mtime&gt;1512722284477&lt;/mtime&gt;
+    &lt;permission&gt;atguigu:supergroup:rwxr-xr-x&lt;/permission&gt;
+    &lt;nsquota&gt;-1&lt;/nsquota&gt;
+    &lt;dsquota&gt;-1&lt;/dsquota&gt;
+&lt;/inode&gt;
+&lt;inode&gt;
+    &lt;id&gt;16387&lt;/id&gt;
+    &lt;type&gt;DIRECTORY&lt;/type&gt;
+    &lt;name&gt;atguigu&lt;/name&gt;
+    &lt;mtime&gt;1512790549080&lt;/mtime&gt;
+    &lt;permission&gt;atguigu:supergroup:rwxr-xr-x&lt;/permission&gt;
+    &lt;nsquota&gt;-1&lt;/nsquota&gt;
+    &lt;dsquota&gt;-1&lt;/dsquota&gt;
+&lt;/inode&gt;
+&lt;inode&gt;
+    &lt;id&gt;16389&lt;/id&gt;
+    &lt;type&gt;FILE&lt;/type&gt;
+    &lt;name&gt;wc.input&lt;/name&gt;
+    &lt;replication&gt;3&lt;/replication&gt;
+    &lt;mtime&gt;1512722322219&lt;/mtime&gt;
+    &lt;atime&gt;1512722321610&lt;/atime&gt;
+    &lt;perferredBlockSize&gt;134217728&lt;/perferredBlockSize&gt;
+    &lt;permission&gt;atguigu:supergroup:rw-r--r--&lt;/permission&gt;
+    &lt;blocks&gt;
+        &lt;block&gt;
+            &lt;id&gt;1073741825&lt;/id&gt;
+            &lt;genstamp&gt;1001&lt;/genstamp&gt;
+            &lt;numBytes&gt;59&lt;/numBytes&gt;
+        &lt;/block&gt;
+    &lt;/blocks&gt;
+&lt;/inode &gt;
+</code></pre>
 <p>思考：可以看出，Fsimage中没有记录块所对应DataNode，为什么？</p>
 <blockquote>
 <p>在集群启动后，要求DataNode上报数据块信息，并间隔一段时间后再次上报。</p>
@@ -1405,14 +1448,123 @@
 <h3 id="oev-查看Edits文件"><a href="#oev-查看Edits文件" class="headerlink" title="oev 查看Edits文件"></a>oev 查看Edits文件</h3><blockquote>
 <p>hdfs oev -p 文件类型 -i编辑日志 -o 转换后文件输出路径</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 current]$ hdfs oev -p XML -i edits_0000000000000000012-0000000000000000013 -o /opt/module/hadoop-2.7.2/edits.xml</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 current]$ cat /opt/module/hadoop-2.7.2/edits.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将显示的xml文件内容拷贝到Eclipse中创建的xml文件中，并格式化。显示结果如下</span></span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;EDITS&gt;</span><br><span class="line">	&lt;EDITS_VERSION&gt;-63&lt;/EDITS_VERSION&gt;</span><br><span class="line">	&lt;RECORD&gt;</span><br><span class="line">		&lt;OPCODE&gt;OP_START_LOG_SEGMENT&lt;/OPCODE&gt;</span><br><span class="line">		&lt;DATA&gt;</span><br><span class="line">			&lt;TXID&gt;129&lt;/TXID&gt;</span><br><span class="line">		&lt;/DATA&gt;</span><br><span class="line">	&lt;/RECORD&gt;</span><br><span class="line">	&lt;RECORD&gt;</span><br><span class="line">		&lt;OPCODE&gt;OP_ADD&lt;/OPCODE&gt;</span><br><span class="line">		&lt;DATA&gt;</span><br><span class="line">			&lt;TXID&gt;130&lt;/TXID&gt;</span><br><span class="line">			&lt;LENGTH&gt;0&lt;/LENGTH&gt;</span><br><span class="line">			&lt;INODEID&gt;16407&lt;/INODEID&gt;</span><br><span class="line">			&lt;PATH&gt;/hello7.txt&lt;/PATH&gt;</span><br><span class="line">			&lt;REPLICATION&gt;2&lt;/REPLICATION&gt;</span><br><span class="line">			&lt;MTIME&gt;1512943607866&lt;/MTIME&gt;</span><br><span class="line">			&lt;ATIME&gt;1512943607866&lt;/ATIME&gt;</span><br><span class="line">			&lt;BLOCKSIZE&gt;134217728&lt;/BLOCKSIZE&gt;</span><br><span class="line">			&lt;CLIENT_NAME&gt;DFSClient_NONMAPREDUCE_-1544295051_1&lt;/CLIENT_NAME&gt;</span><br><span class="line">			&lt;CLIENT_MACHINE&gt;192.168.1.5&lt;/CLIENT_MACHINE&gt;</span><br><span class="line">			&lt;OVERWRITE&gt;<span class="literal">true</span>&lt;/OVERWRITE&gt;</span><br><span class="line">			&lt;PERMISSION_STATUS&gt;</span><br><span class="line">				&lt;USERNAME&gt;atguigu&lt;/USERNAME&gt;</span><br><span class="line">				&lt;GROUPNAME&gt;supergroup&lt;/GROUPNAME&gt;</span><br><span class="line">				&lt;MODE&gt;420&lt;/MODE&gt;</span><br><span class="line">			&lt;/PERMISSION_STATUS&gt;</span><br><span class="line">			&lt;RPC_CLIENTID&gt;908eafd4-9aec-4288-96f1-e8011d181561&lt;/RPC_CLIENTID&gt;</span><br><span class="line">			&lt;RPC_CALLID&gt;0&lt;/RPC_CALLID&gt;</span><br><span class="line">		&lt;/DATA&gt;</span><br><span class="line">	&lt;/RECORD&gt;</span><br><span class="line">	&lt;RECORD&gt;</span><br><span class="line">		&lt;OPCODE&gt;OP_ALLOCATE_BLOCK_ID&lt;/OPCODE&gt;</span><br><span class="line">		&lt;DATA&gt;</span><br><span class="line">			&lt;TXID&gt;131&lt;/TXID&gt;</span><br><span class="line">			&lt;BLOCK_ID&gt;1073741839&lt;/BLOCK_ID&gt;</span><br><span class="line">		&lt;/DATA&gt;</span><br><span class="line">	&lt;/RECORD&gt;</span><br><span class="line">	&lt;RECORD&gt;</span><br><span class="line">		&lt;OPCODE&gt;OP_SET_GENSTAMP_V2&lt;/OPCODE&gt;</span><br><span class="line">		&lt;DATA&gt;</span><br><span class="line">			&lt;TXID&gt;132&lt;/TXID&gt;</span><br><span class="line">			&lt;GENSTAMPV2&gt;1016&lt;/GENSTAMPV2&gt;</span><br><span class="line">		&lt;/DATA&gt;</span><br><span class="line">	&lt;/RECORD&gt;</span><br><span class="line">	&lt;RECORD&gt;</span><br><span class="line">		&lt;OPCODE&gt;OP_ADD_BLOCK&lt;/OPCODE&gt;</span><br><span class="line">		&lt;DATA&gt;</span><br><span class="line">			&lt;TXID&gt;133&lt;/TXID&gt;</span><br><span class="line">			&lt;PATH&gt;/hello7.txt&lt;/PATH&gt;</span><br><span class="line">			&lt;BLOCK&gt;</span><br><span class="line">				&lt;BLOCK_ID&gt;1073741839&lt;/BLOCK_ID&gt;</span><br><span class="line">				&lt;NUM_BYTES&gt;0&lt;/NUM_BYTES&gt;</span><br><span class="line">				&lt;GENSTAMP&gt;1016&lt;/GENSTAMP&gt;</span><br><span class="line">			&lt;/BLOCK&gt;</span><br><span class="line">			&lt;RPC_CLIENTID&gt;&lt;/RPC_CLIENTID&gt;</span><br><span class="line">			&lt;RPC_CALLID&gt;-2&lt;/RPC_CALLID&gt;</span><br><span class="line">		&lt;/DATA&gt;</span><br><span class="line">	&lt;/RECORD&gt;</span><br><span class="line">	&lt;RECORD&gt;</span><br><span class="line">		&lt;OPCODE&gt;OP_CLOSE&lt;/OPCODE&gt;</span><br><span class="line">		&lt;DATA&gt;</span><br><span class="line">			&lt;TXID&gt;134&lt;/TXID&gt;</span><br><span class="line">			&lt;LENGTH&gt;0&lt;/LENGTH&gt;</span><br><span class="line">			&lt;INODEID&gt;0&lt;/INODEID&gt;</span><br><span class="line">			&lt;PATH&gt;/hello7.txt&lt;/PATH&gt;</span><br><span class="line">			&lt;REPLICATION&gt;2&lt;/REPLICATION&gt;</span><br><span class="line">			&lt;MTIME&gt;1512943608761&lt;/MTIME&gt;</span><br><span class="line">			&lt;ATIME&gt;1512943607866&lt;/ATIME&gt;</span><br><span class="line">			&lt;BLOCKSIZE&gt;134217728&lt;/BLOCKSIZE&gt;</span><br><span class="line">			&lt;CLIENT_NAME&gt;&lt;/CLIENT_NAME&gt;</span><br><span class="line">			&lt;CLIENT_MACHINE&gt;&lt;/CLIENT_MACHINE&gt;</span><br><span class="line">			&lt;OVERWRITE&gt;<span class="literal">false</span>&lt;/OVERWRITE&gt;</span><br><span class="line">			&lt;BLOCK&gt;</span><br><span class="line">				&lt;BLOCK_ID&gt;1073741839&lt;/BLOCK_ID&gt;</span><br><span class="line">				&lt;NUM_BYTES&gt;25&lt;/NUM_BYTES&gt;</span><br><span class="line">				&lt;GENSTAMP&gt;1016&lt;/GENSTAMP&gt;</span><br><span class="line">			&lt;/BLOCK&gt;</span><br><span class="line">			&lt;PERMISSION_STATUS&gt;</span><br><span class="line">				&lt;USERNAME&gt;atguigu&lt;/USERNAME&gt;</span><br><span class="line">				&lt;GROUPNAME&gt;supergroup&lt;/GROUPNAME&gt;</span><br><span class="line">				&lt;MODE&gt;420&lt;/MODE&gt;</span><br><span class="line">			&lt;/PERMISSION_STATUS&gt;</span><br><span class="line">		&lt;/DATA&gt;</span><br><span class="line">	&lt;/RECORD&gt;</span><br><span class="line">&lt;/EDITS &gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 current]$ hdfs oev -p XML -i edits_0000000000000000012-0000000000000000013 -o /opt/module/hadoop-2.7.2/edits.xml
+
+[atguigu@hadoop102 current]$ cat /opt/module/hadoop-2.7.2/edits.xml
+
+# 将显示的xml文件内容拷贝到Eclipse中创建的xml文件中，并格式化。显示结果如下
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;EDITS&gt;
+    &lt;EDITS_VERSION&gt;-63&lt;/EDITS_VERSION&gt;
+    &lt;RECORD&gt;
+        &lt;OPCODE&gt;OP_START_LOG_SEGMENT&lt;/OPCODE&gt;
+        &lt;DATA&gt;
+            &lt;TXID&gt;129&lt;/TXID&gt;
+        &lt;/DATA&gt;
+    &lt;/RECORD&gt;
+    &lt;RECORD&gt;
+        &lt;OPCODE&gt;OP_ADD&lt;/OPCODE&gt;
+        &lt;DATA&gt;
+            &lt;TXID&gt;130&lt;/TXID&gt;
+            &lt;LENGTH&gt;0&lt;/LENGTH&gt;
+            &lt;INODEID&gt;16407&lt;/INODEID&gt;
+            &lt;PATH&gt;/hello7.txt&lt;/PATH&gt;
+            &lt;REPLICATION&gt;2&lt;/REPLICATION&gt;
+            &lt;MTIME&gt;1512943607866&lt;/MTIME&gt;
+            &lt;ATIME&gt;1512943607866&lt;/ATIME&gt;
+            &lt;BLOCKSIZE&gt;134217728&lt;/BLOCKSIZE&gt;
+            &lt;CLIENT_NAME&gt;DFSClient_NONMAPREDUCE_-1544295051_1&lt;/CLIENT_NAME&gt;
+            &lt;CLIENT_MACHINE&gt;192.168.1.5&lt;/CLIENT_MACHINE&gt;
+            &lt;OVERWRITE&gt;true&lt;/OVERWRITE&gt;
+            &lt;PERMISSION_STATUS&gt;
+                &lt;USERNAME&gt;atguigu&lt;/USERNAME&gt;
+                &lt;GROUPNAME&gt;supergroup&lt;/GROUPNAME&gt;
+                &lt;MODE&gt;420&lt;/MODE&gt;
+            &lt;/PERMISSION_STATUS&gt;
+            &lt;RPC_CLIENTID&gt;908eafd4-9aec-4288-96f1-e8011d181561&lt;/RPC_CLIENTID&gt;
+            &lt;RPC_CALLID&gt;0&lt;/RPC_CALLID&gt;
+        &lt;/DATA&gt;
+    &lt;/RECORD&gt;
+    &lt;RECORD&gt;
+        &lt;OPCODE&gt;OP_ALLOCATE_BLOCK_ID&lt;/OPCODE&gt;
+        &lt;DATA&gt;
+            &lt;TXID&gt;131&lt;/TXID&gt;
+            &lt;BLOCK_ID&gt;1073741839&lt;/BLOCK_ID&gt;
+        &lt;/DATA&gt;
+    &lt;/RECORD&gt;
+    &lt;RECORD&gt;
+        &lt;OPCODE&gt;OP_SET_GENSTAMP_V2&lt;/OPCODE&gt;
+        &lt;DATA&gt;
+            &lt;TXID&gt;132&lt;/TXID&gt;
+            &lt;GENSTAMPV2&gt;1016&lt;/GENSTAMPV2&gt;
+        &lt;/DATA&gt;
+    &lt;/RECORD&gt;
+    &lt;RECORD&gt;
+        &lt;OPCODE&gt;OP_ADD_BLOCK&lt;/OPCODE&gt;
+        &lt;DATA&gt;
+            &lt;TXID&gt;133&lt;/TXID&gt;
+            &lt;PATH&gt;/hello7.txt&lt;/PATH&gt;
+            &lt;BLOCK&gt;
+                &lt;BLOCK_ID&gt;1073741839&lt;/BLOCK_ID&gt;
+                &lt;NUM_BYTES&gt;0&lt;/NUM_BYTES&gt;
+                &lt;GENSTAMP&gt;1016&lt;/GENSTAMP&gt;
+            &lt;/BLOCK&gt;
+            &lt;RPC_CLIENTID&gt;&lt;/RPC_CLIENTID&gt;
+            &lt;RPC_CALLID&gt;-2&lt;/RPC_CALLID&gt;
+        &lt;/DATA&gt;
+    &lt;/RECORD&gt;
+    &lt;RECORD&gt;
+        &lt;OPCODE&gt;OP_CLOSE&lt;/OPCODE&gt;
+        &lt;DATA&gt;
+            &lt;TXID&gt;134&lt;/TXID&gt;
+            &lt;LENGTH&gt;0&lt;/LENGTH&gt;
+            &lt;INODEID&gt;0&lt;/INODEID&gt;
+            &lt;PATH&gt;/hello7.txt&lt;/PATH&gt;
+            &lt;REPLICATION&gt;2&lt;/REPLICATION&gt;
+            &lt;MTIME&gt;1512943608761&lt;/MTIME&gt;
+            &lt;ATIME&gt;1512943607866&lt;/ATIME&gt;
+            &lt;BLOCKSIZE&gt;134217728&lt;/BLOCKSIZE&gt;
+            &lt;CLIENT_NAME&gt;&lt;/CLIENT_NAME&gt;
+            &lt;CLIENT_MACHINE&gt;&lt;/CLIENT_MACHINE&gt;
+            &lt;OVERWRITE&gt;false&lt;/OVERWRITE&gt;
+            &lt;BLOCK&gt;
+                &lt;BLOCK_ID&gt;1073741839&lt;/BLOCK_ID&gt;
+                &lt;NUM_BYTES&gt;25&lt;/NUM_BYTES&gt;
+                &lt;GENSTAMP&gt;1016&lt;/GENSTAMP&gt;
+            &lt;/BLOCK&gt;
+            &lt;PERMISSION_STATUS&gt;
+                &lt;USERNAME&gt;atguigu&lt;/USERNAME&gt;
+                &lt;GROUPNAME&gt;supergroup&lt;/GROUPNAME&gt;
+                &lt;MODE&gt;420&lt;/MODE&gt;
+            &lt;/PERMISSION_STATUS&gt;
+        &lt;/DATA&gt;
+    &lt;/RECORD&gt;
+&lt;/EDITS &gt;
+</code></pre>
 <p>思考：NameNode如何确定下次开机启动的时候合并哪些Edits？</p>
 <h3 id="CheckPoint时间设置"><a href="#CheckPoint时间设置" class="headerlink" title="CheckPoint时间设置"></a>CheckPoint时间设置</h3><ol>
 <li><p>通常情况下，SecondaryNameNode每隔一小时执行一次</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[hdfs-default.xml]</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.checkpoint.period<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>3600<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">[hdfs-default.xml]
+
+&lt;property&gt;
+  &lt;name&gt;dfs.namenode.checkpoint.period&lt;/name&gt;
+  &lt;value&gt;3600&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 </li>
 <li><p>一分钟检查一次操作次数，当操作次数达到1百万时，SecondaryNameNode执行一次。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.checkpoint.txns<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>1000000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">description</span>&gt;</span>操作动作次数<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.checkpoint.check.period<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>60<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">description</span>&gt;</span> 1分钟检查一次操作次数<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span> &gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+  &lt;name&gt;dfs.namenode.checkpoint.txns&lt;/name&gt;
+  &lt;value&gt;1000000&lt;/value&gt;
+&lt;description&gt;操作动作次数&lt;/description&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+  &lt;name&gt;dfs.namenode.checkpoint.check.period&lt;/name&gt;
+  &lt;value&gt;60&lt;/value&gt;
+&lt;description&gt; 1分钟检查一次操作次数&lt;/description&gt;
+&lt;/property &gt;
+</code></pre>
 </li>
 </ol>
 <h3 id="NameNode故障处理"><a href="#NameNode故障处理" class="headerlink" title="NameNode故障处理"></a>NameNode故障处理</h3><p>NameNode故障后，可以采用如下两种方法恢复数据。</p>
@@ -1425,27 +1577,53 @@
 <li><p>拷贝SecondaryNameNode中数据到原NameNode存储数据目录</p>
 </li>
 <li><p>重新启动NameNode</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ rm -rf /opt/module/hadoop-2.7.2/data/tmp/dfs/name/*</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 dfs]$ scp -r atguigu@hadoop104:/opt/module/hadoop-2.7.2/data/tmp/dfs/namesecondary/* ./name/</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ sbin/hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ rm -rf /opt/module/hadoop-2.7.2/data/tmp/dfs/name/*
+
+[atguigu@hadoop102 dfs]$ scp -r atguigu@hadoop104:/opt/module/hadoop-2.7.2/data/tmp/dfs/namesecondary/* ./name/
+
+[atguigu@hadoop102 hadoop-2.7.2]$ sbin/hadoop-daemon.sh start namenode
+</code></pre>
 </li>
 </ol>
 <p><strong>方法二：使用-importCheckpoint选项启动NameNode守护进程，从而将SecondaryNameNode中数据拷贝到NameNode目录中</strong></p>
 <ol>
 <li><p>修改hdfs-site.xml中的</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.checkpoint.period<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>120<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp/dfs/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+  &lt;name&gt;dfs.namenode.checkpoint.period&lt;/name&gt;
+  &lt;value&gt;120&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;property&gt;
+  &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+  &lt;value&gt;/opt/module/hadoop-2.7.2/data/tmp/dfs/name&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 </li>
 <li><p>kill -9 NameNode进程</p>
 </li>
 <li><p>删除NameNode存储的数据（/opt/module/hadoop-2.7.2/data/tmp/dfs/name）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ rm -rf /opt/module/hadoop-2.7.2/data/tmp/dfs/name/*</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ rm -rf /opt/module/hadoop-2.7.2/data/tmp/dfs/name/*
+</code></pre>
 </li>
 <li><p>如果SecondaryNameNode不和NameNode在一个主机节点上，需要将SecondaryNameNode存储数据的目录拷贝到NameNode存储数据的平级目录，并删除in_use.lock文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 dfs]$ scp -r atguigu@hadoop104:/opt/module/hadoop-2.7.2/data/tmp/dfs/namesecondary ./</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 namesecondary]$ rm -rf in_use.lock</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 dfs]$ <span class="built_in">pwd</span></span><br><span class="line">/opt/module/hadoop-2.7.2/data/tmp/dfs</span><br><span class="line"></span><br><span class="line">[atguigu@hadoop102 dfs]$ ls</span><br><span class="line">data  name  namesecondary</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 dfs]$ scp -r atguigu@hadoop104:/opt/module/hadoop-2.7.2/data/tmp/dfs/namesecondary ./
+
+[atguigu@hadoop102 namesecondary]$ rm -rf in_use.lock
+
+[atguigu@hadoop102 dfs]$ pwd
+/opt/module/hadoop-2.7.2/data/tmp/dfs
+
+[atguigu@hadoop102 dfs]$ ls
+data  name  namesecondary
+</code></pre>
 </li>
 <li><p>导入检查点数据（等待一会ctrl+c结束掉）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hdfs namenode -importCheckpoint</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hdfs namenode -importCheckpoint
+</code></pre>
 </li>
 <li><p>启动NameNode</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ sbin/hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ sbin/hadoop-daemon.sh start namenode
+</code></pre>
 </li>
 </ol>
 <h3 id="集群安全模式"><a href="#集群安全模式" class="headerlink" title="集群安全模式"></a>集群安全模式</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201119212253476.png" alt="image-20201119212253476"></p>
@@ -1460,14 +1638,24 @@
 <p>具体配置如下:</p>
 <ol>
 <li><p>在hdfs-site.xml文件中增加如下内容</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>file:///$&#123;hadoop.tmp.dir&#125;/dfs/name1,file:///$&#123;hadoop.tmp.dir&#125;/dfs/name2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+&lt;value&gt;file:///${hadoop.tmp.dir}/dfs/name1,file:///${hadoop.tmp.dir}/dfs/name2&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 </li>
 <li><p>停止集群，删除data和logs中所有数据</p>
 </li>
 <li><p>格式化集群并启动</p>
 </li>
 <li><p>查看结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 dfs]$ ll</span><br><span class="line">总用量 12</span><br><span class="line">drwx------. 3 atguigu atguigu 4096 12月 11 08:03 data</span><br><span class="line">drwxrwxr-x. 3 atguigu atguigu 4096 12月 11 08:03 name1</span><br><span class="line">drwxrwxr-x. 3 atguigu atguigu 4096 12月 11 08:03 name2</span><br></pre></td></tr></table></figure></li>
+<pre><code class="lang-bash">[atguigu@hadoop102 dfs]$ ll
+总用量 12
+drwx------. 3 atguigu atguigu 4096 12月 11 08:03 data
+drwxrwxr-x. 3 atguigu atguigu 4096 12月 11 08:03 name1
+drwxrwxr-x. 3 atguigu atguigu 4096 12月 11 08:03 name2
+</code></pre>
+</li>
 </ol>
 
 </div>
@@ -1476,16 +1664,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+              <a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Hadoop01-概述、运行模式&源码编译
+                  Hadoop02-HDFS概述、shell&客户端操作
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
-                Hadoop04-HDFS-DataNode
+              <a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+                MySQL06-视图&存储过程&流程控制
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

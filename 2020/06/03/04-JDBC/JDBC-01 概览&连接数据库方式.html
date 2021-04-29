@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1465,25 +1465,147 @@
 <li>user,password可以用“属性名=属性值”方式告诉数据库</li>
 <li>可以调用 DriverManager 类的 getConnection() 方法建立到数据库的连接</li>
 </ul>
-<h3 id="2-4-数据库连接方式举例"><a href="#2-4-数据库连接方式举例" class="headerlink" title="2.4 数据库连接方式举例"></a>2.4 数据库连接方式举例</h3><h4 id="2-4-1-连接方式一"><a href="#2-4-1-连接方式一" class="headerlink" title="2.4.1 连接方式一"></a>2.4.1 连接方式一</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//1.提供java.sql.Driver接口实现类的对象</span></span><br><span class="line">           Driver driver = <span class="keyword">null</span>;</span><br><span class="line">           driver = <span class="keyword">new</span> com.mysql.jdbc.Driver();</span><br><span class="line"></span><br><span class="line">           <span class="comment">//2.提供url，指明具体操作的数据</span></span><br><span class="line">           String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//3.提供Properties的对象，指明用户名和密码</span></span><br><span class="line">           Properties info = <span class="keyword">new</span> Properties();</span><br><span class="line">           info.setProperty(<span class="string">"user"</span>, <span class="string">"root"</span>);</span><br><span class="line">           info.setProperty(<span class="string">"password"</span>, <span class="string">"abc123"</span>);</span><br><span class="line"></span><br><span class="line">           <span class="comment">//4.调用driver的connect()，获取连接</span></span><br><span class="line">           Connection conn = driver.connect(url, info);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-数据库连接方式举例"><a href="#2-4-数据库连接方式举例" class="headerlink" title="2.4 数据库连接方式举例"></a>2.4 数据库连接方式举例</h3><h4 id="2-4-1-连接方式一"><a href="#2-4-1-连接方式一" class="headerlink" title="2.4.1 连接方式一"></a>2.4.1 连接方式一</h4><pre><code class="lang-java">    @Test
+    public void testConnection1() {
+        try {
+            //1.提供java.sql.Driver接口实现类的对象
+            Driver driver = null;
+            driver = new com.mysql.jdbc.Driver();
+
+            //2.提供url，指明具体操作的数据
+            String url = &quot;jdbc:mysql://localhost:3306/test&quot;;
+
+            //3.提供Properties的对象，指明用户名和密码
+            Properties info = new Properties();
+            info.setProperty(&quot;user&quot;, &quot;root&quot;);
+            info.setProperty(&quot;password&quot;, &quot;abc123&quot;);
+
+            //4.调用driver的connect()，获取连接
+            Connection conn = driver.connect(url, info);
+            System.out.println(conn);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+</code></pre>
 <blockquote>
 <p>说明：上述代码中显式出现了第三方数据库的API</p>
 </blockquote>
-<h4 id="2-4-2-连接方式二"><a href="#2-4-2-连接方式二" class="headerlink" title="2.4.2 连接方式二"></a>2.4.2 连接方式二</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//1.实例化Driver</span></span><br><span class="line">           String className = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line">           Class clazz = Class.forName(className);</span><br><span class="line">           Driver driver = (Driver) clazz.newInstance();</span><br><span class="line"></span><br><span class="line">           <span class="comment">//2.提供url，指明具体操作的数据</span></span><br><span class="line">           String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//3.提供Properties的对象，指明用户名和密码</span></span><br><span class="line">           Properties info = <span class="keyword">new</span> Properties();</span><br><span class="line">           info.setProperty(<span class="string">"user"</span>, <span class="string">"root"</span>);</span><br><span class="line">           info.setProperty(<span class="string">"password"</span>, <span class="string">"abc123"</span>);</span><br><span class="line"></span><br><span class="line">           <span class="comment">//4.调用driver的connect()，获取连接</span></span><br><span class="line">           Connection conn = driver.connect(url, info);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-2-连接方式二"><a href="#2-4-2-连接方式二" class="headerlink" title="2.4.2 连接方式二"></a>2.4.2 连接方式二</h4><pre><code class="lang-java">    @Test
+    public void testConnection2() {
+        try {
+            //1.实例化Driver
+            String className = &quot;com.mysql.jdbc.Driver&quot;;
+            Class clazz = Class.forName(className);
+            Driver driver = (Driver) clazz.newInstance();
+
+            //2.提供url，指明具体操作的数据
+            String url = &quot;jdbc:mysql://localhost:3306/test&quot;;
+
+            //3.提供Properties的对象，指明用户名和密码
+            Properties info = new Properties();
+            info.setProperty(&quot;user&quot;, &quot;root&quot;);
+            info.setProperty(&quot;password&quot;, &quot;abc123&quot;);
+
+            //4.调用driver的connect()，获取连接
+            Connection conn = driver.connect(url, info);
+            System.out.println(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+</code></pre>
 <blockquote>
 <p>说明：相较于方式一，这里使用反射实例化Driver，不在代码中体现第三方数据库的API。体现了面向接口编程思想。</p>
 </blockquote>
-<h4 id="2-4-3-连接方式三"><a href="#2-4-3-连接方式三" class="headerlink" title="2.4.3 连接方式三"></a>2.4.3 连接方式三</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//1.数据库连接的4个基本要素：</span></span><br><span class="line">           String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">           String user = <span class="string">"root"</span>;</span><br><span class="line">           String password = <span class="string">"abc123"</span>;</span><br><span class="line">           String driverName = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//2.实例化Driver</span></span><br><span class="line">           Class clazz = Class.forName(driverName);</span><br><span class="line">           Driver driver = (Driver) clazz.newInstance();</span><br><span class="line">           <span class="comment">//3.注册驱动</span></span><br><span class="line">           DriverManager.registerDriver(driver);</span><br><span class="line">           <span class="comment">//4.获取连接</span></span><br><span class="line">           Connection conn = DriverManager.getConnection(url, user, password);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-3-连接方式三"><a href="#2-4-3-连接方式三" class="headerlink" title="2.4.3 连接方式三"></a>2.4.3 连接方式三</h4><pre><code class="lang-java">    @Test
+    public void testConnection3() {
+        try {
+            //1.数据库连接的4个基本要素：
+            String url = &quot;jdbc:mysql://localhost:3306/test&quot;;
+            String user = &quot;root&quot;;
+            String password = &quot;abc123&quot;;
+            String driverName = &quot;com.mysql.jdbc.Driver&quot;;
+
+            //2.实例化Driver
+            Class clazz = Class.forName(driverName);
+            Driver driver = (Driver) clazz.newInstance();
+            //3.注册驱动
+            DriverManager.registerDriver(driver);
+            //4.获取连接
+            Connection conn = DriverManager.getConnection(url, user, password);
+            System.out.println(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+</code></pre>
 <blockquote>
 <p>说明：使用DriverManager实现数据库的连接。体会获取连接必要的4个基本要素。</p>
 </blockquote>
-<h4 id="2-4-4-连接方式四"><a href="#2-4-4-连接方式四" class="headerlink" title="2.4.4 连接方式四"></a>2.4.4 连接方式四</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testConnection4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//1.数据库连接的4个基本要素：</span></span><br><span class="line">           String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">           String user = <span class="string">"root"</span>;</span><br><span class="line">           String password = <span class="string">"abc123"</span>;</span><br><span class="line">           String driverName = <span class="string">"com.mysql.jdbc.Driver"</span>;</span><br><span class="line"></span><br><span class="line">           <span class="comment">//2.加载驱动 （①实例化Driver ②注册驱动）</span></span><br><span class="line">           Class.forName(driverName);</span><br><span class="line">           <span class="comment">//Driver driver = (Driver) clazz.newInstance();</span></span><br><span class="line">           <span class="comment">//3.注册驱动</span></span><br><span class="line">           <span class="comment">//DriverManager.registerDriver(driver);</span></span><br><span class="line">           <span class="comment">/*</span></span><br><span class="line"><span class="comment">           可以注释掉上述代码的原因，是因为在mysql的Driver类中声明有：</span></span><br><span class="line"><span class="comment">           static &#123;</span></span><br><span class="line"><span class="comment">               try &#123;</span></span><br><span class="line"><span class="comment">                   DriverManager.registerDriver(new Driver());</span></span><br><span class="line"><span class="comment">               &#125; catch (SQLException var1) &#123;</span></span><br><span class="line"><span class="comment">                   throw new RuntimeException("Can't register driver!");</span></span><br><span class="line"><span class="comment">               &#125;</span></span><br><span class="line"><span class="comment">           &#125;</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">           <span class="comment">//3.获取连接</span></span><br><span class="line">           Connection conn = DriverManager.getConnection(url, user, password);</span><br><span class="line">           System.out.println(conn);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-4-连接方式四"><a href="#2-4-4-连接方式四" class="headerlink" title="2.4.4 连接方式四"></a>2.4.4 连接方式四</h4><pre><code class="lang-java">    @Test
+    public void testConnection4() {
+        try {
+            //1.数据库连接的4个基本要素：
+            String url = &quot;jdbc:mysql://localhost:3306/test&quot;;
+            String user = &quot;root&quot;;
+            String password = &quot;abc123&quot;;
+            String driverName = &quot;com.mysql.jdbc.Driver&quot;;
+
+            //2.加载驱动 （①实例化Driver ②注册驱动）
+            Class.forName(driverName);
+            //Driver driver = (Driver) clazz.newInstance();
+            //3.注册驱动
+            //DriverManager.registerDriver(driver);
+            /*
+            可以注释掉上述代码的原因，是因为在mysql的Driver类中声明有：
+            static {
+                try {
+                    DriverManager.registerDriver(new Driver());
+                } catch (SQLException var1) {
+                    throw new RuntimeException(&quot;Can&#39;t register driver!&quot;);
+                }
+            }
+             */
+            //3.获取连接
+            Connection conn = DriverManager.getConnection(url, user, password);
+            System.out.println(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+</code></pre>
 <blockquote>
 <p>说明：不必显式的注册驱动了。因为在DriverManager的源码中已经存在静态代码块，实现了驱动的注册。</p>
 </blockquote>
-<h4 id="2-4-5-连接方式五-最终版"><a href="#2-4-5-连接方式五-最终版" class="headerlink" title="2.4.5 连接方式五(最终版)"></a>2.4.5 连接方式五(最终版)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">testConnection5</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   	<span class="comment">//1.加载配置文件</span></span><br><span class="line">       InputStream is = ConnectionTest.class.getClassLoader().getResourceAsStream("jdbc.properties");</span><br><span class="line">       Properties pros = <span class="keyword">new</span> Properties();</span><br><span class="line">       pros.load(is);</span><br><span class="line">       </span><br><span class="line">       <span class="comment">//2.读取配置信息</span></span><br><span class="line">       String user = pros.getProperty(<span class="string">"user"</span>);</span><br><span class="line">       String password = pros.getProperty(<span class="string">"password"</span>);</span><br><span class="line">       String url = pros.getProperty(<span class="string">"url"</span>);</span><br><span class="line">       String driverClass = pros.getProperty(<span class="string">"driverClass"</span>);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//3.加载驱动</span></span><br><span class="line">       Class.forName(driverClass);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//4.获取连接</span></span><br><span class="line">       Connection conn = DriverManager.getConnection(url,user,password);</span><br><span class="line">       System.out.println(conn);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-4-5-连接方式五-最终版"><a href="#2-4-5-连接方式五-最终版" class="headerlink" title="2.4.5 连接方式五(最终版)"></a>2.4.5 连接方式五(最终版)</h4><pre><code class="lang-java">    @Test
+    public  void testConnection5() throws Exception {
+        //1.加载配置文件
+        InputStream is = ConnectionTest.class.getClassLoader().getResourceAsStream(&quot;jdbc.properties&quot;);
+        Properties pros = new Properties();
+        pros.load(is);
+
+        //2.读取配置信息
+        String user = pros.getProperty(&quot;user&quot;);
+        String password = pros.getProperty(&quot;password&quot;);
+        String url = pros.getProperty(&quot;url&quot;);
+        String driverClass = pros.getProperty(&quot;driverClass&quot;);
+
+        //3.加载驱动
+        Class.forName(driverClass);
+
+        //4.获取连接
+        Connection conn = DriverManager.getConnection(url,user,password);
+        System.out.println(conn);
+
+    }
+</code></pre>
 <p>其中，配置文件声明在工程的src目录下：【jdbc.properties】</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">user</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">abc123</span></span><br><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/test</span></span><br><span class="line"><span class="attr">driverClass</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-properties">user=root
+password=abc123
+url=jdbc:mysql://localhost:3306/test
+driverClass=com.mysql.jdbc.Driver
+</code></pre>
 <blockquote>
 <p>说明：使用配置文件的方式保存配置信息，在代码中加载配置文件</p>
 <p><strong>使用配置文件的好处：</strong></p>
@@ -1496,16 +1618,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+              <a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  MySQL04-DDL
+                  MySQL05-TCL
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
-                MySQL06-视图&存储过程&流程控制
+              <a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+                JDBC-02 CRUD
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

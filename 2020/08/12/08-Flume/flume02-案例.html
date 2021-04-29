@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1347,15 +1347,43 @@
 <p>在flume-netcat-logger.conf 文件中添加如下内容:</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent'</span></span><br><span class="line">a1.sources = r1</span><br><span class="line">a1.sinks = k1</span><br><span class="line">a1.channels = c1</span><br><span class="line"><span class="string">'Describe/configure the source'</span></span><br><span class="line">a1.sources.r1.type = netcat</span><br><span class="line">a1.sources.r1.bind = localhost 表示a1监听的主机</span><br><span class="line">a1.sources.r1.port = 44444     表示a1监听的端口号</span><br><span class="line"><span class="string">'Describe the sink'</span></span><br><span class="line">a1.sinks.k1.type = logger</span><br><span class="line"><span class="string">'Use a channel which buffers events in memory'</span></span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000 表示a1的channel总容量1000个event</span><br><span class="line">a1.channels.c1.transactionCapacity = 100 表示a1的channel传输时收集到了100条event后再去提交事务</span><br><span class="line"><span class="string">'Bind the source and sink to the channel'</span></span><br><span class="line">a1.sources.r1.channels = c1</span><br><span class="line">a1.sinks.k1.channel = c1</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent&#39;
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+&#39;Describe/configure the source&#39;
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = localhost 表示a1监听的主机
+a1.sources.r1.port = 44444     表示a1监听的端口号
+&#39;Describe the sink&#39;
+a1.sinks.k1.type = logger
+&#39;Use a channel which buffers events in memory&#39;
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000 表示a1的channel总容量1000个event
+a1.channels.c1.transactionCapacity = 100 表示a1的channel传输时收集到了100条event后再去提交事务
+&#39;Bind the source and sink to the channel&#39;
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+</code></pre>
 <ol>
 <li>先开启flume 监听端口</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bin/flume-ng agent --conf conf/ --name a1 --conf-file job/flume-netcat-logger.conf -Dflume.root.logger=INFO,console </span><br><span class="line">或</span><br><span class="line">bin/flume-ng agent -c conf/ -n a1 -f job/flume-netcat-logger.conf -Dflume.root.logger=INFO,console</span><br><span class="line">   </span><br><span class="line">--conf/-c：表示配置文件存储在conf/目录</span><br><span class="line">--name/-n：表示给agent 起名为a1</span><br><span class="line">--conf-file/-f：flume 本次启动读取的配置文件是在job 文件夹下的flume-telnet.conf文件。</span><br><span class="line">-Dflume.root.logger=INFO,console ：-D 表示flume 运行时动态修改flume.root.logger 参数属性值，并将控制台日志打印级别设置为INFO 级别。日志级别包括:<span class="built_in">log</span>、info、warn、error。</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">bin/flume-ng agent --conf conf/ --name a1 --conf-file job/flume-netcat-logger.conf -Dflume.root.logger=INFO,console 
+或
+bin/flume-ng agent -c conf/ -n a1 -f job/flume-netcat-logger.conf -Dflume.root.logger=INFO,console
+
+--conf/-c：表示配置文件存储在conf/目录
+--name/-n：表示给agent 起名为a1
+--conf-file/-f：flume 本次启动读取的配置文件是在job 文件夹下的flume-telnet.conf文件。
+-Dflume.root.logger=INFO,console ：-D 表示flume 运行时动态修改flume.root.logger 参数属性值，并将控制台日志打印级别设置为INFO 级别。日志级别包括:log、info、warn、error。
+</code></pre>
 <ol>
 <li>使用netcat 工具向本机的44444 端口发送内容</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 ~]$ nc localhost 44444</span><br><span class="line">hello</span><br><span class="line">atguigu</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 ~]$ nc localhost 44444
+hello
+atguigu
+</code></pre>
 <ol>
 <li><p>在Flume 监听页面观察接收数据情况</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210115173153218.png" alt="image-20210115173153218"></p>
@@ -1367,11 +1395,45 @@
 <ol>
 <li>Flume 要想将数据输出到HDFS，须持有Hadoop 相关jar 包</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">commons-configuration-1.6.jar、</span><br><span class="line">hadoop-auth-2.7.2.jar、</span><br><span class="line">hadoop-common-2.7.2.jar、</span><br><span class="line">hadoop-hdfs-2.7.2.jar、</span><br><span class="line">commons-io-2.4.jar、</span><br><span class="line">htrace-core-3.1.0-incubating.jar</span><br><span class="line">拷贝到/opt/module/flume/lib 文件夹下。</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">commons-configuration-1.6.jar、
+hadoop-auth-2.7.2.jar、
+hadoop-common-2.7.2.jar、
+hadoop-hdfs-2.7.2.jar、
+commons-io-2.4.jar、
+htrace-core-3.1.0-incubating.jar
+拷贝到/opt/module/flume/lib 文件夹下。
+</code></pre>
 <ol>
 <li>创建flume-file-hdfs.conf 文件</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">' Name the components on this agent</span></span><br><span class="line"><span class="string">a2.sources = r2</span></span><br><span class="line"><span class="string">a2.sinks = k2</span></span><br><span class="line"><span class="string">a2.channels = c2</span></span><br><span class="line"><span class="string">'</span> Describe/configure the <span class="built_in">source</span></span><br><span class="line">a2.source s.r2.type = <span class="built_in">exec</span></span><br><span class="line">a2.sources.r2.command = tail -F /opt/module/hive/logs/hive.log</span><br><span class="line">a2.sources.r2.shell = /bin/bash -c</span><br><span class="line"><span class="string">' Describe the sink</span></span><br><span class="line"><span class="string">a2.sinks.k2.type = hdfs</span></span><br><span class="line"><span class="string">a2.sinks.k2.hdfs.path = hdfs://hadoop102:9000/flume/%Y%m%d/%H</span></span><br><span class="line"><span class="string">a2.sinks.k2.hdfs.filePrefix = logs- '</span>上传文件的前缀</span><br><span class="line">a2.sinks.k2.hdfs.round = <span class="literal">true</span> <span class="string">'是否按照时间滚动文件夹</span></span><br><span class="line"><span class="string">a2.sinks.k2.hdfs.roundValue = 1 '</span>多少时间单位创建一个新的文件夹</span><br><span class="line">a2.sinks.k2.hdfs.roundUnit = hour <span class="string">'重新定义时间单位</span></span><br><span class="line"><span class="string">a2.sinks.k2.hdfs.useLocalTimeStamp = true '</span>是否使用本地时间戳</span><br><span class="line">a2.sinks.k2.hdfs.batchSize = 1000 <span class="string">'积攒多少个 Event 才 flush 到 HDFS 一次</span></span><br><span class="line"><span class="string">a2.sinks.k2.hdfs.fileType = DataStream '</span>设置文件类型，可支持压缩</span><br><span class="line">a2.sinks.k2.hdfs.rollInterval = 30 <span class="string">'多久生成一个新的文件</span></span><br><span class="line"><span class="string">a2.sinks.k2.hdfs.rollSize = 134217700 '</span>设置每个文件的滚动大小,略小于块的大小</span><br><span class="line">a2.sinks.k2.hdfs.rollCount = 0 <span class="string">'文件的滚动与 Event 数量无关</span></span><br><span class="line"><span class="string">a2.channels.c2.type = memory '</span> Use a channel <span class="built_in">which</span> buffers events <span class="keyword">in</span> memory</span><br><span class="line">a2.channels.c2.capacity = 1000</span><br><span class="line">a2.channels.c2.transactionCapacity = 100</span><br><span class="line"><span class="string">' Bind the source and sink to the channel</span></span><br><span class="line"><span class="string">a2.sources.r2.channels = c2</span></span><br><span class="line"><span class="string">a2.sinks.k2.channel = c2</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39; Name the components on this agent
+a2.sources = r2
+a2.sinks = k2
+a2.channels = c2
+&#39; Describe/configure the source
+a2.source s.r2.type = exec
+a2.sources.r2.command = tail -F /opt/module/hive/logs/hive.log
+a2.sources.r2.shell = /bin/bash -c
+&#39; Describe the sink
+a2.sinks.k2.type = hdfs
+a2.sinks.k2.hdfs.path = hdfs://hadoop102:9000/flume/%Y%m%d/%H
+a2.sinks.k2.hdfs.filePrefix = logs- &#39;上传文件的前缀
+a2.sinks.k2.hdfs.round = true &#39;是否按照时间滚动文件夹
+a2.sinks.k2.hdfs.roundValue = 1 &#39;多少时间单位创建一个新的文件夹
+a2.sinks.k2.hdfs.roundUnit = hour &#39;重新定义时间单位
+a2.sinks.k2.hdfs.useLocalTimeStamp = true &#39;是否使用本地时间戳
+a2.sinks.k2.hdfs.batchSize = 1000 &#39;积攒多少个 Event 才 flush 到 HDFS 一次
+a2.sinks.k2.hdfs.fileType = DataStream &#39;设置文件类型，可支持压缩
+a2.sinks.k2.hdfs.rollInterval = 30 &#39;多久生成一个新的文件
+a2.sinks.k2.hdfs.rollSize = 134217700 &#39;设置每个文件的滚动大小,略小于块的大小
+a2.sinks.k2.hdfs.rollCount = 0 &#39;文件的滚动与 Event 数量无关
+a2.channels.c2.type = memory &#39; Use a channel which buffers events in memory
+a2.channels.c2.capacity = 1000
+a2.channels.c2.transactionCapacity = 100
+&#39; Bind the source and sink to the channel
+a2.sources.r2.channels = c2
+a2.sinks.k2.channel = c2
+</code></pre>
 <ol>
 <li><p>运行Flume</p>
 <p>bin/flume-ng agent —conf conf/ —name a2 —conf-file job/flume-file-hdfs.conf</p>
@@ -1386,7 +1448,37 @@
 <ol>
 <li>创建配置文件flume-dir-hdfs.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">a3.sources = r3</span><br><span class="line">a3.sinks = k3</span><br><span class="line">a3.channels = c3</span><br><span class="line"><span class="string">'Describe/configure the source</span></span><br><span class="line"><span class="string">a3.sources.r3.type = spooldir</span></span><br><span class="line"><span class="string">a3.sources.r3.spoolDir = /opt/module/flume/upload</span></span><br><span class="line"><span class="string">a3.sources.r3.fileSuffix = .COMPLETED</span></span><br><span class="line"><span class="string">a3.sources.r3.fileHeader = true</span></span><br><span class="line"><span class="string">a3.sources.r3.ignorePattern = ([^ ]*\.tmp) '</span>忽略所有以.tmp 结尾的文件，不上传</span><br><span class="line"><span class="string">'Describe the sink</span></span><br><span class="line"><span class="string">a3.sinks.k3.type = hdfs</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.path =</span></span><br><span class="line"><span class="string">hdfs://hadoop102:9000/flume/upload/%Y%m%d/%H</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.filePrefix = upload- '</span>上传文件的前缀</span><br><span class="line">a3.sinks.k3.hdfs.round = <span class="literal">true</span> <span class="string">'是否按照时间滚动文件夹</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.roundValue = 1 '</span>多少时间单位创建一个新的文件夹</span><br><span class="line">a3.sinks.k3.hdfs.roundUnit = hour <span class="string">'重新定义时间单位</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.useLocalTimeStamp = true '</span>是否使用本地时间戳</span><br><span class="line">a3.sinks.k3.hdfs.batchSize = 100 <span class="string">'积攒多少个Event 才flush 到HDFS 一次</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.fileType = DataStream '</span>设置文件类型，可支持压缩</span><br><span class="line">a3.sinks.k3.hdfs.rollInterval = 60 <span class="string">'多久生成一个新的文件</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.rollSize = 134217700 '</span>设置每个文件的滚动大小大概是128M</span><br><span class="line">a3.sinks.k3.hdfs.rollCount = 0 <span class="string">'文件的滚动与Event 数量无关</span></span><br><span class="line"><span class="string">'</span>Use a channel <span class="built_in">which</span> buffers events <span class="keyword">in</span> memory</span><br><span class="line">a3.channels.c3.type = memory</span><br><span class="line">a3.channels.c3.capacity = 1000</span><br><span class="line">a3.channels.c3.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bind the source and sink to the channel</span></span><br><span class="line"><span class="string">a3.sources.r3.channels = c3</span></span><br><span class="line"><span class="string">a3.sinks.k3.channel = c3</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">a3.sources = r3
+a3.sinks = k3
+a3.channels = c3
+&#39;Describe/configure the source
+a3.sources.r3.type = spooldir
+a3.sources.r3.spoolDir = /opt/module/flume/upload
+a3.sources.r3.fileSuffix = .COMPLETED
+a3.sources.r3.fileHeader = true
+a3.sources.r3.ignorePattern = ([^ ]*\.tmp) &#39;忽略所有以.tmp 结尾的文件，不上传
+&#39;Describe the sink
+a3.sinks.k3.type = hdfs
+a3.sinks.k3.hdfs.path =
+hdfs://hadoop102:9000/flume/upload/%Y%m%d/%H
+a3.sinks.k3.hdfs.filePrefix = upload- &#39;上传文件的前缀
+a3.sinks.k3.hdfs.round = true &#39;是否按照时间滚动文件夹
+a3.sinks.k3.hdfs.roundValue = 1 &#39;多少时间单位创建一个新的文件夹
+a3.sinks.k3.hdfs.roundUnit = hour &#39;重新定义时间单位
+a3.sinks.k3.hdfs.useLocalTimeStamp = true &#39;是否使用本地时间戳
+a3.sinks.k3.hdfs.batchSize = 100 &#39;积攒多少个Event 才flush 到HDFS 一次
+a3.sinks.k3.hdfs.fileType = DataStream &#39;设置文件类型，可支持压缩
+a3.sinks.k3.hdfs.rollInterval = 60 &#39;多久生成一个新的文件
+a3.sinks.k3.hdfs.rollSize = 134217700 &#39;设置每个文件的滚动大小大概是128M
+a3.sinks.k3.hdfs.rollCount = 0 &#39;文件的滚动与Event 数量无关
+&#39;Use a channel which buffers events in memory
+a3.channels.c3.type = memory
+a3.channels.c3.capacity = 1000
+a3.channels.c3.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a3.sources.r3.channels = c3
+a3.sinks.k3.channel = c3
+</code></pre>
 <ol>
 <li><p>启动监控文件夹命令</p>
 <p>bin/flume-ng agent —conf conf/ —name a3 —conf-file job/flume-dir-hdfs.conf</p>
@@ -1403,7 +1495,35 @@
 <ol>
 <li>创建配置文件flume-taildir-hdfs.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">a3.sources = r3</span><br><span class="line">a3.sinks = k3</span><br><span class="line">a3.channels = c3</span><br><span class="line"><span class="string">'Describe/configure the source</span></span><br><span class="line"><span class="string">a3.sources.r3.type = TAILDIR</span></span><br><span class="line"><span class="string">a3.sources.r3.positionFile = /opt/flume/tail_dir.json</span></span><br><span class="line"><span class="string">a3.sources.r3.filegroups = f1</span></span><br><span class="line"><span class="string">a3.sources.r3.filegroups.f1 = /opt/module/flume/files/file.*</span></span><br><span class="line"><span class="string">'</span>Describe the sink</span><br><span class="line">a3.sinks.k3.type = hdfs</span><br><span class="line">a3.sinks.k3.hdfs.path =hdfs://hadoop102:9000/flume/upload/%Y%m%d/%H</span><br><span class="line">a3.sinks.k3.hdfs.filePrefix = upload- <span class="string">'上传文件的前缀'</span></span><br><span class="line">a3.sinks.k3.hdfs.round = <span class="literal">true</span> <span class="string">'是否按照时间滚动文件夹'</span></span><br><span class="line">a3.sinks.k3.hdfs.roundValue = 1 <span class="string">'多少时间单位创建一个新的文件夹</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.roundUnit = hour '</span>重新定义时间单位<span class="string">'</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.useLocalTimeStamp = true '</span> 是否使用本地时间戳<span class="string">'</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.batchSize = 100 '</span>积攒多少个 Event 才 flush 到 HDFS 一次<span class="string">'</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.fileType = DataStream '</span>设置文件类型，可支持压缩<span class="string">'</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.rollInterval = 60 '</span>多久生成一个新的文件<span class="string">'</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.rollSize = 134217700 '</span>设置每个文件的滚动大小大概是 128M<span class="string">'</span></span><br><span class="line"><span class="string">a3.sinks.k3.hdfs.rollCount = 0 '</span>文件的滚动与 Event 数量无关<span class="string">'</span></span><br><span class="line"><span class="string">'</span>Use a channel <span class="built_in">which</span> buffers events <span class="keyword">in</span> memory</span><br><span class="line">a3.channels.c3.type = memory</span><br><span class="line">a3.channels.c3.capacity = 1000</span><br><span class="line">a3.channels.c3.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bind the source and sink to the channel</span></span><br><span class="line"><span class="string">a3.sources.r3. channels = c3</span></span><br><span class="line"><span class="string">a3.sinks.k3.channel = c3</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">a3.sources = r3
+a3.sinks = k3
+a3.channels = c3
+&#39;Describe/configure the source
+a3.sources.r3.type = TAILDIR
+a3.sources.r3.positionFile = /opt/flume/tail_dir.json
+a3.sources.r3.filegroups = f1
+a3.sources.r3.filegroups.f1 = /opt/module/flume/files/file.*
+&#39;Describe the sink
+a3.sinks.k3.type = hdfs
+a3.sinks.k3.hdfs.path =hdfs://hadoop102:9000/flume/upload/%Y%m%d/%H
+a3.sinks.k3.hdfs.filePrefix = upload- &#39;上传文件的前缀&#39;
+a3.sinks.k3.hdfs.round = true &#39;是否按照时间滚动文件夹&#39;
+a3.sinks.k3.hdfs.roundValue = 1 &#39;多少时间单位创建一个新的文件夹
+a3.sinks.k3.hdfs.roundUnit = hour &#39;重新定义时间单位&#39;
+a3.sinks.k3.hdfs.useLocalTimeStamp = true &#39; 是否使用本地时间戳&#39;
+a3.sinks.k3.hdfs.batchSize = 100 &#39;积攒多少个 Event 才 flush 到 HDFS 一次&#39;
+a3.sinks.k3.hdfs.fileType = DataStream &#39;设置文件类型，可支持压缩&#39;
+a3.sinks.k3.hdfs.rollInterval = 60 &#39;多久生成一个新的文件&#39;
+a3.sinks.k3.hdfs.rollSize = 134217700 &#39;设置每个文件的滚动大小大概是 128M&#39;
+a3.sinks.k3.hdfs.rollCount = 0 &#39;文件的滚动与 Event 数量无关&#39;
+&#39;Use a channel which buffers events in memory
+a3.channels.c3.type = memory
+a3.channels.c3.capacity = 1000
+a3.channels.c3.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a3.sources.r3. channels = c3
+a3.sinks.k3.channel = c3
+</code></pre>
 <ol>
 <li><p>启动监控文件夹命令</p>
 <p>bin/flume-ng agent —conf conf/ —name a3 —conf-file job/flume-taildir-hdfs.conf</p>
@@ -1415,7 +1535,9 @@
 </ol>
 <p><strong>Taildir 说明：</strong></p>
 <p>Taildir Source 维护了一个json 格式的position File，其会定期的往position File中更新每个文件读取到的最新的位置，因此能够实现断点续传。PositionFile 的格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"inode"</span>:2496272,<span class="string">"pos"</span>:12,<span class="string">"file"</span>:<span class="string">"/opt/module/flume/files/file1.txt"</span>&#125;</span><br><span class="line">&#123;<span class="string">"inode"</span>:2496275,<span class="string">"pos"</span>:12,<span class="string">"file"</span>:<span class="string">"/opt/module/flume/files/file2.txt"</span>&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">{&quot;inode&quot;:2496272,&quot;pos&quot;:12,&quot;file&quot;:&quot;/opt/module/flume/files/file1.txt&quot;}
+{&quot;inode&quot;:2496275,&quot;pos&quot;:12,&quot;file&quot;:&quot;/opt/module/flume/files/file2.txt&quot;}
+</code></pre>
 <p>注：Linux 中储存文件元数据的区域就叫做inode，每个inode 都有一个号码，操作系统用inode 号码来识别不同的文件，Unix/Linux 系统内部不使用文件名，而使用inode 号码来识别文件。</p>
 <h2 id="Flume-企业开发案例"><a href="#Flume-企业开发案例" class="headerlink" title="Flume 企业开发案例"></a>Flume 企业开发案例</h2><h3 id="复制和多路复用"><a href="#复制和多路复用" class="headerlink" title="复制和多路复用"></a>复制和多路复用</h3><p>案例需求：使用Flume-1 监控文件变动，Flume-1 将变动内容传递给Flume-2，Flume-2 负责存储到HDFS。同时Flume-1 将变动内容传递给Flume-3，Flume-3 负责输出到Local FileSystem。</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210115203203689.png" alt="image-20210115203203689"></p>
@@ -1425,15 +1547,92 @@
 <li><p>创建flume-file-flume.conf</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a1.sources = r1</span></span><br><span class="line"><span class="string">a1.sinks = k1 k2</span></span><br><span class="line"><span class="string">a1.channels = c1 c2</span></span><br><span class="line"><span class="string">'</span>将数据流复制给所有 channel</span><br><span class="line">a1.sources.r1.selector.type = replicating</span><br><span class="line"><span class="string">'Describe/configure the source</span></span><br><span class="line"><span class="string">a1.sources.r1.type = exec</span></span><br><span class="line"><span class="string">a1.sources.r1.command = tail -F /opt/module/hive/logs/hive.log</span></span><br><span class="line"><span class="string">a1.sources.r1.shell = /bin/bash -c</span></span><br><span class="line"><span class="string">'</span>Describe the sink</span><br><span class="line"><span class="string">'sink 端的 avro 是一个数据发送者</span></span><br><span class="line"><span class="string">a1.sinks.k1.type = avro</span></span><br><span class="line"><span class="string">a1.sinks.k1.hostname = hadoop102</span></span><br><span class="line"><span class="string">a1.sinks.k1.port = 4141</span></span><br><span class="line"><span class="string">a1.sinks.k2.type = avro</span></span><br><span class="line"><span class="string">a1.sinks.k2.hostname = hadoop102</span></span><br><span class="line"><span class="string">a1.sinks.k2.port = 4142</span></span><br><span class="line"><span class="string">'</span>Describe the channel</span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line">a1.channels.c2.type = memory</span><br><span class="line">a1.channels.c2.capacity = 1000</span><br><span class="line">a1.channels.c2.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bi nd the source and sink to the channel</span></span><br><span class="line"><span class="string">a1.sources.r1.channels = c1 c2</span></span><br><span class="line"><span class="string">a1.sinks.k1.channel = c1</span></span><br><span class="line"><span class="string">a1.sinks.k2.channel = c2</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a1.sources = r1
+a1.sinks = k1 k2
+a1.channels = c1 c2
+&#39;将数据流复制给所有 channel
+a1.sources.r1.selector.type = replicating
+&#39;Describe/configure the source
+a1.sources.r1.type = exec
+a1.sources.r1.command = tail -F /opt/module/hive/logs/hive.log
+a1.sources.r1.shell = /bin/bash -c
+&#39;Describe the sink
+&#39;sink 端的 avro 是一个数据发送者
+a1.sinks.k1.type = avro
+a1.sinks.k1.hostname = hadoop102
+a1.sinks.k1.port = 4141
+a1.sinks.k2.type = avro
+a1.sinks.k2.hostname = hadoop102
+a1.sinks.k2.port = 4142
+&#39;Describe the channel
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+a1.channels.c2.type = memory
+a1.channels.c2.capacity = 1000
+a1.channels.c2.transactionCapacity = 100
+&#39;Bi nd the source and sink to the channel
+a1.sources.r1.channels = c1 c2
+a1.sinks.k1.channel = c1
+a1.sinks.k2.channel = c2
+</code></pre>
 <ol>
 <li>创建 flume-flume-hdfs.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a2.sources = r1</span></span><br><span class="line"><span class="string">a2.sinks = k1</span></span><br><span class="line"><span class="string">a2.channels = c1</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line"><span class="string">'source 端的 avro 是一个数据接收服务</span></span><br><span class="line"><span class="string">a2.sources.r1.type = avro</span></span><br><span class="line"><span class="string">a2.sources.r1.bind = hadoop102</span></span><br><span class="line"><span class="string">a2.sources.r1.port = 4141</span></span><br><span class="line"><span class="string">'</span>Describe the sink</span><br><span class="line">a2.sinks.k1.type = hdfs</span><br><span class="line">a2.sinks.k1.hdfs.path = hdfs://hadoop102:9000/flume2/%Y%m%d/%H</span><br><span class="line">a2.sinks.k1.hdfs.filePrefix = flume2 <span class="string">'上传文件的前缀</span></span><br><span class="line"><span class="string">a2.sinks.k1.hdfs.round = true'</span>是否按照时间滚动文件夹</span><br><span class="line">a2.sinks.k1.hdfs.roundValue = 1 <span class="string">'多少时间单位创建一个新的文件夹</span></span><br><span class="line"><span class="string">a2.sinks.k1.hdfs.roundUnit = hour '</span>重新定义时间单位</span><br><span class="line">a2.sinks.k1.hdfs.useLocalTimeStamp = <span class="literal">true</span> <span class="string">'是否使用 本地时间戳</span></span><br><span class="line"><span class="string">a2.sinks.k1.hdfs.batchSize = 100 '</span>积攒多少个 Event 才 flush 到 HDFS 一次</span><br><span class="line">a2.sinks.k1.hdfs.fileType = DataStream <span class="string">'设置文件类型，可支持压缩</span></span><br><span class="line"><span class="string">a2.sinks.k1.hdfs.rollInterval = 600 '</span>多久生成一个新的文件</span><br><span class="line">a2.sinks.k1.hdfs.rollSize = 134217700 <span class="string">'设置每个文件的滚动大小大概是 128M</span></span><br><span class="line"><span class="string">a2.sinks.k1.hdfs.rollCount = 0 '</span>文件的滚动与 Event 数量无关</span><br><span class="line"><span class="string">'Describe the channel</span></span><br><span class="line"><span class="string">a2.channels.c1.type = memory</span></span><br><span class="line"><span class="string">a2.channels.c1.capacity = 1000</span></span><br><span class="line"><span class="string">a2.channels.c1.transactionCapacity = 100</span></span><br><span class="line"><span class="string">'</span>Bind the <span class="built_in">source</span> and sink to the channel</span><br><span class="line">a2.sources.r1.channels = c1</span><br><span class="line">a2.sinks.k1.channel = c1</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a2.sources = r1
+a2.sinks = k1
+a2.channels = c1
+&#39;Describe/configure the source
+&#39;source 端的 avro 是一个数据接收服务
+a2.sources.r1.type = avro
+a2.sources.r1.bind = hadoop102
+a2.sources.r1.port = 4141
+&#39;Describe the sink
+a2.sinks.k1.type = hdfs
+a2.sinks.k1.hdfs.path = hdfs://hadoop102:9000/flume2/%Y%m%d/%H
+a2.sinks.k1.hdfs.filePrefix = flume2 &#39;上传文件的前缀
+a2.sinks.k1.hdfs.round = true&#39;是否按照时间滚动文件夹
+a2.sinks.k1.hdfs.roundValue = 1 &#39;多少时间单位创建一个新的文件夹
+a2.sinks.k1.hdfs.roundUnit = hour &#39;重新定义时间单位
+a2.sinks.k1.hdfs.useLocalTimeStamp = true &#39;是否使用 本地时间戳
+a2.sinks.k1.hdfs.batchSize = 100 &#39;积攒多少个 Event 才 flush 到 HDFS 一次
+a2.sinks.k1.hdfs.fileType = DataStream &#39;设置文件类型，可支持压缩
+a2.sinks.k1.hdfs.rollInterval = 600 &#39;多久生成一个新的文件
+a2.sinks.k1.hdfs.rollSize = 134217700 &#39;设置每个文件的滚动大小大概是 128M
+a2.sinks.k1.hdfs.rollCount = 0 &#39;文件的滚动与 Event 数量无关
+&#39;Describe the channel
+a2.channels.c1.type = memory
+a2.channels.c1.capacity = 1000
+a2.channels.c1.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a2.sources.r1.channels = c1
+a2.sinks.k1.channel = c1
+</code></pre>
 <ol>
 <li>创建 flume-flume-dir.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a3.sources = r1</span></span><br><span class="line"><span class="string">a3.sinks = k1</span></span><br><span class="line"><span class="string">a3.channels = c2</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line">a3.sources.r1.type = avro</span><br><span class="line">a3.sources.r1.bind = hadoop102</span><br><span class="line">a3.sources.r1.port = 4142</span><br><span class="line"><span class="string">'Describe the sink</span></span><br><span class="line"><span class="string">'</span>提示：输出的本地目录必须是已经存在的目录，如果该目录不存在，并不会创建新的目录。</span><br><span class="line">a3.sinks.k1.type = file_roll</span><br><span class="line">a3.sinks.k1.sink.directory = /opt/module/data/flume3</span><br><span class="line"><span class="string">'Describe the channel</span></span><br><span class="line"><span class="string">a3.channels.c2.type = memory</span></span><br><span class="line"><span class="string">a3.cha nnels.c2.capacity = 1000</span></span><br><span class="line"><span class="string">a3.channels.c2.transactionCapacity = 100</span></span><br><span class="line"><span class="string">'</span>Bind the <span class="built_in">source</span> and sink to the channel</span><br><span class="line">a3.sources.r1.channels = c2</span><br><span class="line">a3.sinks.k1.channel = c2</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a3.sources = r1
+a3.sinks = k1
+a3.channels = c2
+&#39;Describe/configure the source
+a3.sources.r1.type = avro
+a3.sources.r1.bind = hadoop102
+a3.sources.r1.port = 4142
+&#39;Describe the sink
+&#39;提示：输出的本地目录必须是已经存在的目录，如果该目录不存在，并不会创建新的目录。
+a3.sinks.k1.type = file_roll
+a3.sinks.k1.sink.directory = /opt/module/data/flume3
+&#39;Describe the channel
+a3.channels.c2.type = memory
+a3.cha nnels.c2.capacity = 1000
+a3.channels.c2.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a3.sources.r1.channels = c2
+a3.sinks.k1.channel = c2
+</code></pre>
 <ol>
 <li><p>执行配置文件</p>
 <p>分别<br>启动对应的 flume 进程 flume flume dir flume flume h dfs flume file flume :</p>
@@ -1453,19 +1652,85 @@
 <ol>
 <li>创建flume-netcat-flume.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a1.sources = r1</span></span><br><span class="line"><span class="string">a1.channels = c1</span></span><br><span class="line"><span class="string">a1.sinkgroups = g1</span></span><br><span class="line"><span class="string">a1.sinks = k1 k2</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line">a1.sources.r1.type = netcat</span><br><span class="line">a1.sources.r1.bind = localhost</span><br><span class="line">a1.sources.r1.port = 44444</span><br><span class="line">a1.sinkgroups.g1.processor.type = failover</span><br><span class="line">a1.sinkgroups.g1.processor.priority.k1 = 5</span><br><span class="line">a1.sinkgroups.g1.processor.priority.k2 = 10</span><br><span class="line">a1.sinkgroups.g1.processor.maxpenalty = 10000</span><br><span class="line"><span class="string">'Describe the sink</span></span><br><span class="line"><span class="string">a1.sinks.k1.type = avro</span></span><br><span class="line"><span class="string">a1.sinks.k1.hostname = hadoop102</span></span><br><span class="line"><span class="string">a1.sinks.k1.port = 4141</span></span><br><span class="line"><span class="string">a1.sinks.k2.type = avro</span></span><br><span class="line"><span class="string">a1.sinks.k2.hostname = hadoop102</span></span><br><span class="line"><span class="string">a1.sinks.k2.port = 4142</span></span><br><span class="line"><span class="string">'</span>Describe the channel</span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bind the source and sink to the channel</span></span><br><span class="line"><span class="string">a1.sources.r1.channels = c1</span></span><br><span class="line"><span class="string">a1.sinkgroups.g1.sinks = k1 k2</span></span><br><span class="line"><span class="string">a1.sinks.k1.channel = c1</span></span><br><span class="line"><span class="string">a1.sinks.k2.channel = c1</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a1.sources = r1
+a1.channels = c1
+a1.sinkgroups = g1
+a1.sinks = k1 k2
+&#39;Describe/configure the source
+a1.sources.r1.type = netcat
+a1.sources.r1.bind = localhost
+a1.sources.r1.port = 44444
+a1.sinkgroups.g1.processor.type = failover
+a1.sinkgroups.g1.processor.priority.k1 = 5
+a1.sinkgroups.g1.processor.priority.k2 = 10
+a1.sinkgroups.g1.processor.maxpenalty = 10000
+&#39;Describe the sink
+a1.sinks.k1.type = avro
+a1.sinks.k1.hostname = hadoop102
+a1.sinks.k1.port = 4141
+a1.sinks.k2.type = avro
+a1.sinks.k2.hostname = hadoop102
+a1.sinks.k2.port = 4142
+&#39;Describe the channel
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a1.sources.r1.channels = c1
+a1.sinkgroups.g1.sinks = k1 k2
+a1.sinks.k1.channel = c1
+a1.sinks.k2.channel = c1
+</code></pre>
 <ol>
 <li>创 建 flume-flume-console1.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a2.sources = r1</span></span><br><span class="line"><span class="string">a2.sinks = k1</span></span><br><span class="line"><span class="string">a2.channels = c1</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line">a2.sources.r1.type = avro</span><br><span class="line">a2.sources.r1.bind = hadoop102</span><br><span class="line">a2.sources.r1.port = 4141</span><br><span class="line"><span class="string">'Describe the sink</span></span><br><span class="line"><span class="string">a2.sinks.k1.type = logger</span></span><br><span class="line"><span class="string">'</span>Describe the channel</span><br><span class="line">a2.channels.c1.type = memory</span><br><span class="line">a2.channels.c1.capacity = 1000</span><br><span class="line">a2.channels.c1.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bind the source and sink to the channel</span></span><br><span class="line"><span class="string">a2.sources.r1.channels = c1</span></span><br><span class="line"><span class="string">a2.sinks.k1.channel = c1</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a2.sources = r1
+a2.sinks = k1
+a2.channels = c1
+&#39;Describe/configure the source
+a2.sources.r1.type = avro
+a2.sources.r1.bind = hadoop102
+a2.sources.r1.port = 4141
+&#39;Describe the sink
+a2.sinks.k1.type = logger
+&#39;Describe the channel
+a2.channels.c1.type = memory
+a2.channels.c1.capacity = 1000
+a2.channels.c1.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a2.sources.r1.channels = c1
+a2.sinks.k1.channel = c1
+</code></pre>
 <ol>
 <li>flume-flume-console2.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a3.sources = r1</span></span><br><span class="line"><span class="string">a3.sinks = k1</span></span><br><span class="line"><span class="string">a3.channels = c2</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line">a3.sources.r1.type = avro</span><br><span class="line">a3.sources.r1.bind = hadoop102</span><br><span class="line">a3.sources.r1.port = 4142</span><br><span class="line"><span class="string">'escribe the sink</span></span><br><span class="line"><span class="string">a3.sinks.k1.type = logger</span></span><br><span class="line"><span class="string">'</span>escribe the channel</span><br><span class="line">a3.channels.c2.type = memory</span><br><span class="line">a3.channels.c2.capacity = 1000</span><br><span class="line">a3.channels.c2.transactionCapacity = 100</span><br><span class="line"><span class="string">'ind the source and sink to the channel</span></span><br><span class="line"><span class="string">a3.sources.r1.channels = c2</span></span><br><span class="line"><span class="string">a3.sinks.k1.channel = c2</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a3.sources = r1
+a3.sinks = k1
+a3.channels = c2
+&#39;Describe/configure the source
+a3.sources.r1.type = avro
+a3.sources.r1.bind = hadoop102
+a3.sources.r1.port = 4142
+&#39;escribe the sink
+a3.sinks.k1.type = logger
+&#39;escribe the channel
+a3.channels.c2.type = memory
+a3.channels.c2.capacity = 1000
+a3.channels.c2.transactionCapacity = 100
+&#39;ind the source and sink to the channel
+a3.sources.r1.channels = c2
+a3.sinks.k1.channel = c2
+</code></pre>
 <ol>
 <li>分别开启对应配置文件：<br>flume-flume-console2.conf, flume-flume-console1.conf, flume-netcat-flume.conf。</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a3 --conf-file job/group2/flume-flume-console2.conf -Dflume.root.logger=INFO,console</span><br><span class="line">[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a2 --conf-file job/group2/flume-flume-console1.conf -Dflume.root.logger=INFO,console</span><br><span class="line">[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a1 --conf-file job/group2/flume-netcat-flume.conf</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a3 --conf-file job/group2/flume-flume-console2.conf -Dflume.root.logger=INFO,console
+[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a2 --conf-file job/group2/flume-flume-console1.conf -Dflume.root.logger=INFO,console
+[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a1 --conf-file job/group2/flume-netcat-flume.conf
+</code></pre>
 <ol>
 <li><p>使用 net cat 工具向本机的 44444 端口发送内容</p>
 </li>
@@ -1483,19 +1748,78 @@
 <li><p>创建flume1-logger-flume.conf</p>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a1.sources = r1</span></span><br><span class="line"><span class="string">a1.sinks = k1</span></span><br><span class="line"><span class="string">a1.channels = c1</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line">a1.sources.r1.type = <span class="built_in">exec</span></span><br><span class="line">a1.sources.r1.command = tail -F /opt/module/group.log</span><br><span class="line">a1.sources.r1.shell = /bin/bash -c</span><br><span class="line"><span class="string">'Describe the sink</span></span><br><span class="line"><span class="string">a1.sinks.k1.type = avro</span></span><br><span class="line"><span class="string">a1.sinks.k1.hostname = hadoop104</span></span><br><span class="line"><span class="string">a1.sinks.k1.port = 4141</span></span><br><span class="line"><span class="string">'</span>Describe the channel</span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bind the source and sink to the channel</span></span><br><span class="line"><span class="string">a1.sources.r1.channels = c1</span></span><br><span class="line"><span class="string">a1.sinks.k1.channel = c1</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+&#39;Describe/configure the source
+a1.sources.r1.type = exec
+a1.sources.r1.command = tail -F /opt/module/group.log
+a1.sources.r1.shell = /bin/bash -c
+&#39;Describe the sink
+a1.sinks.k1.type = avro
+a1.sinks.k1.hostname = hadoop104
+a1.sinks.k1.port = 4141
+&#39;Describe the channel
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+</code></pre>
 <ol>
 <li>创建 flume2-netcat-flume.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a2.sources = r1</span></span><br><span class="line"><span class="string">a2.sinks = k1</span></span><br><span class="line"><span class="string">a2.channels = c1</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line">a2.sources.r1.type = netcat</span><br><span class="line">a2.sources.r1.bind = hadoop103</span><br><span class="line">a2.sources.r1.port = 44444</span><br><span class="line"><span class="string">'Describe the sink</span></span><br><span class="line"><span class="string">a2.sinks.k1.type = avro</span></span><br><span class="line"><span class="string">a2.sinks.k1.hostname = hadoop104</span></span><br><span class="line"><span class="string">a2.sinks.k1.port = 4141</span></span><br><span class="line"><span class="string">'</span>Use a channel <span class="built_in">which</span> buffers events <span class="keyword">in</span> memory</span><br><span class="line">a2.channels.c1.type = memory</span><br><span class="line">a2.channels.c1.capa city = 1000</span><br><span class="line">a2.channels.c1.transactionCapacity = 100</span><br><span class="line"><span class="string">'Bind the source and sink to the channel</span></span><br><span class="line"><span class="string">a2.sources.r1.channels = c1</span></span><br><span class="line"><span class="string">a2.sinks.k1.channel = c1</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a2.sources = r1
+a2.sinks = k1
+a2.channels = c1
+&#39;Describe/configure the source
+a2.sources.r1.type = netcat
+a2.sources.r1.bind = hadoop103
+a2.sources.r1.port = 44444
+&#39;Describe the sink
+a2.sinks.k1.type = avro
+a2.sinks.k1.hostname = hadoop104
+a2.sinks.k1.port = 4141
+&#39;Use a channel which buffers events in memory
+a2.channels.c1.type = memory
+a2.channels.c1.capa city = 1000
+a2.channels.c1.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a2.sources.r1.channels = c1
+a2.sinks.k1.channel = c1
+</code></pre>
 <ol>
 <li>创建 flume3-flume-logger.conf</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Name the components on this agent</span></span><br><span class="line"><span class="string">a3.sources = r1</span></span><br><span class="line"><span class="string">a3.sinks = k1</span></span><br><span class="line"><span class="string">a3.channels = c1</span></span><br><span class="line"><span class="string">'</span>Describe/configure the <span class="built_in">source</span></span><br><span class="line">a3.sources.r1.type = avro</span><br><span class="line">a3.sources.r1.bind = hadoop10 4</span><br><span class="line">a3.sources.r1.port = 4141</span><br><span class="line"><span class="string">'Describe the sink</span></span><br><span class="line"><span class="string">'</span>Describe the sink</span><br><span class="line">a3.sinks.k1.type = logger</span><br><span class="line"><span class="string">'Describe the channel</span></span><br><span class="line"><span class="string">a3.channels.c1.type = memory</span></span><br><span class="line"><span class="string">a3.channels.c1.capacity = 1000</span></span><br><span class="line"><span class="string">a3.channels.c1.transactionCapacity = 100</span></span><br><span class="line"><span class="string">'</span>Bind the <span class="built_in">source</span> and sink to the channel</span><br><span class="line">a3.sources.r1.channels = c1</span><br><span class="line">a3.sinks.k1.channel = c1</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">&#39;Name the components on this agent
+a3.sources = r1
+a3.sinks = k1
+a3.channels = c1
+&#39;Describe/configure the source
+a3.sources.r1.type = avro
+a3.sources.r1.bind = hadoop10 4
+a3.sources.r1.port = 4141
+&#39;Describe the sink
+&#39;Describe the sink
+a3.sinks.k1.type = logger
+&#39;Describe the channel
+a3.channels.c1.type = memory
+a3.channels.c1.capacity = 1000
+a3.channels.c1.transactionCapacity = 100
+&#39;Bind the source and sink to the channel
+a3.sources.r1.channels = c1
+a3.sinks.k1.channel = c1
+</code></pre>
 <ol>
 <li>执行配置文件</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop104 flume]$ bin/flume-ng agent --conf conf/ --name a3 --conf-file job/group3/flume3-flume-logger.conf -Dflume.root.logger=INFO,console</span><br><span class="line">[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a2 --conf-file job/group3/flume1-logger-flume.conf</span><br><span class="line">[atguigu@hadoop103 flume]$ bin/flume-ng agent --conf conf/ --name a1 --conf-file job/group3/flume2-netcat-flume.conf</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">[atguigu@hadoop104 flume]$ bin/flume-ng agent --conf conf/ --name a3 --conf-file job/group3/flume3-flume-logger.conf -Dflume.root.logger=INFO,console
+[atguigu@hadoop102 flume]$ bin/flume-ng agent --conf conf/ --name a2 --conf-file job/group3/flume1-logger-flume.conf
+[atguigu@hadoop103 flume]$ bin/flume-ng agent --conf conf/ --name a1 --conf-file job/group3/flume2-netcat-flume.conf
+</code></pre>
 <ol>
 <li><p>在 hadoop 103 上向 opt/module 目录下的 group .log 追加内容</p>
 </li>

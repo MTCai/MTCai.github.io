@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1537,7 +1537,10 @@
 <p>注意 2 : java 采用 unicode 字符集，因此标识符也可以使用汉字声明，但是不建议使用。</p>
 </blockquote>
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20200928170530989.png" alt="image-20200928170530989"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明long类型，必须以"l"或者"L"结尾。</span></span><br><span class="line"><span class="keyword">long</span> a = <span class="number">123123123L</span>;</span><br><span class="line"><span class="comment">// Java 的浮点型常量默认为 double 型,声明 float 型常量，须后加‘ f’ 或‘ F’ 。</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// 声明long类型，必须以&quot;l&quot;或者&quot;L&quot;结尾。
+long a = 123123123L;
+// Java 的浮点型常量默认为 double 型,声明 float 型常量，须后加‘ f’ 或‘ F’ 。
+</code></pre>
 <p><strong>自动类型转换 ：</strong>容量小的类型自动转换为容量大的数据类型。数据类型按容量大小排序为：</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20200928202301064.png" alt="image-20200928202301064"></p>
 <ul>
@@ -1552,7 +1555,11 @@
 <li>如 String a = “ 43 ”; int i = Integer.parseInt(a);</li>
 <li>boolean 类型不可以转换为其它的数据类型 。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> l1=<span class="number">213123</span>;<span class="comment">//未报错，默认int，自动转long</span></span><br><span class="line"><span class="keyword">long</span> l2=<span class="number">12312323123123123123123</span>;<span class="comment">//过大的整数，int存不下</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span> f1=<span class="number">12.3</span>;<span class="comment">//报错，默认double，无法自动转float</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">long l1=213123;//未报错，默认int，自动转long
+long l2=12312323123123123123123;//过大的整数，int存不下
+
+float f1=12.3;//报错，默认double，无法自动转float
+</code></pre>
 <h2 id="进制"><a href="#进制" class="headerlink" title="进制"></a>进制</h2><p>对于 整数，有四种表示方式：</p>
 <ul>
 <li>二进制 (binary) 0,1：满 2 进 1. 以 0b 或 0B 开头。</li>

@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1441,9 +1441,24 @@
 <p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
 </blockquote>
 <p>（b）配置：core-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定HDFS中NameNode的地址  --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop1:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span>     </span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录  --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- 指定HDFS中NameNode的地址  --&gt;  
+&lt;property&gt;  
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;
+    &lt;value&gt;hdfs://hadoop1:9000&lt;/value&gt;
+&lt;/property&gt;     
+&lt;!-- 指定Hadoop运行时产生文件的存储目录  --&gt;  
+&lt;property&gt;
+    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+    &lt;value&gt;/opt/module/hadoop-2.7.2/data/tmp&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <p>（c）配置：hdfs-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--  指定HDFS副本的数量 --&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!--  指定HDFS副本的数量 --&gt;  
+&lt;property&gt;    
+    &lt;name&gt;dfs.replication&lt;/name&gt;    
+    &lt;value&gt;1&lt;/value&gt;  
+&lt;/property&gt;
+</code></pre>
 <p><strong>2 启动集群</strong></p>
 <p>（a）格式化<strong>NameNode</strong>（第一次启动时格式化，以后就不要总格式化）</p>
 <blockquote>
@@ -1530,7 +1545,17 @@
 <p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
 </blockquote>
 <p>（b）配置yarn-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Reducer获取数据的方式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 指定YARN的ResourceManager的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- Reducer获取数据的方式 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+&lt;/property&gt;
+&lt;!-- 指定YARN的ResourceManager的地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+    &lt;value&gt;hadoop1&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <p>（c）配置：mapred-env.sh</p>
 <blockquote>
 <p>配置一下JAVA_HOME</p>
@@ -1541,7 +1566,12 @@
 <p>[atguigu@hadoop1 hadoop]$ mv mapred-site.xml.template mapred-site.xml</p>
 <p>[atguigu@hadoop1 hadoop]$ vi mapred-site.xml</p>
 </blockquote>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定MR运行在YARN上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- 指定MR运行在YARN上 --&gt;
+&lt;property&gt;
+   &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+   &lt;value&gt;yarn&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <p><strong>2 启动集群</strong></p>
 <p>（a）启动前必须保证NameNode和DataNode已经启动</p>
 <p>（b）启动ResourceManager</p>
@@ -1579,7 +1609,18 @@
 <p>[atguigu@hadoop1 hadoop]$ vi mapred-site.xml</p>
 </blockquote>
 <p>在该文件里面增加如下配置。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 历史服务器端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop1:10020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 历史服务器web端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.webapp.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop1:19888<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- 历史服务器端地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
+    &lt;value&gt;hadoop1:10020&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 历史服务器web端地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;
+    &lt;value&gt;hadoop1:19888&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <ol>
 <li>启动历史服务器</li>
 </ol>
@@ -1609,7 +1650,24 @@
 <p>[atguigu@hadoop1 hadoop]$ vi yarn-site.xml</p>
 </blockquote>
 <p>在该文件里面增加如下配置。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 日志聚集功能使能 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation-enable<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 设置日志聚集服务器地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log.server.url<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>http://hadoop102:19888/jobhistory/logs<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 日志保留时间设置7天 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation.retain-seconds<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>604800<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- 日志聚集功能使能 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.log-aggregation-enable&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 设置日志聚集服务器地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.log.server.url&lt;/name&gt;
+    &lt;value&gt;http://hadoop102:19888/jobhistory/logs&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 日志保留时间设置7天 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.log-aggregation.retain-seconds&lt;/name&gt;
+    &lt;value&gt;604800&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <ol>
 <li>关闭NodeManager 、ResourceManager和HistoryManager</li>
 </ol>
@@ -1742,7 +1800,33 @@
 <p>[atguigu@hadoop102 bin]$ vi xsync</p>
 </blockquote>
 <p>​        在该文件中编写如下代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1 获取输入参数个数，如果没有参数，直接退出</span></span><br><span class="line">pcount=<span class="variable">$#</span></span><br><span class="line"><span class="keyword">if</span>((pcount==0)); <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> no args;</span><br><span class="line"><span class="built_in">exit</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#2 获取文件名称</span></span><br><span class="line">p1=<span class="variable">$1</span></span><br><span class="line">fname=`basename <span class="variable">$p1</span>`</span><br><span class="line"><span class="built_in">echo</span> fname=<span class="variable">$fname</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#3 获取上级目录到绝对路径</span></span><br><span class="line">pdir=`<span class="built_in">cd</span> -P $(dirname <span class="variable">$p1</span>); <span class="built_in">pwd</span>`</span><br><span class="line"><span class="built_in">echo</span> pdir=<span class="variable">$pdir</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#4 获取当前用户名称</span></span><br><span class="line">user=`whoami`</span><br><span class="line"></span><br><span class="line"><span class="comment">#5 循环</span></span><br><span class="line"><span class="keyword">for</span>((host=103; host&lt;105; host++)); <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> ------------------- hadoop<span class="variable">$host</span> --------------</span><br><span class="line">	rsync -rvl <span class="variable">$pdir</span>/<span class="variable">$fname</span> <span class="variable">$user</span>@hadoop<span class="variable">$host</span>:<span class="variable">$pdir</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">#!/bin/bash
+
+#1 获取输入参数个数，如果没有参数，直接退出
+pcount=$#
+if((pcount==0)); then
+echo no args;
+exit;
+fi
+
+#2 获取文件名称
+p1=$1
+fname=`basename $p1`
+echo fname=$fname
+
+#3 获取上级目录到绝对路径
+pdir=`cd -P $(dirname $p1); pwd`
+echo pdir=$pdir
+
+#4 获取当前用户名称
+user=`whoami`
+
+#5 循环
+for((host=103; host&lt;105; host++)); do
+    echo ------------------- hadoop$host --------------
+    rsync -rvl $pdir/$fname $user@hadoop$host:$pdir
+done
+</code></pre>
 <ul>
 <li><ol>
 <li>修改脚本 xsync 具有执行权限</li>
@@ -1804,7 +1888,25 @@
 <p>[atguigu@hadoop102 hadoop]$ vi core-site.xml</p>
 </blockquote>
 <p>在该文件中编写如下配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定HDFS中NameNode的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop102:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Hadoop3.x 配置 HDFS 网页登录使用的静态用户为 atguigu --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.http.staticuser.user<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>atguigu<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- 指定HDFS中NameNode的地址 --&gt;
+&lt;property&gt;
+   &lt;name&gt;fs.defaultFS&lt;/name&gt;
+   &lt;value&gt;hdfs://hadoop102:9000&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;
+&lt;property&gt;
+   &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+   &lt;value&gt;/opt/module/hadoop-2.7.2/data/tmp&lt;/value&gt;
+&lt;/property&gt;
+
+
+&lt;!-- Hadoop3.x 配置 HDFS 网页登录使用的静态用户为 atguigu --&gt;
+&lt;property&gt;
+   &lt;name&gt;hadoop.http.staticuser.user&lt;/name&gt;
+   &lt;value&gt;atguigu&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <p>（2）HDFS配置文件</p>
 <p>配置hadoop-env.sh</p>
 <blockquote>
@@ -1816,7 +1918,24 @@
 <p>[atguigu@hadoop102 hadoop]$ vi hdfs-site.xml</p>
 </blockquote>
 <p>在该文件中编写如下配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- nn web 端访问地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   &lt;name&gt;dfs.namenode.http-address&lt;/&lt;/name&gt;</span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop102:50070<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop辅助名称节点主机配置 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 2 nn web 端访问地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.http-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop104:50090<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+   &lt;name&gt;dfs.replication&lt;/name&gt;
+   &lt;value&gt;3&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- nn web 端访问地址 --&gt;
+&lt;property&gt;
+   &lt;name&gt;dfs.namenode.http-address&lt;/&lt;/name&gt;
+   &lt;value&gt;hadoop102:50070&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 指定Hadoop辅助名称节点主机配置 --&gt;
+&lt;!-- 2 nn web 端访问地址 --&gt;
+&lt;property&gt;
+   &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
+   &lt;value&gt;hadoop104:50090&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <p>（3）YARN配置文件</p>
 <p>配置yarn-env.sh</p>
 <blockquote>
@@ -1828,7 +1947,44 @@
 <p>[atguigu@hadoop102 hadoop]$ vi yarn-site.xml</p>
 </blockquote>
 <p>在该文件中增加如下配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Reducer获取数据的方式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定YARN的ResourceManager的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop103<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 日志聚集功能使能 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation-enable<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 设置日志聚集服务器地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log.server.url<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>http://hadoop102:19888/jobhistory/logs<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 日志保留时间设置7天 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.log-aggregation.retain-seconds<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>604800<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 环境变量的继承 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.env-whitelist<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,</span><br><span class="line">        HADOOP_YARN_HOME, HADOOP_MAPRED_HOME <span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- Reducer获取数据的方式 --&gt;
+&lt;property&gt;
+   &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+   &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 指定YARN的ResourceManager的地址 --&gt;
+&lt;property&gt;
+   &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+   &lt;value&gt;hadoop103&lt;/value&gt;
+&lt;/property&gt;
+
+
+&lt;!-- 日志聚集功能使能 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.log-aggregation-enable&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 设置日志聚集服务器地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.log.server.url&lt;/name&gt;
+    &lt;value&gt;http://hadoop102:19888/jobhistory/logs&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 日志保留时间设置7天 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.log-aggregation.retain-seconds&lt;/name&gt;
+    &lt;value&gt;604800&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 环境变量的继承 --&gt;
+&lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;
+    &lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,
+        HADOOP_YARN_HOME, HADOOP_MAPRED_HOME &lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <p>（4）MapReduce配置文件</p>
 <p>配置mapred-env.sh</p>
 <blockquote>
@@ -1841,7 +1997,23 @@
 <p>[atguigu@hadoop102 hadoop]$ vi mapred-site.xml</p>
 </blockquote>
 <p>在该文件中增加如下配置</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定MR运行在Yarn上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 历史服务器端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hadoop102:10020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 历史服务器 web 端地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.webapp.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>19888<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- 指定MR运行在Yarn上 --&gt;
+&lt;property&gt;
+   &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+   &lt;value&gt;yarn&lt;/value&gt;
+&lt;/property&gt;
+
+&lt;!-- 历史服务器端地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
+    &lt;value&gt;hadoop102:10020&lt;/value&gt;
+&lt;/property&gt;
+&lt;!-- 历史服务器 web 端地址 --&gt;
+&lt;property&gt;
+    &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;
+    &lt;value&gt;19888&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <h4 id="在集群上分发配置好的Hadoop配置文件"><a href="#在集群上分发配置好的Hadoop配置文件" class="headerlink" title="在集群上分发配置好的Hadoop配置文件"></a>在集群上分发配置好的Hadoop配置文件</h4><blockquote>
 <p>[atguigu@hadoop102 hadoop]$ xsync /opt/module/hadoop-2.7.2/</p>
 </blockquote>
@@ -1922,7 +2094,15 @@
 </tbody>
 </table>
 </div>
-<h3 id="群起集群"><a href="#群起集群" class="headerlink" title="群起集群"></a>群起集群</h3><h4 id="配置slaves-workers"><a href="#配置slaves-workers" class="headerlink" title="配置slaves/workers"></a>配置slaves/workers</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hadoop2.x修改 /opt/module/hadoop-2.7.2/etc/hadoop/slaves</span><br><span class="line">hadoop3.x修改 /opt/module/hadoop-3.1.3/etc/hadoop/workers</span><br><span class="line">[atguigu@hadoop102 hadoop]$ vi slaves</span><br><span class="line"></span><br><span class="line">在该文件中增加如下内容：注意：该文件中添加的内容结尾不允许有空格，文件中不允许有空行。</span><br><span class="line">hadoop102</span><br><span class="line">hadoop103</span><br><span class="line">hadoop104</span><br></pre></td></tr></table></figure>
+<h3 id="群起集群"><a href="#群起集群" class="headerlink" title="群起集群"></a>群起集群</h3><h4 id="配置slaves-workers"><a href="#配置slaves-workers" class="headerlink" title="配置slaves/workers"></a>配置slaves/workers</h4><pre><code class="lang-bash">hadoop2.x修改 /opt/module/hadoop-2.7.2/etc/hadoop/slaves
+hadoop3.x修改 /opt/module/hadoop-3.1.3/etc/hadoop/workers
+[atguigu@hadoop102 hadoop]$ vi slaves
+
+在该文件中增加如下内容：注意：该文件中添加的内容结尾不允许有空格，文件中不允许有空行。
+hadoop102
+hadoop103
+hadoop104
+</code></pre>
 <blockquote>
 <p>同步所有节点配置文件:</p>
 <p>[atguigu@hadoop102 hadoop]$ xsync slaves</p>
@@ -1963,7 +2143,35 @@
 </li>
 </ol>
 <p>浏览器中输入：<a href="http://hadoop104:50090/status.html" target="_blank" rel="noopener">http://hadoop104:50090/status.html</a></p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">start</span><br><span class="line">hadoop_home=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/hadoop-daemon.sh start namenode</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/hadoop-daemon.sh start datanode</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh start resourcemanager</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh start nodemanager</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh start historyserver</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/mr-jobhistory-daemon.sh start historyserver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">stop</span><br><span class="line">hadoop_home=/usr/<span class="built_in">local</span>/hadoop</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/hadoop-daemon.sh stop namenode</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/hadoop-daemon.sh stop datanode</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh stop resourcemanager</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh stop nodemanager</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/yarn-daemon.sh stop historyserver</span><br><span class="line"><span class="variable">$hadoop_home</span>/sbin/mr-jobhistory-daemon.sh stop historyserver</span><br><span class="line"></span><br><span class="line">hdfs --daemon start/stop namenode/datanode/secondarynamenode</span><br><span class="line">yarn --daemon start/stop resourcemanager/nodemanager</span><br><span class="line">bin/mapred --daemon start/stop historyserver</span><br><span class="line"><span class="comment">#各个模块分开启动/停止（配置ssh是前提）</span></span><br><span class="line"><span class="comment">#整体启动/停止HDFS</span></span><br><span class="line">start-dfs.sh   /  stop-dfs.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#整体启动/停止YARN</span></span><br><span class="line">start-yarn.sh  /  stop-yarn.sh</span><br></pre></td></tr></table></figure>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><pre><code class="lang-bash">start
+hadoop_home=/usr/local/hadoop
+$hadoop_home/sbin/hadoop-daemon.sh start namenode
+$hadoop_home/sbin/hadoop-daemon.sh start datanode
+$hadoop_home/sbin/yarn-daemon.sh start resourcemanager
+$hadoop_home/sbin/yarn-daemon.sh start nodemanager
+$hadoop_home/sbin/yarn-daemon.sh start historyserver
+$hadoop_home/sbin/mr-jobhistory-daemon.sh start historyserver
+
+
+stop
+hadoop_home=/usr/local/hadoop
+$hadoop_home/sbin/hadoop-daemon.sh stop namenode
+$hadoop_home/sbin/hadoop-daemon.sh stop datanode
+$hadoop_home/sbin/yarn-daemon.sh stop resourcemanager
+$hadoop_home/sbin/yarn-daemon.sh stop nodemanager
+$hadoop_home/sbin/yarn-daemon.sh stop historyserver
+$hadoop_home/sbin/mr-jobhistory-daemon.sh stop historyserver
+
+hdfs --daemon start/stop namenode/datanode/secondarynamenode
+yarn --daemon start/stop resourcemanager/nodemanager
+bin/mapred --daemon start/stop historyserver
+#各个模块分开启动/停止（配置ssh是前提）
+#整体启动/停止HDFS
+start-dfs.sh   /  stop-dfs.sh
+
+#整体启动/停止YARN
+start-yarn.sh  /  stop-yarn.sh
+</code></pre>
 <h3 id="集群时间同步"><a href="#集群时间同步" class="headerlink" title="集群时间同步"></a>集群时间同步</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201110203736001.png" alt="image-20201110203736001"></p>
 <h4 id="时间服务器配置（必须root用户"><a href="#时间服务器配置（必须root用户" class="headerlink" title="时间服务器配置（必须root用户)"></a>时间服务器配置（必须root用户)</h4><ol>
 <li><p>检查 ntp 是否安装</p>
@@ -2190,16 +2398,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+              <a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Hadoop02-HDFS概述、shell&客户端操作
+                  JDBC-04 数据库连接池&DBUtils
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
-                Hadoop03-HDFS读写流程&NN和2NN
+              <a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+                Hadoop02-HDFS概述、shell&客户端操作
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

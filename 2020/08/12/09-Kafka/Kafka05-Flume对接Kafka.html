@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1335,7 +1335,33 @@
 
 <div id="article-content">
 	<p>配置 flume(flume-kafka.conf)</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'define'</span></span><br><span class="line">a1.sources = r1</span><br><span class="line">a1.sinks = k1</span><br><span class="line">a1.channels = c1</span><br><span class="line"></span><br><span class="line"><span class="string">' source'</span></span><br><span class="line">a1.sources.r1.type = <span class="built_in">exec</span></span><br><span class="line">a1.sources.r1.command = tail -F -c +0 /opt/module/data/flume.log</span><br><span class="line">a1.sources.r1.shell = /bin/bash -c</span><br><span class="line"></span><br><span class="line"><span class="string">'sink'</span></span><br><span class="line">a1.sinks.k1.type = org.apache.flume.sink.kafka.KafkaSink</span><br><span class="line">a1.sinks.k1.kafka.bootstrap.servers = hadoop102:9092,hadoop103:90 92,hadoop104:9092</span><br><span class="line">a1.sinks.k1.kafka.topic = first</span><br><span class="line">a1.sinks.k1.kafka.flumeBatchSize = 20</span><br><span class="line">a1.sinks.k1.kafka.producer.acks = 1</span><br><span class="line">a1.sinks.k1.kafka.producer.linger.ms = 1</span><br><span class="line"></span><br><span class="line"><span class="string">'channel'</span></span><br><span class="line">a1.channels.c1.type = memory</span><br><span class="line">a1.channels.c1.capacity = 1000</span><br><span class="line">a1.channels.c1.transactionCapacity = 100</span><br><span class="line"></span><br><span class="line"><span class="string">'bind'</span></span><br><span class="line">a1.sources.r1.channels = c1</span><br><span class="line">a1.sinks.k1.channel = c1</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">&#39;define&#39;
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+&#39; source&#39;
+a1.sources.r1.type = exec
+a1.sources.r1.command = tail -F -c +0 /opt/module/data/flume.log
+a1.sources.r1.shell = /bin/bash -c
+
+&#39;sink&#39;
+a1.sinks.k1.type = org.apache.flume.sink.kafka.KafkaSink
+a1.sinks.k1.kafka.bootstrap.servers = hadoop102:9092,hadoop103:90 92,hadoop104:9092
+a1.sinks.k1.kafka.topic = first
+a1.sinks.k1.kafka.flumeBatchSize = 20
+a1.sinks.k1.kafka.producer.acks = 1
+a1.sinks.k1.kafka.producer.linger.ms = 1
+
+&#39;channel&#39;
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 1000
+a1.channels.c1.transactionCapacity = 100
+
+&#39;bind&#39;
+a1.sources.r1.channels = c1
+a1.sinks.k1.channel = c1
+</code></pre>
 <p>启动 flume</p>
 <blockquote>
 <p>$ bin/flume-ng agent -c conf/ -n a1 -f jobs/flume kafka.conf</p>
@@ -1351,16 +1377,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+              <a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Kafka02-架构原理
+                  Kafka04-监控
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
-                Kafka06-面试题
+              <a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+                HBase01-概述
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1353,18 +1353,70 @@
 </ul>
 <h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>1.安装ffmpeg<br><a href="https://mtcai.github.io/2020/01/20/%E5%AE%89%E8%A3%85ffmpeg.html">ffmpeg安装</a></p>
 <p>2.安装其他依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential</span><br><span class="line">sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev</span><br><span class="line">sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev # 处理图像所需的包</span><br><span class="line">sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev liblapacke-dev</span><br><span class="line">sudo apt-get install libxvidcore-dev libx264-dev # 处理视频所需的包，可选</span><br><span class="line">sudo apt-get install libatlas-base-dev gfortran # 优化opencv功能，可选</span><br><span class="line">sudo apt-get install ffmpeg</span><br></pre></td></tr></table></figure>
-<h2 id="编译opencv"><a href="#编译opencv" class="headerlink" title="编译opencv"></a>编译opencv</h2><p>3.安装</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd opencv<span class="number">-3.4</span><span class="number">.6</span>  <span class="comment">#进入opencv的目录</span></span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local .. </span><br><span class="line">sudo make -j4  <span class="comment"># 使用四线程，电脑线程多可以改大</span></span><br><span class="line">sudo mkae install</span><br></pre></td></tr></table></figure>
+<pre><code>sudo apt-get install build-essential
+sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev # 处理图像所需的包
+sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev liblapacke-dev
+sudo apt-get install libxvidcore-dev libx264-dev # 处理视频所需的包，可选
+sudo apt-get install libatlas-base-dev gfortran # 优化opencv功能，可选
+sudo apt-get install ffmpeg
+</code></pre><h2 id="编译opencv"><a href="#编译opencv" class="headerlink" title="编译opencv"></a>编译opencv</h2><p>3.安装</p>
+<pre><code class="lang-python">cd opencv-3.4.6  #进入opencv的目录
+mkdir build &amp;&amp; cd build
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local .. 
+sudo make -j4  # 使用四线程，电脑线程多可以改大
+sudo mkae install
+</code></pre>
 <p>4.配置环境变量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ld.so.conf.d/opencv.conf  <span class="comment"># 这个文件并不存在，我们新建一个</span></span><br><span class="line">然后，在里面写入：</span><br><span class="line">/usr/local/lib  </span><br><span class="line">退出vim</span><br><span class="line"></span><br><span class="line">sudo vim /etc/ld.so.conf</span><br><span class="line">添加： </span><br><span class="line">include /etc/ld.so.conf.d/*.conf</span><br><span class="line">/usr/local/lib  </span><br><span class="line">退出vim</span><br><span class="line">sudo ldconfig  <span class="comment"># 使更改生效</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo vim /etc/bash.bashrc   </span><br><span class="line">在最末尾添加:</span><br><span class="line">PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig</span><br><span class="line">export PKG_CONFIG_PATH  </span><br><span class="line">退出vim</span><br><span class="line">source /etc/bash.bashrc</span><br><span class="line">sudo updatedb</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pkg-config opencv --modversion  <span class="comment"># 查看opencv版本</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">sudo vim /etc/ld.so.conf.d/opencv.conf  # 这个文件并不存在，我们新建一个
+然后，在里面写入：
+/usr/local/lib  
+退出vim
+
+sudo vim /etc/ld.so.conf
+添加： 
+include /etc/ld.so.conf.d/*.conf
+/usr/local/lib  
+退出vim
+sudo ldconfig  # 使更改生效
+
+
+sudo vim /etc/bash.bashrc   
+在最末尾添加:
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH  
+退出vim
+source /etc/bash.bashrc
+sudo updatedb
+
+
+pkg-config opencv --modversion  # 查看opencv版本
+</code></pre>
 <p>5.测试</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">进入到opencv的example目录</span><br><span class="line">cd cd samples/cpp/example_cmake/</span><br><span class="line">make</span><br><span class="line">./opencv_example  </span><br><span class="line"><span class="comment"># 会输出以下内容，并打开摄像头</span></span><br><span class="line">Built <span class="keyword">with</span> OpenCV <span class="number">3.4</span><span class="number">.6</span></span><br><span class="line">Capture <span class="keyword">is</span> opened</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-python">进入到opencv的example目录
+cd cd samples/cpp/example_cmake/
+make
+./opencv_example  
+# 会输出以下内容，并打开摄像头
+Built with OpenCV 3.4.6
+Capture is opened
+</code></pre>
 <h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><p>1.ippicv</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在编译opencv时，会碰到ippicv_2019_lnx_intel64_general_20180723.tgz这个文件下载超级慢的问题</span><br><span class="line">下载网址1：https:&#x2F;&#x2F;github.com&#x2F;opencv&#x2F;opencv_3rdparty&#x2F;tree&#x2F;ippicv&#x2F;master_20180723&#x2F;ippicv</span><br><span class="line">下载网址2：https:&#x2F;&#x2F;links.jianshu.com&#x2F;go?to&#x3D;https%3A%2F%2Fraw.githubusercontent.com%2Fopencv%2Fopencv_3rdparty%2Fippicv%2Fmaster_20180723%2Fippicv%2Fippicv_2019_lnx_intel64_general_20180723.tgz</span><br><span class="line">下载后放到自己方便的目录下，随便哪个都行</span><br><span class="line">然后修改 .&#x2F;3rdparty&#x2F;ippicv&#x2F;ippicv.cmake #就是这个文件的第47行</span><br><span class="line">&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;opencv&#x2F;opencv_3rdparty&#x2F;$&#123;IPPICV_COMMIT&#125;ippicv&#x2F;&quot; 修改为：</span><br><span class="line">&quot;file:~&#x2F;Downloads&#x2F;&quot; #（仅供参考，根据自己的路径填写，填写绝对路径）</span><br></pre></td></tr></table></figure>
-<p>2.recipe for target ‘lib/libopencv_videoio.so.3.4.6’ failed<br>报错信息为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">modules&#x2F;videoio&#x2F;CMakeFiles&#x2F;opencv_videoio.dir&#x2F;build.make:333: recipe for target ‘lib&#x2F;libopencv_videoio.so.3.4.2’ failed</span><br><span class="line">make[2]: *** [lib&#x2F;libopencv_videoio.so.3.4.2] Error 1</span><br><span class="line">CMakeFiles&#x2F;Makefile2:5205: recipe for target ‘modules&#x2F;videoio&#x2F;CMakeFiles&#x2F;opencv_videoio.dir&#x2F;all’ failed</span><br><span class="line">make[1]: *** [modules&#x2F;videoio&#x2F;CMakeFiles&#x2F;opencv_videoio.dir&#x2F;all] Error 2</span><br><span class="line">Makefile:162: recipe for target ‘all’ failed</span><br><span class="line">make: *** [all] Error 2</span><br></pre></td></tr></table></figure>
-<p>经过查资料发现时ffmpeg的问题，没有编译好，编译ffmpeg时缺少参数<br><a href="https://github.com/DeaDBeeF-Player/deadbeef/issues/1691" target="_blank" rel="noopener">https://github.com/DeaDBeeF-Player/deadbeef/issues/1691</a><br>解决办法： 编译ffmpeg时添加 —extra-cflags=”-fPIC” 参数<br>./configure —extra-cflags=”-fPIC”</p>
+<pre><code>在编译opencv时，会碰到ippicv_2019_lnx_intel64_general_20180723.tgz这个文件下载超级慢的问题
+下载网址1：https://github.com/opencv/opencv_3rdparty/tree/ippicv/master_20180723/ippicv
+下载网址2：https://links.jianshu.com/go?to=https%3A%2F%2Fraw.githubusercontent.com%2Fopencv%2Fopencv_3rdparty%2Fippicv%2Fmaster_20180723%2Fippicv%2Fippicv_2019_lnx_intel64_general_20180723.tgz
+下载后放到自己方便的目录下，随便哪个都行
+然后修改 ./3rdparty/ippicv/ippicv.cmake #就是这个文件的第47行
+&quot;https://raw.githubusercontent.com/opencv/opencv_3rdparty/${IPPICV_COMMIT}ippicv/&quot; 修改为：
+&quot;file:~/Downloads/&quot; #（仅供参考，根据自己的路径填写，填写绝对路径）
+</code></pre><p>2.recipe for target ‘lib/libopencv_videoio.so.3.4.6’ failed<br>报错信息为：</p>
+<pre><code>modules/videoio/CMakeFiles/opencv_videoio.dir/build.make:333: recipe for target ‘lib/libopencv_videoio.so.3.4.2’ failed
+make[2]: *** [lib/libopencv_videoio.so.3.4.2] Error 1
+CMakeFiles/Makefile2:5205: recipe for target ‘modules/videoio/CMakeFiles/opencv_videoio.dir/all’ failed
+make[1]: *** [modules/videoio/CMakeFiles/opencv_videoio.dir/all] Error 2
+Makefile:162: recipe for target ‘all’ failed
+make: *** [all] Error 2
+</code></pre><p>经过查资料发现时ffmpeg的问题，没有编译好，编译ffmpeg时缺少参数<br><a href="https://github.com/DeaDBeeF-Player/deadbeef/issues/1691" target="_blank" rel="noopener">https://github.com/DeaDBeeF-Player/deadbeef/issues/1691</a><br>解决办法： 编译ffmpeg时添加 —extra-cflags=”-fPIC” 参数<br>./configure —extra-cflags=”-fPIC”</p>
 <h1 id="ok"><a href="#ok" class="headerlink" title="ok"></a>ok</h1><p>至此，Ubuntu16.04下安装OpenCV已全部结束，请小量食用OpenCV！</p>
 
 </div>

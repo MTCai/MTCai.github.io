@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1384,18 +1384,116 @@
 </div>
 <h3 id="启动客户端"><a href="#启动客户端" class="headerlink" title="启动客户端"></a>启动客户端</h3><p>[atguigu@hadoop103 zookeeper-3.4.10]$ bin/zkCli.sh</p>
 <h3 id="显示所有操作命令"><a href="#显示所有操作命令" class="headerlink" title="显示所有操作命令"></a>显示所有操作命令</h3><p>[zk: localhost:2181(CONNECTED) 1] help</p>
-<h3 id="查看当前znode中所包含的内容"><a href="#查看当前znode中所包含的内容" class="headerlink" title="查看当前znode中所包含的内容"></a>查看当前znode中所包含的内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 0] ls /</span><br><span class="line">[zookeeper]</span><br></pre></td></tr></table></figure>
-<h3 id="查看当前节点详细数据"><a href="#查看当前节点详细数据" class="headerlink" title="查看当前节点详细数据"></a>查看当前节点详细数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 1] ls2 /</span><br><span class="line">[zookeeper]</span><br><span class="line">cZxid = 0x0</span><br><span class="line">ctime = Thu Jan 01 08:00:00 CST 1970</span><br><span class="line">mZxid = 0x0</span><br><span class="line">mtime = Thu Jan 01 08:00:00 CST 1970</span><br><span class="line">pZxid = 0x0</span><br><span class="line">cversion = -1</span><br><span class="line">dataVersion = 0</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0x0</span><br><span class="line">dataLength = 0</span><br><span class="line">numChildren = 1</span><br></pre></td></tr></table></figure>
-<h3 id="分别创建2个普通节点"><a href="#分别创建2个普通节点" class="headerlink" title="分别创建2个普通节点"></a>分别创建2个普通节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 3] create /sanguo <span class="string">"jinlian"</span></span><br><span class="line">Created /sanguo</span><br><span class="line">[zk: localhost:2181(CONNECTED) 4] create /sanguo/shuguo <span class="string">"liubei"</span></span><br><span class="line">Created /sanguo/shuguo</span><br></pre></td></tr></table></figure>
-<h3 id="获得节点的值"><a href="#获得节点的值" class="headerlink" title="获得节点的值"></a>获得节点的值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 5] get /sanguo</span><br><span class="line">jinlian</span><br><span class="line">cZxid = 0x100000003</span><br><span class="line">ctime = Wed Aug 29 00:03:23 CST 2018</span><br><span class="line">mZxid = 0x100000003</span><br><span class="line">mtime = Wed Aug 29 00:03:23 CST 2018</span><br><span class="line">pZxid = 0x100000004</span><br><span class="line">cversion = 1</span><br><span class="line">dataVersion = 0</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0x0</span><br><span class="line">dataLength = 7</span><br><span class="line">numChildren = 1</span><br><span class="line">[zk: localhost:2181(CONNECTED) 6]</span><br><span class="line">[zk: localhost:2181(CONNECTED) 6] get /sanguo/shuguo</span><br><span class="line">liubei</span><br><span class="line">cZxid = 0x100000004</span><br><span class="line">ctime = Wed Aug 29 00:04:35 CST 2018</span><br><span class="line">mZxid = 0x100000004</span><br><span class="line">mtime = Wed Aug 29 00:04:35 CST 2018</span><br><span class="line">pZxid = 0x100000004</span><br><span class="line">cversion = 0</span><br><span class="line">dataVersion = 0</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0x0</span><br><span class="line">dataLength = 6</span><br><span class="line">numChildren = 0</span><br></pre></td></tr></table></figure>
-<h3 id="创建短暂节点"><a href="#创建短暂节点" class="headerlink" title="创建短暂节点"></a>创建短暂节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 7] create -e /sanguo/wuguo <span class="string">"zhouyu"</span></span><br><span class="line">Created /sanguo/wuguo</span><br><span class="line"><span class="comment"># 在当前客户端是能查看到的</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 3] ls /sanguo </span><br><span class="line">[wuguo, shuguo]</span><br><span class="line"><span class="comment"># 退出当前客户端然后再重启客户端</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 12] quit</span><br><span class="line">[atguigu@hadoop104 zookeeper-3.4.10]$ bin/zkCli.sh</span><br><span class="line"><span class="comment"># 再次查看根目录下短暂节点已经删除</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 0] ls /sanguo</span><br><span class="line">[shuguo]</span><br></pre></td></tr></table></figure>
-<h3 id="创建带序号的节点"><a href="#创建带序号的节点" class="headerlink" title="创建带序号的节点"></a>创建带序号的节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先创建一个普通的根节点/sanguo/weiguo</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 1] create /sanguo/weiguo <span class="string">"caocao"</span></span><br><span class="line">Created /sanguo/weiguo</span><br><span class="line"><span class="comment"># 创建带序号的节点</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 2] create -s /sanguo/weiguo/xiaoqiao <span class="string">"jinlian"</span></span><br><span class="line">Created /sanguo/weiguo/xiaoqiao0000000000</span><br><span class="line">[zk: localhost:2181(CONNECTED) 3] create -s /sanguo/weiguo/daqiao <span class="string">"jinlian"</span></span><br><span class="line">Created /sanguo/weiguo/daqiao0000000001</span><br><span class="line">[zk: localhost:2181(CONNECTED) 4] create -s /sanguo/weiguo/diaocan <span class="string">"jinlian"</span></span><br><span class="line">Created /sanguo/weiguo/diaocan0000000002</span><br><span class="line"><span class="comment"># 如果原来没有序号节点，序号从0开始依次递增。如果原节点下已有2个节点，则再排序时从2开始，以此类推。</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看当前znode中所包含的内容"><a href="#查看当前znode中所包含的内容" class="headerlink" title="查看当前znode中所包含的内容"></a>查看当前znode中所包含的内容</h3><pre><code class="lang-bash">[zk: localhost:2181(CONNECTED) 0] ls /
+[zookeeper]
+</code></pre>
+<h3 id="查看当前节点详细数据"><a href="#查看当前节点详细数据" class="headerlink" title="查看当前节点详细数据"></a>查看当前节点详细数据</h3><pre><code class="lang-bash">[zk: localhost:2181(CONNECTED) 1] ls2 /
+[zookeeper]
+cZxid = 0x0
+ctime = Thu Jan 01 08:00:00 CST 1970
+mZxid = 0x0
+mtime = Thu Jan 01 08:00:00 CST 1970
+pZxid = 0x0
+cversion = -1
+dataVersion = 0
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 0
+numChildren = 1
+</code></pre>
+<h3 id="分别创建2个普通节点"><a href="#分别创建2个普通节点" class="headerlink" title="分别创建2个普通节点"></a>分别创建2个普通节点</h3><pre><code class="lang-bash">[zk: localhost:2181(CONNECTED) 3] create /sanguo &quot;jinlian&quot;
+Created /sanguo
+[zk: localhost:2181(CONNECTED) 4] create /sanguo/shuguo &quot;liubei&quot;
+Created /sanguo/shuguo
+</code></pre>
+<h3 id="获得节点的值"><a href="#获得节点的值" class="headerlink" title="获得节点的值"></a>获得节点的值</h3><pre><code class="lang-bash">[zk: localhost:2181(CONNECTED) 5] get /sanguo
+jinlian
+cZxid = 0x100000003
+ctime = Wed Aug 29 00:03:23 CST 2018
+mZxid = 0x100000003
+mtime = Wed Aug 29 00:03:23 CST 2018
+pZxid = 0x100000004
+cversion = 1
+dataVersion = 0
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 7
+numChildren = 1
+[zk: localhost:2181(CONNECTED) 6]
+[zk: localhost:2181(CONNECTED) 6] get /sanguo/shuguo
+liubei
+cZxid = 0x100000004
+ctime = Wed Aug 29 00:04:35 CST 2018
+mZxid = 0x100000004
+mtime = Wed Aug 29 00:04:35 CST 2018
+pZxid = 0x100000004
+cversion = 0
+dataVersion = 0
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 6
+numChildren = 0
+</code></pre>
+<h3 id="创建短暂节点"><a href="#创建短暂节点" class="headerlink" title="创建短暂节点"></a>创建短暂节点</h3><pre><code class="lang-bash">[zk: localhost:2181(CONNECTED) 7] create -e /sanguo/wuguo &quot;zhouyu&quot;
+Created /sanguo/wuguo
+# 在当前客户端是能查看到的
+[zk: localhost:2181(CONNECTED) 3] ls /sanguo 
+[wuguo, shuguo]
+# 退出当前客户端然后再重启客户端
+[zk: localhost:2181(CONNECTED) 12] quit
+[atguigu@hadoop104 zookeeper-3.4.10]$ bin/zkCli.sh
+# 再次查看根目录下短暂节点已经删除
+[zk: localhost:2181(CONNECTED) 0] ls /sanguo
+[shuguo]
+</code></pre>
+<h3 id="创建带序号的节点"><a href="#创建带序号的节点" class="headerlink" title="创建带序号的节点"></a>创建带序号的节点</h3><pre><code class="lang-bash"># 先创建一个普通的根节点/sanguo/weiguo
+[zk: localhost:2181(CONNECTED) 1] create /sanguo/weiguo &quot;caocao&quot;
+Created /sanguo/weiguo
+# 创建带序号的节点
+[zk: localhost:2181(CONNECTED) 2] create -s /sanguo/weiguo/xiaoqiao &quot;jinlian&quot;
+Created /sanguo/weiguo/xiaoqiao0000000000
+[zk: localhost:2181(CONNECTED) 3] create -s /sanguo/weiguo/daqiao &quot;jinlian&quot;
+Created /sanguo/weiguo/daqiao0000000001
+[zk: localhost:2181(CONNECTED) 4] create -s /sanguo/weiguo/diaocan &quot;jinlian&quot;
+Created /sanguo/weiguo/diaocan0000000002
+# 如果原来没有序号节点，序号从0开始依次递增。如果原节点下已有2个节点，则再排序时从2开始，以此类推。
+</code></pre>
 <h3 id="修改节点数据值"><a href="#修改节点数据值" class="headerlink" title="修改节点数据值"></a>修改节点数据值</h3><p>[zk: localhost:2181(CONNECTED) 6] set /sanguo/weiguo “simayi”</p>
-<h3 id="节点的值变化监听"><a href="#节点的值变化监听" class="headerlink" title="节点的值变化监听"></a>节点的值变化监听</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在hadoop104主机上注册监听/sanguo节点数据变化</span></span><br><span class="line"><span class="comment"># 注意：watch仅能监听一次，节点第二次修改不会有提示，注册一次，监听一次</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 8] get /sanguo watch</span><br><span class="line"><span class="comment"># 在hadoop103主机上修改/sanguo节点的数据</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 1] <span class="built_in">set</span> /sanguo <span class="string">"xisi"</span></span><br><span class="line"><span class="comment"># 观察hadoop104主机收到数据变化的监听</span></span><br><span class="line">WATCHER::</span><br><span class="line">WatchedEvent state:SyncConnected <span class="built_in">type</span>:NodeDataChanged path:/sanguo</span><br></pre></td></tr></table></figure>
-<h3 id="节点的子节点变化监听（路径变化）"><a href="#节点的子节点变化监听（路径变化）" class="headerlink" title="节点的子节点变化监听（路径变化）"></a>节点的子节点变化监听（路径变化）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在hadoop104主机上注册监听/sanguo节点的子节点变化</span></span><br><span class="line"><span class="comment"># 注意：watch仅能监听一次，节点第二次修改不会有提示，注册一次，监听一次</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 1] ls /sanguo watch</span><br><span class="line">[aa0000000001, server101]</span><br><span class="line"><span class="comment"># 在hadoop103主机/sanguo节点上创建子节点</span></span><br><span class="line">[zk: localhost:2181(CONNECTED) 2] create /sanguo/jin <span class="string">"simayi"</span></span><br><span class="line">Created /sanguo/jin</span><br><span class="line"><span class="comment"># 观察hadoop104主机收到子节点变化的监听</span></span><br><span class="line">WATCHER::</span><br><span class="line">WatchedEvent state:SyncConnected <span class="built_in">type</span>:NodeChildrenChanged path:/sanguo</span><br></pre></td></tr></table></figure>
+<h3 id="节点的值变化监听"><a href="#节点的值变化监听" class="headerlink" title="节点的值变化监听"></a>节点的值变化监听</h3><pre><code class="lang-bash"># 在hadoop104主机上注册监听/sanguo节点数据变化
+# 注意：watch仅能监听一次，节点第二次修改不会有提示，注册一次，监听一次
+[zk: localhost:2181(CONNECTED) 8] get /sanguo watch
+# 在hadoop103主机上修改/sanguo节点的数据
+[zk: localhost:2181(CONNECTED) 1] set /sanguo &quot;xisi&quot;
+# 观察hadoop104主机收到数据变化的监听
+WATCHER::
+WatchedEvent state:SyncConnected type:NodeDataChanged path:/sanguo
+</code></pre>
+<h3 id="节点的子节点变化监听（路径变化）"><a href="#节点的子节点变化监听（路径变化）" class="headerlink" title="节点的子节点变化监听（路径变化）"></a>节点的子节点变化监听（路径变化）</h3><pre><code class="lang-bash"># 在hadoop104主机上注册监听/sanguo节点的子节点变化
+# 注意：watch仅能监听一次，节点第二次修改不会有提示，注册一次，监听一次
+[zk: localhost:2181(CONNECTED) 1] ls /sanguo watch
+[aa0000000001, server101]
+# 在hadoop103主机/sanguo节点上创建子节点
+[zk: localhost:2181(CONNECTED) 2] create /sanguo/jin &quot;simayi&quot;
+Created /sanguo/jin
+# 观察hadoop104主机收到子节点变化的监听
+WATCHER::
+WatchedEvent state:SyncConnected type:NodeChildrenChanged path:/sanguo
+</code></pre>
 <h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><p>[zk: localhost:2181(CONNECTED) 4] delete /sanguo/jin</p>
 <h3 id="递归删除节点"><a href="#递归删除节点" class="headerlink" title="递归删除节点"></a>递归删除节点</h3><p>[zk: localhost:2181(CONNECTED) 15] rmr /sanguo/shuguo</p>
-<h3 id="查看节点状态"><a href="#查看节点状态" class="headerlink" title="查看节点状态"></a>查看节点状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[zk: localhost:2181(CONNECTED) 17] <span class="built_in">stat</span> /sanguo</span><br><span class="line">cZxid = 0x100000003</span><br><span class="line">ctime = Wed Aug 29 00:03:23 CST 2018</span><br><span class="line">mZxid = 0x100000011</span><br><span class="line">mtime = Wed Aug 29 00:21:23 CST 2018</span><br><span class="line">pZxid = 0x100000014</span><br><span class="line">cversion = 9</span><br><span class="line">dataVersion = 1</span><br><span class="line">aclVersion = 0</span><br><span class="line">ephemeralOwner = 0x0</span><br><span class="line">dataLength = 4</span><br><span class="line">numChildren = 1</span><br></pre></td></tr></table></figure>
+<h3 id="查看节点状态"><a href="#查看节点状态" class="headerlink" title="查看节点状态"></a>查看节点状态</h3><pre><code class="lang-bash">[zk: localhost:2181(CONNECTED) 17] stat /sanguo
+cZxid = 0x100000003
+ctime = Wed Aug 29 00:03:23 CST 2018
+mZxid = 0x100000011
+mtime = Wed Aug 29 00:21:23 CST 2018
+pZxid = 0x100000014
+cversion = 9
+dataVersion = 1
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 4
+numChildren = 1
+</code></pre>
 
 </div>
 

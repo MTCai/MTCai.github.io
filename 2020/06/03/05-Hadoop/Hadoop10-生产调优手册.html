@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1351,11 +1351,27 @@
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210414100419026.png" alt="image-20210414100419026"></p>
 <h3 id="NameNode心跳并发配置"><a href="#NameNode心跳并发配置" class="headerlink" title="NameNode心跳并发配置"></a>NameNode心跳并发配置</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210414101236165.png" alt="image-20210414101236165"></p>
 <p>hdfs-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NameNode 有一个工作线程池，用来处理不同 DataNode 的并发心跳以及客户端并发的元数据操作。对于大集群或者有大量客户端的集群来说，通常需要增大该参数 。 </span><br><span class="line"></span><br><span class="line">默认值是 10。</span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.handler.count<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>21<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">NameNode 有一个工作线程池，用来处理不同 DataNode 的并发心跳以及客户端并发的元数据操作。对于大集群或者有大量客户端的集群来说，通常需要增大该参数 。 
+
+默认值是 10。
+&lt;property&gt;
+    &lt;name&gt;dfs.namenode.handler.count&lt;/name&gt;
+    &lt;value&gt;21&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <script type="math/tex; mode=display">
 \text{dfs.namenode.handler.count}=20*log_e^{Cluster\_size}</script><h3 id="开启回收站配置"><a href="#开启回收站配置" class="headerlink" title="开启回收站配置"></a>开启回收站配置</h3><p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210414101701922.png" alt="image-20210414101701922" style="zoom:80%;" /></p>
 <p>core-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.trash.interval<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span> <span class="comment">&lt;!-- 单位是分钟 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">1. 默认值 fs.trash.interval = 0, 0表示禁用回收站 其他值表示设置文件的存活时间。</span></span><br><span class="line"><span class="comment">2. 默认值 fs.trash.checkpoint.interval = 0，检查回收站的间隔时间。如果该值为 0，则该值设置和 fs.trash.interval的参数值相等。</span></span><br><span class="line"><span class="comment">3. 要求 fs.trash.checkpoint.interval &lt;= fs.trash.interval</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;fs.trash.interval&lt;/name&gt;
+    &lt;value&gt;1&lt;/value&gt; &lt;!-- 单位是分钟 --&gt;
+&lt;/property&gt;
+&lt;!--
+1. 默认值 fs.trash.interval = 0, 0表示禁用回收站 其他值表示设置文件的存活时间。
+2. 默认值 fs.trash.checkpoint.interval = 0，检查回收站的间隔时间。如果该值为 0，则该值设置和 fs.trash.interval的参数值相等。
+3. 要求 fs.trash.checkpoint.interval &lt;= fs.trash.interval
+--&gt;
+</code></pre>
 <p>回收站目录在 <strong>HDFS集群中的路径</strong>： /user/atguigu/.Trash/….</p>
 <ol>
 <li>通过网页上直接删除的文件也不会走回收站。</li>
@@ -1363,7 +1379,21 @@
 <li>只有在命令行利用 hadoop fs -rm命令删除的文件才会走回收站。</li>
 <li>恢复回收站数据: $ hadoop fs mv<br>/user/atguigu/.Trash/Current/user/atguigu/input<br>/user/atguigu/input</li>
 </ol>
-<h2 id="HDFS集群压测"><a href="#HDFS集群压测" class="headerlink" title="HDFS集群压测"></a>HDFS集群压测</h2><h3 id="写性能"><a href="#写性能" class="headerlink" title="写性能"></a>写性能</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop jar /opt/module/hadoop-3.1.3/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.1.3-tests.jar TestDFSIO -write -nrFiles 10 -fileSize 128MB</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2021 02 09 10:43:16,853 INFO fs.TestDFSIO: TestDFSIO : write</span><br><span class="line">2021 02 09 10:43:16,854 INFO fs.Te stDFSIO: Date &amp; time: Tue Feb 09 10:43:16 CST 2021</span><br><span class="line">2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Number of files: 10</span><br><span class="line">2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Total MBytes processed: 1280</span><br><span class="line">2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Throughput mb/sec: 1.61</span><br><span class="line">2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Average IO rate mb/sec: 1.9</span><br><span class="line">2021 02 09 10:43:16,854 INFO fs.TestDFSIO: IO rate std deviation: 0.76</span><br><span class="line">2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Test <span class="built_in">exec</span> time sec: 133.05</span><br><span class="line">2021 02 09 10:43:16,854 INFO fs.TestDFSIO:</span><br></pre></td></tr></table></figure>
+<h2 id="HDFS集群压测"><a href="#HDFS集群压测" class="headerlink" title="HDFS集群压测"></a>HDFS集群压测</h2><h3 id="写性能"><a href="#写性能" class="headerlink" title="写性能"></a>写性能</h3><pre><code class="lang-sh">$ hadoop jar /opt/module/hadoop-3.1.3/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-3.1.3-tests.jar TestDFSIO -write -nrFiles 10 -fileSize 128MB
+
+
+
+
+2021 02 09 10:43:16,853 INFO fs.TestDFSIO: TestDFSIO : write
+2021 02 09 10:43:16,854 INFO fs.Te stDFSIO: Date &amp; time: Tue Feb 09 10:43:16 CST 2021
+2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Number of files: 10
+2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Total MBytes processed: 1280
+2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Throughput mb/sec: 1.61
+2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Average IO rate mb/sec: 1.9
+2021 02 09 10:43:16,854 INFO fs.TestDFSIO: IO rate std deviation: 0.76
+2021 02 09 10:43:16,854 INFO fs.TestDFSIO: Test exec time sec: 133.05
+2021 02 09 10:43:16,854 INFO fs.TestDFSIO:
+</code></pre>
 <blockquote>
 <p>nrFiles 为生成 mapTask的数量，设置为 CPU核数-1</p>
 <p>Number of files：生成 mapTask数量 ，一般是集群中 CPU核数 -1）</p>
@@ -1373,30 +1403,91 @@
 <p>IO rate std deviation：方差、反映各个 mapTask处理的差值，越小越均衡</p>
 </blockquote>
 <p>注意：如果测试过程中，出现异常，在 yarn-site.xml中设置虚拟内存检测为 false</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 是否启动一个线程检查每个任务正使用的虚拟内存量，如果任务超出分配值，则直接将其杀掉，默认是 true--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.vmem check enabled<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">分发配置并重启 Yarn集群</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;!-- 是否启动一个线程检查每个任务正使用的虚拟内存量，如果任务超出分配值，则直接将其杀掉，默认是 true--&gt;
+
+&lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.vmem check enabled&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+&lt;/property&gt;
+
+分发配置并重启 Yarn集群
+</code></pre>
 <p>测试结果分析：</p>
 <p>由于副本1在本地，则改副本不参与测试。共计10个文件*2个副本=20个文件。</p>
 <p>1.61*20=32M/s           三台服务器均为100Mbps，100/8*3=30M/s</p>
 <p>可以认为网络资源都已经用满。</p>
 <p>如果实测速度远远小于网络，并且实测速度不能满足工作需求，可以考虑采用固态硬盘或者增加磁盘个数。</p>
 <p>如果客服端不在集群节点，则三个副本都参与计算。</p>
-<h3 id="读性能"><a href="#读性能" class="headerlink" title="读性能"></a>读性能</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ hadoop jar /opt/module/hadoop-3.1.3/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient 3.1.3-tests.jar TestDFSIO -<span class="built_in">read</span> -nrFiles 10 -fileSize 128MB</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2021 02 09 11:34:15,847 INFO fs.TestDFSIO: TestDFSIO : <span class="built_in">read</span></span><br><span class="line">2021 02 09 11:34:15,847 INFO fs.TestDFSIO: Date &amp; time: Tue Feb 09 11:34:15 CST 2021</span><br><span class="line">2021 02 09 11:34:15,847 INFO fs.TestDFSIO: Number of files: 10</span><br><span class="line">2021 02 09 11:34:15,847 INFO fs.TestDFSIO: Total MBytes processed: 1280</span><br><span class="line">2021 02 09 11:3 4:15,848 INFO fs.TestDFSIO: Throughput mb/sec: 200.28</span><br><span class="line">2021 02 09 11:34:15,848 INFO fs.TestDFSIO: Average IO rate mb/sec: 266.74</span><br><span class="line">2021 02 09 11:34:15,848 INFO fs.TestDFSIO: IO rate std deviation: 143.12</span><br><span class="line">2021 02 09 11:34:15,848 INFO fs.TestDFSIO: Test <span class="built_in">exec</span> time sec: 20.83</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">删除测试生成数据</span><br><span class="line">$ hadoop jar /opt/module/hadoop-3.1.3/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient 3.1.3-tests.jar TestDFSIO -clean</span><br></pre></td></tr></table></figure>
+<h3 id="读性能"><a href="#读性能" class="headerlink" title="读性能"></a>读性能</h3><pre><code class="lang-sh">$ hadoop jar /opt/module/hadoop-3.1.3/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient 3.1.3-tests.jar TestDFSIO -read -nrFiles 10 -fileSize 128MB
+
+
+
+
+2021 02 09 11:34:15,847 INFO fs.TestDFSIO: TestDFSIO : read
+2021 02 09 11:34:15,847 INFO fs.TestDFSIO: Date &amp; time: Tue Feb 09 11:34:15 CST 2021
+2021 02 09 11:34:15,847 INFO fs.TestDFSIO: Number of files: 10
+2021 02 09 11:34:15,847 INFO fs.TestDFSIO: Total MBytes processed: 1280
+2021 02 09 11:3 4:15,848 INFO fs.TestDFSIO: Throughput mb/sec: 200.28
+2021 02 09 11:34:15,848 INFO fs.TestDFSIO: Average IO rate mb/sec: 266.74
+2021 02 09 11:34:15,848 INFO fs.TestDFSIO: IO rate std deviation: 143.12
+2021 02 09 11:34:15,848 INFO fs.TestDFSIO: Test exec time sec: 20.83
+
+
+删除测试生成数据
+$ hadoop jar /opt/module/hadoop-3.1.3/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient 3.1.3-tests.jar TestDFSIO -clean
+</code></pre>
 <p>测试结果分析：为什么读取文件速度大于网络带宽 由于目前只有三台服务器，且有三个副本，数据读取就近原则，相当于都是读取的本地磁盘数据，没有走网络。</p>
 <h2 id="HDFS多目录"><a href="#HDFS多目录" class="headerlink" title="HDFS多目录"></a>HDFS多目录</h2><h3 id="NameNode多目录配置"><a href="#NameNode多目录配置" class="headerlink" title="NameNode多目录配置"></a>NameNode多目录配置</h3><p>NameNode的本地目录可以配置成多个， 且<font color = #3333ff face="宋体">每个目录存放内容相同，增加了可靠性。</font></p>
 <p>hdfs-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span></span><br><span class="line">        file://$&#123;hadoop.tmp.dir&#125;/dfs/name1,file://$&#123;hadoop.tmp.</span><br><span class="line">dir&#125;/dfs/name2</span><br><span class="line">    <span class="tag">&lt;/<span class="name">value</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+    &lt;value&gt;
+        file://${hadoop.tmp.dir}/dfs/name1,file://${hadoop.tmp.
+dir}/dfs/name2
+    &lt;/value&gt; 
+&lt;/property&gt;
+</code></pre>
 <h3 id="DataNode多目录配置"><a href="#DataNode多目录配置" class="headerlink" title="DataNode多目录配置"></a>DataNode多目录配置</h3><p>DataNode可以配置成多个目录，<font color = #3333ff face="宋体"> 每个目录存储的数据不一样，数据不是副本。</font></p>
 <p>hdfs-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.datanode.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span></span><br><span class="line">        file://$&#123;hadoop.tmp.dir&#125;/dfs/data1,file://$&#123;hadoop.tmp.</span><br><span class="line">dir&#125;/dfs/data2</span><br><span class="line">    <span class="tag">&lt;/<span class="name">value</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;property&gt;
+    &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+    &lt;value&gt;
+        file://${hadoop.tmp.dir}/dfs/data1,file://${hadoop.tmp.
+dir}/dfs/data2
+    &lt;/value&gt; 
+&lt;/property&gt;
+</code></pre>
 <h3 id="集群数据均衡之磁盘间数据均衡-Hadoop3-x"><a href="#集群数据均衡之磁盘间数据均衡-Hadoop3-x" class="headerlink" title="集群数据均衡之磁盘间数据均衡(Hadoop3.x)"></a>集群数据均衡之磁盘间数据均衡(Hadoop3.x)</h3><p>生产环境，由于硬盘空间不足，往往需要增加一块硬盘。刚加载的硬盘没有数据时，可以执行磁盘数据均衡命令。 （Hadoop3.x新特性）</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">生成均衡计划 (我们只有一块磁盘，不会生成计划)</span><br><span class="line">hdfs diskbalancer -plan hadoop103</span><br><span class="line"></span><br><span class="line">执行均衡计划</span><br><span class="line">hdfs diskbalancer -execute hadoop103.plan.json</span><br><span class="line"></span><br><span class="line">查看当前均衡任务的执行情况</span><br><span class="line">hdfs diskbalancer -query hadoop103</span><br><span class="line"></span><br><span class="line">取消均衡任务</span><br><span class="line">hdfs diskbalancer -cancel hadoop103.plan.json</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-sh">生成均衡计划 (我们只有一块磁盘，不会生成计划)
+hdfs diskbalancer -plan hadoop103
+
+执行均衡计划
+hdfs diskbalancer -execute hadoop103.plan.json
+
+查看当前均衡任务的执行情况
+hdfs diskbalancer -query hadoop103
+
+取消均衡任务
+hdfs diskbalancer -cancel hadoop103.plan.json
+</code></pre>
 <h2 id="HDFS集群扩容及缩容"><a href="#HDFS集群扩容及缩容" class="headerlink" title="HDFS集群扩容及缩容"></a>HDFS集群扩容及缩容</h2><h3 id="添加白名单"><a href="#添加白名单" class="headerlink" title="添加白名单"></a>添加白名单</h3><p>白名单：表示在白名单的主机<br>IP地址可以，用来存储数据。</p>
 <p>企业中：配置白名单，可以尽量防止黑客恶意访问攻击。</p>
 <ol>
 <li><p>在 NameNode节点的 /opt/module/hadoop-3.1.3/etc/hadoop目录下 分别创 建 whitelist 和blacklist文件，在 whitelist  中写入可访问节点的主机名称，blacklist 保持空即可</p>
 </li>
 <li><p>hdfs-site.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">白名单</span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.hosts<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-3.1.3/etc/hadoop/whitelist<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">黑名单</span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.hosts.exclude<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-3.1.3/etc/hadoop/blacklist<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">白名单
+&lt;property&gt;
+    &lt;name&gt;dfs.hosts&lt;/name&gt;
+    &lt;value&gt;/opt/module/hadoop-3.1.3/etc/hadoop/whitelist&lt;/value&gt;
+&lt;/property&gt;
+
+黑名单
+&lt;property&gt;
+    &lt;name&gt;dfs.hosts.exclude&lt;/name&gt;
+    &lt;value&gt;/opt/module/hadoop-3.1.3/etc/hadoop/blacklist&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 </li>
 <li><p>分发配置文件 whitelist， hdfs-site.xml</p>
 </li>
@@ -1418,7 +1509,12 @@
 <h3 id="黑名单退役服务器"><a href="#黑名单退役服务器" class="headerlink" title="黑名单退役服务器"></a>黑名单退役服务器</h3><p>黑名单：表示在黑名单的主机<br>IP地址不可以，用来存储数据。</p>
 <p>企业中：配置黑名单，用来退役服务器。</p>
 <p>hdfs-site.xml配置文件中增加主机，分发文件。第一次添加黑名单必须重启集群，不是第一次，只需要刷新 NameNode节点即可。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">黑名单</span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.hosts.exclude<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-3.1.3/etc/hadoop/blacklist<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">黑名单
+&lt;property&gt;
+    &lt;name&gt;dfs.hosts.exclude&lt;/name&gt;
+    &lt;value&gt;/opt/module/hadoop-3.1.3/etc/hadoop/blacklist&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
 <ol>
 <li>检查 Web浏览器 ，退役节点的状态为 decommission in progress（退役中）， 说明数据节点正在复制块到其他节点</li>
 <li>等待退役节点状态为 decommissioned （所有块已经复制完成 ），停止该节点及节点资源管理器。 注意 ：如果副本数是 3， 服役的节点小于等于 3，是不能退役成功的，需要修改副本数后才能退役</li>
@@ -1613,16 +1709,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+              <a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  Hadoop11-源码解析
+                  Hadoop09-Yarn资源调度
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
-                Hadoop07-MapReduce框架原理
+              <a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+                Hadoop11-源码解析
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             

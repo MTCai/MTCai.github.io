@@ -492,8 +492,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -501,8 +501,8 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1419,38 +1419,397 @@
 <p><strong>bin/hdfs dfs XXXX</strong></p>
 <p>dfs是fs的实现类</p>
 </blockquote>
-<h3 id="全部命令"><a href="#全部命令" class="headerlink" title="全部命令"></a>全部命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs</span><br><span class="line"></span><br><span class="line">**      [-appendToFile &lt;localsrc&gt; ... &lt;dst&gt;] <span class="comment">#追加一个文件到已经存在的文件末尾</span></span><br><span class="line">**      [-cat [-ignoreCrc] &lt;src&gt; ...] <span class="comment">#显示文件内容</span></span><br><span class="line">        [-checksum &lt;src&gt; ...]</span><br><span class="line">*       [-chgrp [-R] GROUP PATH...] <span class="comment">#和Linux文件系统中的用法一样，修改文件所属权限</span></span><br><span class="line">*       [-chmod [-R] &lt;MODE[,MODE]... | OCTALMODE&gt; PATH...]</span><br><span class="line">*       [-chown [-R] [OWNER][:[GROUP]] PATH...]</span><br><span class="line">*       [-copyFromLocal [-f] [-p] &lt;localsrc&gt; ... &lt;dst&gt;] <span class="comment">#从本地文件系统中 拷贝 文件到 HDFS路径去</span></span><br><span class="line">*       [-copyToLocal [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]  <span class="comment">#从 HDFS拷贝到本地</span></span><br><span class="line">        [-count [-q] &lt;path&gt; ...]</span><br><span class="line">**      [-cp [-f] [-p] &lt;src&gt; ... &lt;dst&gt;] <span class="comment">#从 HDFS的一个路径拷贝到 HDFS的另一个路径</span></span><br><span class="line">        [-createSnapshot &lt;snapshotDir&gt; [&lt;snapshotName&gt;]]</span><br><span class="line">        [-deleteSnapshot &lt;snapshotDir&gt; &lt;snapshotName&gt;]</span><br><span class="line">        [-df [-h] [&lt;path&gt; ...]]</span><br><span class="line">**      [-du [-s] [-h] &lt;path&gt; ...] <span class="comment">#统计文件夹的大小信息</span></span><br><span class="line">        [-expunge]</span><br><span class="line">**      [-get [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;] <span class="comment">#等同于 copyToLocal</span></span><br><span class="line">        [-getfacl [-R] &lt;path&gt;]</span><br><span class="line">        [-getmerge [-nl] &lt;src&gt; &lt;localdst&gt;]</span><br><span class="line">        [-<span class="built_in">help</span> [cmd ...]]</span><br><span class="line">**      [-ls [-d] [-h] [-R] [&lt;path&gt; ...]] <span class="comment">#显示目录信息</span></span><br><span class="line">**      [-mkdir [-p] &lt;path&gt; ...] <span class="comment">#创建路径</span></span><br><span class="line">*       [-moveFromLocal &lt;localsrc&gt; ... &lt;dst&gt;] <span class="comment">#从本地 剪切 粘贴到 HDFS</span></span><br><span class="line">        [-moveToLocal &lt;src&gt; &lt;localdst&gt;]</span><br><span class="line">**      [-mv &lt;src&gt; ... &lt;dst&gt;] <span class="comment">#在 HDFS目录中移动文件</span></span><br><span class="line">**      [-put [-f] [-p] &lt;localsrc&gt; ... &lt;dst&gt;] <span class="comment">#等同于 copyFromLocal</span></span><br><span class="line">        [-renameSnapshot &lt;snapshotDir&gt; &lt;oldName&gt; &lt;newName&gt;]</span><br><span class="line">**      [-rm [-f] [-r|-R] [-skipTrash] &lt;src&gt; ...] <span class="comment">#删除文件或文件夹</span></span><br><span class="line">        [-rmdir [--ignore-fail-on-non-empty] &lt;dir&gt; ...]</span><br><span class="line">        [-setfacl [-R] [&#123;-b|-k&#125; &#123;-m|-x &lt;acl_spec&gt;&#125; &lt;path&gt;]|[--<span class="built_in">set</span> &lt;acl_spec&gt; &lt;path&gt;]]</span><br><span class="line">*       [-setrep [-R] [-w] &lt;rep&gt; &lt;path&gt; ...] <span class="comment">#设置 HDFS中文件的副本数量</span></span><br><span class="line">        [-<span class="built_in">stat</span> [format] &lt;path&gt; ...]</span><br><span class="line">*       [-tail [-f] &lt;file&gt;] <span class="comment">#显示一个文件的末尾 1kb的数据</span></span><br><span class="line">        [-<span class="built_in">test</span> -[defsz] &lt;path&gt;]</span><br><span class="line">        [-text [-ignoreCrc] &lt;src&gt; ...]</span><br><span class="line">        [-touchz &lt;path&gt; ...]</span><br><span class="line">        [-usage [cmd ...]]</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -<span class="built_in">help</span> rm; -<span class="built_in">help</span>：输出这个命令参数</span><br><span class="line">hadoop fs -ls /; -ls: 显示目录信息</span><br><span class="line">hadoop fs -mkdir -p /sanguo/shuguo; -mkdir：在HDFS上创建目录</span><br><span class="line">hadoop fs  -moveFromLocal  ./kongming.txt  /sanguo/shuguo; -moveFromLocal：从本地剪切粘贴到HDFS</span><br><span class="line">hadoop-2.7.2]$ hadoop fs -appendToFile liubei.txt /sanguo/shuguo/kongming.txt; -appendToFile：追加一个文件到已经存在的文件末尾</span><br><span class="line">hadoop fs -cat /sanguo/shuguo/kongming.txt; -cat：显示文件内容</span><br><span class="line">adoop fs  -chmod  666  /sanguo/shuguo/kongming.txt; -chgrp 、-chmod、-chown：Linux文件系统中的用法一样，修改文件所属权限</span><br><span class="line">hadoop fs -copyFromLocal README.txt /; -copyFromLocal：从本地文件系统中拷贝文件到HDFS路径去</span><br><span class="line">hadoop fs -copyToLocal /sanguo/shuguo/kongming.txt ./; -copyToLocal：从HDFS拷贝到本地</span><br><span class="line">hadoop fs -cp /sanguo/shuguo/kongming.txt /zhuge.txt; -cp ：从HDFS的一个路径拷贝到HDFS的另一个路径</span><br><span class="line">hadoop fs -mv /zhuge.txt /sanguo/shuguo/; -mv：在HDFS目录中移动文件</span><br><span class="line">hadoop fs -get /sanguo/shuguo/kongming.txt ./; -get：等同于copyToLocal，就是从HDFS下载文件到本地</span><br><span class="line">hadoop fs -getmerge /user/atguigu/<span class="built_in">test</span>/* ./zaiyiqi.txt; -getmerge：合并下载多个文件</span><br><span class="line">hadoop fs -put ./zaiyiqi.txt /user/atguigu/<span class="built_in">test</span>/; -put：等同于copyFromLocal</span><br><span class="line">hadoop fs -tail /sanguo/shuguo/kongming.txt; -tail：显示一个文件的末尾</span><br><span class="line">hadoop fs -rm /user/atguigu/<span class="built_in">test</span>/jinlian2.txt; -rm：删除文件或文件夹</span><br><span class="line">hadoop fs -rmdir /<span class="built_in">test</span>; -rmdir：删除空目录</span><br><span class="line">hadoop fs -du -s -h /user/atguigu/<span class="built_in">test</span>; -du统计文件夹的大小信息</span><br><span class="line">&gt; 2.7 K  /user/atguigu/<span class="built_in">test</span></span><br><span class="line">hadoop fs -du -h /user/atguigu/<span class="built_in">test</span></span><br><span class="line">&gt; 1.3 K  /user/atguigu/<span class="built_in">test</span>/README.txt</span><br><span class="line">&gt; 15     /user/atguigu/<span class="built_in">test</span>/jinlian.txt</span><br><span class="line">&gt; 1.4 K  /user/atguigu/<span class="built_in">test</span>/zaiyiqi.txt</span><br><span class="line">hadoop fs -setrep 10 /sanguo/shuguo/kongming.txt; -setrep：设置HDFS中文件的副本数量</span><br></pre></td></tr></table></figure>
+<h3 id="全部命令"><a href="#全部命令" class="headerlink" title="全部命令"></a>全部命令</h3><pre><code class="lang-bash">[atguigu@hadoop102 hadoop-2.7.2]$ bin/hadoop fs
+
+**      [-appendToFile &lt;localsrc&gt; ... &lt;dst&gt;] #追加一个文件到已经存在的文件末尾
+**      [-cat [-ignoreCrc] &lt;src&gt; ...] #显示文件内容
+        [-checksum &lt;src&gt; ...]
+*       [-chgrp [-R] GROUP PATH...] #和Linux文件系统中的用法一样，修改文件所属权限
+*       [-chmod [-R] &lt;MODE[,MODE]... | OCTALMODE&gt; PATH...]
+*       [-chown [-R] [OWNER][:[GROUP]] PATH...]
+*       [-copyFromLocal [-f] [-p] &lt;localsrc&gt; ... &lt;dst&gt;] #从本地文件系统中 拷贝 文件到 HDFS路径去
+*       [-copyToLocal [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;]  #从 HDFS拷贝到本地
+        [-count [-q] &lt;path&gt; ...]
+**      [-cp [-f] [-p] &lt;src&gt; ... &lt;dst&gt;] #从 HDFS的一个路径拷贝到 HDFS的另一个路径
+        [-createSnapshot &lt;snapshotDir&gt; [&lt;snapshotName&gt;]]
+        [-deleteSnapshot &lt;snapshotDir&gt; &lt;snapshotName&gt;]
+        [-df [-h] [&lt;path&gt; ...]]
+**      [-du [-s] [-h] &lt;path&gt; ...] #统计文件夹的大小信息
+        [-expunge]
+**      [-get [-p] [-ignoreCrc] [-crc] &lt;src&gt; ... &lt;localdst&gt;] #等同于 copyToLocal
+        [-getfacl [-R] &lt;path&gt;]
+        [-getmerge [-nl] &lt;src&gt; &lt;localdst&gt;]
+        [-help [cmd ...]]
+**      [-ls [-d] [-h] [-R] [&lt;path&gt; ...]] #显示目录信息
+**      [-mkdir [-p] &lt;path&gt; ...] #创建路径
+*       [-moveFromLocal &lt;localsrc&gt; ... &lt;dst&gt;] #从本地 剪切 粘贴到 HDFS
+        [-moveToLocal &lt;src&gt; &lt;localdst&gt;]
+**      [-mv &lt;src&gt; ... &lt;dst&gt;] #在 HDFS目录中移动文件
+**      [-put [-f] [-p] &lt;localsrc&gt; ... &lt;dst&gt;] #等同于 copyFromLocal
+        [-renameSnapshot &lt;snapshotDir&gt; &lt;oldName&gt; &lt;newName&gt;]
+**      [-rm [-f] [-r|-R] [-skipTrash] &lt;src&gt; ...] #删除文件或文件夹
+        [-rmdir [--ignore-fail-on-non-empty] &lt;dir&gt; ...]
+        [-setfacl [-R] [{-b|-k} {-m|-x &lt;acl_spec&gt;} &lt;path&gt;]|[--set &lt;acl_spec&gt; &lt;path&gt;]]
+*       [-setrep [-R] [-w] &lt;rep&gt; &lt;path&gt; ...] #设置 HDFS中文件的副本数量
+        [-stat [format] &lt;path&gt; ...]
+*       [-tail [-f] &lt;file&gt;] #显示一个文件的末尾 1kb的数据
+        [-test -[defsz] &lt;path&gt;]
+        [-text [-ignoreCrc] &lt;src&gt; ...]
+        [-touchz &lt;path&gt; ...]
+        [-usage [cmd ...]]
+</code></pre>
+<pre><code class="lang-bash">hadoop fs -help rm; -help：输出这个命令参数
+hadoop fs -ls /; -ls: 显示目录信息
+hadoop fs -mkdir -p /sanguo/shuguo; -mkdir：在HDFS上创建目录
+hadoop fs  -moveFromLocal  ./kongming.txt  /sanguo/shuguo; -moveFromLocal：从本地剪切粘贴到HDFS
+hadoop-2.7.2]$ hadoop fs -appendToFile liubei.txt /sanguo/shuguo/kongming.txt; -appendToFile：追加一个文件到已经存在的文件末尾
+hadoop fs -cat /sanguo/shuguo/kongming.txt; -cat：显示文件内容
+adoop fs  -chmod  666  /sanguo/shuguo/kongming.txt; -chgrp 、-chmod、-chown：Linux文件系统中的用法一样，修改文件所属权限
+hadoop fs -copyFromLocal README.txt /; -copyFromLocal：从本地文件系统中拷贝文件到HDFS路径去
+hadoop fs -copyToLocal /sanguo/shuguo/kongming.txt ./; -copyToLocal：从HDFS拷贝到本地
+hadoop fs -cp /sanguo/shuguo/kongming.txt /zhuge.txt; -cp ：从HDFS的一个路径拷贝到HDFS的另一个路径
+hadoop fs -mv /zhuge.txt /sanguo/shuguo/; -mv：在HDFS目录中移动文件
+hadoop fs -get /sanguo/shuguo/kongming.txt ./; -get：等同于copyToLocal，就是从HDFS下载文件到本地
+hadoop fs -getmerge /user/atguigu/test/* ./zaiyiqi.txt; -getmerge：合并下载多个文件
+hadoop fs -put ./zaiyiqi.txt /user/atguigu/test/; -put：等同于copyFromLocal
+hadoop fs -tail /sanguo/shuguo/kongming.txt; -tail：显示一个文件的末尾
+hadoop fs -rm /user/atguigu/test/jinlian2.txt; -rm：删除文件或文件夹
+hadoop fs -rmdir /test; -rmdir：删除空目录
+hadoop fs -du -s -h /user/atguigu/test; -du统计文件夹的大小信息
+&gt; 2.7 K  /user/atguigu/test
+hadoop fs -du -h /user/atguigu/test
+&gt; 1.3 K  /user/atguigu/test/README.txt
+&gt; 15     /user/atguigu/test/jinlian.txt
+&gt; 1.4 K  /user/atguigu/test/zaiyiqi.txt
+hadoop fs -setrep 10 /sanguo/shuguo/kongming.txt; -setrep：设置HDFS中文件的副本数量
+</code></pre>
 <h2 id="HDFS的客户端操作"><a href="#HDFS的客户端操作" class="headerlink" title="HDFS的客户端操作"></a>HDFS的客户端操作</h2><h3 id="客户端环境准备"><a href="#客户端环境准备" class="headerlink" title="客户端环境准备"></a>客户端环境准备</h3><p>配置HADOOP_HOME环境变量；配置Path环境变量</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201123230158336.png" alt="image-20201123230158336"></p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201123230203791.png" alt="image-20201123230203791"></p>
 <p>创建一个Maven工程HdfsClientDemo，在pom.xml添加依赖：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.logging.log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.8.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-hdfs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jdk.tools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jdk.tools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">scope</span>&gt;</span>system<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">systemPath</span>&gt;</span>$&#123;JAVA_HOME&#125;/lib/tools.jar<span class="tag">&lt;/<span class="name">systemPath</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId&gt;junit&lt;/artifactId&gt;
+            &lt;version&gt;RELEASE&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
+            &lt;artifactId&gt;log4j-core&lt;/artifactId&gt;
+            &lt;version&gt;2.8.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;
+            &lt;artifactId&gt;hadoop-common&lt;/artifactId&gt;
+            &lt;version&gt;2.7.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;
+            &lt;artifactId&gt;hadoop-client&lt;/artifactId&gt;
+            &lt;version&gt;2.7.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.hadoop&lt;/groupId&gt;
+            &lt;artifactId&gt;hadoop-hdfs&lt;/artifactId&gt;
+            &lt;version&gt;2.7.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;jdk.tools&lt;/groupId&gt;
+            &lt;artifactId&gt;jdk.tools&lt;/artifactId&gt;
+            &lt;version&gt;1.8&lt;/version&gt;
+            &lt;scope&gt;system&lt;/scope&gt;
+            &lt;systemPath&gt;${JAVA_HOME}/lib/tools.jar&lt;/systemPath&gt;
+        &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
 <p>注意：如果Eclipse/Idea打印不出日志，在控制台上只显示</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.log4j:WARN No appenders could be found <span class="keyword">for</span> logger (org.apache.hadoop.util.Shell).  </span><br><span class="line">2.log4j:WARN Please initialize the log4j system properly.  </span><br><span class="line">3.log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html<span class="comment">#noconfig for more info.</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-bash">1.log4j:WARN No appenders could be found for logger (org.apache.hadoop.util.Shell).  
+2.log4j:WARN Please initialize the log4j system properly.  
+3.log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+</code></pre>
 <p>需要在项目的src/main/resources目录下，新建一个文件，命名为“log4j.properties”，在文件中填入:</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">log4j.rootLogger</span>=<span class="string">INFO, stdout</span></span><br><span class="line"><span class="meta">log4j.appender.stdout</span>=<span class="string">org.apache.log4j.ConsoleAppender</span></span><br><span class="line"><span class="meta">log4j.appender.stdout.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.stdout.layout.ConversionPattern</span>=<span class="string">%d %p [%c] - %m%n</span></span><br><span class="line"><span class="meta">log4j.appender.logfile</span>=<span class="string">org.apache.log4j.FileAppender</span></span><br><span class="line"><span class="meta">log4j.appender.logfile.File</span>=<span class="string">target/spring.log</span></span><br><span class="line"><span class="meta">log4j.appender.logfile.layout</span>=<span class="string">org.apache.log4j.PatternLayout</span></span><br><span class="line"><span class="meta">log4j.appender.logfile.layout.ConversionPattern</span>=<span class="string">%d %p [%c] - %m%n</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-properties">log4j.rootLogger=INFO, stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n
+log4j.appender.logfile=org.apache.log4j.FileAppender
+log4j.appender.logfile.File=target/spring.log
+log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
+log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n
+</code></pre>
 <p>创建HdfsClient类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HdfsClient</span></span>&#123;	</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMkdirs</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 1 获取文件系统</span></span><br><span class="line">		Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">		<span class="comment">// 配置在集群上运行</span></span><br><span class="line">		<span class="comment">// configuration.set("fs.defaultFS", "hdfs://hadoop102:9000");</span></span><br><span class="line">		<span class="comment">// FileSystem fs = FileSystem.get(configuration);</span></span><br><span class="line"></span><br><span class="line">		FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 2 创建目录</span></span><br><span class="line">		fs.mkdirs(<span class="keyword">new</span> Path(<span class="string">"/1108/daxian/banzhang"</span>));</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 3 关闭资源</span></span><br><span class="line">		fs.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">public class HdfsClient{    
+@Test
+public void testMkdirs() throws IOException, InterruptedException, URISyntaxException{
+
+        // 1 获取文件系统
+        Configuration configuration = new Configuration();
+        // 配置在集群上运行
+        // configuration.set(&quot;fs.defaultFS&quot;, &quot;hdfs://hadoop102:9000&quot;);
+        // FileSystem fs = FileSystem.get(configuration);
+
+        FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+        // 2 创建目录
+        fs.mkdirs(new Path(&quot;/1108/daxian/banzhang&quot;));
+
+        // 3 关闭资源
+        fs.close();
+    }
+}
+</code></pre>
 <p>由于需要连接集群操作，所以需要在idea中设置连接集群的账户名：</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20201123230908988.png" alt="image-20201123230908988"></p>
-<h3 id="HDFS的API操作"><a href="#HDFS的API操作" class="headerlink" title="HDFS的API操作"></a>HDFS的API操作</h3><h4 id="HDFS文件上传（测试参数优先级）"><a href="#HDFS文件上传（测试参数优先级）" class="headerlink" title="HDFS文件上传（测试参数优先级）"></a>HDFS文件上传（测试参数优先级）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCopyFromLocalFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 1 获取文件系统</span></span><br><span class="line">		Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">		configuration.set(<span class="string">"dfs.replication"</span>, <span class="string">"2"</span>);</span><br><span class="line">		FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 2 上传文件</span></span><br><span class="line">		fs.copyFromLocalFile(<span class="keyword">new</span> Path(<span class="string">"e:/banzhang.txt"</span>), <span class="keyword">new</span> Path(<span class="string">"/banzhang.txt"</span>));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 3 关闭资源</span></span><br><span class="line">		fs.close();</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">"over"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HDFS的API操作"><a href="#HDFS的API操作" class="headerlink" title="HDFS的API操作"></a>HDFS的API操作</h3><h4 id="HDFS文件上传（测试参数优先级）"><a href="#HDFS文件上传（测试参数优先级）" class="headerlink" title="HDFS文件上传（测试参数优先级）"></a>HDFS文件上传（测试参数优先级）</h4><pre><code class="lang-java">@Test
+public void testCopyFromLocalFile() throws IOException, InterruptedException, URISyntaxException {
+
+        // 1 获取文件系统
+        Configuration configuration = new Configuration();
+        configuration.set(&quot;dfs.replication&quot;, &quot;2&quot;);
+        FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+        // 2 上传文件
+        fs.copyFromLocalFile(new Path(&quot;e:/banzhang.txt&quot;), new Path(&quot;/banzhang.txt&quot;));
+
+        // 3 关闭资源
+        fs.close();
+
+        System.out.println(&quot;over&quot;);
+}
+</code></pre>
 <p>将hdfs-site.xml拷贝到项目的根目录下</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;
+
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;1&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
 <p><strong>参数优先级</strong></p>
 <p>参数优先级排序：（1）客户端代码中设置的值 &gt;（2）ClassPath下的用户自定义配置文件 &gt;（3）然后是服务器的默认配置</p>
-<h4 id="HDFS文件下载"><a href="#HDFS文件下载" class="headerlink" title="HDFS文件下载"></a>HDFS文件下载</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCopyToLocalFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 1 获取文件系统</span></span><br><span class="line">		Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">		FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 2 执行下载操作</span></span><br><span class="line">		<span class="comment">// boolean delSrc 指是否将原文件删除</span></span><br><span class="line">		<span class="comment">// Path src 指要下载的文件路径</span></span><br><span class="line">		<span class="comment">// Path dst 指将文件下载到的路径</span></span><br><span class="line">		<span class="comment">// boolean useRawLocalFileSystem 是否开启文件校验</span></span><br><span class="line">		fs.copyToLocalFile(<span class="keyword">false</span>, <span class="keyword">new</span> Path(<span class="string">"/banzhang.txt"</span>), <span class="keyword">new</span> Path(<span class="string">"e:/banhua.txt"</span>), <span class="keyword">true</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 3 关闭资源</span></span><br><span class="line">		fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="HDFS文件夹删除"><a href="#HDFS文件夹删除" class="headerlink" title="HDFS文件夹删除"></a>HDFS文件夹删除</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDelete</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1 获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 执行删除</span></span><br><span class="line">	fs.delete(<span class="keyword">new</span> Path(<span class="string">"/0508/"</span>), <span class="keyword">true</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 3 关闭资源</span></span><br><span class="line">	fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="HDFS文件名更改"><a href="#HDFS文件名更改" class="headerlink" title="HDFS文件名更改"></a>HDFS文件名更改</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testRename</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1 获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>); </span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 修改文件名称</span></span><br><span class="line">	fs.rename(<span class="keyword">new</span> Path(<span class="string">"/banzhang.txt"</span>), <span class="keyword">new</span> Path(<span class="string">"/banhua.txt"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 3 关闭资源</span></span><br><span class="line">	fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="HDFS文件下载"><a href="#HDFS文件下载" class="headerlink" title="HDFS文件下载"></a>HDFS文件下载</h4><pre><code class="lang-java">@Test
+public void testCopyToLocalFile() throws IOException, InterruptedException, URISyntaxException{
+
+        // 1 获取文件系统
+        Configuration configuration = new Configuration();
+        FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+        // 2 执行下载操作
+        // boolean delSrc 指是否将原文件删除
+        // Path src 指要下载的文件路径
+        // Path dst 指将文件下载到的路径
+        // boolean useRawLocalFileSystem 是否开启文件校验
+        fs.copyToLocalFile(false, new Path(&quot;/banzhang.txt&quot;), new Path(&quot;e:/banhua.txt&quot;), true);
+
+        // 3 关闭资源
+        fs.close();
+}
+</code></pre>
+<h4 id="HDFS文件夹删除"><a href="#HDFS文件夹删除" class="headerlink" title="HDFS文件夹删除"></a>HDFS文件夹删除</h4><pre><code class="lang-java">@Test
+public void testDelete() throws IOException, InterruptedException, URISyntaxException{
+
+    // 1 获取文件系统
+    Configuration configuration = new Configuration();
+    FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+    // 2 执行删除
+    fs.delete(new Path(&quot;/0508/&quot;), true);
+
+    // 3 关闭资源
+    fs.close();
+}
+</code></pre>
+<h4 id="HDFS文件名更改"><a href="#HDFS文件名更改" class="headerlink" title="HDFS文件名更改"></a>HDFS文件名更改</h4><pre><code class="lang-java">@Test
+public void testRename() throws IOException, InterruptedException, URISyntaxException{
+
+    // 1 获取文件系统
+    Configuration configuration = new Configuration();
+    FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;); 
+
+    // 2 修改文件名称
+    fs.rename(new Path(&quot;/banzhang.txt&quot;), new Path(&quot;/banhua.txt&quot;));
+
+    // 3 关闭资源
+    fs.close();
+}
+</code></pre>
 <h4 id="HDFS文件详情查看"><a href="#HDFS文件详情查看" class="headerlink" title="HDFS文件详情查看"></a>HDFS文件详情查看</h4><p><strong>查看文件名称、权限、长度、块信息</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testListFiles</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>); </span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 获取文件详情</span></span><br><span class="line">	RemoteIterator&lt;LocatedFileStatus&gt; listFiles = fs.listFiles(<span class="keyword">new</span> Path(<span class="string">"/"</span>), <span class="keyword">true</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">while</span>(listFiles.hasNext())&#123;</span><br><span class="line">		LocatedFileStatus status = listFiles.next();</span><br><span class="line">			</span><br><span class="line">		<span class="comment">// 输出详情</span></span><br><span class="line">		<span class="comment">// 文件名称</span></span><br><span class="line">		System.out.println(status.getPath().getName());</span><br><span class="line">		<span class="comment">// 长度</span></span><br><span class="line">		System.out.println(status.getLen());</span><br><span class="line">		<span class="comment">// 权限</span></span><br><span class="line">		System.out.println(status.getPermission());</span><br><span class="line">		<span class="comment">// 分组</span></span><br><span class="line">		System.out.println(status.getGroup());</span><br><span class="line">         System.out.println(status.getOwner());</span><br><span class="line">         System.out.println(status.getModificationTime());</span><br><span class="line">         System.out.println(status.getReplication());</span><br><span class="line">         System.out.println(status.getBlockSize());</span><br><span class="line">			</span><br><span class="line">		<span class="comment">// 获取存储的块信息</span></span><br><span class="line">		BlockLocation[] blockLocations = status.getBlockLocations();</span><br><span class="line">			</span><br><span class="line">		<span class="keyword">for</span> (BlockLocation blockLocation : blockLocations) &#123;</span><br><span class="line">				</span><br><span class="line">			<span class="comment">// 获取块存储的主机节点</span></span><br><span class="line">			String[] hosts = blockLocation.getHosts();</span><br><span class="line">				</span><br><span class="line">			<span class="keyword">for</span> (String host : hosts) &#123;</span><br><span class="line">				System.out.println(host);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">			</span><br><span class="line">		System.out.println(<span class="string">"-----------分割线----------"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3 关闭资源</span></span><br><span class="line">fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="HDFS文件和文件夹判断"><a href="#HDFS文件和文件夹判断" class="headerlink" title="HDFS文件和文件夹判断"></a>HDFS文件和文件夹判断</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testListStatus</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 1 获取文件配置信息</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 判断是文件还是文件夹</span></span><br><span class="line">	FileStatus[] listStatus = fs.listStatus(<span class="keyword">new</span> Path(<span class="string">"/"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">for</span> (FileStatus fileStatus : listStatus) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 如果是文件</span></span><br><span class="line">		<span class="keyword">if</span> (fileStatus.isFile()) &#123;</span><br><span class="line">				System.out.println(<span class="string">"f:"</span>+fileStatus.getPath().getName());</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				System.out.println(<span class="string">"d:"</span>+fileStatus.getPath().getName());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 3 关闭资源</span></span><br><span class="line">	fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">@Test
+public void testListFiles() throws IOException, InterruptedException, URISyntaxException{
+
+    // 1获取文件系统
+    Configuration configuration = new Configuration();
+    FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;); 
+
+    // 2 获取文件详情
+    RemoteIterator&lt;LocatedFileStatus&gt; listFiles = fs.listFiles(new Path(&quot;/&quot;), true);
+
+    while(listFiles.hasNext()){
+        LocatedFileStatus status = listFiles.next();
+
+        // 输出详情
+        // 文件名称
+        System.out.println(status.getPath().getName());
+        // 长度
+        System.out.println(status.getLen());
+        // 权限
+        System.out.println(status.getPermission());
+        // 分组
+        System.out.println(status.getGroup());
+         System.out.println(status.getOwner());
+         System.out.println(status.getModificationTime());
+         System.out.println(status.getReplication());
+         System.out.println(status.getBlockSize());
+
+        // 获取存储的块信息
+        BlockLocation[] blockLocations = status.getBlockLocations();
+
+        for (BlockLocation blockLocation : blockLocations) {
+
+            // 获取块存储的主机节点
+            String[] hosts = blockLocation.getHosts();
+
+            for (String host : hosts) {
+                System.out.println(host);
+            }
+        }
+
+        System.out.println(&quot;-----------分割线----------&quot;);
+    }
+
+// 3 关闭资源
+fs.close();
+}
+</code></pre>
+<h4 id="HDFS文件和文件夹判断"><a href="#HDFS文件和文件夹判断" class="headerlink" title="HDFS文件和文件夹判断"></a>HDFS文件和文件夹判断</h4><pre><code class="lang-java">@Test
+public void testListStatus() throws IOException, InterruptedException, URISyntaxException{
+
+    // 1 获取文件配置信息
+    Configuration configuration = new Configuration();
+    FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+    // 2 判断是文件还是文件夹
+    FileStatus[] listStatus = fs.listStatus(new Path(&quot;/&quot;));
+
+    for (FileStatus fileStatus : listStatus) {
+
+        // 如果是文件
+        if (fileStatus.isFile()) {
+                System.out.println(&quot;f:&quot;+fileStatus.getPath().getName());
+            }else {
+                System.out.println(&quot;d:&quot;+fileStatus.getPath().getName());
+            }
+        }
+
+    // 3 关闭资源
+    fs.close();
+}
+</code></pre>
 <h3 id="HDFS的I-O流操作"><a href="#HDFS的I-O流操作" class="headerlink" title="HDFS的I/O流操作"></a>HDFS的I/O流操作</h3><h4 id="HDFS文件上传"><a href="#HDFS文件上传" class="headerlink" title="HDFS文件上传"></a>HDFS文件上传</h4><p>需求：把本地e盘上的banhua.txt文件上传到HDFS根目录</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putFileToHDFS</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1 获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2 创建输入流</span></span><br><span class="line">	FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(<span class="string">"e:/banhua.txt"</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3 获取输出流</span></span><br><span class="line">	FSDataOutputStream fos = fs.create(<span class="keyword">new</span> Path(<span class="string">"/banhua.txt"</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4 流对拷</span></span><br><span class="line">	IOUtils.copyBytes(fis, fos, configuration);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 5 关闭资源</span></span><br><span class="line">	IOUtils.closeStream(fos);</span><br><span class="line">	IOUtils.closeStream(fis);</span><br><span class="line">    fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">@Test
+public void putFileToHDFS() throws IOException, InterruptedException, URISyntaxException {
+
+    // 1 获取文件系统
+    Configuration configuration = new Configuration();
+    FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+    // 2 创建输入流
+    FileInputStream fis = new FileInputStream(new File(&quot;e:/banhua.txt&quot;));
+
+    // 3 获取输出流
+    FSDataOutputStream fos = fs.create(new Path(&quot;/banhua.txt&quot;));
+
+    // 4 流对拷
+    IOUtils.copyBytes(fis, fos, configuration);
+
+    // 5 关闭资源
+    IOUtils.closeStream(fos);
+    IOUtils.closeStream(fis);
+    fs.close();
+}
+</code></pre>
 <h4 id="HDFS文件下载-1"><a href="#HDFS文件下载-1" class="headerlink" title="HDFS文件下载"></a>HDFS文件下载</h4><p>需求：从HDFS上下载banhua.txt文件到本地e盘上</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件下载</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getFileFromHDFS</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1 获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 获取输入流</span></span><br><span class="line">	FSDataInputStream fis = fs.open(<span class="keyword">new</span> Path(<span class="string">"/banhua.txt"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 3 获取输出流</span></span><br><span class="line">	FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(<span class="string">"e:/banhua.txt"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 4 流的对拷</span></span><br><span class="line">	IOUtils.copyBytes(fis, fos, configuration);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 5 关闭资源</span></span><br><span class="line">	IOUtils.closeStream(fos);</span><br><span class="line">	IOUtils.closeStream(fis);</span><br><span class="line">	fs.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// 文件下载
+@Test
+public void getFileFromHDFS() throws IOException, InterruptedException, URISyntaxException{
+
+    // 1 获取文件系统
+    Configuration configuration = new Configuration();
+    FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+    // 2 获取输入流
+    FSDataInputStream fis = fs.open(new Path(&quot;/banhua.txt&quot;));
+
+    // 3 获取输出流
+    FileOutputStream fos = new FileOutputStream(new File(&quot;e:/banhua.txt&quot;));
+
+    // 4 流的对拷
+    IOUtils.copyBytes(fis, fos, configuration);
+
+    // 5 关闭资源
+    IOUtils.closeStream(fos);
+    IOUtils.closeStream(fis);
+    fs.close();
+}
+</code></pre>
 <h4 id="定位文件读取"><a href="#定位文件读取" class="headerlink" title="定位文件读取"></a>定位文件读取</h4><p>需求：分块读取HDFS上的大文件，比如根目录下的/hadoop-2.7.2.tar.gz</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下载第一块</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readFileSeek1</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1 获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 获取输入流</span></span><br><span class="line">	FSDataInputStream fis = fs.open(<span class="keyword">new</span> Path(<span class="string">"/hadoop-2.7.2.tar.gz"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 3 创建输出流</span></span><br><span class="line">	FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(<span class="string">"e:/hadoop-2.7.2.tar.gz.part1"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 4 流的拷贝</span></span><br><span class="line">	<span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span> ; i &lt; <span class="number">1024</span> * <span class="number">128</span>; i++)&#123;</span><br><span class="line">		fis.read(buf);</span><br><span class="line">		fos.write(buf);</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 5关闭资源</span></span><br><span class="line">	IOUtils.closeStream(fis);</span><br><span class="line">	IOUtils.closeStream(fos);</span><br><span class="line">fs.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下载第二块</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readFileSeek2</span><span class="params">()</span> <span class="keyword">throws</span> IOException, InterruptedException, URISyntaxException</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1 获取文件系统</span></span><br><span class="line">	Configuration configuration = <span class="keyword">new</span> Configuration();</span><br><span class="line">	FileSystem fs = FileSystem.get(<span class="keyword">new</span> URI(<span class="string">"hdfs://hadoop102:9000"</span>), configuration, <span class="string">"atguigu"</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 2 打开输入流</span></span><br><span class="line">	FSDataInputStream fis = fs.open(<span class="keyword">new</span> Path(<span class="string">"/hadoop-2.7.2.tar.gz"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 3 定位输入数据位置</span></span><br><span class="line">	fis.seek(<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">128</span>);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 4 创建输出流</span></span><br><span class="line">	FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(<span class="string">"e:/hadoop-2.7.2.tar.gz.part2"</span>));</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 5 流的对拷</span></span><br><span class="line">	IOUtils.copyBytes(fis, fos, configuration);</span><br><span class="line">		</span><br><span class="line">	<span class="comment">// 6 关闭资源</span></span><br><span class="line">	IOUtils.closeStream(fis);</span><br><span class="line">	IOUtils.closeStream(fos);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-java">// 下载第一块
+@Test
+public void readFileSeek1() throws IOException, InterruptedException, URISyntaxException{
+
+    // 1 获取文件系统
+    Configuration configuration = new Configuration();
+    FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+    // 2 获取输入流
+    FSDataInputStream fis = fs.open(new Path(&quot;/hadoop-2.7.2.tar.gz&quot;));
+
+    // 3 创建输出流
+    FileOutputStream fos = new FileOutputStream(new File(&quot;e:/hadoop-2.7.2.tar.gz.part1&quot;));
+
+    // 4 流的拷贝
+    byte[] buf = new byte[1024];
+
+    for(int i =0 ; i &lt; 1024 * 128; i++){
+        fis.read(buf);
+        fos.write(buf);
+    }
+
+    // 5关闭资源
+    IOUtils.closeStream(fis);
+    IOUtils.closeStream(fos);
+fs.close();
+}
+
+
+// 下载第二块
+@Test
+public void readFileSeek2() throws IOException, InterruptedException, URISyntaxException{
+
+    // 1 获取文件系统
+    Configuration configuration = new Configuration();
+    FileSystem fs = FileSystem.get(new URI(&quot;hdfs://hadoop102:9000&quot;), configuration, &quot;atguigu&quot;);
+
+    // 2 打开输入流
+    FSDataInputStream fis = fs.open(new Path(&quot;/hadoop-2.7.2.tar.gz&quot;));
+
+    // 3 定位输入数据位置
+    fis.seek(1024*1024*128);
+
+    // 4 创建输出流
+    FileOutputStream fos = new FileOutputStream(new File(&quot;e:/hadoop-2.7.2.tar.gz.part2&quot;));
+
+    // 5 流的对拷
+    IOUtils.copyBytes(fis, fos, configuration);
+
+    // 6 关闭资源
+    IOUtils.closeStream(fis);
+    IOUtils.closeStream(fos);
+}
+</code></pre>
 <p>在Window命令窗口中进入到目录E:\，然后执行如下命令，对数据进行合并</p>
 <blockquote>
 <p>type hadoop-2.7.2.tar.gz.part2 &gt;&gt; hadoop-2.7.2.tar.gz.part1</p>
@@ -1463,16 +1822,16 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+              <a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  JDBC-04 数据库连接池&DBUtils
+                  Hadoop01-概述、运行模式&源码编译
               </a>
             
         </div>
         <div class="item right">
             
-              <a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
-                Hadoop01-概述、运行模式&源码编译
+              <a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+                Hadoop03-HDFS读写流程&NN和2NN
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
