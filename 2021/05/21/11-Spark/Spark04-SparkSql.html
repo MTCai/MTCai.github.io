@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Spark04-SparkSql | 
+	 
+	雄风静谧
+	</title>
+	
+	<!-- keywords,description -->
+	
+		<meta name="keywords" content="渣硕, 大数据组件" />
+	 
+		<meta name="description" content="个人记事本" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="/css/prettify.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+    
+<script src="/js/prettify.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<script type="text/javascript">
+$(document).ready(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">雄风静谧</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00-环境
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+										00-MySQL安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/01-Hadoop%E5%AE%89%E8%A3%85.html">
+										01-Hadoop安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/02-Hadoop%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81.html">
+										02-Hadoop编译源码
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/03-Zookeeper%E5%AE%89%E8%A3%85.html">
+										03-Zookeeper安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/00-%E7%8E%AF%E5%A2%83/04-Hive.html">
+										04-Hive
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/05-Flume%E5%AE%89%E8%A3%85.html">
+										05-Flume安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/00-%E7%8E%AF%E5%A2%83/06-HBase%E5%AE%89%E8%A3%85.html">
+										06-HBase安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-Ubuntu16.04%20%E5%AE%89%E8%A3%85opencv%EF%BC%88C++%E7%89%88%E6%9C%AC%EF%BC%89.html">
+										99-Ubuntu16.04 安装opencv（C++版本）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-%E5%AE%89%E8%A3%85ffmpeg.html">
+										99-安装ffmpeg
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8401-%E5%A4%A7%E7%BA%B2.html">
+										数据结构01-大纲
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8402-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8A).html">
+										数据结构02-复杂度分析(上)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8403-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8B).html">
+										数据结构03-复杂度分析(下)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8404-%E6%95%B0%E7%BB%84.html">
+										数据结构04-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8405-%E9%93%BE%E8%A1%A8.html">
+										数据结构05-链表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8406-%E6%A0%88.html">
+										数据结构06-栈
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8407-%E9%98%9F%E5%88%97.html">
+										数据结构07-队列
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8408-%E9%80%92%E5%BD%92.html">
+										数据结构08-递归
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8409-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%86%92%E6%B3%A1&%E6%8F%92%E5%85%A5&%E9%80%89%E6%8B%A9.html">
+										数据结构09-排序之冒泡&插入&选择
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8410-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%BD%92%E5%B9%B6&%E5%BF%AB%E6%8E%92.html">
+										数据结构10-排序之归并&快排
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8411-%E6%8E%92%E5%BA%8F%E4%B9%8B%E7%BA%BF%E6%80%A7%E6%8E%92%E5%BA%8F(%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F).html">
+										数据结构11-排序之线性排序(桶排序、计数排序、基数排序)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8412-%E6%8E%92%E5%BA%8F%E4%B9%8B%E4%BC%98%E5%8C%96.html">
+										数据结构12-排序之优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8413-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">
+										数据结构13-二分查找
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8414-%E8%B7%B3%E8%A1%A8.html">
+										数据结构14-跳表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/23/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8415-%E6%95%A3%E5%88%97%E8%A1%A8.html">
+										数据结构15-散列表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8416-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8.html">
+										数据结构16-哈希算法的应用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8417-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80.html">
+										数据结构17-二叉树基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8418-%E7%BA%A2%E9%BB%91%E6%A0%91.html">
+										数据结构18-红黑树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8419-%E9%80%92%E5%BD%92%E6%A0%91.html">
+										数据结构19-递归树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420-%E5%A0%86%E5%92%8C%E5%A0%86%E6%8E%92%E5%BA%8F.html">
+										数据结构20-堆和堆排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8421-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA.html">
+										数据结构21-图的表示
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+										数据结构22-深度和广度优先搜索
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8423-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D.html">
+										数据结构23-字符串匹配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
+										数据结构24-Trie树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8425-AC%E8%87%AA%E5%8A%A8%E6%9C%BA.html">
+										数据结构25-AC自动机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8426-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">
+										数据结构26-贪心算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8427-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html">
+										数据结构27-分治算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
+										数据结构28-回溯算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8429-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA.html">
+										数据结构29-动态规划理论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+										数据结构30-动态规划入门案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8431-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98.html">
+										数据结构31-动态规划实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(2).html">
+										数据结构32-拓扑排序 - 副本 (2)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-Java
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java00--%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92.html">
+										Java00--时间计划
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java00-IDEA%E9%85%8D%E7%BD%AE.html">
+										Java00-IDEA配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java01-%E6%A6%82%E8%BF%B0.html">
+										Java01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java02-%E5%85%B3%E9%94%AE%E5%AD%97&%E6%A0%87%E8%AF%86%E7%AC%A6.html">
+										Java02-关键字&标识符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java03-%E8%BF%90%E7%AE%97%E7%AC%A6.html">
+										Java03-运算符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java04-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										Java04-流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java05-%E6%95%B0%E7%BB%84.html">
+										Java05-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A101%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html">
+										Java06-面向对象01三大特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A102%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%8E%A5%E5%8F%A3.html">
+										Java06-面向对象02抽象类接口
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java07-%E5%BC%82%E5%B8%B8.html">
+										Java07-异常
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java08-%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">
+										Java08-多线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java09-%E5%B8%B8%E7%94%A8%E7%B1%BB.html">
+										Java09-常用类
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java10-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E4%B8%8E%E6%B3%A8%E8%A7%A3.html">
+										Java10-枚举类与注解
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java11-%E9%9B%86%E5%90%88.html">
+										Java11-集合
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
+										Java12-泛型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java13-IO%E6%B5%81.html">
+										Java13-IO流
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java14-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.html">
+										Java14-网络编程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java15-%E5%8F%8D%E5%B0%84.html">
+										Java15-反射
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java16-Java8%20%E6%96%B0%E7%89%B9%E6%80%A7.html">
+										Java16-Java8 新特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL00-%E5%AE%89%E8%A3%85.html">
+										MySQL00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+										MySQL01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+										MySQL02-DQL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+										MySQL03-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+										MySQL04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+										MySQL05-TCL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										MySQL06-视图&存储过程&流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										04-JDBC
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+										JDBC-01 概览&连接数据库方式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+										JDBC-02 CRUD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+										JDBC-03 数据库事务&DAO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+										JDBC-04 数据库连接池&DBUtils
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05-Hadoop
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+										Hadoop01-概述、运行模式&源码编译
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+										Hadoop02-HDFS概述、shell&客户端操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+										Hadoop03-HDFS读写流程&NN和2NN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+										Hadoop04-HDFS-DataNode
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop05-HDFS2.X%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E9%AB%98%E5%8F%AF%E7%94%A8(HA).html">
+										Hadoop05-HDFS2.X新特性和高可用(HA)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+										Hadoop06-MapReduce概述&序列化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
+										Hadoop07-MapReduce框架原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop08-Hadoop%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9.html">
+										Hadoop08-Hadoop数据压缩
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
+										Hadoop09-Yarn资源调度
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+										Hadoop10-生产调优手册
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+										Hadoop11-源码解析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06-Zookeeper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+										Zookeeper00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+										Zookeeper01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
+										Zookeeper02-内部原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper03-Shell%E6%93%8D%E4%BD%9C.html">
+										Zookeeper03-Shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+										Zookeeper04-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										07-Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive01-%E6%A6%82%E8%BF%B0.html">
+										Hive01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+										Hive02-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Hive03-数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+										Hive04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive05-DML.html">
+										Hive05-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+										Hive06-查询
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+										Hive07-函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
+										Hive08-压缩和存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+										Hive09-企业级调优
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive10-%E5%AE%9E%E6%88%98.html">
+										Hive10-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										08-Flume
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume00-%E5%AE%89%E8%A3%85.html">
+										flume00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+										flume01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+										flume02-案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume03-%E5%8E%9F%E7%90%86.html">
+										flume03-原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										flume04-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										09-Kafka
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
+										Kafka00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+										Kafka01-概述&shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+										Kafka02-架构原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+										Kafka03-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+										Kafka04-监控
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
+										Kafka05-Flume对接Kafka
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										Kafka06-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										10-HBase
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+										HBase00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+										HBase01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+										HBase02-HBase-shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+										HBase03-HBase进阶
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+										HBase04-HBase-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+										HBase05-HBase-MR
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+										HBase06-与Hive集成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+										HBase07-HBase优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+										HBase08-扩展
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										11-Spark
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark00-%E5%AE%89%E8%A3%85.html">
+										Spark00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark01-%E6%A6%82%E8%BF%B0.html">
+										Spark01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark02-RDD.html">
+										Spark02-RDD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark03-%E7%B4%AF%E5%8A%A0%E5%99%A8&%E5%B9%BF%E6%92%AD%E5%8F%98%E9%87%8F.html">
+										Spark03-累加器&广播变量
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2021/05/21/11-Spark/Spark04-SparkSql.html">
+										Spark04-SparkSql
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark05-SparkStreaming.html">
+										Spark05-SparkStreaming
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark06-Spark%E5%86%85%E6%A0%B8.html">
+										Spark06-Spark内核
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark07-Spark%E4%BC%98%E5%8C%96.html">
+										Spark07-Spark优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	Spark04-SparkSql
+</h1>
+<div class="article-meta">
+	
+	<span>NiuMT</span>
+	<span>2021-05-21 10:18:00</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Spark/">Spark</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h2 id="SparkSql-概述"><a href="#SparkSql-概述" class="headerlink" title="SparkSql 概述"></a>SparkSql 概述</h2><p>Spark SQL是Spark用于结构化数据(structured data)处理的Spark模块。</p>
+<h3 id="Hive-and-SparkSQL"><a href="#Hive-and-SparkSQL" class="headerlink" title="Hive and SparkSQL"></a>Hive and SparkSQL</h3><p>SparkSQL的前身是Shark，给熟悉RDBMS但又不理解MapReduce的技术人员提供快速上手的工具。</p>
+<p>Hive是早期唯一运行在Hadoop上的SQL-on-Hadoop工具。但是MapReduce计算过程中大量的中间磁盘落地过程消耗了大量的I/O，降低的运行效率，为了提高SQL-on-Hadoop的效率，大量的SQL-on-Hadoop工具开始产生，其中表现较为突出的是：Drill、Impala、Shark。</p>
+<p>其中Shark是伯克利实验室Spark生态环境的组件之一，是基于Hive所开发的工具，它修改了下图所示的右下角的内存管理、物理计划、执行三个模块，并使之能运行在Spark引擎上。</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521204754627.png" alt="image-20210521204754627"></p>
+<p>Shark的出现，使得SQL-on-Hadoop的性能比Hive有了10-100倍的提高。</p>
+<p>Shark对于Hive的太多依赖（如采用Hive的语法解析器、查询优化器等等），制约了Spark的One Stack Rule Them All的既定方针，制约了Spark各个组件的相互集成，所以提出了SparkSQL项目。SparkSQL抛弃原有Shark的代码，汲取了Shark的一些优点，如内存列存储（In-Memory Columnar Storage）、Hive兼容性等，重新开发了SparkSQL代码；由于摆脱了对Hive的依赖性，SparkSQL无论在数据兼容、性能优化、组件扩展方面都得到了极大的方便。</p>
+<p>数据兼容方面 SparkSQL不但兼容Hive，还可以从RDD、parquet文件、JSON文件中获取数据，未来版本甚至支持获取RDBMS数据以及cassandra等NOSQL数据</p>
+<p>性能优化方面 除了采取In-Memory Columnar Storage、byte-code generation等优化技术外、将会引进Cost Model对查询进行动态评估、获取最佳物理计划等等；</p>
+<p>组件扩展方面 无论是SQL的语法解析器、分析器还是优化器都可以重新定义，进行扩展。</p>
+<p>其中SparkSQL作为Spark生态的一员继续发展，而不再受限于Hive，只是兼容Hive；而Hive on Spark是一个Hive的发展计划，该计划将Spark作为Hive的底层引擎之一，也就是说，Hive将不再受限于一个引擎，可以采用Map-Reduce、Tez、Spark等引擎。</p>
+<h3 id="SparkSQL-特点"><a href="#SparkSQL-特点" class="headerlink" title="SparkSQL 特点"></a>SparkSQL 特点</h3><ul>
+<li>易整合：无缝的整合了 SQL 查询和 Spark 编程</li>
+<li>统一的数据访问：使用相同的方式连接不同的数据源</li>
+<li>兼容 Hive：在已有的仓库上直接运行 SQL 或者 HiveQL</li>
+<li>标准数据连接：通过 JDBC 或者 ODBC 来连接</li>
+</ul>
+<h3 id="DataFrame介绍"><a href="#DataFrame介绍" class="headerlink" title="DataFrame介绍"></a>DataFrame介绍</h3><p>在Spark中，DataFrame是一种以RDD为基础的分布式数据集，类似于传统数据库中的二维表格。DataFrame与RDD的主要区别在于，前者带有schema元信息，即DataFrame所表示的二维表数据集的每一列都带有名称和类型。这使得Spark SQL得以洞察更多的结构信息，从而对藏于DataFrame背后的数据源以及作用于DataFrame之上的变换进行了针对性的优化，最终达到大幅提升运行时效率的目标。反观RDD，由于无从得知所存数据元素的具体内部结构，Spark Core只能在stage层面进行简单、通用的流水线优化。</p>
+<p>同时，与Hive类似，DataFrame也支持嵌套数据类型（struct、array和map）。从 API 易用性的角度上看，DataFrame API提供的是一套高层的关系操作，比函数式的RDD API 要更加友好，门槛更低。</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521205247713.png" alt="image-20210521205247713"></p>
+<p>左侧的RDD[Person]虽然以Person为类型参数，但Spark框架本身不了解Person类的内部结构。而右侧的DataFrame却提供了详细的结构信息，使得 Spark SQL 可以清楚地知道该数据集中包含哪些列，每列的名称和类型各是什么。</p>
+<p>DataFrame是为数据提供了Schema的视图。可以把它当做数据库中的一张表来对待<br>DataFrame也是懒执行的，但性能上比RDD要高，主要原因：优化的执行计划，即查询计划通过Spark catalyst optimiser进行优化</p>
+<h3 id="DataSet介绍"><a href="#DataSet介绍" class="headerlink" title="DataSet介绍"></a>DataSet介绍</h3><p>DataSet是分布式数据集合。DataSet是Spark 1.6中添加的一个新抽象，是DataFrame的一个扩展。它提供了RDD的优势（强类型，使用强大的lambda函数的能力）以及Spark SQL优化执行引擎的优点。DataSet也可以使用功能性的转换（操作map，flatMap，filter等等）。</p>
+<ul>
+<li>DataSet是DataFrame API的一个扩展，是SparkSQL最新的数据抽象</li>
+<li>用户友好的API风格，既具有类型安全检查也具有DataFrame的查询优化特性；</li>
+<li>用样例类来对DataSet中定义数据的结构信息，样例类中每个属性的名称直接映射到DataSet中的字段名称；</li>
+<li>DataSet是强类型的。比如可以有DataSet[Car]，DataSet[Person]。</li>
+<li>DataFrame是DataSet的特列，DataFrame=DataSet[Row] ，所以可以通过as方法将DataFrame转换为DataSet。Row是一个类型，跟Car、Person这些的类型一样，所有的表结构信息都用Row来表示。获取数据时需要指定顺序</li>
+</ul>
+<h2 id="SparkSQL-核心编程"><a href="#SparkSQL-核心编程" class="headerlink" title="SparkSQL 核心编程"></a>SparkSQL 核心编程</h2><p>Spark Core中，如果想要执行应用程序，需要首先构建上下文环境对象SparkContext，Spark SQL其实可以理解为对Spark Core的一种封装，不仅仅在模型上进行了封装，上下文环境对象也进行了封装。</p>
+<p>在老的版本中，SparkSQL提供两种SQL查询起始点：一个叫SQLContext，用于Spark自己提供的SQL查询；一个叫HiveContext，用于连接Hive的查询。</p>
+<p>SparkSession是Spark最新的SQL查询起始点，实质上是SQLContext和HiveContext的组合，所以在SQLContex和HiveContext上可用的API在SparkSession上同样是可以使用的。SparkSession内部封装了SparkContext，所以计算实际上是由sparkContext完成的。当我们使用 spark-shell 的时候, spark框架会自动的创建一个名称叫做spark的SparkSession对象, 就像我们以前可以自动获取到一个sc来表示SparkContext对象一样。</p>
+<h3 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h3><p>Spark SQL的DataFrame API 允许我们使用 DataFrame 而不用必须去注册临时表或者生成 SQL 表达式。DataFrame API 既有 transformation操作也有action操作。</p>
+<p><strong>创建DataFrame</strong></p>
+<p>在Spark SQL中SparkSession是创建DataFrame和执行SQL的入口，创建DataFrame有三种方式：</p>
+<ol>
+<li><p>通过Spark的数据源进行创建；</p>
+<blockquote>
+<p>scala&gt; spark.read.</p>
+<p>csv format jdbc json load option options orc parquet schema<br>table text textFile</p>
+<p>读取json文件创建DataFrame</p>
+<p>scala&gt; val df = spark.read.json(“data/user.json”)</p>
+<p>df: org.apache.spark.sql.DataFrame = [age: bigint username: string]</p>
+</blockquote>
+<p>注意：如果从内存中获取数据，spark可以知道数据类型具体是什么。如果是数字，默认作为Int处理；但是从文件中读取的数字，不能确定是什么类型，所以用bigint接收，可以和Long类型转换，但是和Int不能进行转换</p>
+</li>
+<li><p>从一个存在的RDD进行转换；</p>
+</li>
+<li><p>还可以从Hive Table进行查询返回。</p>
+</li>
+</ol>
+<p><strong>SQL 语法</strong></p>
+<p>SQL语法风格是指我们查询数据的时候使用SQL语句来查询，这种风格的查询必须要有临时视图或者全局视图来辅助.</p>
+<pre><code class="lang-scala">//对DataFrame创建一个临时表
+scala&gt; df.createOrReplaceTempView (&quot;pople&quot;)
+//通过SQL语句实现查询全表
+scala&gt; val sqlDF = spark.sql (&quot;SELECT * FROM people&quot;)
+sqlDF: org.apache.spark.sql.DataFrame = [age: bigint name: string]
+//结果展示 scala&gt; sqlDF.show
++---+--------+
+|age|username|
++---+--------+
+| 20|zhangsan|
+| 30|    lisi|
+| 40|  wangwu|
++---+--------+
+// 注意：普通临时表是Session范围内的，如果想应用范围内有效，可以使用全局临时表。使用全局临时表时需要全路径访问，如：global_temp.people
+
+// 对于DataFrame创建一个全局表 
+scala&gt; df.createGlobalTempView (&quot;people&quot;)
+// 通过SQL语句实现查询全表
+scala&gt; spark.sql(&quot;SELECT * FROM global_temp.people&quot;).
++---+--------+
+|age|username|
++---+--------+
+| 20|zhangsan|
+| 30|    lisi|
+| 40|  wangwu|
++---+--------+
+</code></pre>
+<p><strong>DSL 语法</strong></p>
+<p>DataFrame提供一个特定领域语言(domain-specific language, DSL)去管理结构化的数据。可以在 Scala, Java, Python 和 R 中使用 DSL，使用 DSL 语法风格不必去创建临时视图了</p>
+<pre><code class="lang-scala">//创建一个DataFrame
+scala&gt; val df = spark.read.json(&quot;data/user.json&quot;)
+df: org.apache.spark.sql.DataFrame = [age: bigint name: string]
+//查看DataFrame的Schema信息
+scala&gt; df.printSchema
+root
+  |-- age: Long (nullable = true)
+  |-- username: string (nullable = true)
+
+//只查看&quot;username&quot;列数据
+scala&gt; df.select(&quot;username&quot;).show()
++--------+
+|username|
++--------+
+|zhangsan|
+|    lisi|
+|  wangwu|
++--------+
+
+//查看&quot;username&quot;列数据以及&quot;age+1&quot;数据
+注意:涉及到运算的时候, 每列都必须使用$, 或者采用引号表达式：单引号+字段名
+scala&gt; df.select($&quot;username&quot;,$&quot;age&quot; + 1).show
+scala&gt; df.select( &#39;username, &#39;age + 1).show()
+scala&gt; df.select( &#39;username, &#39;age + 1 as &quot;newage&quot;).show()
+
+// 查看&quot;age&quot;大于&quot;30&quot;的数据
+scala&gt; df.filter($&quot;age&quot;&gt;30).show
++---+--------+
+|age|username|
++---+--------+
+| 40|  wangwu|
++---+--------+
+
+// 按照&quot;age&quot;分组，查看数据条数 
+scala&gt; df.groupBy(&quot;age&quot;).count.show
++---+-----+
+|age|count|
++---+-----+
+| 20|    1|
+| 30|    1|
+| 40|    1|
++---+-----+
+</code></pre>
+<p><strong>RDD 转换为 DataFrame</strong></p>
+<p>在IDEA中开发程序时，如果需要RDD与DF或者DS之间互相操作，那么需要引入 import spark.implicits._</p>
+<p><font color=#3333ff>这里的spark不是Scala中的包名，而是创建的sparkSession对象的变量名称，所以必须先创建SparkSession对象再导入</font>。这里的spark对象不能使用var声明，因为Scala只支持val修饰的对象的引入。</p>
+<p>spark-shell中无需导入，自动完成此操作。</p>
+<pre><code class="lang-scala">scala&gt; val idRDD = sc.textFile(&quot;data/id.txt&quot;)
+scala&gt; idRDD.toDF(&quot;id&quot;).show
++---+
+| id|
++---+
+|  1|
+|  2|
+|  3|
+|  4|
++---+
+
+实际开发中，一般通过样例类将RDD转换为DataFrame
+scala&gt; case class User(name:String, age:Int)
+defined class User
+scala&gt; sc.makeRDD(List((&quot;zhangsan&quot;,30), (&quot;lisi&quot;,40))).map(t=&gt;User(t._1, t._2)).toDF.show
++---------+----+
+|     name| age|
++---------+----+
+| zhangsan|  30|
+|     lisi|  40|
++---------+----+
+</code></pre>
+<p><strong>DataFrame 转换为 RDD</strong></p>
+<p>DataFrame其实就是对RDD的封装，所以可以直接获取内部的RDD</p>
+<pre><code class="lang-scala">scala&gt; val df = sc.makeRDD(List((&quot;zhangsan&quot;,30), (&quot;lisi&quot;,40))).map(t=&gt;User(t._1,t._2)).toDF
+df: org.apache.spark.sql.DataFrame = [name: string, age: int]
+
+scala&gt; val rdd = df.rdd
+rdd: org.apache.spark.rdd.RDD[ org.apache.spark.sql.Row ] = MapPartitionsRDD[46] at rdd at &lt;console&gt;:25
+
+scala&gt; val array = rdd.collect
+array: Array[org.apache.spark.sql.Row] = Array([zhangsan,30], [lisi,40])
+
+注意：此时得到的RDD存储类型为Row
+
+scala&gt; array(0)
+res28: org.apache. spark.sql.Row = [zhangsan,30]
+scala&gt; array(0)(0)
+res29: Any = zhangsan
+scala&gt; array(0).getAs[String](&quot;name&quot;)
+res30: String = zhangsan
+</code></pre>
+<h3 id="DataSet"><a href="#DataSet" class="headerlink" title="DataSet"></a>DataSet</h3><p>DataSet是具有<font color=#3333ff>强类型</font>的数据集合，需要提供对应的类型信息。</p>
+<p><strong>创建 DataSet</strong></p>
+<p>1.使用样例类序列创建DataSet</p>
+<pre><code class="lang-scala">scala&gt; case class Person(name: String, age: Long)
+defined class Person
+
+scala&gt; val caseClassDS = Seq(Person(&quot;zhangsan&quot;,2)).toDS()
+
+caseClassDS: org.apache.spark.sql.Dataset[Person] = [name: string, age: Long]
+
+scala&gt; caseClassDS.show
++---------+---+
+|     name|age|
++---------+---+
+| zhangsan|  2|
++---------+---+
+</code></pre>
+<p>2.使用基本类型的序列创建DataSet</p>
+<pre><code class="lang-scala">scala&gt; val ds = Seq(1,2,3,4,5).toDS
+ds: org.apache.spark.sql.Dataset[Int] = [value: int]
+
+scala&gt; ds.show
++-----+
+|value|
++-----+
+|    1|
+|    2|
+|    3|
+|    4|
+|    5|
++-----+
+</code></pre>
+<p>注意：在实际使用的时候，很少用到把序列转换成DataSet，更多的是通过RDD来得到DataSet</p>
+<p><strong>RDD 转换为 DataSet</strong></p>
+<p>SparkSQL能够自动将包含有case类的RDD转换成DataSet，case类定义了table的结构，case类属性通过反射变成了表的列名。Case类可以包含诸如Seq或者Array等复杂的结构。</p>
+<pre><code class="lang-scala">scala&gt; case class User(name:String, age:Int)
+defined class User
+
+scala&gt; sc.makeRDD(List((&quot;zhangsan&quot;,30), (&quot;lisi&quot;,49))).map(t=&gt;User(t._1, t._2)).toDS
+res11: org.apache.spark.sql.Dataset[User] = [name: string, age: int]
+</code></pre>
+<p><strong>DataSet 转换为 RDD</strong></p>
+<p>DataSet其实也是对RDD的封装，所以可以直接获取内部的RDD</p>
+<pre><code class="lang-scala">scala&gt; case class User(name:String, age:Int)
+defined class User
+
+scala&gt; sc.makeRDD(List((&quot;zhangsan&quot;,30), (&quot;lisi&quot;,49))).map(t=&gt;User(t._1, t._2)).toDS
+res11: org.apache.spark.sql.Dataset[User] = [name: string, age: int]
+
+scala&gt; val rdd = res11.rdd
+rdd: org.apache.spark.rdd.RDD[User] = MapPartitionsRDD[51] at rdd at &lt;console&gt;:25
+
+scala&gt; rdd.collect
+res12: Array[User] = Array(User(zhangsan,30), User(lisi,49))
+</code></pre>
+<p><strong>DataFrame 和 DataSet 转换</strong></p>
+<p>DataFrame其实是DataSet的特例，所以它们之间是可以互相转换的</p>
+<p>1.DataFrame   ==&gt;   DataSet</p>
+<pre><code class="lang-scala">scala&gt; case class User(name:String, age:Int)
+defined class User
+
+scala&gt; val df = sc.makeRDD(List((&quot;zhangsan&quot;,30), (&quot;lisi&quot;,49))).toDF(&quot;name&quot;,&quot;age&quot;)
+df: org.apache.spark.sql.DataFrame = [name: string, age: int]
+
+scala&gt; val ds = df.as[User]
+ds: org.apache.spark.sql.Dataset[User] = [name: string, age: int]
+</code></pre>
+<p>2.DataSet  ==&gt;  DataFrame</p>
+<pre><code class="lang-scala">scala&gt; val ds = df.as[User]
+ds: org.apache.spark.sql.Dataset[User] = [name: string, age: int]
+
+scala&gt; val df = ds.toDF
+df: org.apache.spark.sql.DataFrame = [name: string, age: int]
+</code></pre>
+<h3 id="RDD-、-DataFrame-、-DataSet-三者的关系"><a href="#RDD-、-DataFrame-、-DataSet-三者的关系" class="headerlink" title="RDD 、 DataFrame 、 DataSet 三者的关系"></a>RDD 、 DataFrame 、 DataSet 三者的关系</h3><p>在SparkSQL中Spark为我们提供了两个新的抽象，分别是DataFrame和DataSet。他们和RDD有什么区别呢？首先从版本的产生上来看：</p>
+<ul>
+<li>Spark1.0 =&gt; RDD </li>
+<li>Spark1.3 =&gt; DataFrame</li>
+<li>Spark1.6 =&gt; Dataset</li>
+</ul>
+<p>如果同样的数据都给到这三个数据结构，他们分别计算之后，都会给出相同的结果。不同是的他们的执行效率和执行方式。在后期的Spark版本中，DataSet有可能会逐步取代RDD和DataFrame成为唯一的API接口。</p>
+<p><strong>三者的共性</strong></p>
+<ol>
+<li>RDD、DataFrame、DataSet全都是spark平台下的分布式弹性数据集，为处理超大型数据提供便利;</li>
+<li>三者都有惰性机制，在进行创建、转换，如map方法时，不会立即执行，只有在遇到Action如foreach时，三者才会开始遍历运算</li>
+<li>三者有许多共同的函数，如filter，排序等;</li>
+<li>在对DataFrame和Dataset进行操作许多操作都需要这个包:import spark.implicits._（在创建好SparkSession对象后尽量直接导入）</li>
+<li>三者都会根据 Spark 的内存情况自动缓存运算，这样即使数据量很大，也不用担心会内存溢出</li>
+<li>三者都有partition的概念</li>
+<li>DataFrame和DataSet均可使用模式匹配获取各个字段的值和类型</li>
+</ol>
+<p><strong>三者的区别</strong></p>
+<ol>
+<li><p>RDD</p>
+<blockquote>
+<p>Ø RDD一般和spark mlib同时使用</p>
+<p>Ø RDD不支持sparksql操作</p>
+</blockquote>
+</li>
+<li><p>DataFrame</p>
+<blockquote>
+<p>Ø 与RDD和Dataset不同，DataFrame每一行的类型固定为Row，每一列的值没法直接访问，只有通过解析才能获取各个字段的值</p>
+<p>Ø DataFrame与DataSet一般不与 spark mlib 同时使用</p>
+<p>Ø DataFrame与DataSet均支持 SparkSQL 的操作，比如select，groupby之类，还能注册临时表/视窗，进行 sql 语句操作</p>
+<p>Ø DataFrame与DataSet支持一些特别方便的保存方式，比如保存成csv，可以带上表头，这样每一列的字段名一目了然(后面专门讲解)</p>
+</blockquote>
+</li>
+<li><p>DataSet</p>
+<blockquote>
+<p>Ø Dataset和DataFrame拥有完全相同的成员函数，区别只是每一行的数据类型不同。 DataFrame其实就是DataSet的一个特例 type DataFrame = Dataset[Row]</p>
+<p>Ø DataFrame也可以叫Dataset[Row],每一行的类型是Row，不解析，每一行究竟有哪些字段，各个字段又是什么类型都无从得知，只能用上面提到的getAS方法或者共性中的第七条提到的模式匹配拿出特定字段。而Dataset中，每一行是什么类型是不一定的，在自定义了case class之后可以很自由的获得每一行的信息</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>三者的互相转换</strong></p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521213958657.png" alt="image-20210521213958657"></p>
+<h2 id="IDEA-开发-SparkSQL"><a href="#IDEA-开发-SparkSQL" class="headerlink" title="IDEA 开发 SparkSQL"></a>IDEA 开发 SparkSQL</h2><pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
+    &lt;artifactId&gt;spark-sql_2.12&lt;/artifactId&gt;
+    &lt;version&gt;3.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<pre><code class="lang-scala">object SparkSQL01_Demo {
+  def main(args: Array[String]): Unit = {
+    //创建上下文环境配置对象
+    val conf: SparkConf = new SparkConf().setMaster(&quot;local[*]&quot;).setAppName(&quot;SparkSQL01_Demo&quot;)
+
+    //创建SparkSession对象
+    val spark: SparkSession = SparkSession.builder().config(conf).getOrCreate()
+    //RDD=&gt;DataFrame=&gt;DataSet转换需要引入隐式转换规则，否则无法转换
+    //spark不是包名，是上下文环境对象名
+    import spark.implicits._
+
+    //读取json文件 创建DataFrame  {&quot;username&quot;: &quot;lisi&quot;,&quot;age&quot;: 18}
+    val df: DataFrame = spark.read.json(&quot;input/test.json&quot;)
+    //df.show()
+
+    //SQL风格语法
+    df.createOrReplaceTempView(&quot;user&quot;)
+    //spark.sql(&quot;select avg(age) from user&quot;).show
+
+    //DSL风格语法
+    //df.select(&quot;username&quot;,&quot;age&quot;).show()
+
+    //*****RDD=&gt;DataFrame=&gt;DataSet*****
+    //RDD
+    val rdd1: RDD[(Int, String, Int)] = spark.sparkContext.makeRDD(List((1,&quot;zhangsan&quot;,30),(2,&quot;lisi&quot;,28),(3,&quot;wangwu&quot;,20)))
+
+    //DataFrame
+    val df1: DataFrame = rdd1.toDF(&quot;id&quot;,&quot;name&quot;,&quot;age&quot;)
+    //df1.show()
+
+    //DateSet
+    val ds1: Dataset[User] = df1.as[User]
+    //ds1.show()
+
+    //*****DataSet=&gt;DataFrame=&gt;RDD*****
+    //DataFrame
+    val df2: DataFrame = ds1.toDF()
+
+    //RDD  返回的RDD类型为Row，里面提供的getXXX方法可以获取字段值，类似jdbc处理结果集，但是索引从0开始
+    val rdd2: RDD[Row] = df2.rdd
+    //rdd2.foreach(a=&gt;println(a.getString(1)))
+
+    //*****RDD=&gt;DataSet*****
+    rdd1.map{
+      case (id,name,age)=&gt;User(id,name,age)
+    }.toDS()
+
+    //*****DataSet=&gt;=&gt;RDD*****
+    ds1.rdd
+
+    //释放资源
+    spark.stop()
+  }
+}
+case class User(id:Int,name:String,age:Int)
+</code></pre>
+<h2 id="用户自定义函数"><a href="#用户自定义函数" class="headerlink" title="用户自定义函数"></a>用户自定义函数</h2><p>用户可以通过spark.udf功能添加自定义函数，实现自定义功能。</p>
+<h3 id="UDF"><a href="#UDF" class="headerlink" title="UDF"></a>UDF</h3><pre><code class="lang-scala">//创建DataFrame
+scala&gt; val df = spark.read.json(&quot;data/user.json&quot;)
+df: org.apache.spark.sql.DataFrame = [age: bigint， username: string]
+//注册UDF
+scala&gt; spark.udf.register(&quot;addName&quot;,(x:String)=&gt; &quot;Name:&quot;+x)
+res9: org.apache.spark.sql.expressions.UserDefinedFunction = UserDefinedFunction(&lt;function1&gt;,StringType,Some(List(StringType)))
+//创建临时表
+scala&gt; df.createOrReplaceTempView(&quot;people&quot;)
+//应用UDF
+scala&gt; spark.sql(&quot;Select addName(name),age from people&quot;).show()
+</code></pre>
+<h3 id="UDAF"><a href="#UDAF" class="headerlink" title="UDAF"></a>UDAF</h3><p>强类型的Dataset和弱类型的DataFrame都提供了相关的聚合函数， 如 count()，countDistinct()，avg()，max()，min()。除此之外，用户可以设定自己的自定义聚合函数。通过继承UserDefinedAggregateFunction来实现用户自定义聚合函数。</p>
+<p><strong>需求：计算平均工资</strong></p>
+<p>一个需求可以采用很多种不同的方法实现需求</p>
+<p><strong>实现方式 - RDD</strong></p>
+<pre><code class="lang-scala">val conf: SparkConf = new SparkConf().setAppName(&quot;app&quot;).setMaster(&quot;local[*]&quot;)
+val sc: SparkContext = new SparkContext(conf)
+val res: (Int, Int) = sc.makeRDD(List((&quot;zhangsan&quot;, 20), (&quot;lisi&quot;, 30), (&quot;wangw&quot;, 40))).map {
+  case (name, age) =&gt; {
+    (age, 1)
+  }
+}.reduce {
+  (t1, t2) =&gt; {
+    (t1._1 + t2._1, t1._2 + t2._2)
+  }
+}
+println(res._1/res._2)
+// 关闭连接
+sc.stop()
+</code></pre>
+<p><strong>实现方式 - 累加器</strong></p>
+<pre><code class="lang-scala">class MyAC extends AccumulatorV2[Int,Int]{
+  var sum:Int = 0
+  var count:Int = 0
+  override def isZero: Boolean = {
+    return sum ==0 &amp;&amp; count == 0
+  }
+
+  override def copy(): AccumulatorV2[Int, Int] = {
+    val newMyAc = new MyAC
+    newMyAc.sum = this.sum
+    newMyAc.count = this.count
+    newMyAc
+  }
+
+  override def reset(): Unit = {
+    sum =0
+    count = 0
+  }
+
+  override def add(v: Int): Unit = {
+    sum += v
+    count += 1
+  }
+
+  override def merge(other: AccumulatorV2[Int, Int]): Unit = {
+    other match {
+      case o:MyAC=&gt;{
+        sum += o.sum
+        count += o.count
+      }
+      case _=&gt;
+    }
+
+  }
+  override def value: Int = sum/count
+}
+</code></pre>
+<p><strong>实现方式 - UDAF -弱类型</strong></p>
+<pre><code class="lang-scala">*
+定义类继承UserDefinedAggregateFunction，并重写其中方法
+*/
+class MyAveragUDAF extends UserDefinedAggregateFunction {
+
+  // 聚合函数输入参数的数据类型
+  def inputSchema: StructType = StructType(Array(StructField(&quot;age&quot;,IntegerType)))
+
+  // 聚合函数缓冲区中值的数据类型(age,count)
+  def bufferSchema: StructType = {
+    StructType(Array(StructField(&quot;sum&quot;,LongType),StructField(&quot;count&quot;,LongType)))
+  }
+
+  // 函数返回值的数据类型
+  def dataType: DataType = DoubleType
+
+  // 稳定性：对于相同的输入是否一直返回相同的输出。
+  def deterministic: Boolean = true
+
+  // 函数缓冲区初始化
+  def initialize(buffer: MutableAggregationBuffer): Unit = {
+    // 存年龄的总和
+    buffer(0) = 0L
+    // 存年龄的个数
+    buffer(1) = 0L
+  }
+
+  // 更新缓冲区中的数据
+  def update(buffer: MutableAggregationBuffer,input: Row): Unit = {
+    if (!input.isNullAt(0)) {
+      buffer(0) = buffer.getLong(0) + input.getInt(0)
+      buffer(1) = buffer.getLong(1) + 1
+    }
+  }
+
+  // 合并缓冲区
+  def merge(buffer1: MutableAggregationBuffer,buffer2: Row): Unit = {
+    buffer1(0) = buffer1.getLong(0) + buffer2.getLong(0)
+    buffer1(1) = buffer1.getLong(1) + buffer2.getLong(1)
+  }
+
+  // 计算最终结果
+  def evaluate(buffer: Row): Double = buffer.getLong(0).toDouble / buffer.getLong(1)
+}
+
+。。。
+
+//创建聚合函数
+var myAverage = new MyAveragUDAF
+
+//在spark中注册聚合函数
+spark.udf.register(&quot;avgAge&quot;,myAverage)
+
+spark.sql(&quot;select avgAge(age) from user&quot;).show()
+</code></pre>
+<p><strong>实现方式 - UDAF - 强类型</strong></p>
+<pre><code class="lang-scala">//输入数据类型
+case class User01(username:String,age:Long)
+//缓存类型
+case class AgeBuffer(var sum:Long,var count:Long)
+
+/**
+  * 定义类继承org.apache.spark.sql.expressions.Aggregator
+  * 重写类中的方法
+  */
+class MyAveragUDAF1 extends Aggregator[User01,AgeBuffer,Double]{
+  override def zero: AgeBuffer = {
+    AgeBuffer(0L,0L)
+  }
+
+  override def reduce(b: AgeBuffer, a: User01): AgeBuffer = {
+    b.sum = b.sum + a.age
+    b.count = b.count + 1
+    b
+  }
+
+  override def merge(b1: AgeBuffer, b2: AgeBuffer): AgeBuffer = {
+    b1.sum = b1.sum + b2.sum
+    b1.count = b1.count + b2.count
+    b1
+  }
+
+  override def finish(buff: AgeBuffer): Double = {
+    buff.sum.toDouble/buff.count
+  }
+  //DataSet默认额编解码器，用于序列化，固定写法
+  //自定义类型就是produce   自带类型根据类型选择
+  override def bufferEncoder: Encoder[AgeBuffer] = {
+    Encoders.product
+  }
+
+  override def outputEncoder: Encoder[Double] = {
+    Encoders.scalaDouble
+  }
+}
+
+。。。
+
+//封装为DataSet
+val ds: Dataset[User01] = df.as[User01]
+
+//创建聚合函数
+var myAgeUdaf1 = new MyAveragUDAF1
+//将聚合函数转换为查询的列
+val col: TypedColumn[User01, Double] = myAgeUdaf1.toColumn
+
+//查询
+ds.select(col).show()
+</code></pre>
+<p>Spark3.0版本可以采用强类型的Aggregator方式代替UserDefinedAggregateFunction</p>
+<pre><code class="lang-scala">// TODO 创建 UDAF 函数
+val udaf = new MyAvgAgeUDAF
+// TODO 注册到 SparkSQL 中
+spark.udf.register(&quot;avgAge&quot;, functions.udaf(udaf))
+// TODO 在 SQL 中使用聚合函数
+// 定义用户的自定义聚合函数
+spark.sql(&quot;select avgAge(age) from user&quot;).show
+
+
+case class Buff(var sum:Long, var cnt:Long )
+// totalage, count
+class MyAvgAgeUDAF extends Aggregator[Long, Buff, Double]{
+    override def zero: Buff = Buff(0,0)
+    override def reduce(b: Buff, a: Long): Buff = {
+        b.sum += a
+        b.cnt += 1
+        b
+    }
+    override def merge(b1: Buff, b2: Buff): Buff = {
+        b1.sum += b2.sum
+        b1.cnt += b2.cnt
+        b1
+    }
+    override def finish(reduction: Buff): Double = {
+        reduction.sum.toDouble/reduction.cnt
+    }
+    override def bufferEncoder: Encoder[Buff] = Encoders.product
+    override def outputEncoder: Encoder[Double] = Encoders.scalaDouble
+}
+</code></pre>
+<h2 id="数据的加载和保存"><a href="#数据的加载和保存" class="headerlink" title="数据的加载和保存"></a>数据的加载和保存</h2><h3 id="通用的加载和保存方式"><a href="#通用的加载和保存方式" class="headerlink" title="通用的加载和保存方式"></a>通用的加载和保存方式</h3><p>SparkSQL提供了通用的保存数据和数据加载的方式。这里的通用指的是使用相同的API，根据不同的参数读取和保存不同格式的数据，SparkSQL默认读取和保存的文件格式为parquet</p>
+<p>spark.read.load 是<strong>加载数据</strong>的通用方法</p>
+<pre><code class="lang-scala">scala&gt; spark.read.
+csv format jdbc json load option options orc parquet schema
+table text textFile
+
+//如果读取不同格式的数据，可以对不同的数据格式进行设定
+scala&gt; spark.read.format(&quot;…&quot;)[.option(&quot;…&quot;)].load(&quot;…&quot;)
+//我们前面都是使用read API 先把文件加载到 DataFrame然后再查询，其实，我们也可以直接在文件上进行查询:  文件格式.`文件路径`
+scala&gt;spark.sql(&quot;select * from json.`/opt/module/data/user.json`&quot;).show
+</code></pre>
+<ul>
+<li>format(“…”)：指定加载的数据类型，包括”csv”、”jdbc”、”json”、”orc”、”parquet”和”textFile”。</li>
+<li>load(“…”)：在”csv”、”jdbc”、”json”、”orc”、”parquet”和”textFile”格式下需要传入加载数据的路径</li>
+<li>option(“…”)：在”jdbc”格式下需要传入JDBC相应参数，url、user、password和dbtable</li>
+</ul>
+<p>df.write.save 是<strong>保存数据</strong>的通用方法</p>
+<pre><code class="lang-scala">scala&gt;df.write.
+csv  jdbc   json  orc   parquet textFile… …
+
+//如果保存不同格式的数据，可以对不同的数据格式进行设定
+scala&gt;df.write.format(&quot;…&quot;)[.option(&quot;…&quot;)].save(&quot;…&quot;)
+
+df.write.mode(&quot;append&quot;).json(&quot;/opt/module/data/output&quot;)
+</code></pre>
+<ul>
+<li>format(“…”)：指定保存的数据类型，包括”csv”、”jdbc”、”json”、”orc”、”parquet”和”textFile”</li>
+<li>save (“…”)：在”csv”、”orc”、”parquet”和”textFile”格式下需要传入保存数据的路径。</li>
+<li>option(“…”)：在”jdbc”格式下需要传入JDBC相应参数，url、user、password和dbtable</li>
+</ul>
+<p>保存操作可以使用 SaveMode, 用来指明如何处理数据，使用mode()方法来设置。有一点很重要: 这些 SaveMode 都是没有加锁的, 也不是原子操作。SaveMode是一个枚举类，其中的常量包括：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Scala/Java</th>
+<th>Any Language</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SaveMode.ErrorIfExists(default)</td>
+<td>“error”(default)</td>
+<td>如果文件已经存在则抛出异常</td>
+</tr>
+<tr>
+<td>SaveMode.Append</td>
+<td>“append”</td>
+<td>如果文件已经存在则追加</td>
+</tr>
+<tr>
+<td>SaveMode.Overwrite</td>
+<td>“overwrite”</td>
+<td>如果文件已经存在则覆盖</td>
+</tr>
+<tr>
+<td>SaveMode.Ignore</td>
+<td>“ignore”</td>
+<td>如果文件已经存在则忽略</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Parquet"><a href="#Parquet" class="headerlink" title="Parquet"></a>Parquet</h3><p>Spark SQL的默认数据源为Parquet格式。Parquet是一种能够有效存储嵌套数据的列式存储格式。</p>
+<p>数据源为Parquet文件时，Spark SQL可以方便的执行所有的操作，不需要使用format。修改配置项spark.sql.sources.default，可修改默认数据源格式。</p>
+<pre><code class="lang-scala">//加载数据
+scala&gt; val df = spark.read.load(&quot;examples/src/main/resources/users.parquet&quot;)
+scala&gt; df.show
+
+
+//保存数据
+scala&gt; var df = spark.read.json(&quot;/opt/module/data/input/people.json&quot;)
+//保存为parquet格式
+scala&gt; df.write.mode(&quot;append&quot;).save(&quot;/opt/module/data/output&quot;)
+</code></pre>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>Spark SQL 能够自动推测JSON数据集的结构，并将它加载为一个Dataset[Row]. 可以通过SparkSession.read.json()去加载JSON 文件。</p>
+<p>注意：Spark读取的JSON文件不是传统的JSON文件，每一行都应该是一个JSON串。格式如下：</p>
+<pre><code class="lang-json">{&quot;name&quot;:&quot;Michael&quot;}
+{&quot;name&quot;:&quot;Andy&quot;， &quot;age&quot;:30}
+{&quot;name&quot;:&quot;Justin&quot;， &quot;age&quot;:19}
+</code></pre>
+<pre><code class="lang-scala">//导入隐式转换
+import spark.implicits._
+//加载JSON文件
+val path = &quot;/opt/module/spark-local/people.json&quot;
+val peopleDF = spark.read.json(path)
+//创建临时表
+peopleDF.createOrReplaceTempView(&quot;people&quot;)
+//数据查询
+val teenagerNamesDF = spark.sql(&quot;SELECT name FROM people WHERE age BETWEEN 13 AND 19&quot;)
+teenagerNamesDF.show()
++------+
+|  name|
++------+
+|Justin|
++------+
+</code></pre>
+<h3 id="CSV"><a href="#CSV" class="headerlink" title="CSV"></a>CSV</h3><p>Spark SQL可以配置CSV文件的列表信息，读取CSV文件,CSV文件的第一行设置为数据列</p>
+<p>spark.read.format(“csv”).option(“sep”, “;”).option(“inferSchema”, “true”).option(“header”, “true”).load(“data/user.csv”)</p>
+<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><p>Spark SQL可以通过JDBC从关系型数据库中读取数据的方式创建DataFrame，通过对DataFrame一系列的计算后，还可以将数据再写回关系型数据库中。如果使用spark-shell操作，可在启动shell时指定相关的数据库驱动路径或者将相关的数据库驱动放到spark的类路径下。(bin/spark-shell  —jars mysql-connector-java-5.1.27-bin.jar)</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;5.1.27&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<pre><code class="lang-scala">1.读取数据
+val conf: SparkConf = new SparkConf().setMaster(&quot;local[*]&quot;).setAppName(&quot;SparkSQL&quot;)
+
+//创建SparkSession对象
+val spark: SparkSession = SparkSession.builder().config(conf).getOrCreate()
+
+import spark.implicits._
+
+//方式1：通用的load方法读取
+spark.read.format(&quot;jdbc&quot;)
+  .option(&quot;url&quot;, &quot;jdbc:mysql://linux1:3306/spark-sql&quot;)
+  .option(&quot;driver&quot;, &quot;com.mysql.jdbc.Driver&quot;)
+  .option(&quot;user&quot;, &quot;root&quot;)
+  .option(&quot;password&quot;, &quot;123123&quot;)
+  .option(&quot;dbtable&quot;, &quot;user&quot;)
+  .load().show
+
+//方式2:通用的load方法读取 参数另一种形式
+spark.read.format(&quot;jdbc&quot;)
+  .options(Map(&quot;url&quot;-&gt;&quot;jdbc:mysql://linux1:3306/spark-sql?user=root&amp;password=123123&quot;,
+    &quot;dbtable&quot;-&gt;&quot;user&quot;,&quot;driver&quot;-&gt;&quot;com.mysql.jdbc.Driver&quot;)).load().show
+
+//方式3:使用jdbc方法读取
+val props: Properties = new Properties()
+props.setProperty(&quot;user&quot;, &quot;root&quot;)
+props.setProperty(&quot;password&quot;, &quot;123123&quot;)
+val df: DataFrame = spark.read.jdbc(&quot;jdbc:mysql://linux1:3306/spark-sql&quot;, &quot;user&quot;, props)
+df.show
+
+//释放资源
+spark.stop()
+
+
+
+2.写入数据
+case class User2(name: String, age: Long)
+。。。
+val conf: SparkConf = new SparkConf().setMaster(&quot;local[*]&quot;).setAppName(&quot;SparkSQL&quot;)
+
+//创建SparkSession对象
+val spark: SparkSession = SparkSession.builder().config(conf).getOrCreate()
+import spark.implicits._
+
+val rdd: RDD[User2] = spark.sparkContext.makeRDD(List(User2(&quot;lisi&quot;, 20), User2(&quot;zs&quot;, 30)))
+val ds: Dataset[User2] = rdd.toDS
+//方式1：通用的方式  format指定写出类型
+ds.write
+  .format(&quot;jdbc&quot;)
+  .option(&quot;url&quot;, &quot;jdbc:mysql://linux1:3306/spark-sql&quot;)
+  .option(&quot;user&quot;, &quot;root&quot;)
+  .option(&quot;password&quot;, &quot;123123&quot;)
+  .option(&quot;dbtable&quot;, &quot;user&quot;)
+  .mode(SaveMode.Append)
+  .save()
+
+//方式2：通过jdbc方法
+val props: Properties = new Properties()
+props.setProperty(&quot;user&quot;, &quot;root&quot;)
+props.setProperty(&quot;password&quot;, &quot;123123&quot;)
+ds.write.mode(SaveMode.Append).jdbc(&quot;jdbc:mysql://linux1:3306/spark-sql&quot;, &quot;user&quot;, props)
+
+//释放资源
+spark.stop()
+</code></pre>
+<h3 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h3><p>Apache Hive 是 Hadoop 上的 SQL 引擎，Spark SQL编译时可以包含 Hive 支持，也可以不包含。包含 Hive 支持的 Spark SQL 可以支持 Hive 表访问、UDF (用户自定义函数)以及 Hive 查询语言(HiveQL/HQL)等。需要强调的一点是，如果要在 Spark SQL 中包含Hive 的库，并不需要事先安装 Hive。一般来说，最好还是在编译Spark SQL时引入Hive支持，这样就可以使用这些特性了。如果你下载的是二进制版本的 Spark，它应该已经在编译时添加了 Hive 支持。</p>
+<p>若要把 Spark SQL 连接到一个部署好的 Hive 上，你必须把 hive-site.xml 复制到 Spark的配置文件目录中($SPARK_HOME/conf)。即使没有部署好 Hive，Spark SQL 也可以运行。 需要注意的是，如果你没有部署好Hive，Spark SQL 会在当前的工作目录中创建出自己的 Hive 元数据仓库，叫作 metastore_db。此外，如果你尝试使用 HiveQL 中的 CREATE TABLE (并非 CREATE EXTERNAL TABLE)语句来创建表，这些表会被放在你默认的文件系统中的 /user/hive/warehouse 目录中(如果你的 classpath 中有配好的 hdfs-site.xml，默认的文件系统就是 HDFS，否则就是本地文件系统)。</p>
+<p>spark-shell默认是Hive支持的；代码中是默认不支持的，需要手动指定（加一个参数即可）。</p>
+<p><strong>1. 内嵌的HIVE</strong>：直接使用即可，无需其他配置，Hive 的元数据存储在 derby 中, 仓库地址:$SPARK_HOME/spark-warehouse。</p>
+<p><strong>2. 外部的HIVE</strong>：</p>
+<ol>
+<li>Spark要接管Hive需要把hive-site.xml拷贝到conf/目录下</li>
+<li>把Mysql的驱动copy到jars/目录下</li>
+<li>如果访问不到hdfs，则需要把core-site.xml和hdfs-site.xml拷贝到conf/目录下</li>
+</ol>
+<p><strong>3. 运行Spark SQL CLI</strong>：Spark SQL CLI可以很方便的在本地运行Hive元数据服务以及从命令行执行查询任务。在Spark目录下执行如下命令启动Spark SQL CLI，直接执行SQL语句，类似一Hive窗口：bin/spark-sql</p>
+<p><strong>4. 代码操作Hive</strong></p>
+<p>4.1 导入依赖</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.spark&lt;/groupId&gt;
+  &lt;artifactId&gt;spark-hive_2.12&lt;/artifactId&gt;
+  &lt;version&gt;2.4.5&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.hive&lt;/groupId&gt;
+  &lt;artifactId&gt;hive-exec&lt;/artifactId&gt;
+  &lt;version&gt;3.1.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>4.2 将hive-site.xml文件拷贝到项目的resources目录中</p>
+<p>4.3 </p>
+<pre><code class="lang-scala">//创建SparkSession
+val spark: SparkSession = SparkSession
+  .builder()
+  .enableHiveSupport()
+  .master(&quot;local[*]&quot;)
+  .appName(&quot;sql&quot;)
+  .getOrCreate()
+</code></pre>
+<p>注意：在开发工具中创建数据库默认是在本地仓库，通过参数修改数据库仓库的地址: config(“spark.sql.warehouse.dir”, “hdfs://linux1:9000/user/hive/warehouse”)</p>
+<p>如果在执行操作时，出现如下错误：</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210522094757319.png" alt="image-20210522094757319"></p>
+<p>可以代码最前面增加如下代码解决：</p>
+<p>System.setProperty(“HADOOP_USER_NAME”, “root”)</p>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/05/21/11-Spark/Spark03-%E7%B4%AF%E5%8A%A0%E5%99%A8&%E5%B9%BF%E6%92%AD%E5%8F%98%E9%87%8F.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Spark03-累加器&广播变量
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/05/21/11-Spark/Spark00-%E5%AE%89%E8%A3%85.html">
+                Spark00-安装
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">NiuMT</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

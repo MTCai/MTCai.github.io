@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Spark00-安装 | 
+	 
+	雄风静谧
+	</title>
+	
+	<!-- keywords,description -->
+	
+		<meta name="keywords" content="渣硕, 大数据组件" />
+	 
+		<meta name="description" content="个人记事本" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="/css/prettify.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+    
+<script src="/js/prettify.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<script type="text/javascript">
+$(document).ready(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">雄风静谧</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00-环境
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+										00-MySQL安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/01-Hadoop%E5%AE%89%E8%A3%85.html">
+										01-Hadoop安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/02-Hadoop%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81.html">
+										02-Hadoop编译源码
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/03-Zookeeper%E5%AE%89%E8%A3%85.html">
+										03-Zookeeper安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/00-%E7%8E%AF%E5%A2%83/04-Hive.html">
+										04-Hive
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/05-Flume%E5%AE%89%E8%A3%85.html">
+										05-Flume安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/00-%E7%8E%AF%E5%A2%83/06-HBase%E5%AE%89%E8%A3%85.html">
+										06-HBase安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-Ubuntu16.04%20%E5%AE%89%E8%A3%85opencv%EF%BC%88C++%E7%89%88%E6%9C%AC%EF%BC%89.html">
+										99-Ubuntu16.04 安装opencv（C++版本）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-%E5%AE%89%E8%A3%85ffmpeg.html">
+										99-安装ffmpeg
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8401-%E5%A4%A7%E7%BA%B2.html">
+										数据结构01-大纲
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8402-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8A).html">
+										数据结构02-复杂度分析(上)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8403-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8B).html">
+										数据结构03-复杂度分析(下)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8404-%E6%95%B0%E7%BB%84.html">
+										数据结构04-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8405-%E9%93%BE%E8%A1%A8.html">
+										数据结构05-链表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8406-%E6%A0%88.html">
+										数据结构06-栈
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8407-%E9%98%9F%E5%88%97.html">
+										数据结构07-队列
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8408-%E9%80%92%E5%BD%92.html">
+										数据结构08-递归
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8409-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%86%92%E6%B3%A1&%E6%8F%92%E5%85%A5&%E9%80%89%E6%8B%A9.html">
+										数据结构09-排序之冒泡&插入&选择
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8410-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%BD%92%E5%B9%B6&%E5%BF%AB%E6%8E%92.html">
+										数据结构10-排序之归并&快排
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8411-%E6%8E%92%E5%BA%8F%E4%B9%8B%E7%BA%BF%E6%80%A7%E6%8E%92%E5%BA%8F(%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F).html">
+										数据结构11-排序之线性排序(桶排序、计数排序、基数排序)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8412-%E6%8E%92%E5%BA%8F%E4%B9%8B%E4%BC%98%E5%8C%96.html">
+										数据结构12-排序之优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8413-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">
+										数据结构13-二分查找
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8414-%E8%B7%B3%E8%A1%A8.html">
+										数据结构14-跳表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/23/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8415-%E6%95%A3%E5%88%97%E8%A1%A8.html">
+										数据结构15-散列表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8416-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8.html">
+										数据结构16-哈希算法的应用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8417-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80.html">
+										数据结构17-二叉树基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8418-%E7%BA%A2%E9%BB%91%E6%A0%91.html">
+										数据结构18-红黑树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8419-%E9%80%92%E5%BD%92%E6%A0%91.html">
+										数据结构19-递归树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420-%E5%A0%86%E5%92%8C%E5%A0%86%E6%8E%92%E5%BA%8F.html">
+										数据结构20-堆和堆排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8421-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA.html">
+										数据结构21-图的表示
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+										数据结构22-深度和广度优先搜索
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8423-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D.html">
+										数据结构23-字符串匹配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
+										数据结构24-Trie树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8425-AC%E8%87%AA%E5%8A%A8%E6%9C%BA.html">
+										数据结构25-AC自动机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8426-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">
+										数据结构26-贪心算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8427-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html">
+										数据结构27-分治算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
+										数据结构28-回溯算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8429-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA.html">
+										数据结构29-动态规划理论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+										数据结构30-动态规划入门案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8431-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98.html">
+										数据结构31-动态规划实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(2).html">
+										数据结构32-拓扑排序 - 副本 (2)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-Java
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java00--%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92.html">
+										Java00--时间计划
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java00-IDEA%E9%85%8D%E7%BD%AE.html">
+										Java00-IDEA配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java01-%E6%A6%82%E8%BF%B0.html">
+										Java01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java02-%E5%85%B3%E9%94%AE%E5%AD%97&%E6%A0%87%E8%AF%86%E7%AC%A6.html">
+										Java02-关键字&标识符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java03-%E8%BF%90%E7%AE%97%E7%AC%A6.html">
+										Java03-运算符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java04-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										Java04-流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java05-%E6%95%B0%E7%BB%84.html">
+										Java05-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A101%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html">
+										Java06-面向对象01三大特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A102%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%8E%A5%E5%8F%A3.html">
+										Java06-面向对象02抽象类接口
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java07-%E5%BC%82%E5%B8%B8.html">
+										Java07-异常
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java08-%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">
+										Java08-多线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java09-%E5%B8%B8%E7%94%A8%E7%B1%BB.html">
+										Java09-常用类
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java10-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E4%B8%8E%E6%B3%A8%E8%A7%A3.html">
+										Java10-枚举类与注解
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java11-%E9%9B%86%E5%90%88.html">
+										Java11-集合
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
+										Java12-泛型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java13-IO%E6%B5%81.html">
+										Java13-IO流
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java14-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.html">
+										Java14-网络编程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java15-%E5%8F%8D%E5%B0%84.html">
+										Java15-反射
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java16-Java8%20%E6%96%B0%E7%89%B9%E6%80%A7.html">
+										Java16-Java8 新特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL00-%E5%AE%89%E8%A3%85.html">
+										MySQL00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+										MySQL01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+										MySQL02-DQL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+										MySQL03-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+										MySQL04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+										MySQL05-TCL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										MySQL06-视图&存储过程&流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										04-JDBC
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+										JDBC-01 概览&连接数据库方式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+										JDBC-02 CRUD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+										JDBC-03 数据库事务&DAO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+										JDBC-04 数据库连接池&DBUtils
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05-Hadoop
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+										Hadoop01-概述、运行模式&源码编译
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+										Hadoop02-HDFS概述、shell&客户端操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+										Hadoop03-HDFS读写流程&NN和2NN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+										Hadoop04-HDFS-DataNode
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop05-HDFS2.X%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E9%AB%98%E5%8F%AF%E7%94%A8(HA).html">
+										Hadoop05-HDFS2.X新特性和高可用(HA)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+										Hadoop06-MapReduce概述&序列化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
+										Hadoop07-MapReduce框架原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop08-Hadoop%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9.html">
+										Hadoop08-Hadoop数据压缩
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
+										Hadoop09-Yarn资源调度
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+										Hadoop10-生产调优手册
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+										Hadoop11-源码解析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06-Zookeeper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+										Zookeeper00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+										Zookeeper01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
+										Zookeeper02-内部原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper03-Shell%E6%93%8D%E4%BD%9C.html">
+										Zookeeper03-Shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+										Zookeeper04-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										07-Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive01-%E6%A6%82%E8%BF%B0.html">
+										Hive01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+										Hive02-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Hive03-数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+										Hive04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive05-DML.html">
+										Hive05-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+										Hive06-查询
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+										Hive07-函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
+										Hive08-压缩和存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+										Hive09-企业级调优
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive10-%E5%AE%9E%E6%88%98.html">
+										Hive10-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										08-Flume
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume00-%E5%AE%89%E8%A3%85.html">
+										flume00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+										flume01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+										flume02-案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume03-%E5%8E%9F%E7%90%86.html">
+										flume03-原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										flume04-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										09-Kafka
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
+										Kafka00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+										Kafka01-概述&shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+										Kafka02-架构原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+										Kafka03-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+										Kafka04-监控
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
+										Kafka05-Flume对接Kafka
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										Kafka06-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										10-HBase
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+										HBase00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+										HBase01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+										HBase02-HBase-shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+										HBase03-HBase进阶
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+										HBase04-HBase-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+										HBase05-HBase-MR
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+										HBase06-与Hive集成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+										HBase07-HBase优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+										HBase08-扩展
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										11-Spark
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/2021/05/21/11-Spark/Spark00-%E5%AE%89%E8%A3%85.html">
+										Spark00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark01-%E6%A6%82%E8%BF%B0.html">
+										Spark01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark02-RDD.html">
+										Spark02-RDD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark03-%E7%B4%AF%E5%8A%A0%E5%99%A8&%E5%B9%BF%E6%92%AD%E5%8F%98%E9%87%8F.html">
+										Spark03-累加器&广播变量
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark04-SparkSql.html">
+										Spark04-SparkSql
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark05-SparkStreaming.html">
+										Spark05-SparkStreaming
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark06-Spark%E5%86%85%E6%A0%B8.html">
+										Spark06-Spark内核
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark07-Spark%E4%BC%98%E5%8C%96.html">
+										Spark07-Spark优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	Spark00-安装
+</h1>
+<div class="article-meta">
+	
+	<span>NiuMT</span>
+	<span>2021-05-21 10:17:47</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Spark/">Spark</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<p>Spark作为一个数据处理框架和计算引擎，被设计在所有常见的集群环境中运行, 在国内工作中主流的环境为Yarn，不过逐渐容器式环境也慢慢流行起来。接下来，我们就分别看看不同环境下Spark的运行.</p>
+<h2 id="Local-模式"><a href="#Local-模式" class="headerlink" title="Local 模式"></a>Local 模式</h2><p>Local模式，就是不需要其他任何节点资源就可以在本地执行Spark代码的环境，一般用于教学，调试，演示等.</p>
+<ol>
+<li><p>将spark-3.0.0-bin-hadoop3.2.tgz文件解压缩</p>
+</li>
+<li><p>进入解压缩后的路径，执行: bin/spark shell</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521103813983.png" alt="image-20210521103813983"></p>
+</li>
+<li><p>启动成功后，可以输入网址进行Web UI监控页面访问: http:// 虚拟机地址 4040</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521103832824.png" alt="image-20210521103832824"></p>
+</li>
+<li><p>在解压缩文件夹下的data目录中，添加word.txt文件。在命令行工具中执行如下代码指令:</p>
+<pre><code class="lang-scala">sc.textFile(&quot;data/word.txt&quot;).flatMap(_.&quot; &quot;)).map((_,1)).reduceByKey(_+_).collect
+</code></pre>
+</li>
+<li><p>退出本地模式: ctrl + c 或 :quit</p>
+</li>
+<li><p>提交应用</p>
+<pre><code class="lang-sh">bin/spark submit \
+--class org.apache.spark.examples.SparkPi \
+--master local[2] \
+./examples/jars/spark-examples_2.12-3.0.0.jar \
+10
+
+--class表示要执行程序的主类，此处可以更换为咱们自己写的应用程序
+--master local[2] 部署模式，默认为本地模式，数字表示分配的虚拟CPU核数量
+spark-examples_2.12-3.0.0.jar 运行的应用类所在的jar包，实际使用时，可以设定为咱们自己打的jar包
+数字10表示程序的入口参数，用于设定当前应用的任务数量
+</code></pre>
+</li>
+</ol>
+<h2 id="Standalone-模式"><a href="#Standalone-模式" class="headerlink" title="Standalone 模式"></a>Standalone 模式</h2><p>只使用Spark自身节点运行的集群模式，也就是我们所谓的独立部署（Standalone）模式。Spark的Standalone模式体现了经典的master-slave模式。资源管理使用Spark自带的。</p>
+<h3 id="正常安装（非高可用）"><a href="#正常安装（非高可用）" class="headerlink" title="正常安装（非高可用）"></a>正常安装（非高可用）</h3><p><strong>集群规划：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Linux1</th>
+<th>Linux2</th>
+<th>linux3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worker  \</td>
+<td>Master</td>
+<td>Worker</td>
+<td>Worker</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>安装配置：</strong></p>
+<ol>
+<li><p>将spark-3.0.0-bin-hadoop3.2.tgz文件解压缩</p>
+</li>
+<li><p>修改slaves: </p>
+<blockquote>
+<p>mv slaves.template slaves</p>
+<p>在slaves文件内添加，不允许有空白行</p>
+<p>linux1</p>
+<p>linux2</p>
+<p>linux3</p>
+</blockquote>
+</li>
+<li><p>修改spark-env.sh</p>
+<blockquote>
+<p>mv spark-env.sh.template spark-env.sh</p>
+<p>添加以下内容：</p>
+<p>export JAVA_HOME=/opt/module/jdk1.8.0_144</p>
+<p>SPARK_MASTER_HOST= linux1</p>
+<p>SPARK_MASTER_PORT=7077</p>
+</blockquote>
+</li>
+<li><p>分发spark</p>
+</li>
+<li><p>启动集群：sbin/start all.sh</p>
+</li>
+<li><p>查看jps进程</p>
+</li>
+<li><p>Web UI界面:  <code>http://linux1:8080</code></p>
+</li>
+<li><p>配置历史服务</p>
+<blockquote>
+<p>spark-defaults.conf   配置日志存储路径</p>
+<blockquote>
+<p>spark.eventLog.enabled           true</p>
+<p>spark.eventLog.dir                    hdfs:// linux1:9000/directory</p>
+<p>需要启动hadoop集群，HDFS上的directory目录需要提前存在。</p>
+</blockquote>
+<p>修改 spark-env.sh</p>
+<blockquote>
+<p>export SPARK_HISTORY_OPTS=”</p>
+<p>-Dspark.history.ui.port=18080</p>
+<p>-Dspark.history.fs.logDirectory=hdfs:// linux1:9000/directory</p>
+<p>-Dspark.history.retainedApplications=30”</p>
+<p>参数1含义：WEB UI访问的端口号为18080</p>
+<p>参数2含义：指定历史服务器日志存储路径</p>
+<p>参数3含义：指定保存Application历史记录的个数，如果超过这个值，旧的应用程序信息将被删除，这个是内存中的应用数，而不是页面上显示的应用数。</p>
+</blockquote>
+<p>分发配置文件</p>
+<p>重新启动集群和历史服务</p>
+<blockquote>
+<p>sbin/stop-all.sh</p>
+<p>sbin/start-all.sh</p>
+<p>sbin/start-history-server.sh</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>提交应用</p>
+<pre><code class="lang-sh">bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master spark:// linux1:7077 \
+./examples/jars/spark examples_2.12 3.0.0.jar
+10
+</code></pre>
+<p>执行任务时，默认采用服务器集群节点的总核数，每个节点内存1024M。</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521110954347.png" alt="image-20210521110954347"></p>
+</li>
+<li><p>提交参数</p>
+<p>| 参数                     | 解释                                                         | 可选值举例                                |<br>| ———————————— | —————————————————————————————— | ————————————————————- |<br>| —class                  | Spark程序中包含主函数的类                                    |                                           |<br>| —master                 | Spark程序运行的模式(环境)                                    | 模式：local[*]、spark://linux1:7077、Yarn |<br>| —executor-memory 1G     | 指定每个executor 可用内存为 1G                               | 符合集群内存配置即可，具体情况具体分析。  |<br>| —total-executor-cores 2 | 指定所有executor使用的cpu核数为2个                           | 符合集群内存配置即可，具体情况具体分析。  |<br>| —executor-cores         | 指定每个executor使用的cpu核数                                | 符合集群内存配置即可，具体情况具体分析。  |<br>| application-jar          | 打包好的应用jar，包含依赖。这个URL在集群中全局可见。 比如hdfs:// 共享存储系统，如果是file:// path，那么所有的节点的path都包含同样的jar | 符合集群内存配置即可，具体情况具体分析。  |<br>| application-arguments    | 传给main() 方法的参数                                        | 符合集群内存配置即可，具体情况具体分析。  |</p>
+</li>
+<li><p>查看历史服务：<code>http://linux1:18080</code></p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521111739894.png" alt="image-20210521111739894"></p>
+</li>
+</ol>
+<h3 id="配置高可用（-HA）"><a href="#配置高可用（-HA）" class="headerlink" title="配置高可用（ HA）"></a>配置高可用（ HA）</h3><p>所谓的高可用是因为当前集群中的Master节点只有一个，所以会存在单点故障问题。所以为了解决单点故障问题，需要在集群中配置多个Master节点，一旦处于活动状态的Master发生故障时，由备用Master提供服务，保证作业可以继续执行。这里的高可用一般采用Zookeeper设置。</p>
+<p><strong>集群规划：</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Linux1</th>
+<th>Linux2</th>
+<th>linux3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Master</td>
+<td>Master</td>
+<td></td>
+</tr>
+<tr>
+<td>Worker</td>
+<td>Worker</td>
+<td>Worker</td>
+</tr>
+<tr>
+<td>Zookeeper</td>
+<td>Zookeeper</td>
+<td>Zookeeper</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li><p>停止集群： sbin/stop-all.sh</p>
+</li>
+<li><p>启动Zookeeper</p>
+</li>
+<li><p>修改 spark env.sh</p>
+<pre><code class="lang-sh">注释如下内容：
+:&lt;&lt;!
+SPARK_MASTER_HOST linux1
+SPARK_MASTER_PORT=7077
+!
+
+添加如下内容
+Master 监控页面默认访问端口为 8080 ，但是可能会和 Zookeeper 冲突，所以改成 8989 ，也可以自定义，访问 UI 监控页面时请注意
+SPARK_MASTER_WEBUI_PORT= 8989
+export SPARK_DAEMON_JAVA_OPTS=&quot;
+-Dspark.deploy.recoveryMode=ZOOKEEPER
+-Dspark.deploy.zookeeper.url= linux1 linux2 linux3
+-Dspark.deploy.zookeeper.dir=/spark&quot;
+</code></pre>
+</li>
+<li><p>分发配置文件</p>
+</li>
+<li><p>启动集群: sbin/start-all.sh</p>
+</li>
+<li><p>启动linux2的单独Master节点，此时linux2节点Master状态处于备用状态</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521113332256.png" alt="image-20210521113332256" style="zoom: 62%;" /></p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521113344339.png" alt="image-20210521113344339" style="zoom:67%;" /></p>
+</li>
+<li><p>提交应用到高可用集群</p>
+</li>
+<li><p>kill -9  linux1的Master资源监控进程</p>
+</li>
+<li><p>查看linux2的Master 资源监控Web UI，稍等一段时间后，linux2节点的Master状态提升为活动状态</p>
+</li>
+</ol>
+<h2 id="Yarn-模式"><a href="#Yarn-模式" class="headerlink" title="Yarn 模式"></a>Yarn 模式</h2><p>独立部署（Standalone）模式由Spark自身提供计算资源，无需其他框架提供资源。这种方式降低了和其他第三方资源框架的耦合性，独立性非常强。但是你也要记住，Spark主要是计算框架，而不是资源调度框架，所以本身提供的资源调度并不是它的强项，所以还是和其他专业的资源调度框架集成会更靠谱一些。所以接下来我们来学习在强大的Yarn环境下Spark是如何工作的（其实是因为在国内工作中，Yarn使用的非常多）。</p>
+<ol>
+<li><p>将spark-3.0.0-bin-hadoop3.2.tgz文件解压缩</p>
+</li>
+<li><p>修改hadoop的yarn-site.xml配置</p>
+<pre><code class="lang-xml">是否启动一个线程检查每个任务正使用的物理内存量，如果任务超出分配值，则直接将其杀掉，默认是 true
+&lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.pmem-check-enabled&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+&lt;/property&gt;
+
+是否启动一个线程检查每个任务正使用的虚拟内存量，如果任务超 出分配值，则直接将其杀掉，默认是 true
+&lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.vmem-check-enabled&lt;/name&gt;
+    &lt;value&gt;false&lt;/value&gt;
+&lt;/property&gt;
+</code></pre>
+</li>
+<li><p>修改conf/spark-env.sh</p>
+<blockquote>
+<p>添加 JAVA_HOME和 YARN_CONF_DIR配置</p>
+<p>export JAVA_HOME=/opt/module/jdk1.8.0_144<br>YARN_CONF_DIR=/opt/module/hadoop/etc/hadoop</p>
+</blockquote>
+</li>
+<li><p>启动 HDFS 以及 YARN 集群</p>
+</li>
+<li><p>提交应用</p>
+<pre><code class="lang-sh">bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master yarn \
+--deploy-mode cluster
+./examples/jars/spark examples_2.12 3.0.0.jar \
+10
+</code></pre>
+</li>
+<li><p>查看<code>http://linux2:8088</code>页面，点击History，查看历史页面</p>
+</li>
+<li><p>配置历史服务器</p>
+<blockquote>
+<p>spark-defaults.conf   配置日志存储路径</p>
+<blockquote>
+<p>spark.eventLog.enabled           true</p>
+<p>spark.eventLog.dir                    hdfs:// linux1:9000/directory</p>
+<p>spark.yarn.historyServer.address= linux1:18080<br>spark.history.ui.port=18080</p>
+<p>需要启动hadoop集群，HDFS上的directory目录需要提前存在。</p>
+</blockquote>
+<p>修改 spark-env.sh</p>
+<blockquote>
+<p>export SPARK_HISTORY_OPTS=”</p>
+<p>-Dspark.history.ui.port=18080</p>
+<p>-Dspark.history.fs.logDirectory=hdfs:// linux1:9000/directory</p>
+<p>-Dspark.history.retainedApplications=30”</p>
+<p>参数1含义：WEB UI访问的端口号为18080</p>
+<p>参数2含义：指定历史服务器日志存储路径</p>
+<p>参数3含义：指定保存Application历史记录的个数，如果超过这个值，旧的应用程序信息将被删除，这个是内存中的应用数，而不是页面上显示的应用数。</p>
+</blockquote>
+<p>分发配置文件</p>
+<p>重新启动集群和历史服务</p>
+<blockquote>
+<p>sbin/stop-all.sh</p>
+<p>sbin/start-all.sh</p>
+<p>sbin/start-history-server.sh</p>
+</blockquote>
+<p>启动历史服务</p>
+<blockquote>
+<p>sbin/start-history-server.sh</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>重新提交应用</p>
+<pre><code class="lang-sh">bin/spark-submit \
+--class org.apache.spark.examples.SparkPi \
+--master yarn \
+--deploy-mode cluster
+./examples/jars/spark examples_2.12-3.0.0.jar \
+10
+</code></pre>
+</li>
+<li><p>Web页面查看日志: 8088 和 18080端口</p>
+</li>
+</ol>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/05/21/11-Spark/Spark04-SparkSql.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Spark04-SparkSql
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+                00-MySQL安装
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">NiuMT</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>

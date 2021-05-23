@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	
+	<!-- title -->
+	
+	<title>
+	
+		Spark02-RDD | 
+	 
+	雄风静谧
+	</title>
+	
+	<!-- keywords,description -->
+	
+		<meta name="keywords" content="渣硕, 大数据组件" />
+	 
+		<meta name="description" content="个人记事本" />
+	
+
+	<!-- favicon -->
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	
+  
+
+	
+<link rel="stylesheet" href="/css/main.css">
+
+	
+<link rel="stylesheet" href="/css/prettify.css">
+
+	
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+
+
+	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+	
+<script src="/js/main.js"></script>
+
+    
+<script src="/js/prettify.js"></script>
+
+	
+		
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+		
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+
+	
+	
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<script type="text/javascript">
+$(document).ready(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">雄风静谧</a>
+
+	<ul id="menu">
+		<li class="menu-item">
+			<a href="/about" class="menu-item-link">ABOUT</a>
+		</li>
+		
+		<li class="menu-item">
+			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
+				UidGenerator
+			</a>
+		</li>
+		<li class="menu-item">
+			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
+				<i class="fa fa-github fa-2x"></i>
+			</a>
+		</li>
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="text" placeholder="search...">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										00-环境
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/00-MySQL%E5%AE%89%E8%A3%85.html">
+										00-MySQL安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/01-Hadoop%E5%AE%89%E8%A3%85.html">
+										01-Hadoop安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/02-Hadoop%E7%BC%96%E8%AF%91%E6%BA%90%E7%A0%81.html">
+										02-Hadoop编译源码
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/03-Zookeeper%E5%AE%89%E8%A3%85.html">
+										03-Zookeeper安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/00-%E7%8E%AF%E5%A2%83/04-Hive.html">
+										04-Hive
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/04/12/00-%E7%8E%AF%E5%A2%83/05-Flume%E5%AE%89%E8%A3%85.html">
+										05-Flume安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/00-%E7%8E%AF%E5%A2%83/06-HBase%E5%AE%89%E8%A3%85.html">
+										06-HBase安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-Ubuntu16.04%20%E5%AE%89%E8%A3%85opencv%EF%BC%88C++%E7%89%88%E6%9C%AC%EF%BC%89.html">
+										99-Ubuntu16.04 安装opencv（C++版本）
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/01/20/00-%E7%8E%AF%E5%A2%83/99-%E5%AE%89%E8%A3%85ffmpeg.html">
+										99-安装ffmpeg
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										01-数据结构
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8401-%E5%A4%A7%E7%BA%B2.html">
+										数据结构01-大纲
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8402-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8A).html">
+										数据结构02-复杂度分析(上)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8403-%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90(%E4%B8%8B).html">
+										数据结构03-复杂度分析(下)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8404-%E6%95%B0%E7%BB%84.html">
+										数据结构04-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/24/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8405-%E9%93%BE%E8%A1%A8.html">
+										数据结构05-链表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8406-%E6%A0%88.html">
+										数据结构06-栈
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/25/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8407-%E9%98%9F%E5%88%97.html">
+										数据结构07-队列
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8408-%E9%80%92%E5%BD%92.html">
+										数据结构08-递归
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8409-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%86%92%E6%B3%A1&%E6%8F%92%E5%85%A5&%E9%80%89%E6%8B%A9.html">
+										数据结构09-排序之冒泡&插入&选择
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8410-%E6%8E%92%E5%BA%8F%E4%B9%8B%E5%BD%92%E5%B9%B6&%E5%BF%AB%E6%8E%92.html">
+										数据结构10-排序之归并&快排
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8411-%E6%8E%92%E5%BA%8F%E4%B9%8B%E7%BA%BF%E6%80%A7%E6%8E%92%E5%BA%8F(%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F).html">
+										数据结构11-排序之线性排序(桶排序、计数排序、基数排序)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8412-%E6%8E%92%E5%BA%8F%E4%B9%8B%E4%BC%98%E5%8C%96.html">
+										数据结构12-排序之优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8413-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html">
+										数据结构13-二分查找
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/11/27/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8414-%E8%B7%B3%E8%A1%A8.html">
+										数据结构14-跳表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/23/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8415-%E6%95%A3%E5%88%97%E8%A1%A8.html">
+										数据结构15-散列表
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8416-%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8.html">
+										数据结构16-哈希算法的应用
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/12/26/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8417-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80.html">
+										数据结构17-二叉树基础
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8418-%E7%BA%A2%E9%BB%91%E6%A0%91.html">
+										数据结构18-红黑树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8419-%E9%80%92%E5%BD%92%E6%A0%91.html">
+										数据结构19-递归树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8420-%E5%A0%86%E5%92%8C%E5%A0%86%E6%8E%92%E5%BA%8F.html">
+										数据结构20-堆和堆排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8421-%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA.html">
+										数据结构21-图的表示
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8422-%E6%B7%B1%E5%BA%A6%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2.html">
+										数据结构22-深度和广度优先搜索
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8423-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D.html">
+										数据结构23-字符串匹配
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8424-Trie%E6%A0%91.html">
+										数据结构24-Trie树
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8425-AC%E8%87%AA%E5%8A%A8%E6%9C%BA.html">
+										数据结构25-AC自动机
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8426-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">
+										数据结构26-贪心算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8427-%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95.html">
+										数据结构27-分治算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8428-%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95.html">
+										数据结构28-回溯算法
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8429-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA.html">
+										数据结构29-动态规划理论
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/01/02/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8430-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B.html">
+										数据结构30-动态规划入门案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8431-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AE%9E%E6%88%98.html">
+										数据结构31-动态规划实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(2).html">
+										数据结构32-拓扑排序 - 副本 (2)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										02-Java
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java00--%E6%97%B6%E9%97%B4%E8%AE%A1%E5%88%92.html">
+										Java00--时间计划
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java00-IDEA%E9%85%8D%E7%BD%AE.html">
+										Java00-IDEA配置
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java01-%E6%A6%82%E8%BF%B0.html">
+										Java01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java02-%E5%85%B3%E9%94%AE%E5%AD%97&%E6%A0%87%E8%AF%86%E7%AC%A6.html">
+										Java02-关键字&标识符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java03-%E8%BF%90%E7%AE%97%E7%AC%A6.html">
+										Java03-运算符
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java04-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										Java04-流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java05-%E6%95%B0%E7%BB%84.html">
+										Java05-数组
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A101%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7.html">
+										Java06-面向对象01三大特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A102%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%8E%A5%E5%8F%A3.html">
+										Java06-面向对象02抽象类接口
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java07-%E5%BC%82%E5%B8%B8.html">
+										Java07-异常
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java08-%E5%A4%9A%E7%BA%BF%E7%A8%8B.html">
+										Java08-多线程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java09-%E5%B8%B8%E7%94%A8%E7%B1%BB.html">
+										Java09-常用类
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java10-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E4%B8%8E%E6%B3%A8%E8%A7%A3.html">
+										Java10-枚举类与注解
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java11-%E9%9B%86%E5%90%88.html">
+										Java11-集合
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java12-%E6%B3%9B%E5%9E%8B.html">
+										Java12-泛型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java13-IO%E6%B5%81.html">
+										Java13-IO流
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java14-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B.html">
+										Java14-网络编程
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java15-%E5%8F%8D%E5%B0%84.html">
+										Java15-反射
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/02-Java/Java16-Java8%20%E6%96%B0%E7%89%B9%E6%80%A7.html">
+										Java16-Java8 新特性
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										03-MySQL
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL00-%E5%AE%89%E8%A3%85.html">
+										MySQL00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL01-%E6%A6%82%E8%BF%B0.html">
+										MySQL01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL02-DQL.html">
+										MySQL02-DQL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL03-DML.html">
+										MySQL03-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL04-DDL.html">
+										MySQL04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL05-TCL.html">
+										MySQL05-TCL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/03-MySQL/MySQL06-%E8%A7%86%E5%9B%BE&%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B&%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6.html">
+										MySQL06-视图&存储过程&流程控制
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										04-JDBC
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-01%20%E6%A6%82%E8%A7%88&%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E5%BC%8F.html">
+										JDBC-01 概览&连接数据库方式
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-02%20CRUD.html">
+										JDBC-02 CRUD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-03%20%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1&DAO.html">
+										JDBC-03 数据库事务&DAO
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/04-JDBC/JDBC-04%20%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0&DBUtils.html">
+										JDBC-04 数据库连接池&DBUtils
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										05-Hadoop
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop01-%E6%A6%82%E8%BF%B0%E3%80%81%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F&%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.html">
+										Hadoop01-概述、运行模式&源码编译
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop02-HDFS%E6%A6%82%E8%BF%B0%E3%80%81shell&%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%93%8D%E4%BD%9C.html">
+										Hadoop02-HDFS概述、shell&客户端操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop03-HDFS%E8%AF%BB%E5%86%99%E6%B5%81%E7%A8%8B&NN%E5%92%8C2NN.html">
+										Hadoop03-HDFS读写流程&NN和2NN
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop04-HDFS-DataNode.html">
+										Hadoop04-HDFS-DataNode
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop05-HDFS2.X%E6%96%B0%E7%89%B9%E6%80%A7%E5%92%8C%E9%AB%98%E5%8F%AF%E7%94%A8(HA).html">
+										Hadoop05-HDFS2.X新特性和高可用(HA)
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop06-MapReduce%E6%A6%82%E8%BF%B0&%E5%BA%8F%E5%88%97%E5%8C%96.html">
+										Hadoop06-MapReduce概述&序列化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop07-MapReduce%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86.html">
+										Hadoop07-MapReduce框架原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop08-Hadoop%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9.html">
+										Hadoop08-Hadoop数据压缩
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop09-Yarn%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6.html">
+										Hadoop09-Yarn资源调度
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+										Hadoop10-生产调优手册
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+										Hadoop11-源码解析
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										06-Zookeeper
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+										Zookeeper00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+										Zookeeper01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
+										Zookeeper02-内部原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper03-Shell%E6%93%8D%E4%BD%9C.html">
+										Zookeeper03-Shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+										Zookeeper04-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										07-Hive
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive01-%E6%A6%82%E8%BF%B0.html">
+										Hive01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive02-%E5%AE%89%E8%A3%85.html">
+										Hive02-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+										Hive03-数据类型
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive04-DDL.html">
+										Hive04-DDL
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive05-DML.html">
+										Hive05-DML
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive06-%E6%9F%A5%E8%AF%A2.html">
+										Hive06-查询
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive07-%E5%87%BD%E6%95%B0.html">
+										Hive07-函数
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive08-%E5%8E%8B%E7%BC%A9%E5%92%8C%E5%AD%98%E5%82%A8.html">
+										Hive08-压缩和存储
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive09-%E4%BC%81%E4%B8%9A%E7%BA%A7%E8%B0%83%E4%BC%98.html">
+										Hive09-企业级调优
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/07/03/07-Hive/Hive10-%E5%AE%9E%E6%88%98.html">
+										Hive10-实战
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										08-Flume
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume00-%E5%AE%89%E8%A3%85.html">
+										flume00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+										flume01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+										flume02-案例
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume03-%E5%8E%9F%E7%90%86.html">
+										flume03-原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										flume04-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										09-Kafka
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
+										Kafka00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka01-%E6%A6%82%E8%BF%B0&shell%E6%93%8D%E4%BD%9C.html">
+										Kafka01-概述&shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka02-%E6%9E%B6%E6%9E%84%E5%8E%9F%E7%90%86.html">
+										Kafka02-架构原理
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+										Kafka03-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+										Kafka04-监控
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka05-Flume%E5%AF%B9%E6%8E%A5Kafka.html">
+										Kafka05-Flume对接Kafka
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/09-Kafka/Kafka06-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+										Kafka06-面试题
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										10-HBase
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase00-%E5%AE%89%E8%A3%85.html">
+										HBase00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase01-%E6%A6%82%E8%BF%B0.html">
+										HBase01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase02-HBase-shell%E6%93%8D%E4%BD%9C.html">
+										HBase02-HBase-shell操作
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase03-HBase%E8%BF%9B%E9%98%B6.html">
+										HBase03-HBase进阶
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase04-HBase-API.html">
+										HBase04-HBase-API
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase05-HBase-MR.html">
+										HBase05-HBase-MR
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase06-%E4%B8%8EHive%E9%9B%86%E6%88%90.html">
+										HBase06-与Hive集成
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase07-HBase%E4%BC%98%E5%8C%96.html">
+										HBase07-HBase优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2020/08/12/10-HBase/HBase08-%E6%89%A9%E5%B1%95.html">
+										HBase08-扩展
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										11-Spark
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark00-%E5%AE%89%E8%A3%85.html">
+										Spark00-安装
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark01-%E6%A6%82%E8%BF%B0.html">
+										Spark01-概述
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2021/05/21/11-Spark/Spark02-RDD.html">
+										Spark02-RDD
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark03-%E7%B4%AF%E5%8A%A0%E5%99%A8&%E5%B9%BF%E6%92%AD%E5%8F%98%E9%87%8F.html">
+										Spark03-累加器&广播变量
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/21/11-Spark/Spark04-SparkSql.html">
+										Spark04-SparkSql
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark05-SparkStreaming.html">
+										Spark05-SparkStreaming
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark06-Spark%E5%86%85%E6%A0%B8.html">
+										Spark06-Spark内核
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2021/05/22/11-Spark/Spark07-Spark%E4%BC%98%E5%8C%96.html">
+										Spark07-Spark优化
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content">
+		<h1 id="article-title">
+
+	Spark02-RDD
+</h1>
+<div class="article-meta">
+	
+	<span>NiuMT</span>
+	<span>2021-05-21 14:16:49</span>
+    
+		<div id="article-categories">
+            
+                
+                    <span>
+                        <i class="fa fa-folder" aria-hidden="true"></i>
+                        <a href="/categories/Spark/">Spark</a>
+						
+                    </span>
+                
+            
+		</div>
+    
+</div>
+
+<div id="article-content">
+	<h2 id="三大数据结构"><a href="#三大数据结构" class="headerlink" title="三大数据结构"></a>三大数据结构</h2><p>Spark计算框架为了能够进行高并发和高吞吐的数据处理，封装了三大数据结构，用于处理不同的应用场景。三大数据结构分别是：</p>
+<ul>
+<li>RDD : 弹性分布式数据集</li>
+<li>累加器：分布式共享只写变量</li>
+<li>广播变量：分布式共享只读变量</li>
+</ul>
+<h2 id="RDD-介绍"><a href="#RDD-介绍" class="headerlink" title="RDD 介绍"></a>RDD 介绍</h2><p>RDD（Resilient Distributed Dataset）叫做弹性分布式数据集，是Spark中最基本的数据处理模型。代码中是一个抽象类，它代表一个<font color=#3333ff face="宋体">弹性的、不可变、可分区、里面的元素可并行计算的集合</font>。</p>
+<p>弹性:</p>
+<ul>
+<li>存储的弹性：内存与磁盘的自动切换；</li>
+<li>容错的弹性：数据丢失可以自动恢复；</li>
+<li>计算的弹性：计算出错重试机制；</li>
+<li>分片的弹性：可根据需要重新分片。</li>
+</ul>
+<p>分布式：数据存储在大数据集群不同节点上</p>
+<p>数据集： RDD 封装了计算逻辑，并不保存数据</p>
+<p>数据抽象： RDD 是一个抽象类，需要子类具体实现</p>
+<p>不可变：RDD 封装了计算逻辑，是不可以改变的，想要改变，只能产生新的 RDD ，在<br>新的 RDD 里面封装计算逻辑</p>
+<p>可分区、并行计算</p>
+<p><strong>核心属性介绍：</strong></p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521142641963.png" alt="image-20210521142641963"></p>
+<ol>
+<li><p>分区列表</p>
+<p>RDD<br>数据结构中存在分区列表，用于执行任务时并行计算，是实现分布式计算的重要属性。</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521142727057.png" alt="image-20210521142727057"></p>
+</li>
+<li><p>分区计算函数</p>
+<p>Spark<br>在计算时，是使用分区函数对每一个分区进行计算</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521142738380.png" alt="image-20210521142738380"></p>
+</li>
+<li><p>RDD 之间的依赖关系</p>
+<p>RDD<br>是计算模型的封装，当需求中需要将多个计算模型进行组合时，就需要将多个 RDD 建<br>立依赖关系</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521142748761.png" alt="image-20210521142748761"></p>
+</li>
+<li><p>分区器（可选）</p>
+<p>当数据为<br>KV 类型数据时，可以通过设定分区器自定义数据的分区</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521142759385.png" alt="image-20210521142759385"></p>
+</li>
+<li><p>首选位置（可选）</p>
+<p>计算数据时，可以根据计算节点的状态选择不同的节点位置进行计算</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521142810431.png" alt="image-20210521142810431"></p>
+</li>
+</ol>
+<p><strong>执行原理</strong></p>
+<p>从计算的角度来讲，数据处理过程中需要计算资源（内存<br>&amp; CPU ）和计算模型（逻辑）。<br>执行时，需要将计算资源和计算模型进行协调和整合。</p>
+<p>Spark<br>框架在执行时，先申请资源，然后将应用程序的数据处理逻辑分解成一个一个的<br>计算任务。然后将任务发到已经分配资源的计算节点上 , 按照指定的计算模型进行数据计算。最后得到计算结果。</p>
+<p>RDD<br>是 Spark 框架中用于数据处理的核心模型，接下来我们看看，在 Yarn 环境中， RDD<br>的工作原理：</p>
+<ol>
+<li><p>启动 Yarn 集群环境</p>
+</li>
+<li><p>Spark 通过申请资源创建调度节点和计算节点</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521143127826.png" alt="image-20210521143127826"></p>
+</li>
+<li><p>Spark 框架根据需求将计算逻辑根据分区划分成不同的任务</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521143153856.png" alt="image-20210521143153856"></p>
+</li>
+<li><p>调度节点将任务根据计算节点状态发送到对应的计算节点进行计算</p>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521143211015.png" alt="image-20210521143211015"></p>
+</li>
+</ol>
+<p>从以上流程可以看出<br>RDD 在整个流程中主要用于将逻辑进行封装，并生成 Task 发送给<br>Executor 节点执行计算。</p>
+<h2 id="RDD-创建"><a href="#RDD-创建" class="headerlink" title="RDD 创建"></a>RDD 创建</h2><p>在<br>Spark 中创建 RDD 的创建方式可以分为 四 种</p>
+<ol>
+<li><p>从集合（内存）中创建 RDD</p>
+<p>从集合中创建RDD，Spark主要提供了两个方法：<strong>parallelize和makeRDD</strong></p>
+<pre><code class="lang-scala">val sparkConf = new SparkConf().setMaster(&quot;local[*]&quot;).setAppName(&quot;spark&quot;)
+val sparkContext = new SparkContext(sparkConf)
+val rdd1 = sparkContext.parallelize(List(1,2,3,4))
+val rdd2 = sparkContext.makeRDD(List(1,2,3,4))
+rdd1.collect().foreach(println)
+rdd2.collect().foreach(println)
+sparkContext.stop()
+
+从底层代码实现来讲，makeRDD方法其实就是parallelize方法
+def makeRDD[T: ClassTag](
+    seq: Seq[T],
+    numSlices: Int = defaultParallelism): RDD[T] = withScope {
+    parallelize(seq,numSlices)
+}
+</code></pre>
+</li>
+<li><p>从外部存储（文件）创建 RDD:</p>
+<p>由外部存储系统的数据集创建RDD包括：本地的文件系统，所有Hadoop支持的数据集，比如HDFS、HBase等。<strong>textFile函数</strong></p>
+<pre><code class="lang-scala">val sparkConf = new SparkConf().setMaster(&quot;local[*]&quot;).setAppName(&quot;spark&quot;)
+val sparkContext = new SparkContext(sparkConf)
+val fileRDD: RDD[String] = sparkContext.textFile (&quot;input&quot;)
+fileRDD.collect().foreach(println)
+sparkContext.stop()
+</code></pre>
+</li>
+<li><p>从其他 RDD 创建</p>
+<p>主要是通过一个<br>RDD 运算完后，再产生新的 RDD 。</p>
+</li>
+<li><p>直接创建 RDD (new)</p>
+<p>使用<br>new 的方式直接构造 RDD ，一般由 Spark 框架自身使用。</p>
+</li>
+</ol>
+<p><strong>RDD 并行度与分区</strong></p>
+<p>默认情况下，Spark可以将一个作业切分多个任务后，发送给Executor节点并行计算，而能够并行计算的任务数量我们称之为并行度。这个数量可以在构建RDD时指定。记住，这里的并行执行的任务数量，并不是指的切分任务的数量，不要混淆了。</p>
+<pre><code class="lang-scala">val sparkConf = new SparkConf().setMaster(&quot;local[*]&quot;).setAppName(&quot;spark&quot;)
+val sparkContext = new SparkContext(sparkConf)
+val dataRDD: RDD[Int] = sparkContext.makeRDD(List(1,2,3,4), 4)
+val fileRDD: RDD[String] = sparkContext.textFile(&quot;input&quot;,2)
+fileRDD.collect().foreach(println)
+sparkContext.stop()
+</code></pre>
+<p>读取内存数据时，数据可以按照并行度的设定进行数据的分区操作，数据分区规则的Spark核心源码如下：</p>
+<pre><code class="lang-scala">def positions(length: Long, numSlices: Int): Iterator[(Int, Int)] = {
+    (0 until numSlices).iterator.map { i=&gt;
+        val start = ((i * length) / numSlices).toInt
+        val end = (((i + 1) * length) / numSlices).toInt
+        (start,end)
+    }
+}
+</code></pre>
+<p>读取文件数据时，数据是按照Hadoop文件读取的规则进行切片分区，而切片规则和数据读取的规则有些差异，具体Spark核心源码如下</p>
+<pre><code class="lang-java">public InputSplit[] getSplits(JobConf job, int numSplits) throws IOException {
+    long totalSize = 0; // compute total size
+    for (FileStatus file: files) { // check we have valid files
+        if (file.isDirectory()) {
+            throw new IOException(&quot;Not a file: &quot;+ file.getPath());
+        }
+        totalSize += file.getLen();
+    }
+    long goalSize = totalSize / (numSplits == 0 ? 1 :numSplits);
+    long minSize = Math.max(job.getLong(org.apache.hadoop.mapreduce.lib.input.FileInputFormat.SPLIT_MINSIZE, 1), minSplitSize);
+    ……
+    for (FileStatus file: files) {
+        ……
+    if (isSplitable(fs, path)) {
+        long blockSize = file.getBlockSize();
+        long splitSize = computeSplitSize(goalSize, minSize,blockSize);
+        ……
+    }
+    protected long computeSplitSize (long goalSize, long minSize,long blockSize) {
+        return Math.max(minSize, Math.min(goalSize, blockSize));
+    }
+}
+</code></pre>
+<h2 id="转换算子"><a href="#转换算子" class="headerlink" title="转换算子"></a>转换算子</h2><p>RDD根据数据处理方式的不同将算子整体上分为Value类型、双Value类型和Key-Value类型.</p>
+<p><strong>Value类型</strong></p>
+<ul>
+<li>map</li>
+<li>mapPartitions</li>
+<li>mapPartitionsWithIndex</li>
+<li>flatMap</li>
+<li>glom</li>
+<li>groupBy</li>
+<li>filter</li>
+<li>sample</li>
+<li>distinct</li>
+<li>coalesce</li>
+<li>repartition</li>
+<li>sortBy</li>
+</ul>
+<p><strong>双Value类型</strong></p>
+<ul>
+<li>intersection</li>
+<li>union</li>
+<li>subtract</li>
+<li>zip</li>
+</ul>
+<p><strong>Key-Value类型</strong></p>
+<ul>
+<li>partitionBy</li>
+<li>reduceByKey</li>
+<li>groupByKey</li>
+<li>aggregateByKey</li>
+<li>foldByKey</li>
+<li>combineByKey</li>
+<li>sortByKey</li>
+<li>join</li>
+<li>leftOuterJoin</li>
+<li>cogroup</li>
+</ul>
+<h3 id="Value类型"><a href="#Value类型" class="headerlink" title="Value类型"></a>Value类型</h3><h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p><strong>函数说明:</strong>  将#处理的数据逐条进行映射转换, 这里的转换可以是类型的转换，也可以是值的转换。</p>
+<p><strong>函数签名</strong>：def map[U: ClassTag](f: T =&gt; U): RDD[U]</p>
+<pre><code class="lang-scala">val dataRDD: RDD[Int] = sparkContext.makeRDD(List(1,2,3,4))
+val dataRDD1: RDD[Int] = dataRDD.map(
+    num=&gt;{
+        num*2
+    }
+)
+</code></pre>
+<h4 id="mapPartitions"><a href="#mapPartitions" class="headerlink" title="mapPartitions"></a>mapPartitions</h4><p><strong>函数说明:</strong>  将待处理的数据以分区为单位发送到计算节点进行处理，这里的处理是指可以进行任意的处理，哪怕是过滤数据</p>
+<p><strong>函数签名：</strong>def mapPartitions[U: ClassTag](<br>f: Iterator[T] =&gt; Iterator[U],<br>preservesPartitioning: Boolean = false): RDD[U]</p>
+<pre><code class="lang-scala">val dataRDD1: RDD[Int] = dataRDD.mapPartitions(
+    num=&gt;{
+        num.filter(_==2_)
+    }
+)
+</code></pre>
+<h4 id="map与mapPartitions对比"><a href="#map与mapPartitions对比" class="headerlink" title="map与mapPartitions对比"></a>map与mapPartitions对比</h4><ul>
+<li>Map算子是分区内一个数据一个数据的执行，类似于串行操作。而mapPartitions算子是以分区为单位进行批处理操作。</li>
+<li>Map算子主要目的将数据源中的数据进行转换和改变。但是不会减少或增多数据。MapPartitions算子需要传递一个迭代器，返回一个迭代器，没有要求的元素的个数保持不变，所以可以增加或减少数据</li>
+<li>Map算子因为类似于串行操作，所以性能比较低，而是mapPartitions算子类似于批处理，所以性能较高。但是mapPartitions算子会长时间占用内存，那么这样会导致内存可能不够用，出现内存溢出的错误。所以在内存有限的情况下，不推荐使用。</li>
+</ul>
+<h4 id="mapPartitionsWithIndex"><a href="#mapPartitionsWithIndex" class="headerlink" title="mapPartitionsWithIndex"></a>mapPartitionsWithIndex</h4><p><strong>函数说明：</strong> 将待处理的数据以分区为单位发送到计算节点进行处理，这里的处理是指可以进行任意的处理，哪怕是过滤数据，在处理时同时可以获取<strong>当前分区索引</strong>。</p>
+<p><strong>函数签名：</strong><br>def mapPartitionsWithIndex[U: ClassTag](<br>f: (Int, Iterator[T]) =&gt; Iterator[U],<br>preservesPartitioning: Boolean = false): RDD[U]</p>
+<pre><code class="lang-scala">val dataRDD1 = dataRDD. mapPartitionsWithIndex(
+    (index, datas) =&gt;{
+        datas.map(index,_)
+    }
+)
+</code></pre>
+<h4 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h4><p><strong>函数说明：</strong> 将处理的数据进行扁平化后再进行映射处理，所以算子也称之为扁平映射</p>
+<p><strong>函数签名：</strong>def flatMap[U: ClassTag](f: T =&gt; TraversableOnce[U]): RDD[U]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(List(1,2), List(3,4)),1)
+val dataRDD1 = dataRDD.flatMap(
+    list =&gt; list
+)
+</code></pre>
+<h4 id="glom"><a href="#glom" class="headerlink" title="glom"></a>glom</h4><p><strong>函数说明：</strong> 将同一个分区的数据直接转换为相同类型的内存数组进行处理，分区不变</p>
+<p><strong>函数签名：</strong><br>def glom(): RDD[Array[T]]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(1,2,3,4),1)
+val dataRDD1:RDD[ Array[Int] Int]] = dataRDD.glom()
+</code></pre>
+<h4 id="groupBy"><a href="#groupBy" class="headerlink" title="groupBy"></a>groupBy</h4><p><strong>函数说明：</strong> 将数据根据指定的规则进行分组, 分区默认不变，但是数据会被打乱重新组合，我们将这样的操作称之为shuffle。极限情况下，数据可能被分在同一个分区中. 一个组的数据在一个分区中，但是并不是说一个分区中只有一个组</p>
+<p><strong>函数签名：</strong><br>def groupBy[K](f: T =&gt; K)(implicit kt: ClassTag[K]): RDD[(K, Iterable[T])]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(1,2,3,4),1)
+val dataRDD1 = dataRDD.groupBy(
+    _%2
+)
+</code></pre>
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><p><strong>函数说明：</strong> 将数据根据指定的规则进行筛选过滤，符合规则的数据保留，不符合规则的数据丢弃。<br>当数据进行筛选过滤后，分区不变，但是分区内的数据可能不均衡，生产环境下，可能会出现数据倾斜。</p>
+<p><strong>函数签名：</strong><br>def filter(f: T =&gt; Boolean): RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(1,2,3,4),1)
+val dataRDD1 = dataRDD.filter(_%2 == 0)
+</code></pre>
+<h4 id="sample"><a href="#sample" class="headerlink" title="sample"></a>sample</h4><p><strong>函数说明：</strong> 根据指定的规则从数据集中抽取数据</p>
+<p><strong>函数签名：</strong><br>def sample(<br>withReplacement: Boolean,<br>fraction: Double,<br>seed: Long = Utils.random.nextLong): RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(1,2,3,4),1)
+// 抽取数据不放回（伯努利算法）
+// 伯努利算法：又叫 0 、 1 分布。例如扔硬币，要么正面，要么反面。
+// 具体实现：根据种子和随机算法算出一个数和第二个参数设置几率比较，小于第二个参数要，大于不要
+// 第一个参数：抽取的数据是否放回， false ：不放回
+// 第二个参数：抽取的几率，范围在 [ 之间 ,0全不取, 1全取
+// 第三个参数：随机数种子
+val dataRDD1 = dataRDD.sample(false, 0.5)
+// 抽取数据放回（泊松算法）
+// 第一个参数：抽取的数据是否放回， true ：放回 false ：不放回
+// 第二个参数：重复数据的几率，范围大于等于 0. 表示每一个元素被期望抽取到的次数
+// 第三个参数：随机数种子
+val dataRDD2 = dataRDD.sample(true, 2)
+</code></pre>
+<h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h4><p><strong>函数说明：</strong> 将数据集中重复的数据去重</p>
+<p><strong>函数签名：</strong><br>def distinct()(implicit ord: Ordering[T] = null): RDD[T]</p>
+<p>def distinct(numPartitions: Int)(implicit ord: Ordering[T] = null): RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(1,2,3,4,1,2),1)
+val dataRDD1 = dataRDD.distinct()
+val dataRDD2 = dataRDD.distinct(2)
+</code></pre>
+<h4 id="coalesce"><a href="#coalesce" class="headerlink" title="coalesce"></a>coalesce</h4><p><strong>函数说明：</strong> 根据数据量缩减分区，用于大数据集过滤后，提高小数据集的执行效率<br>当spark程序中，存在过多的小任务的时候，可以通过coalesce方法，收缩合并分区，减少分区的个数，减小任务调度成本</p>
+<p><strong>函数签名：</strong><br>def coalesce(numPartitions: Int, shuffle: Boolean = false,<br>partitionCoalescer: Option[PartitionCoalescer] = Option.empty)<br>(implicit ord: Ordering[T] = null)<br>: RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(1,2,3,4,1,2),6)
+val dataRDD1 = dataRDD.coalesce(2)
+</code></pre>
+<h4 id="repartition"><a href="#repartition" class="headerlink" title="repartition"></a>repartition</h4><p><strong>函数说明：</strong> 该操作内部其实执行的是coalesce操作，参数shuffle的默认值为true。无论是将分区数多的RDD转换为分区数少的RDD，还是将分区数少的RDD转换为分区数多的RDD，repartition操作都可以完成，因为无论如何都会经shuffle过程。</p>
+<p><strong>函数签名：</strong><br>def repartition(numPartitions: Int)(implicit ord: Ordering[T] = null): RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(1,2,3,4,1,2),2)
+val dataRDD1 = dataRDD.repartition(4)
+</code></pre>
+<h4 id="sortBy"><a href="#sortBy" class="headerlink" title="sortBy"></a>sortBy</h4><p><strong>函数说明：</strong> 该操作用于排序数据。<strong>在排序之前，可以将数据通过f函数进行处理</strong>，之后按照f函数处理的结果进行排序，默认为升序排列。排序后新产生的RDD的分区数与原RDD的分区数一致。中间存在shuffle的过程</p>
+<p><strong>函数签名：</strong><br>def sortBy[K](<br>f: (T) =&gt; K, ascending: Boolean = true,<br>numPartitions: Int = this.partitions.length)<br>(implicit ord: Ordering[K], ctag: ClassTag[K]): RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD = sparkContext.makeRDD(List(1,2,3,4,1,2),2)
+val dataRDD1 = dataRDD.sortBy(num=&gt;num, false, 4)
+</code></pre>
+<h3 id="双Value类型"><a href="#双Value类型" class="headerlink" title="双Value类型"></a>双Value类型</h3><h4 id="intersection"><a href="#intersection" class="headerlink" title="intersection"></a>intersection</h4><p><strong>函数说明：</strong> 对源RDD和参数RDD求交集后返回一个新的RDD</p>
+<p><strong>函数签名：</strong>def intersection(other: RDD[T]): RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List(1,2,3,4))
+val dataRDD2 = sparkContext.makeRDD(List(3,4,5,6))
+val dataRDD = dataRDD1.intersection(dataRDD2)
+</code></pre>
+<h4 id="union"><a href="#union" class="headerlink" title="union"></a>union</h4><p><strong>函数说明：</strong> 对源RDD和参数RDD求并集后返回一个新的RDD</p>
+<p><strong>函数签名：</strong>def union(other: RDD[T]): RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List(1,2,3,4))
+val dataRDD2 = sparkContext.makeRDD(List(3,4,5,6))
+val dataRDD = dataRDD1.union(dataRDD2)
+</code></pre>
+<h4 id="subtract"><a href="#subtract" class="headerlink" title="subtract"></a>subtract</h4><p><strong>函数说明：</strong>以一个RDD元素为主，去除两个RDD中重复元素，将其他元素保留下来。求差集</p>
+<p><strong>函数签名：</strong><br>def subtract(other: RDD[T]): RDD[T]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List(1,2,3,4))
+val dataRDD2 = sparkContext.makeRDD(List(3,4,5,6))
+val dataRDD = dataRDD1.subtract(dataRDD2)
+</code></pre>
+<h4 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h4><p><strong>函数说明：</strong> 将两个RDD中的元素，以键值对的形式进行合并。其中，键值对中的Key为第1个RDD中的元素，Value为第2个RDD中的相同位置的元素。</p>
+<p><strong>函数签名：</strong><br>def zip[U: ClassTag](other: RDD[U]): RDD[(T, U)]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List(1,2,3,4))
+val dataRDD2 = sparkContext.makeRDD(List(3,4,5,6))
+val dataRDD = dataRDD1.zip(dataRDD2)
+</code></pre>
+<h3 id="key-Value类型"><a href="#key-Value类型" class="headerlink" title="key-Value类型"></a>key-Value类型</h3><h4 id="partitionBy"><a href="#partitionBy" class="headerlink" title="partitionBy"></a>partitionBy</h4><p><strong>函数说明：</strong> 将数据按照指定Partitioner重新进行分区。Spark默认的分区器是HashPartitioner</p>
+<p><strong>函数签名：</strong><br>def partitionBy(partitioner: Partitioner): RDD[(K, V)]</p>
+<pre><code class="lang-scala">val rdd: RDD[(Int, String)] = sc.makeRDD(Array((1,&quot;aaa&quot;),(2,&quot;bbb&quot;),(3,&quot;ccc&quot;)),3)
+import org.apache.spark.HashPartitioner
+val rdd2: RDD[(Int, String)] = rdd.partitionBy(new HashPartitioner(2))
+</code></pre>
+<h4 id="reduceByKey"><a href="#reduceByKey" class="headerlink" title="reduceByKey"></a>reduceByKey</h4><p><strong>函数说明：</strong> 可以将数据按照相同的Key对Value进行聚合</p>
+<p><strong>函数签名：</strong><br>def reduceByKey(func: (V, V) =&gt; V): RDD[(K, V)]</p>
+<p>def reduceByKey(func: (V, V) =&gt; V, numPartitions: Int): RDD[(K, V)]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;b&quot;,2),(&quot;c&quot;,3)))
+val dataRDD2 = dataRDD1.reduceByKey(_+_)
+val dataRDD3 = dataRDD1.reduceByKey(_+_, 2)
+</code></pre>
+<h4 id="groupByKey"><a href="#groupByKey" class="headerlink" title="groupByKey"></a>groupByKey</h4><p><strong>函数说明：</strong>将数据源的数据根据key对value进行分组</p>
+<p><strong>函数签名：</strong><br>def groupByKey(): RDD[(K, Iterable[V])]</p>
+<p>def groupByKey(numPartitions: Int): RDD[(K, Iterable[V])]</p>
+<p>def groupByKey(partitioner: Partitioner): RDD[(K, Iterable[V])]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;b&quot;,2),(&quot;c&quot;,3)))
+val dataRDD2 = dataRDD1.groupByKey()
+val dataRDD3 = dataRDD1.groupByKey()
+val dataRDD4 = dataRDD1.groupByKey(new HashPartitioner(2))
+</code></pre>
+<h4 id="reduceByKey和groupByKey的区别"><a href="#reduceByKey和groupByKey的区别" class="headerlink" title="reduceByKey和groupByKey的区别"></a>reduceByKey和groupByKey的区别</h4><ul>
+<li>从shuffle的角度：reduceByKey和groupByKey都存在shuffle的操作，但是reduceByKey可以在shuffle前对分区内相同key的数据进行预聚合（combine）功能，这样会减少落盘的数据量，而groupByKey只是进行分组，不存在数据量减少的问题，reduceByKey性能比较高。</li>
+<li>从功能的角度：reduceByKey其实包含分组和聚合的功能。GroupByKey只能分组，不能聚合，所以在分组聚合的场合下，推荐使用reduceByKey，如果仅仅是分组而不需要聚合。那么还是只能使用groupByKey</li>
+</ul>
+<h4 id="aggregateByKey"><a href="#aggregateByKey" class="headerlink" title="aggregateByKey"></a>aggregateByKey</h4><p><strong>函数说明：</strong> 将数据根据不同的规则进行分区内计算和分区间计算</p>
+<p><strong>函数签名：</strong><br>def aggregateByKey[U: ClassTag](zeroValue: U)(seqOp: (U, V) =&gt; U,<br>combOp: (U, U) =&gt; U): RDD[(K, U)]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;b&quot;,2),(&quot;c&quot;,3)))
+val dataRDD2 = dataRDD1. aggregateByKey(_+_,_+_)
+
+取出每个分区内相同key的最大值然后分区间相加
+// TODO : 取出每个分区内相同 key 的最大值然后分区间相加
+// aggregateByKey 算子是函数柯里化，存在两个参数列表
+// 1. 第一个参数列表中的参数表示初始值
+// 2. 第二个参数列表中含有两个参数
+// 2.1 第一个参数表示分区内的计算规则
+// 2.2 第二个参数表示分区间的计算规则
+val rdd =
+sc.makeRDD(List((&quot;a&quot;,1),(&quot;a&quot;,2),(&quot;c&quot;,3),(&quot;b&quot;,4),(&quot;c&quot;,5),(&quot;c&quot;,6),),2)
+// 0:(&quot;a&quot;,1),(&quot;a&quot;, c&quot;,3) =&gt; (a,10)(c,10)
+// =&gt; (a,10)(b,10)(c,
+// 1:(&quot;b&quot;,4),(&quot;c&quot;,5),(&quot;c&quot;,6) =&gt; (b,10)(c,
+val resultRDD = rdd.aggregateByKey(10)(
+    (x, y) =&gt; math.max(x,y),
+    (x, y) =&gt; x + y
+)
+resultRDD.collect().foreach(println)
+</code></pre>
+<h4 id="foldByKey"><a href="#foldByKey" class="headerlink" title="foldByKey"></a>foldByKey</h4><p><strong>函数说明：</strong>当分区内计算规则和分区间计算规则相同时，aggregateByKey就可以简化为foldByKey</p>
+<p><strong>函数签名：</strong><br>def foldByKey(zeroValue: V)(func: (V, V) =&gt; V): RDD[(K, V)]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;b&quot;,2),(&quot;c&quot;,3)))
+val dataRDD2 = dataRDD1.foldByKey(0)(_+_)
+</code></pre>
+<h4 id="combineByKey"><a href="#combineByKey" class="headerlink" title="combineByKey"></a>combineByKey</h4><p><strong>函数说明：</strong>最通用的对key-value型rdd进行聚集操作的聚集函数（aggregation function）。类似于aggregate()，combineByKey()允许用户返回值的类型与输入不一致。</p>
+<p><strong>函数签名：</strong>def combineByKey[C](<br>createCombiner: V =&gt; C,<br>mergeValue: (C, V) =&gt; C,<br>mergeCombiners: (C, C) =&gt; C): RDD[(K, C)]</p>
+<pre><code class="lang-scala">求每个key的平均值
+val list: List[(String, Int)] = List((&quot;a&quot;, 88), (&quot;b&quot;, 95), (&quot;a&quot;, 91), (&quot;b&quot;, 93),(&quot;a&quot;, 95), (&quot;b&quot;,98))
+val input: RDD[(String, Int)] = sc.makeRDD(list, 2)
+val combineRdd: RDD[(String, (Int, Int))] = input.combineByKey(
+    (_,1),
+    (acc: (Int, Int), v) =&gt; (acc._1 + v, acc._2 + 1),
+    (acc1: (Int, Int), acc2: (Int, Int)) =&gt; (acc1._1 + acc2._1, acc1._2 + acc2._2)
+)
+</code></pre>
+<h4 id="reduceByKey、foldByKey、aggregateByKey、combineByKey的区别？"><a href="#reduceByKey、foldByKey、aggregateByKey、combineByKey的区别？" class="headerlink" title="reduceByKey、foldByKey、aggregateByKey、combineByKey的区别？"></a>reduceByKey、foldByKey、aggregateByKey、combineByKey的区别？</h4><ol>
+<li>reduceByKey: 相同key的第一个数据不进行任何计算，分区内和分区间计算规则相同</li>
+<li>FoldByKey: 相同key的第一个数据和初始值进行分区内计算，分区内和分区间计算规则相同</li>
+<li>AggregateByKey：相同key的第一个数据和初始值进行分区内计算，分区内和分区间计算规则可以不相同</li>
+<li>CombineByKey:当计算时，发现数据结构不满足要求时，可以让第一个数据转换结构。分区内和分区间计算规则不相同。</li>
+</ol>
+<h4 id="sortByKey"><a href="#sortByKey" class="headerlink" title="sortByKey"></a>sortByKey</h4><p><strong>函数说明：</strong>在一个(K,V)的RDD上调用，K必须实现Ordered接口(特质)，返回一个按照key进行排序的</p>
+<p><strong>函数签名：</strong><br>def sortByKey(ascending: Boolean = true, numPartitions: Int = self.partitions.length)<br>: RDD[(K, V)]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;b&quot;,2),(&quot;c&quot;,3)))
+val sortRDD1: RDD[(String, Int)] = dataRDD1.sortByKey(true)
+val sortRDD1: RDD[(String, Int)] = dataRDD1.sortByKey(false)
+</code></pre>
+<h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4><p><strong>函数说明：</strong>在类型为(K,V)和(K,W)的RDD上调用，返回一个相同key对应的所有元素连接在一起的(K,(V,W))的RDD</p>
+<p><strong>函数签名：</strong><br>def join[W](other: RDD[(K, W)]): RDD[(K, (V, W))]</p>
+<pre><code class="lang-scala">val rdd: RDD[(Int, String)] = sc.makeRDD(Array((1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;)))
+val rdd1: RDD[(Int, Int)] = sc.makeRDD(Array((1, 4), (2, 5), (3, 6)))
+rdd.join(rdd1).collect().foreach(println)
+</code></pre>
+<h4 id="leftOuterJoin"><a href="#leftOuterJoin" class="headerlink" title="leftOuterJoin"></a>leftOuterJoin</h4><p><strong>函数说明：</strong>类似于SQL语句的左外连接</p>
+<p><strong>函数签名：</strong><br>def leftOuterJoin<a href="other: RDD[(K, W">W</a>]): RDD[(K, (V, Option[W]))]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;b&quot;,2),(&quot;c&quot;,3)))
+val dataRDD2 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;b&quot;,2),(&quot;c&quot;,3)))
+val rdd: RDD[(String, (Int, Option[Int]))] = dataRDD1.leftOuterJoin(dataRDD2)
+</code></pre>
+<h4 id="cogroup"><a href="#cogroup" class="headerlink" title="cogroup"></a>cogroup</h4><p><strong>函数说明：</strong>在类型为(K,V)和(K,W)的RDD上调用，返回一个(K,(Iterable<V>, Iterable<W>))类型的RDD</p>
+<p><strong>函数签名：</strong><br>def cogroup<a href="other: RDD[(K, W">W</a>]): RDD[(K, (Iterable[V], Iterable[W]))]</p>
+<pre><code class="lang-scala">val dataRDD1 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;a&quot;,2),(&quot;c&quot;,3)))
+val dataRDD2 = sparkContext.makeRDD(List((&quot;a&quot;,1),(&quot;c&quot;,2),(&quot;c&quot;,3)))
+val value: RDD[( String, (Iterable[Int], Iterable[Int]))] =
+dataRDD1.cogroup(dataRDD2)
+</code></pre>
+<h2 id="行动算子"><a href="#行动算子" class="headerlink" title="行动算子"></a>行动算子</h2><h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><p><strong>函数说明：</strong>聚集RDD中的所有元素，先聚合分区内数据，再聚合分区间数据</p>
+<p><strong>函数签名：</strong><br>def reduce(f: (T, T) =&gt; T): T</p>
+<pre><code class="lang-scala">val rdd: RDD[Int] = sc.makeRDD(List(1,2,3,4))
+// 聚合数据
+val reduceResult: Int = rdd.reduce(_+_)
+</code></pre>
+<h4 id="collect"><a href="#collect" class="headerlink" title="collect"></a>collect</h4><p><strong>函数说明：</strong>在驱动程序中，以数组Array的形式返回数据集的所有元素</p>
+<p><strong>函数签名：</strong>def collect(): Array[T]</p>
+<pre><code class="lang-scala">val rdd: RDD[Int] = sc.makeRDD(List(1,2,3,4))
+// 收集数据到 Driv er
+rdd.collect().foreach(println)
+</code></pre>
+<h4 id="count"><a href="#count" class="headerlink" title="count"></a>count</h4><p><strong>函数说明：</strong>返回RDD中元素的个数</p>
+<p><strong>函数签名：</strong>def count(): Long</p>
+<pre><code class="lang-scala">val rdd: RDD[Int] = sc.makeRDD(List(1,2,3,4))
+// 返回 RDD 中元素的个数
+val countResult: Long = rdd.count()
+</code></pre>
+<h4 id="first"><a href="#first" class="headerlink" title="first"></a>first</h4><p><strong>函数说明：</strong>返回RDD中的第一个元素</p>
+<p><strong>函数签名：</strong><br>def first(): T</p>
+<pre><code class="lang-scala">val rdd: RDD[Int] = sc.makeRDD(List(1,2,3,4))
+// 返回 RDD 中元素的个数
+val firstResult: Int = rdd.first()
+println(firstResult)
+</code></pre>
+<h4 id="take"><a href="#take" class="headerlink" title="take"></a>take</h4><p><strong>函数说明：</strong>返回一个由RDD的前n个元素组成的数组</p>
+<p><strong>函数签名：</strong><br>def take(num: Int): Array[T]</p>
+<pre><code class="lang-scala">vval rdd: RDD[Int] = sc.makeRDD(List(1,2,3,4))
+// 返回 RDD 中元素的个数
+val takeResult: Array[Int] = rdd.take(2)
+println(takeResult.mkString(&quot;,&quot;))
+</code></pre>
+<h4 id="takeOrdered"><a href="#takeOrdered" class="headerlink" title="takeOrdered"></a>takeOrdered</h4><p><strong>函数说明：</strong>返回该RDD排序后的前n个元素组成的数组</p>
+<p><strong>函数签名：</strong><br>def takeOrdered(num: Int)(implicit ord: Ordering[T]): Array[T]</p>
+<pre><code class="lang-scala">val rdd: RDD[Int] = sc.makeRDD(List(1,3,2,4))
+// 返回 RDD 中元素的个数
+val result: Array[Int] = rdd.takeOrdered(2)
+</code></pre>
+<h4 id="aggregate"><a href="#aggregate" class="headerlink" title="aggregate"></a>aggregate</h4><p><strong>函数说明：</strong>分区的数据通过初始值和分区内的数据进行聚合，然后再和初始值进行分区间的数据聚合</p>
+<p><strong>函数签名：</strong><br>def aggregate[U: ClassTag](zeroValue: U)(seqOp: (U, T) =&gt; U, combOp: (U, U) =&gt; U): U</p>
+<pre><code class="lang-scala">val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4), 8)
+// 将该 RDD 所有元素相加得到结果
+//val result: Int = rdd.aggregate(0)(_ + _, _ +
+val result: Int = rdd.aggregate(10)(_ + _, _ + _)
+</code></pre>
+<h4 id="fold"><a href="#fold" class="headerlink" title="fold"></a>fold</h4><p><strong>函数说明：</strong>折叠操作，aggregate的简化版操作</p>
+<p><strong>函数签名：</strong>def fold(zeroValue: T)(op: (T, T) =&gt; T): T</p>
+<pre><code class="lang-scala">val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4))
+val foldResult: Int = rdd.fold(0)(_+_)
+</code></pre>
+<h4 id="countByKey"><a href="#countByKey" class="headerlink" title="countByKey"></a>countByKey</h4><p><strong>函数说明：</strong>统计每种key的个数</p>
+<p><strong>函数签名：</strong><br>def countByKey(): Map[K, Long]</p>
+<pre><code class="lang-scala">val rdd: RDD[(Int, String)] = sc.makeRDD(List((1, &quot;a&quot;), (1,&quot;a&quot;), (1, &quot;a&quot;), (2,&quot;b&quot;), (3, &quot;c&quot;), (3, &quot;c&quot;)))
+// 统计每种 key 的个数
+val result: collection.Map[Int, Long] = rdd.countByKey()
+</code></pre>
+<h4 id="save"><a href="#save" class="headerlink" title="save"></a>save</h4><p><strong>函数说明：</strong>在类型为(K,V)和(K,W)的RDD上调用，返回一个(K,(Iterable<V>, Iterable<W>))类型的RDD</p>
+<p><strong>函数签名：</strong><br>def saveAsTextFile(path: String): Unit</p>
+<p>def saveAsObjectFile(path: String): Unit</p>
+<p>def saveAsSequenceFile(<br>path: String,<br>codec: Option[Class[_ &lt;: CompressionCodec]] = None): Unit</p>
+<pre><code class="lang-scala">// 保存成 Text 文件
+rdd.saveAsTextFile(&quot;output1&quot;)
+// 序列化成对象保存到文件
+rdd.saveAsObjectFile(&quot;output2&quot;)
+// 保存成 Sequencefile 文件
+rdd.map((_,1)).saveAsSequenceFile(&quot;output3&quot;)
+</code></pre>
+<h4 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h4><p><strong>函数说明：</strong>分布式遍历RDD中的每一个元素，调用指定函数</p>
+<p><strong>函数签名：</strong>def foreach(f: T =&gt; Unit): Unit = withScope {<br>val cleanF = sc.clean(f), sc.runJob(this, (iter: Iterator[T]) =&gt; iter.foreach(cleanF))<br>}</p>
+<pre><code class="lang-scala">val rdd: RDD[Int] = sc.makeRDD(List(1,2,3,4))
+// 收集后打印
+rdd.map(num=&gt;num).collect().foreach(println)
+println(&quot;****************&quot;)
+// 分布式打印
+rdd.foreach(println)
+</code></pre>
+<h2 id="RDD-序列化"><a href="#RDD-序列化" class="headerlink" title="RDD 序列化"></a>RDD 序列化</h2><h3 id="闭包检查"><a href="#闭包检查" class="headerlink" title="闭包检查"></a>闭包检查</h3><p>从计算的角度, <font color = #3333ff face="宋体">算子以外的代码都是在Driver端执行, 算子里面的代码都是在Executor端执行</font>。那么在scala的函数式编程中，就会导致算子内经常会用到算子外的数据，这样就形成了闭包的效果，如果使用的算子外的数据无法序列化，就意味着无法传值给Executor端执行，就会发生错误，所以需要在执行任务计算前，检测闭包内的对象是否可以进行序列化，这个操作我们称之为闭包检测。Scala2.12版本后闭包编译方式发生了改变</p>
+<h3 id="序列化方法和属性"><a href="#序列化方法和属性" class="headerlink" title="序列化方法和属性"></a>序列化方法和属性</h3><pre><code class="lang-scala">import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
+
+object Spark01_RDD_Serial {
+
+    def main(args: Array[String]): Unit = {
+        val sparConf = new SparkConf().setMaster(&quot;local&quot;).setAppName(&quot;WordCount&quot;)
+        val sc = new SparkContext(sparConf)
+        val rdd: RDD[String] = sc.makeRDD(Array(&quot;hello world&quot;, &quot;hello spark&quot;, &quot;hive&quot;, &quot;atguigu&quot;))
+        val search = new Search(&quot;hello&quot;)
+        //函数传递，打印： ERROR Task not serializable
+        search.getMatch1(rdd).collect().foreach(println)
+        //属性传递，打印： ERROR Task not serializable
+        search.getMatch2(rdd).collect().foreach(println)
+
+        sc.stop()
+    }
+    // 查询对象
+    // 类的构造参数其实是类的属性, 构造参数需要进行闭包检测，其实就等同于类进行闭包检测
+    class Search(query:String) [extends Serializable]{
+        def isMatch(s: String): Boolean = {
+            s.contains(this.query)
+        }
+        // 函数序列化案例
+        def getMatch1 (rdd: RDD[String]): RDD[String] = {
+            rdd.filter(isMatch)
+        }
+        // 属性序列化案例
+        def getMatch2(rdd: RDD[String]): RDD[String] = {
+            val s = query
+            rdd.filter(x =&gt; x.contains(s))
+        }
+    }
+}
+</code></pre>
+<p><strong>Kryo序列化框架</strong></p>
+<p>Java的序列化能够序列化任何的类。但是比较重（字节多），序列化后，对象的提交也比较大。Spark出于性能的考虑，Spark2.0开始支持另外一种Kryo序列化机制。Kryo速度是Serializable的10倍。当RDD在Shuffle数据的时候，简单数据类型、数组和字符串类型已经在Spark内部使用Kryo来序列化。</p>
+<p>注意：即使使用Kryo序列化，也要继承Serializable接口。</p>
+<pre><code class="lang-scala">import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
+
+object Spark01_RDD_Kryo {
+
+    def main(args: Array[String]): Unit = {
+        val sparConf = new SparkConf().setMaster(&quot;local&quot;).setAppName(&quot;WordCount&quot;)
+        .set(&quot;spark.serializer&quot;, &quot;org.apache.spark.serializer.KryoSerializer&quot;)
+        .registerKryoClasses(Array(classOf[Searcher]))
+        val sc = new SparkContext(sparConf)
+        val rdd: RDD[String] = sc.makeRDD(Array(&quot;hello world&quot;, &quot;hello spark&quot;, &quot;hive&quot;, &quot;atguigu&quot;))
+        val searcher = new Searcher(&quot;hello&quot;)
+        val result: RDD[String] = searcher.getMatch1(rdd)
+        result.collect.foreach(println)
+
+        sc.stop()
+    }
+    // 查询对象
+    // 类的构造参数其实是类的属性, 构造参数需要进行闭包检测，其实就等同于类进行闭包检测
+    class Searcher(query:String) extends Serializable{
+        def isMatch(s: String): Boolean = {
+            s.contains(this.query)
+        }
+        // 函数序列化案例
+        def getMatch1 (rdd: RDD[String]): RDD[String] = {
+            rdd.filter(isMatch)
+        }
+        // 属性序列化案例
+        def getMatch2(rdd: RDD[String]): RDD[String] = {
+            val s = query
+            rdd.filter(x =&gt; x.contains(s))
+        }
+    }
+}
+</code></pre>
+<h2 id="RDD-依赖关系"><a href="#RDD-依赖关系" class="headerlink" title="RDD 依赖关系"></a>RDD 依赖关系</h2><p>RDD只支持粗粒度转换，即在大量记录上执行的单个操作。将创建RDD的一系列Lineage（血统）记录下来，以便恢复丢失的分区。RDD的Lineage会记录RDD的元数据信息和转换行为，当该RDD的部分分区数据丢失时，它可以根据这些信息来重新运算和恢复丢失的数据分区。</p>
+<p>这里所谓的依赖关系，其实就是两个相邻RDD之间的关系.</p>
+<p>窄依赖表示每一个父(上游)RDD的Partition最多被子（下游）RDD的一个Partition使用，窄依赖我们形象的比喻为独生子女。</p>
+<p>宽依赖表示同一个父（上游）RDD的Partition被多个子（下游）RDD的Partition依赖，会引起Shuffle，总结：宽依赖我们形象的比喻为多生。</p>
+<p><strong>RDD 阶段划分源码</strong></p>
+<pre><code class="lang-scala">try {
+  // New stage creation may throw an exception if, for example, jobs are run on a
+  // HadoopRDD whose underlying HDFS files have been deleted.
+  finalStage = createResultStage(finalRDD, func, partitions, jobId, callSite)
+} catch {
+  case e: Exception =&gt;
+    logWarning(&quot;Creating new stage failed due to exception - job: &quot; + jobId, e)
+    listener.jobFailed(e)
+    return
+}
+
+……
+
+private def createResultStage(
+  rdd: RDD[_],
+  func: (TaskContext, Iterator[_]) =&gt; _,
+  partitions: Array[Int],
+  jobId: Int,
+  callSite: CallSite): ResultStage = {
+val parents = getOrCreateParentStages(rdd, jobId)
+val id = nextStageId.getAndIncrement()
+val stage = new ResultStage(id, rdd, func, partitions, parents, jobId, callSite)
+stageIdToStage(id) = stage
+updateJobIdStageIdMaps(jobId, stage)
+stage
+}
+……
+
+private def getOrCreateParentStages(rdd: RDD[_], firstJobId: Int): List[Stage] = {
+getShuffleDependencies(rdd).map { shuffleDep =&gt;
+  getOrCreateShuffleMapStage(shuffleDep, firstJobId)
+}.toList
+}
+
+……
+
+private[scheduler] def getShuffleDependencies(
+  rdd: RDD[_]): HashSet[ShuffleDependency[_, _, _]] = {
+val parents = new HashSet[ShuffleDependency[_, _, _]]
+val visited = new HashSet[RDD[_]]
+val waitingForVisit = new Stack[RDD[_]]
+waitingForVisit.push(rdd)
+while (waitingForVisit.nonEmpty) {
+  val toVisit = waitingForVisit.pop()
+  if (!visited(toVisit)) {
+    visited += toVisit
+    toVisit.dependencies.foreach {
+      case shuffleDep: ShuffleDependency[_, _, _] =&gt;
+        parents += shuffleDep
+      case dependency =&gt;
+        waitingForVisit.push(dependency.rdd)
+    }
+  }
+}
+parents
+}
+</code></pre>
+<p><strong>RDD 任务划分源码</strong></p>
+<p>RDD任务切分中间分为：Application、Job、Stage和Task</p>
+<ul>
+<li>Application：初始化一个SparkContext即生成一个Application；</li>
+<li>Job：一个Action算子就会生成一个Job；</li>
+<li>Stage：Stage等于宽依赖(ShuffleDependency)的个数加1；</li>
+<li>Task：一个Stage阶段中，最后一个RDD的分区个数就是Task的个数。</li>
+</ul>
+<p>注意：Application-&gt;Job-&gt;Stage-&gt;Task每一层都是1对n的关系</p>
+<pre><code class="lang-scala">val tasks: Seq[Task[_]] = try {
+  stage match {
+    case stage: ShuffleMapStage =&gt;
+      partitionsToCompute.map { id =&gt;
+        val locs = taskIdToLocations(id)
+        val part = stage.rdd.partitions(id)
+        new ShuffleMapTask(stage.id, stage.latestInfo.attemptId,
+          taskBinary, part, locs, stage.latestInfo.taskMetrics, properties, Option(jobId),
+          Option(sc.applicationId), sc.applicationAttemptId)
+      }
+
+    case stage: ResultStage =&gt;
+      partitionsToCompute.map { id =&gt;
+        val p: Int = stage.partitions(id)
+        val part = stage.rdd.partitions(p)
+        val locs = taskIdToLocations(id)
+        new ResultTask(stage.id, stage.latestInfo.attemptId,
+          taskBinary, part, locs, id, properties, stage.latestInfo.taskMetrics,
+          Option(jobId), Option(sc.applicationId), sc.applicationAttemptId)
+      }
+  }
+
+……
+
+val partitionsToCompute: Seq[Int] = stage.findMissingPartitions()
+
+……
+
+override def findMissingPartitions(): Seq[Int] = {
+val missing = (0 until numPartitions).filter(id =&gt; outputLocs(id).isEmpty)
+assert(missing.size == numPartitions - _numAvailableOutputs,
+  s&quot;${missing.size} missing, expected ${numPartitions - _numAvailableOutputs}&quot;)
+missing
+}
+</code></pre>
+<h2 id="RDD持久化"><a href="#RDD持久化" class="headerlink" title="RDD持久化"></a>RDD持久化</h2><h3 id="RDD-Cache缓存"><a href="#RDD-Cache缓存" class="headerlink" title="RDD Cache缓存"></a>RDD Cache缓存</h3><p>RDD通过Cache或者Persist方法将前面的计算结果缓存，默认情况下会把数据以序列化的形式缓存在JVM的堆内存中。但是并不是这两个方法被调用时立即缓存，而是触发后面的action算子时，该RDD将会被缓存在计算节点的内存中，并供后面重用。</p>
+<pre><code class="lang-scala">// cache操作会增加血缘关系，不改变原有的血缘关系
+println(wordToOneRdd.toDebugString)
+// 数据缓存。
+wordToOneRdd.cache()
+// 可以更改存储级别
+//mapRdd.persist(StorageLevel.MEMORY_AND_DISK_2)
+//存储级别
+object StorageLevel {
+  val NONE = new StorageLevel(false, false, false, false)
+  val DISK_ONLY = new StorageLevel(true, false, false, false)
+  val DISK_ONLY_2 = new StorageLevel(true, false, false, false, 2)
+  val MEMORY_ONLY = new StorageLevel(false, true, false, true)
+  val MEMORY_ONLY_2 = new StorageLevel(false, true, false, true, 2)
+  val MEMORY_ONLY_SER = new StorageLevel(false, true, false, false)
+  val MEMORY_ONLY_SER_2 = new StorageLevel(false, true, false, false, 2)
+  val MEMORY_AND_DISK = new StorageLevel(true, true, false, true)
+  val MEMORY_AND_DISK_2 = new StorageLevel(true, true, false, true, 2)
+  val MEMORY_AND_DISK_SER = new StorageLevel(true, true, false, false)
+  val MEMORY_AND_DISK_SER_2 = new StorageLevel(true, true, false, false, 2)
+  val OFF_HEAP = new StorageLevel(true, true, true, false, 1)
+</code></pre>
+<p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210521193731544.png" alt="image-20210521193731544"></p>
+<p>缓存有可能丢失，或者存储于内存的数据由于内存不足而被删除，RDD的缓存容错机制保证了即使缓存丢失也能保证计算的正确执行。通过基于RDD的一系列转换，丢失的数据会被重算，由于RDD的各个Partition是相对独立的，因此只需要计算丢失的部分即可，并不需要重算全部Partition。</p>
+<p>Spark会自动对一些Shuffle操作的中间数据做持久化操作(比如：reduceByKey)。这样做的目的是为了当一个节点Shuffle失败了避免重新计算整个输入。但是，在实际使用的时候，如果想重用数据，仍然建议调用persist或cache。</p>
+<h3 id="RDD-CheckPoint检查点"><a href="#RDD-CheckPoint检查点" class="headerlink" title="RDD CheckPoint检查点"></a>RDD CheckPoint检查点</h3><p>所谓的检查点其实就是通过将RDD中间结果写入磁盘</p>
+<p>由于血缘依赖过长会造成容错成本过高，这样就不如在中间阶段做检查点容错，如果检查点之后有节点出现问题，可以从检查点开始重做血缘，减少了开销。</p>
+<p>对RDD进行checkpoint操作并不会马上被执行，必须执行Action操作才能触发。</p>
+<pre><code class="lang-scala">// 设置检查点路径
+sc.setCheckpointDir(&quot;./checkpoint1&quot;)
+// 创建一个RDD，读取指定位置文件:hello atguigu atguigu
+val lineRdd: RDD[String] = sc.textFile(&quot;input/1.txt&quot;)
+// 业务逻辑
+val wordRdd: RDD[String] = lineRdd.flatMap(line =&gt; line.split(&quot; &quot;))
+val wordToOneRdd: RDD[(String, Long)] = wordRdd.map {
+    word =&gt; {
+        (word, System.currentTimeMillis())
+    }
+}
+// 增加缓存,避免再重新跑一个job做checkpoint
+wordToOneRdd.cache()
+// 数据检查点：针对wordToOneRdd做检查点计算
+wordToOneRdd.checkpoint()
+// 触发执行逻辑
+wordToOneRdd.collect().foreach(println)
+</code></pre>
+<p><strong>缓存和检查点区别</strong></p>
+<ol>
+<li>Cache缓存只是将数据保存起来，不切断血缘依赖。Checkpoint检查点切断血缘依赖。</li>
+<li>Cache缓存的数据通常存储在磁盘、内存等地方，可靠性低。Checkpoint的数据通常存储在HDFS等容错、高可用的文件系统，可靠性高。</li>
+<li>建议对checkpoint()的RDD使用Cache缓存，这样checkpoint的job只需从Cache缓存中读取数据即可，否则需要再从头计算一次RDD。</li>
+</ol>
+<h2 id="RDD分区器"><a href="#RDD分区器" class="headerlink" title="RDD分区器"></a>RDD分区器</h2><p>Spark目前支持Hash分区和Range分区，和用户自定义分区。Hash分区为当前的默认分区。分区器直接决定了RDD中分区的个数、RDD中每条数据经过Shuffle后进入哪个分区，进而决定了Reduce的个数。</p>
+<ul>
+<li>只有Key-Value类型的RDD才有分区器，非Key-Value类型的RDD分区的值是None</li>
+<li>每个RDD的分区ID范围：0 ~ (numPartitions - 1)，决定这个值是属于那个分区的</li>
+</ul>
+<p><strong>Hash</strong>分区：对于给定的key，计算其hashCode,并除以分区个数取余</p>
+<pre><code class="lang-scala">class HashPartitioner(partitions: Int) extends Partitioner {
+  require(partitions &gt;= 0, s&quot;Number of partitions ($partitions) cannot be negative.&quot;)
+
+  def numPartitions: Int = partitions
+
+  def getPartition(key: Any): Int = key match {
+    case null =&gt; 0
+    case _ =&gt; Utils.nonNegativeMod(key.hashCode, numPartitions)
+  }
+
+  override def equals(other: Any): Boolean = other match {
+    case h: HashPartitioner =&gt;
+      h.numPartitions == numPartitions
+    case _ =&gt;
+      false
+  }
+
+  override def hashCode: Int = numPartitions
+}
+</code></pre>
+<p><strong>Range</strong>分区：将一定范围内的数据映射到一个分区中，尽量保证每个分区数据均匀，而且分区间有序</p>
+<pre><code class="lang-scala">class RangePartitioner[K : Ordering : ClassTag, V](
+    partitions: Int,
+    rdd: RDD[_ &lt;: Product2[K, V]],
+    private var ascending: Boolean = true)
+  extends Partitioner {
+
+  // We allow partitions = 0, which happens when sorting an empty RDD under the default settings.
+  require(partitions &gt;= 0, s&quot;Number of partitions cannot be negative but found $partitions.&quot;)
+
+  private var ordering = implicitly[Ordering[K]]
+
+  // An array of upper bounds for the first (partitions - 1) partitions
+  private var rangeBounds: Array[K] = {
+  ...
+  }
+
+  def numPartitions: Int = rangeBounds.length + 1
+
+  private var binarySearch: ((Array[K], K) =&gt; Int) = CollectionsUtils.makeBinarySearch[K]
+
+  def getPartition(key: Any): Int = {
+    val k = key.asInstanceOf[K]
+    var partition = 0
+    if (rangeBounds.length &lt;= 128) {
+      // If we have less than 128 partitions naive search
+      while (partition &lt; rangeBounds.length &amp;&amp; ordering.gt(k, rangeBounds(partition))) {
+        partition += 1
+      }
+    } else {
+      // Determine which binary search method to use only once.
+      partition = binarySearch(rangeBounds, k)
+      // binarySearch either returns the match location or -[insertion point]-1
+      if (partition &lt; 0) {
+        partition = -partition-1
+      }
+      if (partition &gt; rangeBounds.length) {
+        partition = rangeBounds.length
+      }
+    }
+    if (ascending) {
+      partition
+    } else {
+      rangeBounds.length - partition
+    }
+  }
+
+  override def equals(other: Any): Boolean = other match {
+  ...
+  }
+
+  override def hashCode(): Int = {
+  ...
+  }
+
+  @throws(classOf[IOException])
+  private def writeObject(out: ObjectOutputStream): Unit = Utils.tryOrIOException {
+  ...
+  }
+
+  @throws(classOf[IOException])
+  private def readObject(in: ObjectInputStream): Unit = Utils.tryOrIOException {
+  ...
+  }
+}
+</code></pre>
+<h2 id="RDD文件读取与保存"><a href="#RDD文件读取与保存" class="headerlink" title="RDD文件读取与保存"></a>RDD文件读取与保存</h2><p>Spark的数据读取及数据保存可以从两个维度来作区分：文件格式以及文件系统。</p>
+<p>文件格式分为：text文件、csv文件、sequence文件以及Object文件；</p>
+<p>文件系统分为：本地文件系统、HDFS、HBASE以及数据库。</p>
+<p><strong>text文件</strong></p>
+<pre><code class="lang-scala">// 读取输入文件
+val inputRDD: RDD[String] = sc.textFile(&quot;input/1.txt&quot;)
+// 保存数据
+inputRDD.saveAsTextFile(&quot;output&quot;)
+</code></pre>
+<p><strong>sequence文件</strong></p>
+<p>SequenceFile文件是Hadoop用来存储二进制形式的key-value对而设计的一种平面文件(Flat File)。在SparkContext中，可以调用sequenceFile[keyClass, valueClass](path)。</p>
+<pre><code class="lang-scala">// 保存数据为SequenceFile
+dataRDD.saveAsSequenceFile(&quot;output&quot;)
+// 读取SequenceFile文件
+sc.sequenceFile[Int,Int](&quot;output&quot;).collect().foreach(println)
+</code></pre>
+<p><strong>object对象文件</strong></p>
+<p>对象文件是将对象序列化后保存的文件，采用Java的序列化机制。可以通过objectFile[T: ClassTag](path)函数接收一个路径，读取对象文件，返回对应的RDD，也可以通过调用saveAsObjectFile()实现对对象文件的输出。因为是序列化所以要指定类型。</p>
+<pre><code class="lang-scala">// 保存数据
+dataRDD.saveAsObjectFile(&quot;output&quot;)
+// 读取数据
+sc.objectFile[Int](&quot;output&quot;).collect().foreach(println)
+</code></pre>
+
+</div>
+
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2021/05/22/11-Spark/Spark05-SparkStreaming.html">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  Spark05-SparkStreaming
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2021/05/21/11-Spark/Spark01-%E6%A6%82%E8%BF%B0.html">
+                Spark01-概述
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+
+
+<script>
+	
+	
+</script>
+	</div>
+	<div id="footer">
+	<p>
+	©2019-<span id="footerYear"></span> 
+	<a href="/">NiuMT</a> 
+	
+	
+		|
+		<span id="busuanzi_container_site_pv">
+			pv
+			<span id="busuanzi_value_site_pv"></span>
+		</span>
+		|
+		<span id="busuanzi_container_site_uv"> 
+			uv
+			<span id="busuanzi_value_site_uv"></span>
+		</span>
+	
+	<br>
+	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
+	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+<script type="text/javascript"> 
+	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+</script>
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
