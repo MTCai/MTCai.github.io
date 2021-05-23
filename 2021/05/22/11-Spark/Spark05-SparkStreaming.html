@@ -508,8 +508,8 @@ $(document).ready(function(){
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
-										数据结构32-拓扑排序 - 副本 (3)
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -517,8 +517,8 @@ $(document).ready(function(){
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1456,7 +1456,7 @@ $(document).ready(function(){
 <p>计算过程由Spark Engine来完成</p>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210522104435702.png" alt="image-20210522104435702"></p>
 <h3 id="RDD队列"><a href="#RDD队列" class="headerlink" title="RDD队列"></a>RDD队列</h3><p>通过使用ssc.queueStream(queueOfRDDs)来创建DStream，每一个推送到这个队列中的RDD，都会作为一个DStream处理。</p>
-<pre><code class="lang-java">object RDDStream {
+<pre><code class="lang-scala">object RDDStream {
   def main(args: Array[String]) {
     //1.初始化Spark配置信息
     val conf = new SparkConf().setMaster(&quot;local[*]&quot;).setAppName(&quot;RDDStream&quot;)
@@ -1483,7 +1483,7 @@ $(document).ready(function(){
 }
 </code></pre>
 <h3 id="自定义数据源"><a href="#自定义数据源" class="headerlink" title="自定义数据源"></a>自定义数据源</h3><p>需要继承Receiver，并实现onStart、onStop方法来自定义数据源采集。</p>
-<pre><code class="lang-java">class CustomerReceiver(host: String, port: Int) extends Receiver[String](StorageLevel.MEMORY_ONLY) {
+<pre><code class="lang-scala">class CustomerReceiver(host: String, port: Int) extends Receiver[String](StorageLevel.MEMORY_ONLY) {
   //最初启动的时候，调用该方法，作用为：读数据并将数据发送给Spark
   override def onStart(): Unit = {
     new Thread(&quot;Socket Receiver&quot;) {
@@ -1516,7 +1516,7 @@ $(document).ready(function(){
   override def onStop(): Unit = {}
 }
 </code></pre>
-<pre><code class="lang-java">object FileStream {
+<pre><code class="lang-scala">object FileStream {
   def main(args: Array[String]): Unit = {
     //1.初始化Spark配置信息
 val sparkConf = new SparkConf().setMaster(&quot;local[*]&quot;)
@@ -1548,7 +1548,7 @@ val sparkConf = new SparkConf().setMaster(&quot;local[*]&quot;)
     &lt;version&gt;2.4.5&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<pre><code class="lang-java">// 自动维护offset
+<pre><code class="lang-scala">// 自动维护offset
 import kafka.serializer.StringDecoder
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.spark.SparkConf
@@ -1597,7 +1597,7 @@ object DirectAPIAuto02 {
   }
 }
 </code></pre>
-<pre><code class="lang-java">手动维护offset）
+<pre><code class="lang-scala">手动维护offset）
 import kafka.common.TopicAndPartition
 import kafka.message.MessageAndMetadata
 import kafka.serializer.StringDecoder
@@ -1653,7 +1653,7 @@ object DirectAPIHandler {
      &lt;version&gt;2.4.5&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<pre><code class="lang-java">import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
+<pre><code class="lang-scala">import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord}
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.dstream.{DStream, InputDStream}
 import org.apache.spark.streaming.kafka010.{ConsumerStrategies, KafkaUtils, LocationStrategies}
@@ -1697,7 +1697,7 @@ object DirectAPI {
 <p>需要记住的是，尽管这些函数看起来像作用在整个流上一样，但事实上每个DStream在内部是由许多RDD（批次）组成，且无状态转化操作是分别应用到每个RDD上的。</p>
 <p>例如：reduceByKey()会归约每个时间区间中的数据，但不会归约不同区间之间的数据。</p>
 <h4 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h4><p>Transform允许DStream上执行任意的RDD-to-RDD函数。即使这些函数并没有在DStream的API中暴露出来，通过该函数可以方便的扩展Spark API。该函数每一批次调度一次。其实也就是对DStream中的RDD应用转换。</p>
-<pre><code class="lang-java">object Transform {
+<pre><code class="lang-scala">object Transform {
   def main(args: Array[String]): Unit = {
     //创建SparkConf
     val sparkConf: SparkConf = new SparkConf().setMaster(&quot;local[*]&quot;).setAppName(&quot;WordCount&quot;)
@@ -1721,7 +1721,7 @@ object DirectAPI {
 }
 </code></pre>
 <h4 id="join"><a href="#join" class="headerlink" title="join"></a>join</h4><p>两个流之间的join需要两个流的批次大小一致，这样才能做到同时触发计算。计算过程就是对当前批次的两个流中各自的RDD进行join，与两个RDD的join效果相同。</p>
-<pre><code class="lang-java">import org.apache.spark.SparkConf
+<pre><code class="lang-scala">import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.streaming.dstream.{DStream, ReceiverInputDStream}
 
@@ -1755,7 +1755,7 @@ object JoinTest {
 <li>定义状态更新函数，用此函数阐明如何使用之前的状态和来自输入流的新值对状态进行更新。</li>
 </ol>
 <p>使用updateStateByKey需要对检查点目录进行配置，会使用检查点来保存状态。</p>
-<pre><code class="lang-java">object WorldCount {
+<pre><code class="lang-scala">object WorldCount {
   def main(args: Array[String]) {
     // 定义更新状态方法，参数values为当前批次单词频度，state为以往批次单词频度
     val updateFunc = (values: Seq[Int], state: Option[Int]) =&gt; {
@@ -1788,7 +1788,7 @@ object JoinTest {
 <li>滑动步长：隔多久触发一次计算。</li>
 </ul>
 <p>注意：这两者都必须为采集周期大小的整数倍。</p>
-<pre><code class="lang-java">object WorldCount {
+<pre><code class="lang-scala">object WorldCount {
   def main(args: Array[String]) {
     val conf = new SparkConf().setMaster(&quot;local[2]&quot;).setAppName(&quot;NetworkWordCount&quot;)
     val ssc = new StreamingContext(conf, Seconds(3))
@@ -1816,7 +1816,7 @@ object JoinTest {
 <li>reduceByKeyAndWindow(func, invFunc, windowLength, slideInterval, [numTasks]): 这个函数是上述函数的变化版本，每个窗口的reduce值都是通过用前一个窗的reduce值来递增计算。通过reduce进入到滑动窗口数据并”反向reduce”离开窗口的旧数据来实现这个操作。一个例子是随着窗口滑动对keys的“加”“减”计数。通过前边介绍可以想到，这个函数只适用于”可逆的reduce函数”，也就是这些reduce函数有相应的”反reduce”函数(以参数invFunc形式传入)。如前述函数，reduce任务的数量通过可选参数来配置。</li>
 </ol>
 <p><img src="http://typora-nmt.oss-cn-qingdao.aliyuncs.com/img/java/image-20210522172017746.png" alt="image-20210522172017746"></p>
-<pre><code class="lang-java">val ipDStream = accessLogsDStream.map(logEntry =&gt; (logEntry.getIpAddress(), 1))
+<pre><code class="lang-scala">val ipDStream = accessLogsDStream.map(logEntry =&gt; (logEntry.getIpAddress(), 1))
 val ipCountDStream = ipDStream.reduceByKeyAndWindow(
   {(x, y) =&gt; x + y},
   {(x, y) =&gt; x - y},
@@ -1825,7 +1825,7 @@ val ipCountDStream = ipDStream.reduceByKeyAndWindow(
   //加上新进入窗口的批次中的元素 //移除离开窗口的老批次中的元素 //窗口时长// 滑动步长
 </code></pre>
 <p>countByWindow()和countByValueAndWindow()作为对数据进行计数操作的简写。countByWindow()返回一个表示每个窗口中元素个数的DStream，而countByValueAndWindow()返回的DStream则包含窗口中每个值的个数。</p>
-<pre><code class="lang-java">val ipDStream = accessLogsDStream.map{entry =&gt; entry.getIpAddress()}
+<pre><code class="lang-scala">val ipDStream = accessLogsDStream.map{entry =&gt; entry.getIpAddress()}
 val ipAddressRequestCount = ipDStream.countByValueAndWindow(Seconds(30), Seconds(10)) 
 val requestCount = accessLogsDStream.countByWindow(Seconds(30), Seconds(10))
 </code></pre>
@@ -1848,7 +1848,7 @@ val requestCount = accessLogsDStream.countByWindow(Seconds(30), Seconds(10))
 <h2 id="Dstream关闭"><a href="#Dstream关闭" class="headerlink" title="Dstream关闭"></a>Dstream关闭</h2><p>流式任务需要7*24小时执行，但是有时涉及到升级代码需要主动停止程序，但是分布式程序，没办法做到一个个进程去杀死，所有配置优雅的关闭就显得至关重要了。</p>
 <p>使用外部文件系统来控制内部程序关闭。</p>
 <p>MonitorStop</p>
-<pre><code class="lang-java">import java.net.URI
+<pre><code class="lang-scala">import java.net.URI
 
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.{FileSystem, Path}
@@ -1882,53 +1882,36 @@ class MonitorStop(ssc: StreamingContext) extends Runnable {
 }
 </code></pre>
 <p>SparkTest</p>
-<pre><code class="lang-java">import org.apache.spark.SparkConf
+<pre><code class="lang-scala">import org.apache.spark.SparkConf
 import org.apache.spark.streaming.dstream.{DStream, ReceiverInputDStream}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object SparkTest {
-
   def createSSC(): _root_.org.apache.spark.streaming.StreamingContext = {
-
     val update: (Seq[Int], Option[Int]) =&gt; Some[Int] = (values: Seq[Int], status: Option[Int]) =&gt; {
-
       //当前批次内容的计算
       val sum: Int = values.sum
-
       //取出状态信息中上一次状态
       val lastStatu: Int = status.getOrElse(0)
-
       Some(sum + lastStatu)
     }
-
     val sparkConf: SparkConf = new SparkConf().setMaster(&quot;local[4]&quot;).setAppName(&quot;SparkTest&quot;)
 
     //设置优雅的关闭
     sparkConf.set(&quot;spark.streaming.stopGracefullyOnShutdown&quot;, &quot;true&quot;)
-
     val ssc = new StreamingContext(sparkConf, Seconds(5))
-
     ssc.checkpoint(&quot;./ck&quot;)
-
     val line: ReceiverInputDStream[String] = ssc.socketTextStream(&quot;linux1&quot;, 9999)
-
     val word: DStream[String] = line.flatMap(_.split(&quot; &quot;))
-
     val wordAndOne: DStream[(String, Int)] = word.map((_, 1))
-
     val wordAndCount: DStream[(String, Int)] = wordAndOne.updateStateByKey(update)
-
     wordAndCount.print()
-
     ssc
   }
 
   def main(args: Array[String]): Unit = {
-
     val ssc: StreamingContext = StreamingContext.getActiveOrCreate(&quot;./ck&quot;, () =&gt; createSSC())
-
     new Thread(new MonitorStop(ssc)).start()
-
     ssc.start()
     ssc.awaitTermination()
   }

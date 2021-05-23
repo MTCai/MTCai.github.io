@@ -506,8 +506,8 @@ $(document).ready(function(){
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
-										数据结构32-拓扑排序 - 副本 (3)
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -515,8 +515,8 @@ $(document).ready(function(){
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1719,35 +1719,6 @@ ReplicatingSelector会将同一
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
-				<h2 class="index-title">
-					flume04-面试题
-				</h2>
-				<div class="index-brief">
-					如何实现Flume 数据传输的监控的使用第三方框架Ganglia 实时监控Flume。
-Flume 的Source，Sink，Channel 的作用？你们Source 是什么类型？作用：
-
-Source 组件是专门用来收集数据的，可以处理各种类型、各种格式的日志数据，包括avro、thrift、ex
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-08-12</span>
-                    
-                            
-                                
-                                    <span>
-                                        <i class="fa fa-folder" aria-hidden="true"></i>
-                                        <a href="/categories/Flume/">Flume</a>
-										
-                                    </span>
-                                
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
 			<a href="/2020/08/12/09-Kafka/Kafka00-%E5%AE%89%E8%A3%85.html">
 				<h2 class="index-title">
 					Kafka00-安装
@@ -1771,6 +1742,35 @@ vim /config/server.properties
                                     <span>
                                         <i class="fa fa-folder" aria-hidden="true"></i>
                                         <a href="/categories/Kafka/">Kafka</a>
+										
+                                    </span>
+                                
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2020/08/12/08-Flume/flume04-%E9%9D%A2%E8%AF%95%E9%A2%98.html">
+				<h2 class="index-title">
+					flume04-面试题
+				</h2>
+				<div class="index-brief">
+					如何实现Flume 数据传输的监控的使用第三方框架Ganglia 实时监控Flume。
+Flume 的Source，Sink，Channel 的作用？你们Source 是什么类型？作用：
+
+Source 组件是专门用来收集数据的，可以处理各种类型、各种格式的日志数据，包括avro、thrift、ex
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2020-08-12</span>
+                    
+                            
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/Flume/">Flume</a>
 										
                                     </span>
                                 
@@ -1846,12 +1846,24 @@ topic 是逻辑上的概念，而partition 是物理上的概念，每个partiti
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
+			<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
 				<h2 class="index-title">
-					Kafka03-API
+					Kafka04-监控
 				</h2>
 				<div class="index-brief">
-					Producer API消息发送流程Kafka的 Producer发送消息采用的是 异步发送 的方式。在消息发送的过程中，涉及到了两个线程 main线程和 Sender线程 ，以及 一个线程共享变量 RecordAccumulator。main线程将消息发送给 RecordAccumulator S
+					概述Kafka 是一个分布式的基于发布/订阅模式的消息队列（Message Queue），主要应用于大数据实时处理领域。
+消息队列MQ：异步处理
+
+使用消息队列的好处：
+
+解耦
+
+允许你独立的扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束。
+
+
+可恢复性
+
+系统的一部分组件失效时，不会影响
 					...
 				</div>
 			</a>
@@ -1872,24 +1884,12 @@ topic 是逻辑上的概念，而partition 是物理上的概念，每个partiti
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/08/12/09-Kafka/Kafka04-%E7%9B%91%E6%8E%A7.html">
+			<a href="/2020/08/12/09-Kafka/Kafka03-API.html">
 				<h2 class="index-title">
-					Kafka04-监控
+					Kafka03-API
 				</h2>
 				<div class="index-brief">
-					概述Kafka 是一个分布式的基于发布/订阅模式的消息队列（Message Queue），主要应用于大数据实时处理领域。
-消息队列MQ：异步处理
-
-使用消息队列的好处：
-
-解耦
-
-允许你独立的扩展或修改两边的处理过程，只要确保它们遵守同样的接口约束。
-
-
-可恢复性
-
-系统的一部分组件失效时，不会影响
+					Producer API消息发送流程Kafka的 Producer发送消息采用的是 异步发送 的方式。在消息发送的过程中，涉及到了两个线程 main线程和 Sender线程 ，以及 一个线程共享变量 RecordAccumulator。main线程将消息发送给 RecordAccumulator S
 					...
 				</div>
 			</a>

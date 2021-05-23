@@ -506,8 +506,8 @@ $(document).ready(function(){
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
-										数据结构32-拓扑排序 - 副本 (3)
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
+										数据结构32-拓扑排序
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -515,8 +515,8 @@ $(document).ready(function(){
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F.html">
-										数据结构32-拓扑排序
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1410,18 +1410,20 @@ $(document).ready(function(){
 		<div id="index">
 	
 		<div class="index-li">
-			<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
+			<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
 				<h2 class="index-title">
-					Zookeeper01-概述
+					Zookeeper00-安装
 				</h2>
 				<div class="index-brief">
-					概述Zookeeper是一个开源的分布式的，为分布式应用提供协调服务的Apache项目。
+					官网首页：https://zookeeper.apache.org/
+本地模式安装部署安装
+安装JDK
 
-特点
+解压Zookeeper安装包
 
-Zookeeper：一个领导者（Leader），多个跟随者（Follower）组成的集群。
-集群中只要有半数以上(不包括一半)节点存活，Zookeeper集群就能正常服务。
-全局数据一致：每个Serv
+[atguigu@hadoop102 software]$ tar -zxvf zookeeper-3.4.10.tar.gz -C /opt/module/
+
+
 					...
 				</div>
 			</a>
@@ -1442,20 +1444,18 @@ Zookeeper：一个领导者（Leader），多个跟随者（Follower）组成的
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/07/03/06-Zookeeper/Zookeeper00-%E5%AE%89%E8%A3%85.html">
+			<a href="/2020/07/03/06-Zookeeper/Zookeeper01-%E6%A6%82%E8%BF%B0.html">
 				<h2 class="index-title">
-					Zookeeper00-安装
+					Zookeeper01-概述
 				</h2>
 				<div class="index-brief">
-					官网首页：https://zookeeper.apache.org/
-本地模式安装部署安装
-安装JDK
+					概述Zookeeper是一个开源的分布式的，为分布式应用提供协调服务的Apache项目。
 
-解压Zookeeper安装包
+特点
 
-[atguigu@hadoop102 software]$ tar -zxvf zookeeper-3.4.10.tar.gz -C /opt/module/
-
-
+Zookeeper：一个领导者（Leader），多个跟随者（Follower）组成的集群。
+集群中只要有半数以上(不包括一半)节点存活，Zookeeper集群就能正常服务。
+全局数据一致：每个Serv
 					...
 				</div>
 			</a>
@@ -1525,6 +1525,39 @@ create
 		</div>	
 	
 		<div class="index-li">
+			<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
+				<h2 class="index-title">
+					Zookeeper04-实战
+				</h2>
+				<div class="index-brief">
+					API应用
+创建一个Maven工程
+
+添加pom文件
+&lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;junit&lt;/groupId&gt;
+            &lt;artifactId
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2020-07-03</span>
+                    
+                            
+                                
+                                    <span>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a href="/categories/Hadoop/">Hadoop</a>
+										
+                                    </span>
+                                
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
 			<a href="/2020/07/03/06-Zookeeper/Zookeeper02-%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.html">
 				<h2 class="index-title">
 					Zookeeper02-内部原理
@@ -1546,39 +1579,6 @@ Zxid：数据ID
 Epoch：逻辑时钟
 
 或者叫投票的次数，同一轮投票过程中的逻
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-03</span>
-                    
-                            
-                                
-                                    <span>
-                                        <i class="fa fa-folder" aria-hidden="true"></i>
-                                        <a href="/categories/Hadoop/">Hadoop</a>
-										
-                                    </span>
-                                
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/03/06-Zookeeper/Zookeeper04-%E5%AE%9E%E6%88%98.html">
-				<h2 class="index-title">
-					Zookeeper04-实战
-				</h2>
-				<div class="index-brief">
-					API应用
-创建一个Maven工程
-
-添加pom文件
-&lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;junit&lt;/groupId&gt;
-            &lt;artifactId
 					...
 				</div>
 			</a>
@@ -1831,16 +1831,16 @@ YARN主要由ResourceManager、NodeManager、ApplicationMaster和Contain
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
+			<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
 				<h2 class="index-title">
-					Hadoop10-生产调优手册
+					Hadoop11-源码解析
 				</h2>
 				<div class="index-brief">
-					HDFS核心参数NameNode内存生产配置每个文件块大概占用 150byte，一台服务器 128G内存为例
-128 * 1024 * 1024 * 1024 / 150Byte = 9.1亿
+					NameNode 启动源码解析
+DataNode 启动源码解析
+HDFS上传源码解析
+Yarn 源码解析
 
-hadoop-env.sh
-hadoop2.x：NameNode内存默认 2000m，如果服务器内存 4
 					...
 				</div>
 			</a>
@@ -1861,16 +1861,16 @@ hadoop2.x：NameNode内存默认 2000m，如果服务器内存 4
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/06/03/05-Hadoop/Hadoop11-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+			<a href="/2020/06/03/05-Hadoop/Hadoop10-%E7%94%9F%E4%BA%A7%E8%B0%83%E4%BC%98%E6%89%8B%E5%86%8C.html">
 				<h2 class="index-title">
-					Hadoop11-源码解析
+					Hadoop10-生产调优手册
 				</h2>
 				<div class="index-brief">
-					NameNode 启动源码解析
-DataNode 启动源码解析
-HDFS上传源码解析
-Yarn 源码解析
+					HDFS核心参数NameNode内存生产配置每个文件块大概占用 150byte，一台服务器 128G内存为例
+128 * 1024 * 1024 * 1024 / 150Byte = 9.1亿
 
+hadoop-env.sh
+hadoop2.x：NameNode内存默认 2000m，如果服务器内存 4
 					...
 				</div>
 			</a>
