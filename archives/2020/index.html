@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 
+
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
@@ -40,6 +41,9 @@
 
 
 	
+<script src="/js/prettify.js"></script>
+
+	
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
 
 	
@@ -50,9 +54,6 @@
 
 	
 <script src="/js/main.js"></script>
-
-    
-<script src="/js/prettify.js"></script>
 
 	
 		
@@ -496,8 +497,8 @@ $(document).ready(function(){
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
-										数据结构32-拓扑排序 - 副本 (3)
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
+										数据结构32-拓扑排序 - 副本
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -505,8 +506,8 @@ $(document).ready(function(){
 			
 							<ul>
 								<li class="file">
-									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC.html">
-										数据结构32-拓扑排序 - 副本
+									<a href="/2021/03/09/01-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%8432-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%20-%20%E5%89%AF%E6%9C%AC%20(3).html">
+										数据结构32-拓扑排序 - 副本 (3)
 									</a>
 								</li>
 								<div class="article-toc" style="display: none;"></div>
@@ -1882,19 +1883,16 @@ Flume 官网地址：http://flume.apache.org/
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
+			<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
 				<h2 class="index-title">
-					flume02-案例
+					flume01-概述
 				</h2>
 				<div class="index-brief">
-					Flume入门案例监控端口数据官方案例案例需求：使用Flume 监听一个端口， 收集该端口数据 ，并打印到控制台。
-实现步骤：
+					定义Flume 是Cloudera 提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统。Flume 基于流式架构，灵活简单。
+Flume最主要的作用就是，实时读取服务器本地磁盘的数据，将数据写入到HDFS。
 
-安装 netcat 工具
-sudo yum install -y nc
-
-判断44444 端口是否被占用
-sudo netstat -tunlp | grep 44444
+基础架构
+AgentAgent是一个 JVM 进程，它以事件的形式将数据
 					...
 				</div>
 			</a>
@@ -1915,16 +1913,19 @@ sudo netstat -tunlp | grep 44444
 		</div>	
 	
 		<div class="index-li">
-			<a href="/2020/08/12/08-Flume/flume01-%E6%A6%82%E8%BF%B0.html">
+			<a href="/2020/08/12/08-Flume/flume02-%E6%A1%88%E4%BE%8B.html">
 				<h2 class="index-title">
-					flume01-概述
+					flume02-案例
 				</h2>
 				<div class="index-brief">
-					定义Flume 是Cloudera 提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统。Flume 基于流式架构，灵活简单。
-Flume最主要的作用就是，实时读取服务器本地磁盘的数据，将数据写入到HDFS。
+					Flume入门案例监控端口数据官方案例案例需求：使用Flume 监听一个端口， 收集该端口数据 ，并打印到控制台。
+实现步骤：
 
-基础架构
-AgentAgent是一个 JVM 进程，它以事件的形式将数据
+安装 netcat 工具
+sudo yum install -y nc
+
+判断44444 端口是否被占用
+sudo netstat -tunlp | grep 44444
 					...
 				</div>
 			</a>
